@@ -1,0 +1,152 @@
+%Creates the aau titlepage
+\newcommand{\aautitlepage}[3]{%
+  {
+    %set up various length
+    \ifx\titlepageleftcolumnwidth\undefined
+      \newlength{\titlepageleftcolumnwidth}
+      \newlength{\titlepagerightcolumnwidth}
+    \fi
+    \setlength{\titlepageleftcolumnwidth}{0.5\textwidth-\tabcolsep}
+    \setlength{\titlepagerightcolumnwidth}{\textwidth-2\tabcolsep-\titlepageleftcolumnwidth}
+    %create title page
+    \thispagestyle{empty}
+    \noindent%
+    \begin{tabular}{@{}ll@{}}
+      \parbox{\titlepageleftcolumnwidth}{
+        \iflanguage{danish}{%
+          \includegraphics[width=\titlepageleftcolumnwidth]{setup/aau_logo_da.pdf}
+        }{%
+          \includegraphics[width=\titlepageleftcolumnwidth]{setup/aau_logo_en.pdf}
+        }
+      } &
+      \parbox{\titlepagerightcolumnwidth}{\raggedleft\sf\small
+        #2
+      }\bigskip\\
+       #1 &
+      \parbox[t]{\titlepagerightcolumnwidth}{%
+      \textbf{Abstract:}\smallskip\par
+        \fbox{\parbox{\titlepagerightcolumnwidth-2\fboxsep-2\fboxrule}{%
+          #3
+        }}
+      }\\
+    \end{tabular}
+    \vfill
+    \vspace{-0.5cm}
+    \iflanguage{danish}{%
+      \noindent{\footnotesize\emph{Rapportens indhold er frit tilgængeligt, men offentliggørelse (med kildeangivelse) må kun ske efter aftale med forfatterne.}}
+    }{%
+      \noindent{\footnotesize\emph{The content of this report is freely available, but publication (with reference) may only be pursued due to agreement with the author.}}
+    }
+    \clearpage
+  }
+}
+
+%Create english project info
+\newcommand{\englishprojectinfo}[8]{%
+  \parbox[t]{\titlepageleftcolumnwidth}{
+    \textbf{Title:}\\ #1\bigskip\par
+    \textbf{Theme:}\\ #2\bigskip\par
+    \textbf{Project Period:}\\ #3\bigskip\par
+    \textbf{Project Group:}\\ #4\bigskip\par
+    \textbf{Participant(s):}\\ #5\bigskip\par
+    \textbf{Supervisor(s):}\\ #6\bigskip\par
+    \textbf{Copies:} #7\bigskip\par
+    \textbf{Page Numbers:} Fucking mange!\bigskip\par
+    \textbf{Date of Completion:}\\ #8
+  }
+}
+
+%Create danish project info
+\newcommand{\danishprojectinfo}[8]{%
+  \parbox[t]{\titlepageleftcolumnwidth}{
+    \textbf{Title:}\\ #1\bigskip\par
+    \textbf{Theme:}\\ #2\bigskip\par
+    \textbf{Project Period:}\\ #3\bigskip\par
+    \textbf{Project Group:}\\ #4\bigskip\par
+    \textbf{Participants:}\\ #5\bigskip\par
+    \textbf{Supervisor:}\\ #6\bigskip\par
+    \textbf{Copies:} #7\bigskip\par
+    \textbf{Page Numbers:} ??
+    \bigskip\par
+    \textbf{Date of Completion:}\\ #8
+  }
+}
+
+
+\newcommand{\iic}[0]{I²C }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%            An example environment            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont}
+\theoremstyle{break}
+\def\theoremframecommand{{\color{aaublue!50}\vrule width 5pt \hspace{5pt}}}
+\newshadedtheorem{exa}{Example}[chapter]
+\newenvironment{example}[1]{%
+		\begin{exa}[#1]
+}{%
+		\end{exa}
+}
+
+\makeatletter
+\newcommand{\ChapterOutsidePart}{%
+   \def\toclevel@chapter{-1}\def\toclevel@section{0}\def\toclevel@subsection{1}}
+\newcommand{\ChapterInsidePart}{%
+   \def\toclevel@chapter{0}\def\toclevel@section{1}\def\toclevel@subsection{2}}
+\makeatother
+
+\usepackage{bookmark}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  USEFULL MACROES                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Units:
+\newcommand{\unit}[1]{&& \left[\si{#1}\right]} %\newcommand{\unit}[1]{[\si{#1}]}             <<| Use these if you want equations to be
+\newcommand{\unitWh}[1]{[\si{#1}]}             %\newcommand{\eq}[2]{&&\si{#1} &= \si{#2}&&}  <<| centered.. .. will be appear scrambled
+\newcommand{\numUnit}[1]{\ \si{#1}&}           %                                               | from one equation to the next though..
+%Equation:                                     %                                               | and does not work with long equations.. :/
+\newcommand{\eq}[2]{\si{#1} &= \si{#2}}
+\newcommand{\arw}{&& &\Updownarrow&&}
+%Text:
+\newcommand{\tx}[1]{\text{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  REFERENCES                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Chapter
+\newcommand{\chapref}[1]{\emph{Chapter \ref{#1}}} %:\textbf{ \nameref{#1}}}}
+%Section
+\newcommand{\secref}[1]{\emph{Section \ref{#1}}} %:\textbf{ \nameref{#1}}}}
+%subSection
+\newcommand{\subsecref}[1]{\emph{Subsection \ref{#1}}} %:\textbf{ \nameref{#1}}}}
+%Appendix
+\newcommand{\appref}[1]{\emph{Appendix \ref{#1}}} %:\textbf{ \nameref{#1}}}}
+%Listings
+\newcommand{\coderef}[1]{\emph{Listings: \ref{#1}}}
+%Figure:
+\newcommand{\figref}[1]{\emph{Figure \ref{#1}}}
+%Table:
+\newcommand{\tableref}[1]{\emph{Table \ref{#1}}}
+
+%Equations:
+%1 equation:
+\renewcommand{\eqref}[1]{\emph{Equation (\ref{#1})}}
+%2 equations:
+\newcommand{\eqrefTwo}[2]{\emph{Equation (\ref{#1})} and \emph{(\ref{#2})}}
+%3 equations:
+\newcommand{\eqrefThree}[3]{\emph{Equation (\ref{#1})}, \emph{(\ref{#2})} and \emph{(\ref{#3})}}
+%4 equations:
+\newcommand{\eqrefFour}[4]{\emph{Equation (\ref{#1})}, \emph{(\ref{#2})}, \emph{(\ref{#3})} and \emph{(\ref{#4})}}
+%5 equations:
+\newcommand{\eqrefFive}[5]{\emph{Equation (\ref{#1})}, \emph{(\ref{#2})}, \emph{(\ref{#3})}, \emph{(\ref{#4})} and \emph{(\ref{#5})}}
+%6 equations:
+\newcommand{\eqrefSix}[6]{\emph{Equation (\ref{#1})}, \emph{(\ref{#2})}, \emph{(\ref{#3})}, \emph{(\ref{#4})}, \emph{(\ref{#5})} and \emph{(\ref{#6})}}
+%7 equations:
+\newcommand{\eqrefSeven}[7]{\emph{Equation (\ref{#1})}, \emph{(\ref{#2})}, \emph{(\ref{#3})}, \emph{(\ref{#4})}, \emph{(\ref{#5})}, \emph{(\ref{#6})} and \emph{(\ref{#7})}}

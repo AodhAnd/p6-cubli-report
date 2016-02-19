@@ -1,0 +1,104 @@
+\input{setup/preamble.tex}% package inclusion and set up of the document
+
+\input{setup/macros.tex}% my new macros
+
+\begin{document}
+%%% Prereport %%%
+\setlength\cftaftertoctitleskip{2pt}
+\setlength\cftafterloftitleskip{6pt}
+\setlength\cftafterlottitleskip{6pt}
+\selectlanguage{english}
+\title{Cubli}
+
+%%% Frontmatter Settings %%%
+\pagestyle{empty} %disable headers and footers
+\pagenumbering{roman} %use roman page numbering in the frontmatter I II...
+\fancyfoot[RE,LO]{15gr510} %page number on all pages
+\fancyfoot[LE,RO]{\thepage}
+\fancyhead[LE,LO,RE,RO]{}
+
+%%% Introductory Formalities %%%
+%\includepdf[pages={1}]{formalities/frontpage.pdf}
+%\include{chapters/frontpage}
+\pagestyle{fancy}
+\include{formalities/kolofon}
+\input{formalities/titleSheet.tex}
+%%% Preface %%%
+%\cleardoublepage
+\input{formalities/preface.tex}
+
+\pdfbookmark[0]{Table of Contents}{label: tableOfCentents}
+\tableofcontents
+\cleardoublepage
+
+
+%%% Mainmatter Settings %%%
+\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+\fancyfoot[RO,LE]{\thepage \text{ of} \pageref{LastPage}}
+\fancyfoot[RE,LO]{15gr510}
+\fancyhead[RE,LO]{}
+\fancyhead[RE,LO]{\color{aaublue}\small\nouppercase\leftmark} %even page - chapter title
+\pagestyle{fancy}
+
+%%% Part 1 %%%
+\part{Preanalysis}
+
+%---------- Chapter 1 ---------------------------------------- Introduction
+\input{chapters/chapter1/aChapters1.tex}
+\input{chapters/chapter1/bSectionAndSubsections.tex}
+\input{chapters/chapter1/cSectionAndSubsections.tex} %-------- For Overview, somtimes short headlines here works well
+
+%---------- Chapter 2 ---------------------------------------- Design Considerations
+\input{chapters/chapter2/aChapters2.tex}
+
+%---------- Chapter 3 ---------------------------------------- Requirements
+\input{chapters/chapter3/aChapters3.tex}
+
+%%% Part 2 %%%
+\part{Design \& Implementation}
+%---------- Chapter 4 ---------------------------------------- Modelling
+\input{chapters/chapter4/aChapters4.tex}
+
+%---------- Chapter 5 ---------------------------------------- Control
+\input{chapters/chapter5/aChapters5.tex}
+
+%%% Part 3 %%%
+\part{Test \& Conclusion}
+\input{chapters/aAcceptanceTest/AcceptanceTest}
+\input{chapters/bConclusion/conclusion}
+\input{chapters/cDiscussion/discussion.tex}
+
+%%% Setup for Appendix and Bibliography %%%
+\bookmarksetup{startatroot}
+\addtocontents{toc}{\bigskip}
+\newpage
+\fancyhead[RO]{\color{aaublue}\small Appendix \nouppercase\rightmark} %even page - chapter title
+\fancyhead[LE]{\color{aaublue}\small Appendix \nouppercase\rightmark} %uneven page - section title
+\fancyhead[RE,LO]{}
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{aaublue}{|}\hsp}{0pt}{\Large\bfseries}
+\renewcommand{\thesection}{\Alph{section}}
+\setcounter{section}{0}
+
+%%% Appendix %%%
+\part*{Appendix}
+
+\addcontentsline{toc}{chapter}{Appendix}
+
+%---------- Appendix A ---------------------------------------- Test Title
+\input{appendix/aTest.tex}
+
+%---------- Appendix B ---------------------------------------- Test Title
+\input{appendix/bTest.tex}
+
+ %----------Appendix C ---------------------------------------- Test Title
+\input{appendix/cTest.tex}
+
+%---------- Appendix D ---------------------------------------- Test Title
+\input{appendix/dTest.tex}
+
+%%% Bibliography %%%
+\printbibliography
+
+%%% To Do List %%%
+
+\end{document}
