@@ -134,5 +134,5 @@ sympy-plots-for-*.tex/
 *.sublime-workspace
 
 # Compiled PDF files
-*.pdf
+main.pdf
 figures/Thumbs.db
