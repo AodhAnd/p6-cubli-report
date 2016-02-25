@@ -50,23 +50,24 @@
 
 %---------- Chapter 2 ---------------------------------------- Design Considerations
 \input{chapters/chapter2/aChapters2.tex}
+\input{chapters/chapter2/bCubliModel.tex}
 
 %---------- Chapter 3 ---------------------------------------- Requirements
-\input{chapters/chapter3/aChapters3.tex}
+%\input{chapters/chapter3/aChapters3.tex}
 
 %%% Part 2 %%%
 \part{Design \& Implementation}
 %---------- Chapter 4 ---------------------------------------- Modelling
-\input{chapters/chapter4/aChapters4.tex}
+%\input{chapters/chapter4/aChapters4.tex}
 
 %---------- Chapter 5 ---------------------------------------- Control
-\input{chapters/chapter5/aChapters5.tex}
+%\input{chapters/chapter5/aChapters5.tex}
 
 %%% Part 3 %%%
 \part{Test \& Conclusion}
-\input{chapters/aAcceptanceTest/AcceptanceTest}
-\input{chapters/bConclusion/conclusion}
-\input{chapters/cDiscussion/discussion.tex}
+%\input{chapters/aAcceptanceTest/AcceptanceTest}
+%\input{chapters/bConclusion/conclusion}
+%\input{chapters/cDiscussion/discussion.tex}
 
 %%% Setup for Appendix and Bibliography %%%
 \bookmarksetup{startatroot}
@@ -76,25 +77,24 @@
 \fancyhead[LE]{\color{aaublue}\small Appendix \nouppercase\rightmark} %uneven page - section title
 \fancyhead[RE,LO]{}
 \titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{aaublue}{|}\hsp}{0pt}{\Large\bfseries}
-\renewcommand{\thesection}{\Alph{section}}
-\setcounter{section}{0}
+\renewcommand{\thechapter}{\Alph{chapter}}
+\setcounter{chapter}{0}
 
 %%% Appendix %%%
 \part*{Appendix}
-
 \addcontentsline{toc}{chapter}{Appendix}
 
 %---------- Appendix A ---------------------------------------- Test Title
 \input{appendix/aTest.tex}
 
 %---------- Appendix B ---------------------------------------- Test Title
-\input{appendix/bTest.tex}
+%\input{appendix/bTest.tex}
 
- %----------Appendix C ---------------------------------------- Test Title
-\input{appendix/cTest.tex}
+%----------Appendix C ---------------------------------------- Test Title
+%\input{appendix/cTest.tex}
 
 %---------- Appendix D ---------------------------------------- Test Title
-\input{appendix/dTest.tex}
+%\input{appendix/dTest.tex}
 
 %%% Bibliography %%%
 \printbibliography
