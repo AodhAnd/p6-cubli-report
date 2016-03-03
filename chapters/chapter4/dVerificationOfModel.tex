@@ -18,38 +18,18 @@ The angle of the reaction wheel, \si{\theta_w}, still features in \eqref{Laplace
 \Eqref{WheelRotEq2Laplace} is now substituted for \si{\theta_w} in \eqref{LaplaceOfLinearizedModel}, and the transfer function is of the system is derived.
 %
 \begin{flalign}
-	\si{(J_F+m_w \cdot {l_w}^{2}) \cdot \theta_F \cdot s^2} &= \si{-B_F \theta_F\cdot s +  ( m_F \cdot l_F + m_w \cdot l_w ) g \cdot \theta_F - \tau_m} &\nonumber\\
-	&\ \ \ \ \si{+ B_w ( \frac{ -J_w \theta_F \cdot s^2 + \tau_m }{ J_w \cdot s^2 + B_w \cdot s } )\cdot s }&
+	\eqOne{(J_F+m_w \cdot {l_w}^{2}) \cdot \theta_F \cdot s^2}{-B_F \theta_F\cdot s +  ( m_F \cdot l_F + m_w \cdot l_w ) g \cdot \theta_F - \tau_m}
+	\eqTwo{+ B_w ( \frac{ -J_w \theta_F \cdot s^2 + \tau_m }{ J_w \cdot s^2 + B_w \cdot s } )\cdot s }&\nonumber
 \label{CubliTransferFunction}
 \end{flalign}
+
+\vspace{-.2cm}
+\large{\si{\frac{\theta_F}{\tau_m} =}}\nolinebreak
+\Large{
+\si{\frac{\frac{s}{-J_F - m_w \cdot {l_w}^2}}{s^3 + \left( \frac{B_w}{J_w} + \frac{B_w + B_F}{J_F + m_w \cdot {l_w}^2} \right) s^2 - \left( \frac{ \left( m_F \cdot l_F + m_w \cdot l_w \right)\cdot g}{ \left( J_F + m_w \cdot {l_w}^2 \right) J_w} - \frac{B_F B_w}{ \left(J_F + m_w \cdot {l_w}^2 \right) J_w} \right) s - \frac{\left(m_F \cdot l_F + m_w \cdot l_w \right) B_w\cdot g}{\left(J_F + m_w \cdot {l_w}^2 \right) J_w} }}}\normalsize\vspace{-1.9cm}\\
+\vspace{1.8cm}\begin{flalign}\label{2ndCubliTransferFunction}\end{flalign}
 %
-Substituting all the constants of \eqref{} with the parameters of the real model results in the final transfer function of the system.
-%
-\begin{flalign}
-	\eq{G(s)}{\frac{-211.9 \cdot s}{s^3 + 1.32 \cdot s^2 - 98.98 \cdot s - 2.803}} &\nonumber\\
-\label{RealCubliTransferFunction}	
-\end{flalign}
-%
-Using \eqref{RealCubliTransferFunction} it is possible to simulate the response of the system to step and impulse inputs (\figref{stepCubliTF} and \figref{impulseCubliTF})
-\begin{figure}[H] 
-	\centering 
-	\includegraphics[scale=0.8]{figures/stepResponseTF}
-	\centering
-	\captionsetup{justification=centering}	
-	\caption{Step response of the transfer function of the Cubli, G(s)}
-	\label{stepCubliTF}
-\end{figure}
-%
-\begin{figure}[H] 
-	\centering 
-	\includegraphics[scale=0.8]{figures/impulseResponseTF}
-	\centering
-	\captionsetup{justification=centering}	
-	\caption{Impulse response of G(s)}
-	\label{impulseCubliTF}
-\end{figure}
-%
-The transfer function from \eqref{} can be represented as well in the form of a block diagram, as seen in \figref{cubliSimulink}
+The transfer function from \eqref{2ndCubliTransferFunction} can be represented as well in the form of a block diagram, as seen in \figref{cubliSimulink}.
 %
 \begin{figure}[H] 
 	\centering 
@@ -60,15 +40,20 @@ The transfer function from \eqref{} can be represented as well in the form of a 
 	\label{cubliSimulink}
 \end{figure} 
 %
+Substituting all the constants of \eqref{2ndCubliTransferFunction} with the parameters of the real model results in the final transfer function of the system.
+%
+\begin{flalign}
+	\eq{G(s)}{\frac{-211.9 \cdot s}{s^3 + 1.32 \cdot s^2 - 98.98 \cdot s - 2.803}} &\nonumber\\
+	\label{RealCubliTransferFunction}	
+\end{flalign}
+%
+Using \eqref{RealCubliTransferFunction} it is possible to simulate the response of the system to a step input and compare it with the response of the simulation of the block diagram.
+%
 \begin{figure}[H] 
 	\centering 
-	\includegraphics[scale=0.5]{figures/stepResponseBlocks}
+	\includegraphics[scale=0.6]{figures/stepComparison}
 	\centering
 	\captionsetup{justification=centering}	
-	\caption{Step response of the system from \figref{cubliSimulink}}
-	\label{stepCubliBlocks}
+	\caption{Comparison  \figref{cubliSimulink}}
+	\label{stepComparison}
 \end{figure}
-
-
-
-
