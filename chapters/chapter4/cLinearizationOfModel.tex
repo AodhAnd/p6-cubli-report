@@ -19,7 +19,7 @@ The operating point is chosen to be \si{\theta_F = 0}, which corresponds to the 
 \label{FrameEq4OperatingPointZero}
 \end{flalign}
 
-All the higher order derivatives are discarded due to their negligible impact on the system.
+All the higher order derivatives are discarded due to their negligible impact on the system when it is near the operating point.
 %
 \begin{flalign}
 	\si{(J_F+m_w \cdot {l_w}^{2}) \Delta \ddot{\theta}_F } &= \si{-B_F \Delta \dot{\theta}_F +  ( m_F \cdot l_F + m_w \cdot l_w ) g \cdot} \cancelto{1}{\rule{0cm}{.4cm} \si{  cos(\theta_F)}} \si{\Delta \theta_F} \where{\theta_F = 0} \nonumber\\
@@ -36,4 +36,5 @@ All the higher order derivatives are discarded due to their negligible impact on
 	\caption{Sketch of linearization for the Cubli frame angels.}
 	\label{LinearizationSketch}
 \end{figure} 
-Because we linearize our model there will be an point where the controller no longer will be able to catch the frame, because it cannot predict the forces on the frame anymore. In the sketch of this (see \figref{LinearizationSketch}) the area where the controller will work is indikated by the green area. 
+
+Due to the linearization of the model there will be an point where the controller will no longer be able to catch the frame, because it cannot predict the forces on the frame anymore. In the sketch (see \figref{LinearizationSketch}) the area where the controller will work is indicated by the green area. 
