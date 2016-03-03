@@ -1,3 +1,42 @@
-\section{Section 1}
+\section{AAU Cubli}
+Here at AAU there was build a one-dimensional model of the cubli. It is fixed to an axis with one of its corners, so it can rotate around that corner, but cannot be moved translational.
+
+The AAU cubli consists of the following parts\fxnote{insert correct part names}.
+
+\begin{table}[H]
+	\begin{tabular}{|l|p{3.8cm}|}
+		\hline %-----------------------------------------------------------------------------------
+		\textbf{No.} &\textbf{Part} 			\\
+		\hline %-----------------------------------------------------------------------------------
+		1            & Frame           			\\
+		\hline %-----------------------------------------------------------------------------------
+		2            & Reaction wheel      		\\
+		\hline %-----------------------------------------------------------------------------------
+		3            & IMU           			\\
+		\hline %-----------------------------------------------------------------------------------
+		4            & BeagleBone           	\\
+		\hline %-----------------------------------------------------------------------------------
+		5            & Potentiometer           	\\
+		\hline %-----------------------------------------------------------------------------------
+		6            & Motorcontrolboard    	\\
+		\hline %-----------------------------------------------------------------------------------
+		7            & Brushless DC-motor    	\\
+		\hline %-----------------------------------------------------------------------------------
+		8            & Jump brake		    	\\
+		\hline %-----------------------------------------------------------------------------------
+	\end{tabular}
+	\caption{Table over parts in the Cubli setup \label{TableAAUCubliComponent}}
+\end{table}
+
 \subsection{Subsection 1.1.1}
+The frame is made of metal? \fxnote{find composition of frame if possible} and is mainly a square with a solid edge at the outer bound of the frame, and two cross connections between opposing corners. 
+
+The reaction wheel is a wheel made of metal? \fxnote{find composition of wheel if possible} with most of the mass in a ring at its outer edge and two crossconnections, that are going trough its center at rigth angle to each other. It is connected with the motor and the frame through and axis going throught its center of rotation.
+
+
+The BeagleBone recieves the data from sensors and motor and with the control algorithm uploaded to it, tries to balance the cubli, by spinning up the reaction wheel.
+
+The potentiometer is placed at the corner of the frame that is fixed to an axis. It is used to measure the angel of the frame.
+
+The motor spins up the reaction wheel and also brakes it during the balancing part of the controller. When jumping up the cubli the motor will spin up the reaction wheel and the jump brake will then suddenly brake the reaction wheel.
 \subsection{Subsection 1.1.2}
