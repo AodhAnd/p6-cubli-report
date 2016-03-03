@@ -28,4 +28,39 @@ The angle of the reaction wheel, \si{\theta_w}, still features in \eqref{Laplace
 \si{\frac{\frac{s}{-J_F - m_w \cdot {l_w}^2}}{s^3 + \left( \frac{B_w}{J_w} + \frac{B_w + B_F}{J_F + m_w \cdot {l_w}^2} \right) s^2 - \left( \frac{ \left( m_F \cdot l_F + m_w \cdot l_w \right)\cdot g}{ \left( J_F + m_w \cdot {l_w}^2 \right) J_w} - \frac{B_F B_w}{ \left(J_F + m_w \cdot {l_w}^2 \right) J_w} \right) s - \frac{\left(m_F \cdot l_F + m_w \cdot l_w \right) B_w\cdot g}{\left(J_F + m_w \cdot {l_w}^2 \right) J_w} }}}\normalsize\vspace{-1.9cm}\\
 \vspace{1.8cm}\begin{flalign}\label{2ndCubliTransferFunction}\end{flalign}
 
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[scale=0.8]{figures/stepResponseTF}
+	\centering
+	\captionsetup{justification=centering}	
+	\caption{Step response of the transfer function of the Cubli, G(s)}
+	\label{stepCubliTF}
+\end{figure}
 
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[scale=0.8]{figures/impulseResponseTF}
+	\centering
+	\captionsetup{justification=centering}	
+	\caption{Impulse response of G(s)}
+	\label{impulseCubliTF}
+\end{figure}
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[scale=0.5]{figures/cubliSimulink}
+	\centering
+	\captionsetup{justification=centering}
+	\caption{Block diagram of the system}
+	\label{cubliSimulink}
+\end{figure} 
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[scale=0.5]{figures/stepResponseBlocks}
+	\centering
+	\captionsetup{justification=centering}	
+	\caption{Step response of the system from \figref{systemSimulink}}
+	\label{stepCubliBlocks}
+\end{figure}
