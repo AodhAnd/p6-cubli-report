@@ -33,7 +33,7 @@ The Cubli is split up into its two moving parts as seen in \figref{freeBodyFrame
 
 The equation for the frame is deduced from the \figref{freeBodyFrame}.
 \begin{flalign}
-  \eq{J_F \vec{\ddot{\theta}_F}} { -B_F \vec{\dot{\theta}_F} + \vec{l_F} \times (m_F\cdot \vec{g}) + \vec{l_w} \times \vec{F} - \vec{\tau_w} } \unit{N\cdot m}
+  \eq{J_F \vec{\ddot{\theta}_F}} { -B_F \vec{\dot{\theta}_F} + \vec{l_F} \times (m_F\cdot \vec{g}) + \vec{l_w} \times \vec{F} - \vec{\tau_m} + B_w \vec{\dot{\theta}_w}} \unit{N\cdot m}
   \label{frameModelEq}
 \end{flalign}
 %
@@ -41,14 +41,16 @@ The equation for the frame is deduced from the \figref{freeBodyFrame}.
 \begin{tabular}{ p{1cm} l l l}
 & \si{J_F} 					    	   & is the inertia of the frame                          &\unitWh{kg \cdot m^2} \\
 & \si{\vec{\ddot{\theta}_F}} & is the angular acceleration of the frame             &\unitWh{rad \cdot s^{-2}} \\
-& \si{\vec{\tau_w}} 	       & is the torque delivered by the reaction wheel        &\unitWh{N \cdot m} \\
 & \si{B_F} 	                 & is the friction coefficient of the frame             &\unitWh{N \cdot m \cdot s \cdot rad^{-1}} \\
 & \si{\vec{\dot{\theta}_F}}  & is the angular velocity of the frame                 &\unitWh{rad \cdot s^{-1}} \\
 & \si{\vec{l_F}}             & is the length to center of mass of the frame         &\unitWh{m} \\
 & \si{m_F}                   & is the mass of the frame                             &\unitWh{kg} \\
 & \si{\vec{g}}							 & is the gravitational acceleration                    &\unitWh{m\cdot s^{-2}} \\
 & \si{\vec{l_w}}             & is the length to center off mass of the wheel        &\unitWh{m} \\
-& \si{\vec{F}}				  	   & is the force delivered to the frame from the wheel   &\unitWh{N}
+& \si{\vec{F}}				  	   & is the force delivered to the frame from the wheel   &\unitWh{N} \\
+& \si{\vec{\tau_m}} 	       & is the torque delivered by the motor        &\unitWh{N \cdot m} \\
+& \si{B_w} 	                 & is the friction coefficient of the wheel             &\unitWh{N \cdot m \cdot s \cdot rad^{-1}} \\
+& \si{\vec{\dot{\theta}_w}}  & is the angular velocity of the wheel with respect to the frame                 &\unitWh{rad \cdot s^{-1}} \\
 \end{tabular}
 
 The following equation is then derived from \figref{freeBodyWheel}:
@@ -60,9 +62,6 @@ The following equation is then derived from \figref{freeBodyWheel}:
 \begin{tabular}{ p{1cm} l l l}
 & \si{J_w} 					    	   & is the inertia of the wheel                          &\unitWh{kg \cdot m^2} \\
 & \si{\vec{\ddot{\theta}_w}} & is the angular acceleration of the wheel with respect to the frame             &\unitWh{rad \cdot s^{-2}} \\
-& \si{\vec{\tau_m}} 	       & is the torque delivered by the motor                 &\unitWh{N \cdot m} \\
-& \si{B_w}                   & is the friction coefficient of the wheel          &\unitWh{N \cdot m \cdot s \cdot rad^{-1}} \\
-& \si{\vec{\dot{\theta}_w}}  & is the angular velocity of the wheel with respect to the frame                &\unitWh{rad \cdot s^{-1}}
 \end{tabular}
 
 In \eqref{frameModelEq} the term \si{\vec{l_w} \times \vec{F}} describes the torque delivered from the wheel to the frame, as it acts around the pivot corner of the frame. The vector \si{\vec{F}} is decomposed into to forces paralell to the axes, \si{F_x} and \si{F_y}, as seen on \figref{freeBodyFrame} and \figref{freeBodyWheel}. To be able to apply Newton's Second Law, expressions for both the x- and y-coordinate describing the position of the center of mass of the wheel are found.
@@ -118,7 +117,7 @@ The original objective was to evaluate the term \si{\vec{l_w} \times \vec{F}} in
       \ \si{ ( l_w \cdot cos( \theta_F )\cdot 0 + 0 \cdot F_x  ) } \ \ \ \\
       \ \si{ ( l_w \cdot cos( \theta_F )\cdot F_y - l_w \cdot sin( \theta_F )\cdot F_x ) }
     \end{bmatrix} \unit{N\cdot m} \\ \nonumber\\
-  \si{ \vec{l_w} \times \vec{F} } &= \si{( l_w \cdot cos( \theta_F )\cdot (m_w \cdot (\ l_w \cdot sin( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} - l_w \cdot cos( \theta_F )\ \ddot{\theta}_F\ ))} \nonumber \\
+  \si{ \vec{l_w} \times \vec{F} } &= \si{ 0 \cdot \hat{i} + 0 \cdot \hat{j} + ( l_w \cdot cos( \theta_F )\cdot (m_w \cdot (\ l_w \cdot sin( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} - l_w \cdot cos( \theta_F )\ \ddot{\theta}_F\ ))} \nonumber \\
   &\ \ \ \ \si{- l_w \cdot sin( \theta_F )\cdot (m_w \cdot (\  l_w \ cos( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} + l_w \cdot sin( \theta_F )\ \ddot{\theta}_F \ )} \nonumber \\
   &\ \ \ \ \si{- m_w \cdot g) ) \cdot \hat{k}} \unit{N \cdot m}\\ \nonumber\\
   \eq{ \vec{l_w} \times \vec{F} }{ ({-l_w}^2 \cdot m_w \ddot{\theta}_F \ (cos^2(\theta_F) + sin^2(\theta_F)) + l_w\cdot sin(\theta_F)\ m_w \cdot g ) \cdot \hat{k}} \unit{N \cdot m}\\ \nonumber\\
@@ -130,23 +129,16 @@ Since all torques only have a z-coordinate, \eqref{vectorDecomposition3} is inse
 %
 \begin{flalign}
 	\si{J_F \cdot \ddot{\theta}_F} &= \si{- B_F \cdot \dot{\theta}_F + m_F \cdot l_F \cdot g \cdot sin(\theta_F)} \nonumber\\ 
-	&\ \ \ \ \si{- m_w \cdot {l_w}^{2} \cdot \ddot{\theta}_F + m_w \cdot l_w  \cdot g \cdot sin(\theta_F) - \tau_w} \unit{N \cdot m} 
+	&\ \ \ \ \si{- m_w \cdot {l_w}^{2} \cdot \ddot{\theta}_F + m_w \cdot l_w  \cdot g \cdot sin(\theta_F) - \tau_m + B_w \cdot \dot{\theta}_w} \unit{N\cdot m}
 \label{FrameEq2}
 \end{flalign}
 %
 \begin{flalign}
-	\eq{(J_F+m_w \cdot {l_w}^{2}) \cdot \ddot{\theta}_F} {- B_F \cdot \dot{\theta}_F + (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F) - \tau_w}  \unit{N \cdot m} 
+	\eq{(J_F+m_w \cdot {l_w}^{2}) \cdot \ddot{\theta}_F} {- B_F \cdot \dot{\theta}_F + (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F) - \tau_m + B_w \cdot \dot{\theta}_w} \unit{N\cdot m}
 \label{FrameEq3}
 \end{flalign}
 
-Note that \si{\tau_w=\tau_m-B_w \cdot \dot{\theta}_w}, that is, the torque and friction produced by the motor are imposed on the frame as \si{\tau_w}, as seen on \figref{freeBodyFrame}.
-\begin{flalign}
-	\si{(J_F+m_w \cdot {l_w}^{2}) \cdot \ddot{\theta}_F} &= \si{- B_F \cdot \dot{\theta}_F + (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F)} \nonumber\\ 
-	&\ \ \ \ \si{- \tau_m + B_w \cdot \dot{\theta}_w}  \unit{N \cdot m}
-\label{FrameEq4}
-\end{flalign}
-
-Isolating \si{\ddot{\theta}_F} from \eqref{FrameEq4} gives the final expression for the rotational acceleration of the frame.
+Isolating \si{\ddot{\theta}_F} from \eqref{FrameEq3} gives the final expression for the rotational acceleration of the frame.
 \begin{flalign}
 	\eq{\ddot{\theta}_F} {\frac{- B_F \cdot \dot{\theta}_F + (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F) - \tau_m + B_w \cdot \dot{\theta}_w}{J_F + m_w \cdot {l_w}^{2}}}  \unit{rad \cdot s^{-1}} 
 \label{FrameEqFinal}
