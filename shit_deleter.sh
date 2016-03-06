@@ -19,3 +19,6 @@ find . -name \*.make -type f -exec rm -f {} +
 find . -name \*.d -type f -exec rm -f {} +
 find . -name \*.thm -type f -exec rm -f {} +
 find . -name \*.fls -type f -exec rm -f {} +
+find . -name \*.out.ps -type f -exec rm -f {} +
+find . -name \*.dvi -type f -exec rm -f {} +
+find . -name \*.fdb_latexmk -type f -exec rm -f {} +
