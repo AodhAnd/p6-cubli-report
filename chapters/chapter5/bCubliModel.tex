@@ -26,7 +26,7 @@ To derive the modelling equations for the Cubli system from Newton's Second Law,
 The equation for the frame is deduced from the \figref{freeBodyFrame}.
 \begin{flalign}
   \eq{J_F \vec{\ddot{\theta}_F}} { -B_F \vec{\dot{\theta}_F} + \vec{l_F} \times (m_F\cdot \vec{g}) + \vec{l_w} \times \vec{F} - \vec{\tau_m} + B_w \vec{\dot{\theta}_w}} \unit{N\cdot m}
-  \label{frameModelEq}
+\label{frameModelEq}
 \end{flalign}
 %
 \hspace{6mm} Where:\\
@@ -48,7 +48,7 @@ The equation for the frame is deduced from the \figref{freeBodyFrame}.
 The following equation is then derived from \figref{freeBodyWheel}:
 \begin{flalign}
   \eq{ J_w (\ \vec{\ddot{\theta}_F} + \vec{\ddot{\theta}_w}\ ) } { \vec{\tau_m} - B_w \vec{\dot{\theta}_w }} \unit{N\cdot m }
-  \label{tauW}
+\label{tauW}
 \end{flalign}
 \hspace{6mm} Where:\\
 \begin{tabular}{ p{1cm} l l l}
@@ -61,7 +61,7 @@ In \eqref{frameModelEq} the term \si{\vec{l_w} \times \vec{F}} describes the tor
 \begin{flalign}
   \eq{x} { l_w \cdot cos( \theta_F ) } \unit{ m }\\
   \eq{y} { l_w \cdot sin( \theta_F ) } \unit{ m }
-  \label{xyCoordinate}
+\label{xyCoordinate}
 \end{flalign}
 %
 According to Newton's 2nd law of motion, \si{\sum F = m \cdot a}. Then to find \si{F_x} and \si{F_y}, the acceleration of the point at center of mass of the wheel must be known for both the x- and the y-direction. To achieve this the derivatives of the expressions for x and y in \eqref{xyCoordinate} are derived.
@@ -69,13 +69,13 @@ According to Newton's 2nd law of motion, \si{\sum F = m \cdot a}. Then to find \
 \begin{flalign}
   \eq{\dot{x}} { -l_w \cdot sin( \theta_F )\ \dot{\theta}_F } \unit{ m\cdot s^{-1} }\\
   \eq{\ddot{x}} { -l_w \cdot cos( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} - l_w \cdot sin( \theta_F ) \ddot{\theta}_F } \unit{ m\cdot s^{-2} }
-  \label{xCoordinateDerivatives}
+\label{xCoordinateDerivatives}
 \end{flalign}
 %
 \begin{flalign}
   \eq{\dot{y}} { l_w \cdot cos( \theta_F )\ \dot{\theta}_F } \unit{ m\cdot s^{-1} }\\
   \eq{\ddot{y}} { -l_w \cdot sin( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} + l_w \cdot cos( \theta_F )\ \ddot{\theta}_F } \unit{ m\cdot s^{-2} }
-  \label{yCoordinateDerivatives}
+\label{yCoordinateDerivatives}
 \end{flalign}
 %
 \Eqref{xCoordinateDerivatives} and \eqref{yCoordinateDerivatives} can now be used with Newton's 2nd law of motion, while also taking gravity into account in sum of forces, to derive \si{F_x} and \si{F_y}.
@@ -84,14 +84,14 @@ According to Newton's 2nd law of motion, \si{\sum F = m \cdot a}. Then to find \
   \eq{ -F_x -m_w \cdot g }{ m_w \cdot \ddot{x} } &\nonumber\\
   \eq{ F_x }{ - m_w \cdot \ddot{x} - m_w \cdot g} &\nonumber\\
   \eq{ F_x }{ m_w \cdot (\  l_w \cdot cos( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} + l_w \cdot sin( \theta_F )\ \ddot{\theta}_F \ ) - m_w \cdot g} \unit{N}
-  \label{Fx}
+\label{Fx}
 \end{flalign}
 %
 \begin{flalign}
   \eq{ -F_y }{ m_w \cdot \ddot{y} } & \nonumber\\
   \eq{ F_y }{ -m_w \cdot (\ -l_w \cdot sin( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} + l_w \cdot cos( \theta_F )\ \ddot{\theta}_F\ ) } & \nonumber\\
   \eq{ F_y }{ m_w \cdot (\ l_w \cdot sin( \theta_F )\ {\dot{\theta}_F}^{\ \ 2} - l_w \cdot cos( \theta_F )\ \ddot{\theta}_F\ ) } \unit{N}
-  \label{Fy}
+\label{Fy}
 \end{flalign}
 
 The original objective was to evaluate the term \si{\vec{l_w} \times \vec{F}} in \eqref{frameModelEq}. Since the expressions for the two forces, \si{F_x} and \si{F_y}, that compose the vector \si{\vec{F}}, are found in \eqrefTwo{Fx}{Fy}, the vector product from \eqref{frameModelEq} is evaluated.
@@ -114,7 +114,7 @@ The original objective was to evaluate the term \si{\vec{l_w} \times \vec{F}} in
   &\ \ \ \ \si{- m_w \cdot g) ) \cdot \hat{k}} \unit{N \cdot m}\\ \nonumber\\
   \eq{ \vec{l_w} \times \vec{F} }{ ({-l_w}^2 \cdot m_w \ddot{\theta}_F \ (cos^2(\theta_F) + sin^2(\theta_F)) + l_w\cdot sin(\theta_F)\ m_w \cdot g ) \cdot \hat{k}} \unit{N \cdot m}\\ \nonumber\\
   \eq{ \vec{l_w} \times \vec{F} }{ (-{l_w}^2 \cdot m_w \ddot{\theta}_F + l_w\ sin(\theta_F)\ m_w \cdot g ) \cdot \hat{k}} \unit{N \cdot m}
-  \label{vectorDecomposition3}
+\label{vectorDecomposition3}
 \end{flalign}
 
 Since all torques only have a z-coordinate, \eqref{vectorDecomposition3} is inserted in \eqref{frameModelEq}, without vector-notation. Note that \si{\vec{l_F} \times (m_F\cdot \vec{g}) = (m_F \cdot l_F \cdot g \cdot sin(\theta_F)) \cdot \hat{k} }.
@@ -133,6 +133,13 @@ Since all torques only have a z-coordinate, \eqref{vectorDecomposition3} is inse
 Isolating \si{\ddot{\theta}_F} from \eqref{FrameEq3} gives the final expression for the rotational acceleration of the frame.
 \begin{flalign}
 	\eq{\ddot{\theta}_F} {\frac{- B_F \cdot \dot{\theta}_F + (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F) - \tau_m + B_w \cdot \dot{\theta}_w}{J_F + m_w \cdot {l_w}^{2}}}  \unit{rad \cdot s^{-1}} 
+\label{FrameEq4}
+\end{flalign}
+
+The equation above can be rearranged to clarify the effect that each variable exerts on the final acceleration of the frame.
+\begin{flalign}
+	\eqOne{\ddot{\theta}_F} {-\frac{B_F}{J_F + m_w \cdot l^2_w} \cdot \dot{\theta}_F + \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F + m_w \cdot l^2_w} \cdot sin(\theta_F)}
+	\eqTwo{ - \frac{1}{J_F + m_w \cdot l^2_w} \cdot \tau_m + \frac{B_w}{J_F + m_w \cdot l^2_w} \cdot \dot{\theta}_w}   \unit{rad \cdot s^{-1}} 
 \label{FrameEqFinal}
 \end{flalign}
 
@@ -142,7 +149,7 @@ Once the acceleration of the frame is described by \eqref{FrameEqFinal} it is po
 \label{WheelRotEq2}
 \end{flalign}
 
-Substituting \si{\ddot{\theta}_F} by the expression for the angular acceleration of the frame (\eqref{FrameEqFinal}) into \eqref{WheelRotEq2} gives the final description for \si{\ddot{\theta}_w}, as shown in \eqref{WheelRotEqFinal}.
+Substituting \si{\ddot{\theta}_F} by the expression for the angular acceleration of the frame (\eqref{FrameEq4}) into \eqref{WheelRotEq2} gives the final description for \si{\ddot{\theta}_w}, as shown in \eqref{WheelRotEqFinal}.
 \begin{flalign}
 	\si{\ddot{\theta}_w} &= \si{\frac{\tau_m - B_w \cdot \dot{\theta}_w}{J_w}}\nonumber\\ 
 	&\ \ \ \ \si{- \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F) - \tau_m + B_w \cdot \dot{\theta}_w - B_F \cdot \dot{\theta}_F}{J_F+m_w \cdot {l_w}^{2}}} \unit{rad \cdot s^{-1}}
@@ -150,7 +157,28 @@ Substituting \si{\ddot{\theta}_F} by the expression for the angular acceleration
 \end{flalign}
 %
 \begin{flalign}
-	\si{\ddot{\theta}_w} &= \si{\frac{(J_w+J_F+{l_w}^{2} \cdot m_w) \cdot (\tau_m - B_w \cdot \dot{\theta}_w)}{J_w \cdot (J_F+m_w \cdot {l_w}^{2})}}\nonumber\\ 
-	&\ \ \ \ \si{- \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F) - B_F \cdot \dot{\theta}_F}{J_F+m_w \cdot {l_w}^{2}}} \unit{rad \cdot s^{-1}} 
-\label{WheelRotEqFinal}
+	\eqOne{\ddot{\theta}_w} {\frac{(J_w+J_F+{l_w}^{2} \cdot m_w) \cdot (\tau_m - B_w \cdot \dot{\theta}_w)}{J_w \cdot (J_F+m_w \cdot {l_w}^{2})}}
+	\eqTwo{- \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F) - B_F \cdot \dot{\theta}_F}{J_F+m_w \cdot {l_w}^{2}}} \unit{rad \cdot s^{-1}}
+\label{WheelRotEq4}
 \end{flalign}
+
+\Eqref{WheelRotEq4} can be rearranged in the same way as \eqref{WheelRotFinal}.
+\begin{flalign}
+	\eqOne{\ddot{\theta}_w} {\frac{J_w+J_F+{l_w}^{2} \cdot m_w}{J_w \cdot (J_F+m_w \cdot {l_w}^{2})} \cdot \tau_m - \frac{(J_w+J_F+{l_w}^{2} \cdot m_w) \cdot B_w}{J_w \cdot (J_F+m_w \cdot} \cdot \dot{\theta}_w }
+	\eqTwo{- \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F+m_w \cdot {l_w}^{2}} \cdot sin(\theta_F) + \frac{B_F}{J_F+m_w \cdot {l_w}^{2}} \cdot \dot{\theta}_F} \unit{rad \cdot s^{-1}} 
+\label{WheelRotFinal}
+\end{flalign}
+
+The final model of the system can be summarize with the following equations:
+
+\begin{table}[H]
+	\begin{tabular}{|l|p{10cm}|}
+		\hline %-----------------------------------------------------------------------------------
+		\si{\ddot{\theta}_F = -\frac{B_F}{J_F + m_w \cdot l^2_w} \cdot \dot{\theta}_F + \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F + m_w \cdot l^2_w} \cdot sin(\theta_F) - \frac{1}{J_F + m_w \cdot l^2_w} \cdot \tau_m + \frac{B_w}{J_F + m_w \cdot l^2_w} \cdot \dot{\theta}_w} 			\\
+		\hline %-----------------------------------------------------------------------------------
+		\si{\ddot{\theta}_w = \frac{J_w+J_F+{l_w}^{2} \cdot m_w}{J_w \cdot (J_F+m_w \cdot {l_w}^{2})} \cdot \tau_m - \frac{(J_w+J_F+{l_w}^{2} \cdot m_w) \cdot B_w}{J_w \cdot (J_F+m_w \cdot} \cdot \dot{\theta}_w - \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F+m_w \cdot {l_w}^{2}} \cdot sin(\theta_F) + \frac{B_F}{J_F+m_w \cdot {l_w}^{2}} \cdot \dot{\theta}_F} 	   		\\
+		\hline 
+	\end{tabular}
+	\caption{Final model of the system}
+\label{TableModelEqs}
+\end{table}
