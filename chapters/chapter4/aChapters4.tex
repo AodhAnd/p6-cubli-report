@@ -1,10 +1,29 @@
-\chapter{System Analysis}
-% The requirements being established, it is necessary to put up 
-A mechanical drawing of the Cubli showing angles and coordinate system conventions is seen in \figref{cubliMechanical}.
+\chapter{System Description}
+One-frame Cubli is a non-linear unstable system which is capable of laying on one of its corners as long as it is properly controlled, using the inertia created in the reaction wheel present in the setup.
 
-\begin{figure}[H]
- \centering
- \includegraphics[scale=0.6]{figures/mechanicalSystem}
- \caption{Mechanical drawing of the Cubli, including angle coordinate system conventions}
- \label{cubliMechanical}
-\end{figure} 
+This system is composed by several parts, listed in the following table. \fxnote{insert correct part names} \fxnote{Include picture of the real model, mark all the parts in the picture}
+
+\begin{table}[H]
+	\begin{tabular}{|l|p{4.5cm}|}
+		\hline %-----------------------------------------------------------------------------------
+		\textbf{No.} &\textbf{Part} 			\\
+		\hline %-----------------------------------------------------------------------------------
+		1            & Frame           			\\
+		\hline %-----------------------------------------------------------------------------------
+		2            & Reaction wheel      		\\
+		\hline %-----------------------------------------------------------------------------------
+		3            & Controller (BeagleBone)  \\
+		\hline %-----------------------------------------------------------------------------------
+		4            & Potentiometer			\\
+		\hline %-----------------------------------------------------------------------------------
+		5            & IMU          			\\
+		\hline %-----------------------------------------------------------------------------------
+		6            & Brushless DC-motor   	\\
+		\hline %-----------------------------------------------------------------------------------
+		7            & Motor control board     	\\
+		\hline %-----------------------------------------------------------------------------------
+		8            & Jump brake		    	\\
+		\hline %-----------------------------------------------------------------------------------
+	\end{tabular}
+	\caption{Main parts of the Cubli setup \label{TableAAUCubliComponent}}
+\end{table}
