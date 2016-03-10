@@ -19,7 +19,7 @@ Looking only at the Bode plot, the system may be seen as stable, but the inverte
 \subsection{Root Locus}
 The Root Locus plot gives information about the location of the poles and zeros in open loop, and how the poles in closed loop will change as the gain of the whole system increases.
 
-As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one zero (s=0), and three poles (s=-10.6130, s=-0.0283 and s=9.3213). This means that the system is unstable as it has one pole in the right half plane (RHP) and, moreover, as one of the branches never crosses to the left half plane (LHP), the system can not be controlled just with a proportional controller.
+As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one zero (s = 0), and three poles (s = -10.6130, s = -0.0283 and s = 9.3213). This means that the system is unstable as it has one pole in the right half plane (RHP) and, moreover, as one of the branches never crosses to the left half plane (LHP), the system can not be controlled just with a proportional controller.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.53\linewidth}
@@ -40,7 +40,7 @@ As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one 
 \end{minipage}
 
 \subsection{Nyquist Plot}
-In any transfer function, the zeros of 1+L(s) (being L(s) the open loop function) become the poles of the closed loop system. That is why it is interesting to look at the Nyquist Stability Criterion, which can give information about this topic.
+In any transfer function, the zeros of 1+L(s) (L(s) being the open loop function) become the poles of the closed loop system. That is why it is interesting to look at the Nyquist Stability Criterion, which can give information about this topic.
 
 This criterion says that the number of zeros in the RHP of 1+L(s) (\si{Z_{RHP}}) is given by the number of poles of the OL (\si{P_{RHP}}) and the number of encirclements of the Nyquist plot around -1 (\si{N}).
 \begin{flalign}
