@@ -12,12 +12,12 @@ Based on \eqref{FrameEq3} the system is described in an operating point, around 
 \end{flalign}
 %
 %The operating point is chosen to be \si{\theta_F = 0}, which corresponds to the frame being in upright position, see \figref{cubliMechanical}.
-The operating point is chosen as \si{\overline{\theta}_F} and \si{\overline{\theta}_w} and their derivatives being equal to 0. This corresponds to the frame being in the upright position, see \figref{cubliMechanical}. With the angels, velocities and accelerations being 0 the torque \si{\tau_m} is 0 as well.
+The operating point is chosen as \si{\overline{\theta}_F} and \si{\overline{\theta}_w} and their derivatives being equal to 0. This corresponds to the frame being in the upright position, see \figref{cubliMechanical}. At this position all the velocities and accelerations are 0, which results in 0 torque \si{\tau_m} as well.
 Taking this into account and applying the Taylor series approximation yields the following.
 %
 \begin{flalign}
 	\si{(J_F+m_w \cdot {l_w}^{2}) \Delta \ddot{\theta}_F } &= \cancelto{0}{\si{f( \dot{\theta}_F, \ \theta_F, \ \tau_m,\ \ddot{\theta}_w )}}   \nonumber\\
-	&\ \ \ \ \si{+ \frac{\partial}{\partial \dot{\theta}_F} f\cdot \Delta \dot{\theta}_F + \frac{\partial}{\partial \theta_F} f\cdot \Delta \theta_F + \frac{\partial}{\partial \tau_m} f\cdot \Delta \tau_m + \frac{\partial}{\partial \dot{\theta}_w} f\cdot \Delta \dot{\theta}_w } \unit{N \cdot m}
+	&\ \ \ \ \si{+ \frac{\partial}{\partial \dot{\theta}_F} f\cdot \Delta \dot{\theta}_F + \frac{\partial}{\partial \theta_F} f\cdot \Delta \theta_F + \frac{\partial}{\partial \tau_m} f\cdot \Delta \tau_m + \frac{\partial}{\partial \dot{\theta}_w} f\cdot \Delta \dot{\theta}_w} \unit{N \cdot m}
 \label{FrameEq4OperatingPointZero}
 \end{flalign}
 

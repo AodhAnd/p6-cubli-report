@@ -1,13 +1,11 @@
 \section{Plant Analysis}
-The linearized model is valid for an enough range of angles, so it can be used to do a deeper analysis on the behavior of the system. This includes evaluations in frequency domain, s-domain and z-domain.
+The linearized model is valid for an enough range of angles, so it can be used to do a deeper analysis on the behavior of the system. This includes evaluations in frequency domain, s-domain and L(s)-domain.
 
 \subsection{Bode Diagram}
 The Bode diagram gives the frequency response of the system, in both magnitude and phase plots, as seen in \figref{bodeTF}.\fxnote{redo picture, so that the phase label is not over the phase line in the figure}
 \begin{figure}[H] 
 	\centering 
 	\includegraphics[scale=0.65]{figures/bodeTF}
-	\centering
-	\captionsetup{justification=centering}	
 	\caption{Bode diagram of the system}
 	\label{bodeTF}
 \end{figure} 
@@ -24,11 +22,9 @@ The Root Locus plot gives information about the location of the poles and zeros 
 As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one zero (s=0), and three poles (s=-10.6130, s=-0.0283 and s=9.3213). This means that the system is unstable as it has one pole in the right half plane (RHP) and, moreover, as one of the branches never crosses to the left half plane (LHP), the system can not be controlled just with a proportional controller.
 
 \begin{minipage}{\linewidth}
-	\begin{minipage}{0.45\linewidth}
+	\begin{minipage}{0.53\linewidth}
 		\begin{figure}[H]
 			\includegraphics[scale=.4]{figures/rlocusCubli}
-			\centering
-			\captionsetup{justification=centering}
 			\captionof{figure}{Root Locus of the system}
 			\label{rlocusCubli}
 		\end{figure}\vspace{-5mm}
@@ -37,8 +33,6 @@ As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one 
 	\begin{minipage}{0.53\linewidth}
 		\begin{figure}[H]
 			\includegraphics[scale=.4]{figures/rlocusCubliZoom}
-			\centering
-			\captionsetup{justification=centering}
 			\captionof{figure}{Pole and zero next to the imaginary axis}
 			\label{rlocusCubliZoom}
 		\end{figure}\vspace{-5mm}
@@ -46,17 +40,19 @@ As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one 
 \end{minipage}
 
 \subsection{Nyquist Plot}
-In any transfer function, the zeros of 1 + OL(open loop)\fxnote{paranthesis with explanation of OL might have to be removed if explanation is givin in an earlier section} become the poles of the closed loop system. That is why it is interesting to look at the Nyquist Stability Criterion, which can give more information about this topic.
+In any transfer function, the zeros of 1+L(s) (being L(s) the open loop function) become the poles of the closed loop system. That is why it is interesting to look at the Nyquist Stability Criterion, which can give information about this topic.
 
-The number of zeros(Z) in the RHP is given by the number of poles(P) of the OL plus the number of encirclements(N) of the Nyquist plot around -1. This number has to be zero for the system to be stable, which yields the equation \si{Z = N+P}, where Z = 0 for a stable system.
-
-In the case of the plant, the number of poles in the RHP is one and there is no circle surrounding -1 on \figref{nyquistCubli}, which means that the total number of zeros in the RHP is 1, thus the system is confirmed as unstable.
+This criterion says that the number of zeros in the RHP of 1+L(s) (\si{Z_{RHP}}) is given by the number of poles of the OL (\si{P_{RHP}}) and the number of encirclements of the Nyquist plot around -1 (\si{N}).
+\begin{flalign}
+	\eq{Z_{RHP}}{N+P_{RHP}} 
+	&\nonumber\\
+	\label{FrameEq4OperatingPointZero}
+\end{flalign}
+In the case of this plant, the number of poles in the RHP is one and there are not circle surrounding -1 (\figref{nyquistCubli}), which means that the total number of zeros in the RHP is 1. As this zero will be a pole in the closed loop system the system is confirmed as unstable.
 
 \begin{figure}[H] 
 	\centering 
-	\includegraphics[scale=0.7]{figures/nyquistCubli}
-	\centering
-	\captionsetup{justification=centering}	
-	\caption{Nyquist Plot of the plant}
+	\includegraphics[scale=0.6]{figures/nyquistCubli}	
+	\caption{Nyquist plot of the plant}
 	\label{nyquistCubli}
 \end{figure}
