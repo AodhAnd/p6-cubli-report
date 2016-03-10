@@ -2,7 +2,7 @@
 The linearized model is valid for an enough range of angles, so it can be used to do a deeper analysis on the behavior of the system. This includes evaluations in frequency domain, s-domain and z-domain.
 
 \subsection{Bode Diagram}
-The Bode diagram gives the frequency response of the system, in both magnitude and phase plots, as seen in \figref{bodeTF}.
+The Bode diagram gives the frequency response of the system, in both magnitude and phase plots, as seen in \figref{bodeTF}.\fxnote{redo picture, so that the phase label is not over the phase line in the figure}
 \begin{figure}[H] 
 	\centering 
 	\includegraphics[scale=0.65]{figures/bodeTF}
@@ -10,13 +10,13 @@ The Bode diagram gives the frequency response of the system, in both magnitude a
 	\captionsetup{justification=centering}	
 	\caption{Bode diagram of the system}
 	\label{bodeTF}
-\end{figure}
+\end{figure} 
 
 The graph also provides information about the stability of the system, given by the gain and phase margins. 
 
 In this case the first one is just infinite because the phase never crosses \si{-180^o} and \si{180^o}.However, the phase margin is \si{-118^o}, which means that the phase has some margin before becoming unstable.
 
-Looking only at the Bode plot, the system may be seen as stable, but the inverted pendulum is known to be an unstable system, so a deeper analysis has to be done.
+Looking only at the Bode plot, the system may be seen as stable, but the inverted pendulum is known to be an unstable system, so further analysis has to be done.
 
 \subsection{Root Locus}
 The Root Locus plot gives information about the location of the poles and zeros in open loop, and how the poles in closed loop will change as the gain of the whole system increases.
@@ -46,9 +46,9 @@ As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one 
 \end{minipage}
 
 \subsection{Nyquist Plot}
-In any transfer function, the zeros of 1 + the open loop function become the poles of the closed loop system. That is why is interesting to look at the Nyquist Stability Criterion, which can give information about this topic.
+In any transfer function, the zeros of 1 + OL(open loop)\fxnote{paranthesis with explanation of OL might have to be removed if explanation is givin in an earlier section} become the poles of the closed loop system. That is why it is interesting to look at the Nyquist Stability Criterion, which can give more information about this topic.
 
-The number of zeros in the RHP is given by the number of poles of the OL plus the number of encirclements of the Nyquist plot around -1, and it has to be zero for the system to be stable.
+The number of zeros(Z) in the RHP is given by the number of poles(P) of the OL plus the number of encirclements(N) of the Nyquist plot around -1. This number has to be zero for the system to be stable, wich yields the equation \si{Z = N+P}, where Z = 0 for a stable system.
 
 In the case of the plant, the number of poles in the RHP is one and there are not circle surrounding -1 (\figref{nyquistCubli}), which means that the total number of zeros in the RHP is 1, thus the system is confirmed as unstable.
 
