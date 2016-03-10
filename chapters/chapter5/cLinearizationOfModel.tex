@@ -1,17 +1,19 @@
 \section{Linearization of the Model}
-Now that a model of the Cubli frame is put forth in \eqref{FrameEqFinal}, it is apparent that the system is nonlinear due to the term including \si{sin(\theta_F)}. In order to proceed with a simulation and controller design, it is convenient to first linearize the model. This is done by use of a Taylor series approximation.
+Now that a model of the Cubli frame is put forth in \eqref{FrameEqFinal} \fxnote{redo that reference, since we will be changing the equations in the previous subsection}, it is apparent that the system is nonlinear due to the term including \si{sin(\theta_F)}. In order to proceed with a simulation and controller design, it is convenient to first linearize the model. This is done by use of a Taylor series approximation.
 
 Based on \eqref{FrameEq3} the system is described in an operating point, around which it varies with \si{\Delta \theta_F}.
 %
 \begin{flalign}
-	\si{(J_F+m_w \cdot {l_w}^{2}) (\ddot{\theta}_F + \Delta \ddot{\theta}_F )} &= \si{- B_F \cdot (\dot{\theta}_F + \Delta \dot{\theta}_F) }   \nonumber\\
-	&\ \ \ \ \si{+ (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F + \Delta \theta_F)} \nonumber\\
-	&\ \ \ \ \si{- \tau_M + B_w \cdot \dot{\theta}_w}  \unit{N \cdot m}\\
-	\eq{(J_F+m_w \cdot {l_w}^{2}) (\ddot{\theta}_F + \Delta \ddot{\theta}_F )}{ f( (\dot{\theta}_F + \Delta \dot{\theta}_F), \ (\theta_F + \Delta \theta_F), \ (\tau_m + \Delta \tau_m),\  (\dot{\theta}_w + \Delta \dot{\theta}_w) ) } \unit{N \cdot m}
+	\si{(J_F+m_w \cdot {l_w}^{2}) (\overline{\ddot{\theta}}_F + \Delta \ddot{\theta}_F )} &= \si{- B_F \cdot (\overline{\dot{\theta}}_F + \Delta \dot{\theta}_F) }   \nonumber\\
+	&\ \ \ \ \si{+ (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\overline{\theta}_F + \Delta \theta_F)} \nonumber\\
+	&\ \ \ \ \si{- (\overline{\tau}_m + \Delta \tau_m) + B_w \cdot (\overline{\dot{\theta}}_w +\Delta \dot{\theta}_w)}  \unit{N \cdot m}\\
+	\eq{(J_F+m_w \cdot {l_w}^{2}) (\overline{\ddot{\theta}}_F + \Delta \ddot{\theta}_F )}{ f( (\overline{\dot{\theta}}_F + \Delta \dot{\theta}_F), \ (\overline{\theta}_F + \Delta \theta_F), \ (\overline{\tau}_m + \Delta \tau_m),\  (\overline{\dot{\theta}}_w + \Delta \dot{\theta}_w) ) } \unit{N \cdot m}
 \label{FrameEq4OperatingPoint}
 \end{flalign}
 %
-The operating point is chosen to be \si{\theta_F = 0}, which corresponds to the frame being in upright position, see \figref{cubliMechanical}. Taking this into account and applying the Taylor series approximation yields the following.
+%The operating point is chosen to be \si{\theta_F = 0}, which corresponds to the frame being in upright position, see \figref{cubliMechanical}.
+The operating point is chosen as \si{\overline{\theta}_F} and \si{\overline{\theta}_w} and their derivatives being equal to 0. This corresponds to the frame being in the upright position, see \figref{cubliMechanical}. With the angels, velocities and accelerations being 0 the torque \si{\tau_m} is 0 as well.
+Taking this into account and applying the Taylor series approximation yields the following.
 %
 \begin{flalign}
 	\si{(J_F+m_w \cdot {l_w}^{2}) \Delta \ddot{\theta}_F } &= \cancelto{0}{\si{f( \dot{\theta}_F, \ \theta_F, \ \tau_m,\ \ddot{\theta}_w )}}   \nonumber\\
@@ -19,10 +21,10 @@ The operating point is chosen to be \si{\theta_F = 0}, which corresponds to the 
 \label{FrameEq4OperatingPointZero}
 \end{flalign}
 
-All the higher order derivatives are discarded due to their negligible impact on the system when it is near the operating point.
+All the higher order terms are discarded due to their negligible impact on the system when it is near the operating point.
 %
 \begin{flalign}
-	\si{(J_F+m_w \cdot {l_w}^{2}) \Delta \ddot{\theta}_F } &= \si{-B_F \Delta \dot{\theta}_F +  ( m_F \cdot l_F + m_w \cdot l_w ) g \cdot} \cancelto{1}{\rule{0cm}{.4cm} \si{  cos(\theta_F)}} \si{\Delta \theta_F} \where{\theta_F = 0} \nonumber\\
+	\si{(J_F+m_w \cdot {l_w}^{2}) \Delta \ddot{\theta}_F } &= \si{-B_F \Delta \dot{\theta}_F +  ( m_F \cdot l_F + m_w \cdot l_w ) g \cdot} \si{  cos(\theta_F)} \si{\Delta \theta_F} \where{\theta_F = 0} \nonumber\\
 	&\ \ \ \ \si{- \Delta \tau_m + B_w \Delta \dot{\theta}_w } \unit{N \cdot m}\\
 	\eq{(J_F+m_w \cdot {l_w}^{2}) \Delta \ddot{\theta}_F }{-B_F \Delta \dot{\theta}_F +  ( m_F \cdot l_F + m_w \cdot l_w ) g \cdot \Delta \theta_F - \Delta \tau_m + B_w \Delta \dot{\theta}_w } \unit{N \cdot m}
 \label{FrameEq4TaylerApprox}
@@ -30,11 +32,11 @@ All the higher order derivatives are discarded due to their negligible impact on
 %
 \Eqref{FrameEq4TaylerApprox} shows the final linearized model.
 
-\begin{figure}[H] 
-	\centering 
-	\includegraphics[scale=1.5]{figures/linearizationPoint}
-	\caption{Sketch of linearization for the Cubli frame angels.}
-	\label{LinearizationSketch}
-\end{figure} 
-
-Due to the linearization of the model there will be an point where the controller will no longer be able to catch the frame, because it cannot predict the forces on the frame anymore. In the sketch (see \figref{LinearizationSketch}) the area where the controller will work is indicated by the green area. 
+%\begin{figure}[H] 
+%	\centering 
+%	\includegraphics[scale=1.5]{figures/linearizationPoint}
+%	\caption{Sketch of linearization for the Cubli frame angels.}
+%	\label{LinearizationSketch}
+%\end{figure} 
+%
+%Due to the linearization of the model there will be an point where the controller will no longer be able to catch the frame, because the linear model does not work anymore. In the sketch (see \figref{LinearizationSketch}) the area of operation for the controller is indicated by the green area. 
