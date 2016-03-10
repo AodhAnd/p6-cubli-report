@@ -28,12 +28,12 @@ OPTnumber = {number},                  %  For mac setup should be relatively    
 OPTnote = {note},                      %  straightforward, for more information    %---------------%
 OPTpublisher = {publisher},            %  google: mac and biber.                   %
 OPTlocation = {location},              %------------------------------------------ %
-OPTisbn = {9780387238029},			   % DATE HAS TO BE FORMATTED: YEAR-MONTH-DAY  %
-OPTchapter = {chapter},				   % example : date = 2014-02-15			   %
-OPTpages = {pages},
-OPTpagetotal = {pagetotal},
-OPTaddendum = {addendum},
-OPTpubstate = {pubstate},
+OPTisbn = {9780387238029},			   		 % DATE HAS TO BE FORMATTED: YEAR-MONTH-DAY  %
+OPTchapter = {chapter},				   			 % example : date = 2014-02-15			   			 %
+OPTpages = {pages},										 %-------------------------------------------%
+OPTpagetotal = {pagetotal},						 % Add the source in the right category 		 %
+OPTaddendum = {addendum},							 % (articles, books, ...). Add a category if %
+OPTpubstate = {pubstate},							 % yours is missing													 %
 OPTdoi = {doi},
 OPTeprint = {eprint},
 OPTeprintclass = {eprintclass},
@@ -43,6 +43,49 @@ OPTurldate = {urldate},
 }
 
 %% Bibliography for Cubli report %%
+
+%% BOOKS %%
+
+%% ARTICLES %%
+
+@article{JRomanishin,
+	author = {John W. Romanishin, Kyle Gilpin and Daniela Rus},
+	title = {M-Blocks: Momentum-driven, Magnetic Modular Robots},
+	journaltitle = {IROS},
+	date = {2013},
+	OPTtranslator = {translator},
+	OPTannotator = {annotator},
+	OPTcommentator = {commentator},
+	OPTsubtitle = {subtitle},
+	OPTtitleaddon = {titleaddon},
+	OPTeditor = {editor},
+	OPTeditora = {editora},
+	OPTeditorb = {editorb},
+	OPTeditorc = {editorc},
+	OPTjournalsubtitle = {journalsubtitle},
+	OPTissuetitle = {issuetitle},
+	OPTissuesubtitle = {issuesubtitle},
+	OPTlanguage = {language},
+	OPToriglanguage = {origlanguage},
+	OPTseries = {series},
+	OPTvolume = {volume},
+	OPTnumber = {number},
+	OPTeid = {eid},
+	OPTissue = {issue},
+	OPTmonth = {month},
+	OPTpages = {pages},
+	OPTversion = {version},
+	OPTnote = {note},
+	OPTissn = {issn},
+	OPTaddendum = {addendum},
+	OPTpubstate = {pubstate},
+	OPTdoi = {doi},
+	OPTeprint = {eprint},
+	OPTeprintclass = {eprintclass},
+	OPTeprinttype = {eprinttype},
+	OPTurl = {url},
+	OPTurldate = {urldate},
+}
 
 @article{MGajamohan,
 	author = {Mohanarajah Gajamohan, Michael Merz, Igor Thommen and Raffaello D’Andrea},
@@ -84,50 +127,38 @@ OPTurldate = {urldate},
 	OPTurldate = {urldate},
 }
 
-@article{JRomanishin,
-	author = {John W. Romanishin, Kyle Gilpin and Daniela Rus},
-	title = {M-Blocks: Momentum-driven, Magnetic Modular Robots},
-	journaltitle = {IROS},
-	date = {2013},
-	OPTtranslator = {translator},
-	OPTannotator = {annotator},
-	OPTcommentator = {commentator},
-	OPTsubtitle = {subtitle},
-	OPTtitleaddon = {titleaddon},
-	OPTeditor = {editor},
-	OPTeditora = {editora},
-	OPTeditorb = {editorb},
-	OPTeditorc = {editorc},
-	OPTjournalsubtitle = {journalsubtitle},
-	OPTissuetitle = {issuetitle},
-	OPTissuesubtitle = {issuesubtitle},
-	OPTlanguage = {language},
-	OPToriglanguage = {origlanguage},
-	OPTseries = {series},
-	OPTvolume = {volume},
-	OPTnumber = {number},
-	OPTeid = {eid},
-	OPTissue = {issue},
-	OPTmonth = {month},
-	OPTpages = {pages},
-	OPTversion = {version},
-	OPTnote = {note},
-	OPTissn = {issn},
-	OPTaddendum = {addendum},
-	OPTpubstate = {pubstate},
-	OPTdoi = {doi},
-	OPTeprint = {eprint},
-	OPTeprintclass = {eprintclass},
-	OPTeprinttype = {eprinttype},
-	OPTurl = {url},
-	OPTurldate = {urldate},
+
+@article{DMAlonso,
+   author = {Diego M. Alonso and Eduardo E. Paolini and Jorge L. Moiola and Fritz Colonius and Lars Gr{\"u}ne},
+   title = {Controlling an Inverted Pendulum with Bounded Controls},
+   booktitle = {Dynamics, Bifurcations and Control},
+   language = {English},
+   year = {2002},
+   isbn = {3-540-42890-9},
+   volume = {273},
+   pages = {3--16},
+   doi = {10.1007/3-540-45606-6\_1},
+   url = {http://sfx.aub.aau.dk/sfxaub?sid=google&auinit=DM&aulast=Alonso&atitle=Controlling+an+inverted+pendulum+with+bounded+controls&id=doi:10.1007/3-540-45606-6\%5f1}
 }
+
+@article{JHuber,
+   author = {J. Huber and Johannes Huber and Christoph Gruber and Michael Hofbaur},
+   title = {Online trajectory optimization for nonlinear systems by the concept of a model control loop {--} Applied to the reaction wheel pendulum},
+   booktitle = {Online trajectory optimization for nonlinear systems by the concept of a model control loop {--} Applied to the reaction wheel pendulum},
+   year = {2013},
+   isbn = {1-4799-1559-9},
+   pages = {935--940},
+   doi = {10.1109/CCA.2013.6662871},
+   url = {http://sfx.aub.aau.dk/sfxaub?sid=google&auinit=J&aulast=Huber&atitle=Online+trajectory+optimization+for+nonlinear+systems+by+the+concept+of+a+model+control+loopâApplied+to+the+reaction+wheel+pendulum&id=doi:10.1109/CCA.2013.6662871}
+}
+
+%% ONLINE %%
 
 @online{RAndrea,
 	ALTauthor = {Raffaello D'Andrea},
 	ALTeditor = {editor},
 	title = {CubliCorner},
-	OPTdate = {2016-02-29},
+	date = {2016-02-29},
 	url = {http://raffaello.name/projects/cubli/},
 	OPTsubtitle = {subtitle},
 	OPTtitleaddon = {titleaddon},
@@ -135,9 +166,6 @@ OPTurldate = {urldate},
 	OPTversion = {version},
 	OPTnote = {note},
 	OPTorganization = {organization},
-	OPTdate = {29},
-	OPTmonth = {2},
-	OPTyear = {2016},
 	OPTaddendum = {addendum},
 	OPTpubstate = {pubstate},
 	urldate = {2016-02-29},
@@ -162,3 +190,8 @@ OPTurldate = {urldate},
 	OPTpubstate = {pubstate},
 	urldate = {2016-29-02},
 }
+
+
+%% INCOLLECTION %%
+
+%% MISC. %
