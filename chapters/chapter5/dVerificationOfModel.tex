@@ -57,10 +57,29 @@ Using \eqref{RealCubliTransferFunction} it is possible to simulate the response 
 In \figref{LinearizedVSNonlinear}, the effect of the linearization is apparent. In the simulation the frame is placed in upright position very slightly off \si{0\ rad}. The small deviation from \si{0\ rad} is applied in the last plant feedback, see \figref{cubliSimulink}. If, in the simulation, the model is started out at exactly \si{0\ rad}, it will balance in upright position.
 \Figref{LinearizedVSNonlinear} shows the behavior around the frame's pivot point and does not include the platform itself. For this reason, the simulation allows for the frame to fall down and act as a normal pendulum. The nonlinear model shows how the pendulum dampens around its natural equilibrium point, while the linear model keeps increasing the angle.
 However, in reality the platform blocks the frame's path, and so, it can only ever turn \si{45 ^\circ} to either side, that is, \si{\frac{\pi}{4}\ rad \approx 0,79\ rad}.
-\begin{figure}[H] 
-	\centering 
-	\includegraphics[scale=0.55]{figures/LinearizedVSNonlinear}
-	\caption{Simulation of the linearized model compared to the nonlinear model}
-	\label{LinearizedVSNonlinear}
-\end{figure}
-From \figref{LinearizedVSNonlinear}, the linearized model is considered a good approximation of the system's behavior in the operational region of \si{\pm 0,79\ rad}. Hence the linearized model is used both for further analysis of the system and for controller design.
+%
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.48]{figures/LinearizedVSNonlinear}
+			\centering
+			\vspace{-.4cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Simulation of the linearized model compared to the nonlinear model}
+			\label{LinearizedVSNonlinear}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.48]{figures/LinearizedVSNonlinearZoom}
+			\centering
+			\vspace{-.1cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Zoom of \figref{LinearizedVSNonlinear} from t=1.3s to t=1.7s}
+			\label{LinearizedVSNonlinearZoom}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+\end{minipage}
+
+From \figref{LinearizedVSNonlinear} and \figref{LinearizedVSNonlinearZoom}, the linearized model is considered a good approximation of the system's behavior in the operational region of \si{\pm 0,79\ rad}. Hence the linearized model is used both for further analysis of the system and for controller design.
