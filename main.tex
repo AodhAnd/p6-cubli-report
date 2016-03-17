@@ -61,20 +61,26 @@
 \input{chapters/chapter4/dMotor.tex}				        	%-------- Motor and Control Board
 \input{chapters/chapter4/eSensors.tex}				      	%-------- Sensors
 
-%---------- Chapter 5 ---------------------------------------- System Analysis
+%---------- Chapter 5 ---------------------------------------- System Modellling
 \input{chapters/chapter5/aChapters5.tex}
-\input{chapters/chapter5/bCubliModel.tex}             %-------- Model
+\input{chapters/chapter5/bDerivationOfModel.tex}      %-------- Derivation
 \input{chapters/chapter5/cLinearizationOfModel.tex}   %-------- Linearization
-\input{chapters/chapter5/dVerificationOfModel.tex}    %-------- Verification
-\input{chapters/chapter5/ePlantAnalysis.tex}		      %-------- Analysis of the plant
+\input{chapters/chapter5/dBlockDiagram.tex}    		  %-------- Block Diagram
 
-%---------- Chapter 6 ---------------------------------------- Requirements
-%\input{chapters/chapter6/aChapters6.tex}
+%---------- Chapter 6 ---------------------------------------- Plant Analysis
+\input{chapters/chapter6/aChapters6.tex}
+\input{chapters/chapter6/bParamEstimation.tex}  	%-------- Parameter Estimation
+\input{chapters/chapter6/cModelAnalysis.tex}		%-------- Model Analysis
+\input{chapters/chapter6/dStability.tex}			%-------- Stability Analysis
+
+%---------- Chapter 7 ---------------------------------------- Requirements
+%\input{chapters/chapter7/aChapters7.tex}
 
 %%% Part 2 %%%
 \part{Design \& Implementation}
-%---------- Chapter 7 ---------------------------------------- Control
-%\input{chapters/chapter7/aChapters7.tex}
+%---------- Chapter 8 ---------------------------------------- Control
+\input{chapters/chapter8/aChapters8.tex}
+\input{chapters/chapter8/bPController.tex}			%-------- P Controller
 
 %%% Part 3 %%%
 \part{Test \& Conclusion}
@@ -97,12 +103,12 @@
 \part*{Appendix}
 \addcontentsline{toc}{chapter}{Appendix}
 
-%---------- Appendix A ---------------------------------------- Test Title
+%---------- Appendix A ---------------------------------------- Lin Model vs Real Plant
 \input{appendix/aTest.tex}
 \input{appendix/bPotmeterOffset.tex}
 
-%---------- Appendix B ---------------------------------------- Test Title
-%\input{appendix/bTest.tex}
+%---------- Appendix B ---------------------------------------- N-Lin Model vs Real Plant 
+\input{appendix/bTest.tex}
 
 %----------Appendix C ---------------------------------------- Test Title
 %\input{appendix/cTest.tex}

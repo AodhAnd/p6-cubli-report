@@ -1,4 +1,4 @@
-\section{Plant Analysis}
+\section{Stability Analysis}
 The linearized model is considered valid within the discussed range of angles (\si{\pm 0,79\ rad}), so it can be used to do a deeper analysis on the behavior of the system. %This includes evaluations in frequency domain, s-domain and L(s)-domain.
 
 \subsection{Bode Diagram}
@@ -24,7 +24,7 @@ As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one 
 \begin{minipage}{\linewidth}
  	\begin{minipage}{0.45\linewidth}
  		\begin{figure}[H]
- 			\includegraphics[scale=.53]{figures/rlocusCubli}
+ 			\includegraphics[scale=.56]{figures/rlocusCubli}
  			\centering
  			\vspace{-.4cm}
  			\captionsetup{justification=centering}
@@ -35,11 +35,11 @@ As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one 
  	\hspace{0.03\linewidth}
  	\begin{minipage}{0.45\linewidth}
  		\begin{figure}[H]
- 			\includegraphics[scale=.53]{figures/rlocusCubliZoom}
+ 			\includegraphics[scale=.45]{figures/rlocusCubliZoom}
  			\centering
- 			\vspace{-.4cm}
+ 			\vspace{-.1cm}
  			\captionsetup{justification=centering}
- 			\captionof{figure}{Pole and zero next to the imaginary axis}
+ 			\captionof{figure}{Zoom of \figref{rlocusCubli} from s=-0.05 to s=0.05}
  			\label{rlocusCubliZoom}
  		\end{figure}\vspace{-5mm}
  	\end{minipage}
@@ -48,13 +48,17 @@ As seen in \figref{rlocusCubli} and \figref{rlocusCubliZoom} the system has one 
 \subsection{Nyquist Plot}
 In any transfer function, the zeros of 1+L(s) (L(s) being the open loop function) become the poles of the closed loop system. That is why it is interesting to look at the Nyquist Stability Criterion, which can give information about this topic.
 
-Nyquist Stability Criterion says that the number of zeros in the RHP of 1+L(s) (\si{Z_{RHP}}) is given by the number of poles of the OL (\si{P_{RHP}}) and the number of encirclements of the Nyquist plot around -1 (\si{N}).
+The number of zeros in the RHP of 1+L(s) (\si{Z_{RHP}}) is given by the number of poles of the L(s) (\si{P_{RHP}}) and the number of clockwise encirclements of the Nyquist plot around -1 (\si{N}) (a counterclockwise circle has a negative sign in this equation).
+%
 \begin{flalign}
 	\eq{Z_{RHP}}{N+P_{RHP}} 
 	&\nonumber\\
-	\label{FrameEq4OperatingPointZero}
+	\label{ZNP}
 \end{flalign}
-In the case of this plant, the number of poles in the RHP is one and there are no encirclements of -1 (\figref{nyquistCubli}), which means that the total number of zeros in the RHP is 1. As this zero will be a pole in the closed loop system the system is confirmed as unstable.
+%
+For the system to be stable (\si{Z_{RHP}}) has to be zero, which means that there is no pole in the RHP in the close loop function.
+
+In the case of this plant, the number of poles of L(s)=G(s) in the RHP is one and there are no encirclements of -1 in the Nyquist plot (\figref{nyquistCubli}). That results in one zero in the RHP. As this zero will be a pole in the closed loop, the system is confirmed as unstable.
 
 \begin{figure}[H] 
 	\centering 
