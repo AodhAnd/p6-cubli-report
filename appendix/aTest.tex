@@ -1,18 +1,46 @@
-\chapter{Comparison Between Linear Model and Real System}\label{comparisonLinModelReal} 
+\chapter{Fall Response}\label{comparisonLinModelReal} 
 \textbf{Name: Group 630}\\
 \textbf{Date: 07/03 - 2016}
 
 \subsubsection{Purpose}
-Compare the response of the real setup with the simulation given by the theoretical linearized model when it falls from the vertical position, \si{theta_F=0}.
+To find the fall response of the frame from the vertical position, \si{\theta_F=0}\fxnote{might change depending on what is decided as the "real" 0 because of potmeter offset}, and from a \si{10^\circ}\fxnote{Might chance depending on data } tilted position. During this the wheel will be in a fixed position.
+
+Data from this is used to compare the response of the real setup with the simulation given by the theoretical linearized model.
+
+\subsubsection{Setup}
+The wheel is being held in a fixed position with a strip tied to it and the frame. The probe chosen is a 1:1 and is connected to the potentiometer with probe to yellow cable and ground clamp to brown cable. The power supply has to be connected, and turned on, to the Cubli in order to get readouts from the potentiometer. A sponge is placed on the rubber pad in order to dampen the impact of the frame.
+\begin{figure}[H]                                   
+	\centering                                        
+	\includegraphics[scale=0.08]{figures/stepResponseSetup}
+	\caption{Picture of the setup for the step-response test}
+	\label{stepResponseTestPicture} 
+\end{figure}              
+
+\subsubsection{List of Equipment}
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4cm}|}
+		\hline%------------------------------------------------------------------------------------
+		\textbf{Instrument}                        &  \textbf{AAU-no.}  &  \textbf{Type}       \\
+		\hline%------------------------------------------------------------------------------------
+		Oscilloscope                              &  61604             &  Agilent 54621A		  \\
+		\hline%------------------------------------------------------------------------------------
+		Dedicated Power Supply of Cubli \small{(24 V - 3 A)} &               &  XP Power, AEB70US24 \\
+		\hline%------------------------------------------------------------------------------------
+		Probe 1:1                &  TBD            &          TBD\fxnote{find the probe used}    \\
+		\hline%------------------------------------------------------------------------------------
+		Sponge               &              &              \\
+		\hline%------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
 
 \subsubsection{Procedure}
 \begin{enumerate}
-	\item Turn on the power supply
-	\item Keep the Cubli near the vertical position
-	\item Let the Cubli fall
-	\item Use the oscilloscope to measure the changes in the potentiometer 
-	\item Get the measurements and plot them in Matlab
-	\item Plot the result of the simulations in the same figure and compare them
+	%\item Turn on the power supply
+	\item Keep the Cubli near the starting position (\si{0^\circ} or \si{10^\circ})
+	\item Let the Cubli fall over
+	\item Use the oscilloscope to measure the voltage changes in the potentiometer and save them
+	\item Take the measurements and plot them in Matlab
+	%\item Plot the result of the simulations in the same figure and compare them
 
 \end{enumerate}
 
@@ -31,6 +59,9 @@ The fist one is the presence of oscillations in the real response curve. This be
 Another one is the final position of the frame, but it is due to the existence of a piece of foam at this position in the real case (to avoid the Cubli to hit the base).
 
 The other main difference is the shape of the curve, since the simulation is slower than the real case.
+
+\subsubsection{Note}
+Because of the sponge used as a cushion, to dampen the impact of the Cubli, there can be observed some bouncing in the data when the frame reaches the outer position.
 
 \subsubsection{Conclusions}
 
