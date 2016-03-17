@@ -1,42 +1,47 @@
-\chapter{potentiometer Offset}\label{potentiometerOffset} 
+\chapter{Potentiometer Angle Resolution}\label{potentiometerRes} 
 \textbf{Name: Group 630}\\
 \textbf{Date: 15/03 - 2016}
 
 \subsubsection{Purpose}
-Compare the response of the real setup with the simulation given by the theoretical model
+Finding the resolution needed for conversion of potentiometer voltage to angles, along with possible offsets.
+
+\subsubsection{Setup}
+\begin{figure}[H]
+  \centering
+	\includegraphics[scale=1]{figures/LabSetupRangeTest.pdf}
+	\caption{Setup diagram}
+	\label{LabSetupRangeTest}
+\end{figure}\vspace{-5mm}
+
+\subsubsection{List of Equipment}
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{5cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Instrument}                                  &  \textbf{AAU-no.}  &  \textbf{Type}                       \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Oscilloscope                                         &  61604             &  Agilent 54621A		                   \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Dedicated Power Supply of Cubli \small{(24 V - 3 A)} &                    &  XP Power, AEB70US24                 \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Probe 1:1                                            &  TBD               &  TBD\fxnote{find the probe used}     \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
 
 \subsubsection{Procedure}
 \begin{enumerate}
-	\item Turn on the power supply
-	\item Launch the virtual machine
-	\item Run Eclipse
-	\item Set the input current of the motor controller to 0 and change the logfile to store the data
-	\item Connect the computer to the board through the USB cable
-	\item Load the changed file in the Beaglebone
-	\item Keep the Cubli near the vertical position
-	\item Run the program
-	\item Let the Cubli fall
-	\item Stop the program
-	\item Get the measurements from the file and plot them in Matlab
-	\item Plot the result of the simulations in the same figure and compare them
-
+  \item Make the setup with connections as seen on \figref{LabSetupRangeTest}, with ground on brown and signal on yellow of the potentiometer.
+  \item Set the oscilloscope on rolling and calibrate so that the full range of the frame movement can be captured on the display.
+  \item Balance the frame in upright equilibrium position.
+	\item Move the frame to the leftmost position, hold for a brief duration, then move it over to the rightmost position.
+	\item Once both the equilibrium, leftmost and rightmost positions are captured on the screen, push the stop-button on the scope, to hold the measurement.
+	\item Save the data to the floppy-disk as a CSV-file.
 \end{enumerate}
 
 \subsubsection{Results}
 \begin{figure}[H] 
 	\centering 
-	\includegraphics[scale=0.9]{figures/comparisonRealModel}
-	\caption{Comparison between the real behavior and the simulation of the linearized model}
+	\includegraphics[scale=0.7]{figures/TestPotentiometerResolution}
+	\caption{Raw test data plot, Volt over time}
 	\label{comparisonRealModel}
-\end{figure} 
-
-The result of the experiment (\figref{comparisonRealModel}) shows that the response of the real system has several differences with the one from the simulation.
-
-The fist one is the presence of oscillations in the real response curve. This behavior is due to a small bounce that the frame does when it reaches the base.
-
-Another one is the final position of the frame, but it is due to the existence of a piece of foam at this position in the real case (to avoid the Cubli to hit the base).
-
-The other main difference is the shape of the curve, since the simulation is slower than the real case.
-
-\subsubsection{Conclusions}
-
+\end{figure}
