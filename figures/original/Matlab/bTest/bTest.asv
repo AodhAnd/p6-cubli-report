@@ -23,23 +23,21 @@ rad = (pot(:,1) - middleVolt + offsetVolt)*resRad;
 close all;
 figure(1);
 hold on;
-plot(time,pot, 'linewidth',1.4);
+plot(time,pot);
 title('Pendulum Behavior')
 xlabel('Time (s)');
 ylabel('Potentiometer measurement (V)');
-grid on, grid minor;
-set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+grid on;
 axis([0 12 -0.05 0.45]);
 hold off;
 
 % Plot of the position
 figure(2);
 hold on;
-plot(time,rad, 'linewidth',1.4);
+plot(time,rad, linewid);
 title('Pendulum Behavior')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
-grid on, grid minor;
-set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+grid on;
 axis([0 12 -0.8 0.8]);
 hold off;
