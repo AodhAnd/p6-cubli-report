@@ -1,0 +1,34 @@
+\section{Code Base}
+More than the physical setup, a certain amount of code allowing to run controllers on the present hardware is also available. \\
+Written in C\texttt{++}, it comprises all the drivers necessary to interface the BeagleBone board with the motor and all the different sensors described upper, in \secref{sec:Motor} and \secref{sec:Sensors}.
+
+As of the actual controllers to make the Cubli stand up on its corner, they are all composed of two of three files in a folder named \textit{controller/controller\_code/}. Each controller has to implement three functions, as shown in \autoref{lst:StandardControllerInterface}.
+%
+\lstset{language=C++, caption={Code snippet of the standard controller interface}, label=lst:StandardControllerInterface}
+\begin{lstlisting}
+  /**
+   *  Runs the actual controller on the given feedback(s) and the pre-defined input(s).
+   *  Takes the sampling time and a 3x1 vector x_hat containing the feedbacks 
+   *  (processed data from the sensors):
+   *              0: angular position of the frame
+   *              1: angular velocity of the frame
+   *              2: angular velocity of the wheel.
+   *  Returns the output which should be applied to the actuator (current -> motor)
+   */
+  extern CONTROLLER_OUTPUT_struct_T AAU3_CUSTOM_CONTROLLER(real_T Ts, 
+                                                   const real_T x_hat[3]);
+  /**
+   *  Initializes the controller parameters (gain, polynomials coefficients)
+   *  Has to be called only once, before running the controller itself.
+   */
+  extern void AAU3_CUSTOM_CONTROLLER_initialize(void);
+  /**
+   *  Does whatever is needed (if needed) to stop the controller
+   */
+  extern void AAU3_CUSTOM_CONTROLLER_terminate(void);
+
+\end{lstlisting}
+This is a default model based on the way MATLAB auto-generates controller code into C\texttt{++} files and shall be used in this project as a general reference, to keep some common structure between the different controllers to be implemented. It is however possible to adapt the arguments and the returned variables depending on the needs.
+
+The file \textit{controller/controller\_test.cpp} contains the core part of the controllers operation. One of its functions, \lstinline{void ControllerTest::runController(ControllerArgs* args)}, is called at some regular pre-defined intervals which is the desired sampling time. This initializes the available controllers, retrieves and processes the data from the sensors, and finally uses the controller code to compute the output current to send to the motor. This updated output current is actually sent at the beginning of the next call.
+\\\\
