@@ -18,4 +18,5 @@ G_reduced=minreal(G);   % Equal poles and zeros cancelled each other
 
 % Analysis in the s-domain
 rlocus(G_reduced);
+axis([-12 12 -2.5 2.5]);
 
