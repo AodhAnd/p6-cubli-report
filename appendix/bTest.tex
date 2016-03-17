@@ -1,11 +1,13 @@
-\chapter{Impulse Response}\label{impulseTestAppendix} 
+\chapter{Impulse Response}\label{impulseResponseAppendix} 
+
 \textbf{Name: Group 630}\\
-\textbf{Date: 11/03 - 2016}
+\textbf{Date: 16/03 - 2016}
 
 \subsubsection{Purpose}
 Observe the impulse response of the Cubli hanging upside down.
 
 Data is used to compare the response of measured response and the simulation given by the theoretical nonlinear model.
+
 
 \subsubsection{Setup}
 The Cubli is put upside down under a table with 2 clamps placed at each side of the bottom plate of the Cubli setup.
@@ -43,19 +45,36 @@ The wheel is being held in a fixed position with a strip tied to it and the fram
 	\item Let the Cubli fall and swing until it has come to rest
 	\item Use the oscilloscope to measure the changes in the potentiometer
 	\item Collect all the data and plot it in Matlab
-%	\item Compare with the simulation 
-	
+	%\item Compare with the simulation 	
 \end{enumerate}
 
 \subsubsection{Results}
-%\begin{figure}[H] 
-%	\centering 
-%	\includegraphics[scale=0.9]{figures/comparisonRealModel}
-%	\caption{Comparison between the real behavior and the simulation of the linearized model}
-%	\label{comparisonRealModel}
-%\end{figure} 
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.53]{figures/ImpVolt}
+			\centering
+			\vspace{-.4cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Raw data taken from the potentiometer}
+			\label{ImpVolt}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.53]{figures/ImpRad}
+			\centering
+			\vspace{-.4cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Angular position of the frame}
+			\label{ImpRad}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+\end{minipage} \fxnote{Look at the layout of picture of data placement}
+
+The data is available as a .csv file on the CD.
 
 \subsubsection{Note}
 During this experiment it was observed that if the frame was released from the left position (The right upper side on \figref{impulseResponseTestPicture} since the Cubli is upside down), the frame would hit the rubber pad on the other side. This behavior was not observed when releasing the Cubli from the right position (left upper corner).
 
-\subsubsection{Conclusions}

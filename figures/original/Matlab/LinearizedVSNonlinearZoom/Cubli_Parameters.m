@@ -23,5 +23,5 @@ ylabel('Angular position (rad)');
 grid on;
 %set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
 legend('Linearized','Nonlinear','Location','Northwest');
-axis([1.3 1.6 0 2.5]);
+axis([1.3 1.5 0 1]);
 warning('on');
