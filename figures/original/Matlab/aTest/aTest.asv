@@ -63,7 +63,7 @@ close all;
 figure(3);
 hold on;
 plot(time,pot,'r', 'linewidth',1.4);
-xlim([ 0 .6 ])
+xlim([ 0 1 ])
 title('Fall from -10º with respect to Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Potentiometer measurement (V)');
@@ -74,8 +74,7 @@ hold off;
 % Plot of the position
 figure(4);
 hold on;
-plot(time,rad,'r', 'linewidth',1.4);
-xlim([ 0 .6 ])
+plot(time,rad,'r');
 title('Fall from -10º with respect to Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
