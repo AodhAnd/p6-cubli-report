@@ -1,11 +1,10 @@
-\chapter{Impulse Response}\label{comparisonModelReal} 
+\chapter{Impulse Response}\label{impulseResponseAppendix} 
 \textbf{Name: Group 630}\\
-\textbf{Date: 11/03 - 2016}
+\textbf{Date: 16/03 - 2016}
 
 \subsubsection{Purpose}
 To observe the impulse response of the Cubli hanging upside down.
-
-Data is used to compare the response of measured response and the simulation given by the theoretical nonlinear model.
+Data is used to compare the measured response and the simulation given by the theoretical nonlinear model.
 
 \subsubsection{Setup}
 \begin{figure}[H] 
@@ -22,16 +21,32 @@ Data is used to compare the response of measured response and the simulation giv
 	\item Use the oscilloscope to measure the changes in the potentiometer 
 	\item Let the Cubli fall
 	\item Collect all the data and plot it in Matlab
-	\item Compare with the simulation 
-	
+	\item Compare with the simulation 	
 \end{enumerate}
 
 \subsubsection{Results}
-\begin{figure}[H] 
-	\centering 
-	\includegraphics[scale=0.9]{figures/comparisonRealModel}
-	\caption{Comparison between the real behavior and the simulation of the linearized model}
-	\label{comparisonRealModel}
-\end{figure} 
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.53]{figures/ImpVolt}
+			\centering
+			\vspace{-.4cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Raw data taken from the potentiometer}
+			\label{ImpVolt}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.53]{figures/ImpRad}
+			\centering
+			\vspace{-.4cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Angular position of the frame}
+			\label{ImpRad}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+\end{minipage} \fxnote{Look at the layout of picture of data placement}
 
-\subsubsection{Conclusions}
+The data is available as a .csv file on the CD.

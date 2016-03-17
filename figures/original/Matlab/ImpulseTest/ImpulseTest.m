@@ -20,10 +20,11 @@ close all;
 figure(1);
 hold on;
 plot(time,pot);
-title('Pendulum Behavior')
+title('Impulse Response')
 xlabel('Time (s)');
 ylabel('Potentiometer measurement (V)');
 grid on;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 axis([0 12 -0.05 0.45]);
 hold off;
 
@@ -31,9 +32,10 @@ hold off;
 figure(2);
 hold on;
 plot(time,rad);
-title('Pendulum Behavior')
+title('Impulse Response')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
 grid on;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 axis([0 12 -0.8 0.8]);
 hold off;

@@ -1,18 +1,17 @@
-\chapter{Fall Response}\label{comparisonLinModelReal} 
+\chapter{Fall Response}\label{fallResponseAppendix} 
 \textbf{Name: Group 630}\\
-\textbf{Date: 07/03 - 2016}
+\textbf{Date: 17/03 - 2016}
 
 \subsubsection{Purpose}
-Find the fall response of the frame from the vertical position, \si{\theta_F=0}\fxnote{might change depending on what is decided as the "real" 0 because of potmeter offset}, and from a \si{10^\circ}\fxnote{Might chance depending on data } tilted position. During this the wheel will be in a fixed position.
-
-Data from this is used to compare the response of the real setup with the simulation given by the theoretical linearized model.
+Find the fall response of the frame from the vertical position, \si{\theta_F=0}\fxnote{might change depending on what is decided as the "real" 0 because of potmeter offset}, and from a \si{10^\circ}\fxnote{Might chance depending on data } tilted position.
+Data is used to compare the measured response and the simulation given by the theoretical nonlinear model.
 
 \subsubsection{Setup}
-The wheel is being held in a fixed position with a strip tied to it and the frame. The probe chosen is a 1:1 and is connected to the potentiometer with probe to yellow cable and ground clamp to brown cable. The power supply has to be connected, and turned on, to the Cubli in order to get readouts from the potentiometer. A sponge is placed on the rubber pad in order to dampen the impact of the frame.
+The wheel is being held in a fixed position with a strip tied to it and the frame. The probe chosen is a 1:1 and is connected to the potentiometer with probe to yellow cable and ground clamp to brown cable. The power supply has to be turned on in order to get readouts from the potentiometer. A sponge is placed on the rubber pad in order to damp the impact of the frame.
 \begin{figure}[H]                                   
 	\centering                                        
 	\includegraphics[scale=0.08]{figures/stepResponseSetup}
-	\caption{Picture of the setup for the step-response test}
+	\caption{Picture of the setup for the fall-response test}
 	\label{stepResponseTestPicture} 
 \end{figure}              
 
@@ -41,42 +40,58 @@ The wheel is being held in a fixed position with a strip tied to it and the fram
 	\item Use the oscilloscope to measure the voltage changes in the potentiometer and save them
 	\item Take the measurements and plot them in Matlab
 	%\item Plot the result of the simulations in the same figure and compare them
-
 \end{enumerate}
 
-%\subsubsection{Results}
-%\begin{figure}[H] 
-%	\centering 
-%	\includegraphics[scale=0.9]{figures/comparisonRealModel}
-%	\caption{Comparison between the real behavior and the simulation of the linearized model}
-%	\label{rawDataFallResponse}
-%\end{figure} 
-
+\subsubsection{Results}
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
-			\includegraphics[scale=.53]{figures/comparisonRealModel}
+			\includegraphics[scale=.53]{figures/FallVolt}
 			\centering
 			\vspace{-.4cm}
 			\captionsetup{justification=centering}
-			\captionof{figure}{FIGURE 1 description}
-			\label{HbridgeClokwise4Q}
+			\captionof{figure}{Raw data taken from the potentiometer}
+			\label{FallVolt}
 		\end{figure}\vspace{-5mm}
 	\end{minipage}
 	\hspace{0.03\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
-			\includegraphics[scale=.53]{figures/comparisonRealModel}
+			\includegraphics[scale=.53]{figures/FallRad}
 			\centering
 			\vspace{-.4cm}
 			\captionsetup{justification=centering}
-			\captionof{figure}{figure 2 description}
-			\label{HbridgeCounterClokwise4Q}
+			\captionof{figure}{Angular position of the frame}
+			\label{FallRad}
 		\end{figure}\vspace{-5mm}
 	\end{minipage}
 \end{minipage} \fxnote{Look at the layout of picture of data placement}
 
-The data is available as a .csv file on the CD.\fxnote{Make sure this is put into the CD folder for copying}
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.53]{figures/tenDegFallVolt}
+			\centering
+			\vspace{-.4cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Raw data taken from the potentiometer}
+			\label{tenDegFallVolt}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.53]{figures/tenDegFallRad}
+			\centering
+			\vspace{-.4cm}
+			\captionsetup{justification=centering}
+			\captionof{figure}{Angular position of the frame}
+			\label{tenDegFallRad}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+\end{minipage} \fxnote{Look at the layout of picture of data placement}
+
+The data is available as two .csv files on the CD.\fxnote{Make sure this is put into the CD folder for copying}
 
 %The result of the experiment (\figref{comparisonRealModel}) shows that the response of the real system has several differences with the one from the simulation.
 %
@@ -87,7 +102,4 @@ The data is available as a .csv file on the CD.\fxnote{Make sure this is put int
 %The other main difference is the shape of the curve, since the simulation is slower than the real case.
 
 \subsubsection{Note}
-Because of the sponge used as a cushion, to dampen the impact of the Cubli, there can be observed some bouncing in the data when the frame reaches the outer position.
-
-\subsubsection{Conclusions}
-
+ There can be observed some bouncing in the data when the frame reaches the lower position due to the presence of the sponge.

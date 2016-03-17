@@ -1,2 +1,22 @@
 \section{Estimation of Parameters}
-In order to get the parameters of the system some tests must be carried out.
+The parameters from the wheel (mass, inertia with respect to its center of rotation and distance from its center to the pivoting point of the frame) are given from a previous project.
+
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{2cm}|}
+		\hline %-----------------------------------------------------------------------------------
+		\textbf{Parameter} &\textbf{Value} &\textbf{Units}\\
+		\hline %-----------------------------------------------------------------------------------
+		\si{m_w}         & \si{0,222}       &kg\\
+		\hline %-----------------------------------------------------------------------------------
+		\si{J_w}            & \si{0,601 \cdot 10^{-3}}	&\si{kg \cdot m^2}\\
+		\hline %-----------------------------------------------------------------------------------
+		\si{l_w}         & \si{0,096}       &m\\
+		\hline 
+	\end{tabular}
+	\caption{Parameters of the wheel}
+	\label{ParametersWheel}
+\end{table}
+
+However, the rest of the parameters must be find out. This is due to the addition of the electronics to the frame, which were not there when the tests were made.
+
+To find them out it is necessary to carry out a test, as seen in Appendix \ref{impulseResponseAppendix}, which gives the following result:

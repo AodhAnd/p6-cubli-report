@@ -27,7 +27,8 @@ plot(time,pot,'r');
 title('Fall from Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Potentiometer measurement (V)');
-grid on;
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 hold off;
 
 % Plot of the position
@@ -37,8 +38,8 @@ plot(time,rad,'r');
 title('Fall from Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
-grid on;
-
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 hold off;
 %% Fall from 10º
 
@@ -68,7 +69,7 @@ title('Fall from -10º with respect to Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Potentiometer measurement (V)');
 grid on, grid minor;
-set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
 hold off;
 
 % Plot of the position
@@ -80,6 +81,6 @@ title('Fall from -10º with respect to Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
 grid on, grid minor;
-set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
 hold off;
 warning('on');
