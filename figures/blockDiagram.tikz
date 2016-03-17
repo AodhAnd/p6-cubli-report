@@ -42,12 +42,12 @@
     ;
     %-- Block linking --%
     % INPUT %
-    \draw[-](input1)      -- node{\Large $\tau_m(s)$}(feedForward);
+    \draw[-](input1)        -- node{\Large $\tau_m(s)$}(feedForward);
     \draw[->](feedForward)  -- (sum1);
 
     % OUTPUT %
-    \draw[-](integration2) -- (output);
-    \draw[->](output) -- node {\Large $\theta_{F}(s)$} (20,0);
+    \draw[-](integration2)  -- (output);
+    \draw[->](output)       -- node {\Large $\theta_{F}(s)$} (20,0);
 
     % DIRECT TERM %
     \draw[->] (sum1)            -- (sum2);
@@ -64,18 +64,18 @@
     % \draw[->] (integration3)    -- (frictionWheel);
     \draw[->] (frictionWheel)   -| (sum1);
 
-    \draw[-] (frictionWheel) -| (veloWheelFeedback);
-    \draw[->] (veloWheelFeedback) -| (sum5);
+    \draw[-] (frictionWheel)       -| (veloWheelFeedback);
+    \draw[->] (veloWheelFeedback)  -| (sum5);
 
     % FEEDBACKS
-    \draw[->] (accFeedbackNode) |- (accFeedback);
-    \draw[->] (accFeedback) -| (sum4);
+    \draw[->] (accFeedbackNode)  |- (accFeedback);
+    \draw[->] (accFeedback)      -| (sum4);
 
-    \draw[->] (output) |- (angleFeedback);
-    \draw[->] (angleFeedback) -| (sum2);
+    \draw[->] (output)           |- (angleFeedback);
+    \draw[->] (angleFeedback)    -| (sum2);
 
     \draw[->] (veloFeedbackNode) |- (veloFeedback);
-    \draw[->] (veloFeedback) -| (sum3);
+    \draw[->] (veloFeedback)     -| (sum3);
 
     %-- Nodes --%
     \draw%--------------------------------------------------------------
