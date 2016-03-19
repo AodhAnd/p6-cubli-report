@@ -23,9 +23,9 @@ warning('on');
 
 % Data from the experiment
 data=csvread('normalStepRight-17-03.csv');
-time=data(451:2000,1);
-time=time-data(450,1);
-pot=data(451:2000,2);
+time=data(751:2000,1);
+time=time-data(750,1);
+pot=data(751:2000,2);
 
 % Data from Volt to rads
 Vmin=0.004316370106762;
@@ -35,20 +35,20 @@ middleVolt=0.235497986048405;
 
 offsetVolt = middleVolt-equVolt;
 resRad = (pi/2)/(Vmax-Vmin);
-rad = (pot(:,1) - middleVolt + offsetVolt)*resRad;
+rad = (pot(:,1) - middleVolt + offsetVolt)*resRad+0.015;
 
 % Plot of the position
 figure(1);
 hold on;
 plot(time,rad,'r', 'linewidth', 1.4);
-plot(linModel, 'b', 'linewidth', 1.4);
+plot(linModel.time-0.753, linModel.data, 'color', [ 0 0 .5], 'linewidth', 1.4);
 title('Fall from Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
-legend('Linearized Model','Real Cubli','Location','Northeast');
-%axis([0 2 -1 0.2]);
+legend('Real Cubli','Non-linearized Model','Location','Northeast');
+axis([ 0 1.2 -.8 .1 ]);
 hold off;
 %% Fall from 10º
 % Data from Simulink - Linearized model fall(SIMULATION: Connect Step2)
@@ -75,8 +75,8 @@ rad = (pot(:,1) - middleVolt + offsetVolt)*resRad;
 % Plot of the position
 figure(2);
 hold on;
-plot(time,rad, 'color', [ 1 0 0 ], 'linewidth', 1.4);
-plot(linModel.Time+0.25, linModel.Data, 'b', 'linewidth', 1.5);
+plot(time,rad, 'r', 'linewidth', 1.4);
+plot(linModel.Time+0.25, linModel.Data, 'color', [ 0 0 .5], 'linewidth', 1.4);
 title('Fall from -10º with respect to Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
