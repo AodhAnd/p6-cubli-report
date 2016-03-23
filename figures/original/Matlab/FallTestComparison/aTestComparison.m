@@ -1,8 +1,22 @@
-clear all
-close all
-clc
+% Cubli model parameters
+T_m=0.005;
+K=0.5;
+J_w=0.601e-3;
+J_f=(2.8e-3);
+B_w=17.03e-6;
+B_f=6.08e-3;
+m_w=0.222;
+m_f=0.354;
+g=9.82;
+l_w=0.093;
+l_f=0.076;
 
 %% Vertical fall
+% Data from Simulink - Linearized model fall (SIMULATION: Connect Step1)
+warning('off');
+sim('aTestModel.slx');
+warning('on');
+
 % Data from the experiment
 data=csvread('normalStepRight-17-03.csv');
 time=data(451:2000,1);
@@ -19,28 +33,23 @@ offsetVolt = middleVolt-equVolt;
 resRad = (pi/2)/(Vmax-Vmin);
 rad = (pot(:,1) - middleVolt + offsetVolt)*resRad;
 
-% Plot of the voltage
-close all;
+% Plot of the position
 figure(1);
 hold on;
-plot(time,pot,'r');
-title('Fall from Equilibrium Position')
-xlabel('Time (s)');
-ylabel('Potentiometer measurement (V)');
-grid on;
-hold off;
-
-% Plot of the position
-figure(2);
-hold on;
+plot(linModel);
 plot(time,rad,'r');
 title('Fall from Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
 grid on;
-
+legend('Linearized Model','Real Cubli','Location','Northeast');
+%axis([0 2 -1 0.2]);
 hold off;
 %% Fall from 10º
+% Data from Simulink - Linearized model fall(SIMULATION: Connect Step2)
+warning('off');
+sim('aTestModel.slx');
+warning('on');
 
 % Data from the experiment
 data=csvread('10degStepRight-17-03.csv');
@@ -58,27 +67,17 @@ offsetVolt = middleVolt-equVolt;
 resRad = (pi/2)/(Vmax-Vmin);
 rad = (pot(:,1) - middleVolt + offsetVolt)*resRad;
 
-% Plot of the voltage
-close all;
-figure(3);
-hold on;
-plot(time,pot,'r', 'linewidth',1.4);
-xlim([ 0 1 ])
-title('Fall from -10º with respect to Equilibrium Position')
-xlabel('Time (s)');
-ylabel('Potentiometer measurement (V)');
-grid on, grid minor;
-set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
-hold off;
-
 % Plot of the position
-figure(4);
+figure(2);
+plot(linModel);
 hold on;
 plot(time,rad,'r');
 title('Fall from -10º with respect to Equilibrium Position')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
-grid on, grid minor;
-set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+grid on;
+legend('Linearized Model','Real Cubli','Location','Northeast');
+axis([0 1 -0.8 -0.1]);
 hold off;
 warning('on');
+

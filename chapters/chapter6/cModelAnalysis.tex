@@ -43,4 +43,33 @@ However, in reality the platform blocks the frame's path, and so, it can only ev
 	\end{minipage}
 \end{minipage}
 
-From \figref{LinearizedVSNonlinear} and \figref{LinearizedVSNonlinearZoom}, the linearized model is considered a good approximation of the system's behavior in the operational region of \si{\pm 0,79\ rad}, since the error committed is just 0.01 rad at this point. Hence the linearized model is used both for further analysis of the system and for controller design.
+From \figref{LinearizedVSNonlinear} and \figref{LinearizedVSNonlinearZoom}, the linearized model is considered a good approximation of the system's behavior in the operational region of \si{\pm 0,79\ rad}, since the error committed is no more than 0.01 rad at this point.
+
+To further investigate the model, an other test is made, see \appref{fallResponseAppendix}, to determine weather the fall response of the nonlinear model and the real system matches.
+
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.48]{figures/FallTestComparison}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Comparison of test and model of frame falling from equilibrium position}
+			\label{FallTestComparison}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.48]{figures/FallTestComparison10deg}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Comparison of test and model of frame falling from initial condition \si{-10^\circ}}
+			\label{FallTestComparison10deg}
+		\end{figure}\vspace{-5mm}
+	\end{minipage}
+\end{minipage}
+
+In \figref{FallTestComparison} the Cubli falls from equilibrium position given a very small impulse. When plotting the two data sets the time of the fall is aligned to see if the characteristics of the simulated fall matches reality.\\
+In an attempt to avoid unjustified assumptions the test is repeated from initial condition \si{-10^\circ} in both simulation and test, the result is shown in \figref{FallTestComparison10deg}.
+
+%Hence the linearized model is used both for further analysis of the system and for controller design.
