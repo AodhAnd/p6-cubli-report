@@ -3,12 +3,19 @@
 
 
 \subsection{Brushless DC-Motor}
-The brushless motor (EC 45 flat, 251601) can take a nominal current of 2.33 A.\cite{MaxonMotors} \fxnote{make sure the correct motor is listed and that the current is correct}. This puts a hard limit on the control signal that can be sent to the motor control board. 
+The brushless motor (EC 45 flat, 251601) can take a nominal current of 2.33 A.\cite{MaxonMotors} \fxnote{make sure the correct motor is listed and that the current is correct}. This puts a limit on the control signal that can be sent to the motor control board. 
 
 
 
 \subsection{Motor Control Board}
+Connected to the BeagleBone is a ESCON Module 50/5, which is a motor control board. It is specifically made to work with ESCON motors (which the EC 45 flat is) and can be configured with a program provided by Maxon.\fxnote{provide link to maxonwebsite and the program for the configuration}
 
+PWM frquency is \si{53,6 kHz}\fxnote{its this done correctly?}.
+The Buildin 
+
+The control board has a setup selected by the previous group working with the Cubli setup. The PWM signal has a range of 10 \% to 90 \%, and the current is limited to 4 A at 90 \% and -4 A at 10 \%. 
+
+The internal controller of the board is running in current mode, which means the control board takes the current input signal and tries to keep that current while the motor accelerates.
 
 \subsection{Jump Brake}
 The last important part included on the system is the braking mechanism, which is used for making the frame go from rest to vertical position. 
