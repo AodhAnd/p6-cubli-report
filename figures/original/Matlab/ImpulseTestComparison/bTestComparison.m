@@ -38,7 +38,7 @@ close all;
 figure(1);
 hold on;
 plot(nonLinModel,'k');
-plot(time,rad+pi);
+plot(time,rad);
 title('Pendulum Behavior')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
