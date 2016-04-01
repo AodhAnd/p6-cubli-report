@@ -7,16 +7,51 @@ To control the reaction wheel a brushless DC-motor is used.
 The brushless motor (EC 45 flat, 251601) can take a nominal current of 2.33 A, and 23 A at very short peaks.It has a mechanical time constant of 12,4 ms \cite{MaxonMotors}. The nominal current puts a limit on the control signal that can be sent to the motor control board.\fxnote{Should this control signal be mentioned here?}.
 \fxnote{Should there be made a table listing the motors data instead of writing a paraghap with the info?}
 
+\begin{table}[H]
+	\begin{tabular}{|p{5cm}|p{2.3cm}|}
+		\hline%------------------------------------------------------------------------------------
+		\textbf{Motor Data}                        &  \textbf{Value} \unitWh{Unit}  \\
+		\hline%------------------------------------------------------------------------------------
+		Max voltage                               &  24 \unitWh{V}  	\\
+		\hline%------------------------------------------------------------------------------------
+		Nominal current                   		  &  2,33 \unitWh{A}	\\
+		\hline%------------------------------------------------------------------------------------
+		Motor constant (\si{K_t})				 &  33,5 \unitWh{\frac{\si{m\cdot Nm}}{\si{A}}}  \\
+		\hline%------------------------------------------------------------------------------------
+		Mechanical time contant                 &  12,4 \unitWh{ms}  \\
+		\hline%------------------------------------------------------------------------------------
+	\end{tabular}
+	\caption{Important parameters of the brushless DC-motor}
+	\label{BrushlessDCMotorTable}
+\end{table}
+
 
 \subsection{Motor Control Board}
 Connected between the BeagleBone and the Brushless DC-motor is a ESCON Module 50/5, which is a motor control board. It is specifically made to work with ESCON motors (which the EC 45 flat is) and can be configured with a program provided by Maxon.\fxnote{provide link to maxonwebsite and the program for the configuration}
 
 PWM frquency is \si{53,6 kHz}\fxnote{its this done correctly?}.
-The Buildin 
 
 The control board has a setup selected by the previous group working with the Cubli setup. The PWM signal has a range of 10 \% to 90 \%, and the current is limited to 4 A at 90 \% and -4 A at 10 \%. 
 
 The internal controller of the board is running in current mode. This is a control loop that will keep the set current while the motor runs. It takes a signal, representing a current, as an input and then regulates the voltage over the motor to counteract back-EMF.
+
+\begin{table}[H]
+	\begin{tabular}{|p{5cm}|p{2.3cm}|}
+		\hline%------------------------------------------------------------------------------------
+		\textbf{ESCON Module 50/5}                &  \textbf{Value} \unitWh{Unit}  \\
+		\hline%------------------------------------------------------------------------------------
+		Nominal output current                    &  5 \unitWh{A}  	\\
+		\hline%------------------------------------------------------------------------------------
+		Peak current (<20 s)                    &  15 \unitWh{A}	\\
+		\hline%------------------------------------------------------------------------------------
+		PWM frequency 							 &  53,6 \unitWh{kHz}  \\
+		\hline%------------------------------------------------------------------------------------
+		Sample Rate of PI current controller      &  53,6 \unitWh{kHz}  \\
+		\hline%------------------------------------------------------------------------------------
+	\end{tabular}
+	\caption{Important parameters of the motor control board}
+	\label{MotorControlBoardTable}
+\end{table}
 
 \subsection{Jump Brake}
 The last important part included on the system is the braking mechanism, which is used for making the frame go from rest to vertical position. 
