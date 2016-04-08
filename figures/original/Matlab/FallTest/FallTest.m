@@ -10,14 +10,14 @@ time=time-data(700,1);
 pot=data(451:2000,2);
 
 % Data from Volt to rads
-Vmin=0.004316370106762;
-Vmax=0.466679601990048;
-equVolt=0.215324792013310;  
-middleVolt=0.235497986048405;
+Vmin=0.0039924;
+Vmax=0.4705509;
+equVolt=0.2174953;  
+middleVolt=0.2372716;
 
 offsetVolt = middleVolt-equVolt;
-resRad = (pi/2)/(Vmax-Vmin);
-rad = (pot(:,1) - middleVolt + offsetVolt)*resRad;
+resRad = (1.5769)/(Vmax-Vmin);
+rad = (pot - equVolt)*resRad;
 
 % Plot of the voltage
 close all;
@@ -53,14 +53,14 @@ time=time-data(800,1);
 pot=data(716:2000,2);
 
 % Data from Volt to rads
-Vmin=0.004316370106762;
-Vmax=0.466679601990048;
-equVolt=0.215324792013310;  
-middleVolt=0.235497986048405;
+Vmin=0.0039924;
+Vmax=0.4705509;
+equVolt=0.2174953;  
+middleVolt=0.2372716;
 
 offsetVolt = middleVolt-equVolt;
-resRad = (pi/2)/(Vmax-Vmin);
-rad = (pot(:,1) - middleVolt + offsetVolt)*resRad;
+resRad = (1.5769)/(Vmax-Vmin);
+rad = (pot - equVolt)*resRad;
 
 % Plot of the voltage
 figure(3);
