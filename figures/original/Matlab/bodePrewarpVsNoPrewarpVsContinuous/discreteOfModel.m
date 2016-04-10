@@ -17,19 +17,22 @@ Dz2 = c2d(D,T,opts)
 bodeplot(D,Dz,Dz2);
 grid on;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-legend('Continuous controller','Discretized Controller (Tustin)','Discretized Controller (Tustin with Pre-Warping)','Location','Southeast');
+axes_handles = findall(gcf, 'type','axes' );
+legend(axes_handles(3),'Continuous controller','Discretized Controller (Tustin)','Discretized Controller (Tustin with Pre-Warping)','Location','Southeast');
 
 figure
 bodeplot(D*G_reduced/(1+D*G_reduced),Dz*Gz/(1+Dz*Gz),Dz2*Gz/(1+Dz2*Gz));
 grid on;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-legend('Continuous controller (CL)','Discretized Controller (Tustin)(CL)','Discretized Controller (Tustin with Pre-Warping)(CL)','Location','Southeast');
+axes_handles = findall(gcf, 'type','axes' );
+legend(axes_handles(3),'Continuous controller (CL)','Discretized Controller (Tustin)(CL)','Discretized Controller (Tustin with Pre-Warping)(CL)','Location','Southeast');
 
 figure
 bodeplot(D*G_reduced,Dz*Gz,Dz2*Gz);
 grid on;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-legend('Continuous controller (OL)','Discretized Controller (Tustin)(OL)','Discretized Controller (Tustin with Pre-Warping)(OL)','Location','Southeast');
+axes_handles = findall(gcf, 'type','axes' );
+legend(axes_handles(3),'Continuous controller (OL)','Discretized Controller (Tustin)(OL)','Discretized Controller (Tustin with Pre-Warping)(OL)','Location','Southeast');
 
 %nyqlog(D*G_reduced);
 %nyquist(Gz*Dz);
