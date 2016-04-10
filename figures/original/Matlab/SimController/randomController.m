@@ -13,11 +13,22 @@ l_f=0.08498;%0.076;
 warning('off');
 sim('randomControllerSim.slx');
 warning('on');
-figure(7);
-plot(torque,'linewidth',1.2);
+
+%% Angular Position Plot
+figure(1);
+plot(position,'linewidth',1.2);
 title('Closed Loop Response with the Controller')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-axis([0 3 0 1]);
+xlim([0 1]);
+
+figure(2);
+plot(torque,'linewidth',1.2);
+title('Closed Loop Response with the Controller')
+xlabel('Time (s)');
+ylabel('Torque (Nm)');
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
+xlim([0 0.3]);
