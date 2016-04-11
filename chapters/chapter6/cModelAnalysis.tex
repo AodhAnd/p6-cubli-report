@@ -20,26 +20,26 @@ In \figref{LinearizedVSNonlinear}, the effect of the linearization is apparent. 
 \Figref{LinearizedVSNonlinear} shows the behavior around the frame's pivot point and does not include the platform itself. For this reason, the simulation allows for the frame to fall down and act as a normal pendulum. The nonlinear model shows how the pendulum dampens around its natural equilibrium point, while the linear model keeps increasing the angle.
 However, in reality the platform blocks the frame's path, and so, it can only ever turn \si{45 ^\circ} to either side, that is, \si{\frac{\pi}{4}\ rad \approx 0,79\ rad}.
 %
-\begin{minipage}{0.45\linewidth}
-	\begin{figure}[H]
-		\includegraphics[scale=.45]{figures/LinearizedVSNonlinear}
-		\centering
-		\vspace{-.4cm}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Simulation of the linearized model compared to the nonlinear model}
-		\label{LinearizedVSNonlinear}
-	\end{figure}\vspace{-4mm}
-\end{minipage}
-\hspace{0.002\linewidth}
-\begin{minipage}{0.45\linewidth}
-	\begin{figure}[H]
-		\includegraphics[scale=.45]{figures/LinearizedVSNonlinearZoom}
-		\centering
-		\vspace{-.1cm}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Zoom of \figref{LinearizedVSNonlinear} from t=1.3s to t=1.5s}
-		\label{LinearizedVSNonlinearZoom}
-	\end{figure}\vspace{-4mm}
+\begin{minipage}{\linewidth}
+  \begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+    	\includegraphics[scale=.5]{figures/LinearizedVSNonlinear}
+    	\centering
+  		\captionsetup{justification=centering}
+  		\captionof{figure}{Simulation of the linearized model compared to the nonlinear model}
+  		\label{LinearizedVSNonlinear}
+  	\end{figure}
+  \end{minipage}
+  %	\hspace{0.03\linewidth}
+  \begin{minipage}{0.5\linewidth}
+  	\begin{figure}[H]%\vspace{4mm}
+  		\includegraphics[scale=.5]{figures/LinearizedVSNonlinearZoom}
+  		\centering
+  		\captionsetup{justification=centering}
+  		\captionof{figure}{Zoom of \figref{LinearizedVSNonlinear} from t=1.3s to t=1.5s}
+  		\label{LinearizedVSNonlinearZoom}
+  	\end{figure}
+  \end{minipage}
 \end{minipage}
 
 From \figref{LinearizedVSNonlinear} and \figref{LinearizedVSNonlinearZoom}, the linearized model is considered a good approximation of the system's behavior in the operational region of \si{\pm 0,79\ rad}, since the error committed is no more than 0.01 rad at this point.
@@ -54,17 +54,17 @@ To further investigate the model, an other test is made, see \appref{fallRespons
 			\captionsetup{justification=centering}
 			\captionof{figure}{Comparison of test and nonlinear model of frame falling from equilibrium position}
 			\label{FallTestComparison}
-		\end{figure}\vspace{-5mm}
+		\end{figure}%\vspace{-5mm}
 	\end{minipage}
-	\hspace{0.03\linewidth}
+%	\hspace{0.03\linewidth}
 	\begin{minipage}{0.5\linewidth}
-		\begin{figure}[H]
+		\begin{figure}[H]\vspace{-4mm}
 			\includegraphics[scale=.48]{figures/FallTestComparison10deg}
 			\centering
 			\captionsetup{justification=centering}
 			\captionof{figure}{Comparison of test and model of frame falling from initial condition \si{-0,174\ rad}}
 			\label{FallTestComparison10deg}
-		\end{figure}\vspace{-5mm}
+		\end{figure}%vspace{-5mm}
 	\end{minipage}
 \end{minipage}
 
