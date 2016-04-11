@@ -22,7 +22,7 @@ xlabel('Time (s)');
 ylabel('Angular position (rad)');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-xlim([0 1]);
+xlim([0 0.8]);
 
 figure(2);
 plot(torque,'linewidth',1.2);
@@ -31,4 +31,4 @@ xlabel('Time (s)');
 ylabel('Torque (Nm)');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-xlim([0 0.3]);
+xlim([0 0.8]);
