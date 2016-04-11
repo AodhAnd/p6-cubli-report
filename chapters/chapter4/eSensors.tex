@@ -38,3 +38,13 @@ To avoid complications it is chosen that the angle-offset must be accounted for 
 
 
 \subsection{IMU}
+Acceleration is measured by the 3-axis accelerometer.
+
+Angular velocity is measured by the 3-axis gyroscope. \fxnote{make a table with important info}
+
+\subsubsection{Complementary filter}
+A complementary filter is used to combine the measurement data from the accelerometer and gyros in the IMU. 
+Data from the accelerometer is used to calculate an angle of the Cubli frame.
+The gyroscope measurement is integrated to get the angle of the Cubli frame.
+The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli frame.
+This is done to counteract drift of the gyroscope and error of the accelerometer.\fxnote{elaborate on the errors} 
