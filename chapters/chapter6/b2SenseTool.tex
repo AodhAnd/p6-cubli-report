@@ -1,0 +1,6 @@
+\section{Parameter Estimation using Sense Tool}
+Sense Tool is a MATLAB toolbox and is utilized for the final tuning of model parameters. Sense Tool is given data from an initial value test of the Cubli hanging down like a pendulum, see \appref{impulseResponseAppendix}. Additionally some simulation must be supplied for the toolbox to test the parameters in each iteration. The simulation method used in this case is a Matlab Simulink model which is then run by Sense Tool when needed.
+Sense Tool is build with a Gauss-Newton Method implementation for solving the optimization problem leading to the parameter estimations. In the following a brief description of the principles behind this method is presented.
+
+\subsection{Steepest Descent Method}
+One way of solving the optimization problem is through use of the gradient. The gradient indicates in which direction the steepest descent or ascent is found in an infinitesimal surrounding of a given starting point.

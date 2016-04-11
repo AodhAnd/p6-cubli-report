@@ -11,24 +11,24 @@ l_f=0.08498;%0.076;
 
 %% Nonlinearized model vs linearized one
 warning('off');
-sim('randomControllerSim2.slx');
+sim('randomControllerSim3.slx');
 warning('on');
 
 %% Angular Position Plot
 figure(1);
-plot(position,'linewidth',1.2);
+plot(positionComp,'linewidth',1.2);
 title('Closed Loop Response with the Controller')
 xlabel('Time (s)');
 ylabel('Angular position (rad)');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-xlim([0 0.8]);
+xlim([0 1.2]);
 
 figure(2);
-plot(torque,'linewidth',1.2);
+plot(torqueComp,'linewidth',1.2);
 title('Closed Loop Response with the Controller')
 xlabel('Time (s)');
 ylabel('Torque (Nm)');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
-xlim([0 0.8]);
+xlim([0 1.2]);
