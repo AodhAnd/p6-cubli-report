@@ -16,12 +16,16 @@ Then, two zeros must be placed in the LHP to make the branches enter in the stab
 
 It is also important that the number of poles must be greater that the number of zeros for the controller to be feasible in reality. this means that two poles need to be placed somewhere so they don't affect the behavior of the final system. This can be achieve if they are placed in the LHP and far from the imaginary axis.
 
-Finally, the gain must be adjusted to make the closed loop poles to be in a stable location.
+Finally, the gain must be adjusted to make the closed loop poles to be in a stable location. The resultant Root Locus can be seen in \figref{RLControllerZoom}.
 
-\fxnote{Include final root locus of the system}
-
-
-The final controller, is given by \eqref{ControllerLaplace}
+\begin{figure}[H]
+	\centering 
+	\includegraphics[scale=.56]{figures/RLControllerZoom}
+	\captionof{figure}{Root Locus of the final system}
+	\label{RLControllerZoom}
+\end{figure}
+%
+The equation of final controller is then given by \eqref{ControllerLaplace}
 
 \begin{flalign}
 	\eq{D(s)} {0,62737 \cdot \frac{(0,1054\ s + 1)\cdot (0,6254\ s + 1)}{(0,1805\ s - 1) \cdot (0,01\ s + 1) \cdot (0,005\ s + 1)}} & \nonumber\\
