@@ -5,9 +5,10 @@ The discretization process of a controller consists in using the map from the co
   &\si{s = j \omega \to z = e^{s T}}\label{exp:cont2Disc}&
 \end{flalign}
 %
-Since, by definition, the discrete domain cannot represent the complete behavior of a system through time, approximations are used to estimate this behavior.
+Since, by definition, the discrete domain cannot represent the complete behavior of a system through time, approximations are used to estimate this behavior. Different methods are briefly described and compared hereafter in this subsection.
 
-One of the most commonly used aproximations is the bilinear transform (or Tustin's method) which is based on the trapezoidal integration principle. A reason to use this method instead of others is that it maps the entire LHP (stable area in the continuous domain) into the unit circle (stable area in the discrete domain)\cite{GFranklin}.\\
+The most direct method is the Zero-Order Hold approximation. It mimics a Digital to Analog Converter's output behavior by holding a value of a certain amplitude during a time as long as the defined sampling time. Although, it reflects reality quite well when the signal does not change too much between each sample, it does not fit as well at high frequencies. Thus, it translates into phase lag in the frequency domain and can cause trouble in closed-loop systems.\\
+Another of the most commonly used aproximations is the bilinear transform (or Tustin's method) which is based on the trapezoidal integration principle. A reason to use this method instead of others is that it maps the entire LHP (stable area in the continuous domain) into the unit circle (stable area in the discrete domain)\cite{GFranklin}.\\
 The bilinear approximation of \si{z} is defined as:
 %
 \begin{flalign} 
@@ -33,7 +34,7 @@ Moreover, Matlab has an available function, \lstinline{c2d()}, designed to conve
   \label{fig:bodePrewarpVsNoPrewarpVsContinuous}
 \end{figure}
 %
-From \figref{fig:bodePrewarpVsNoPrewarpVsContinuous}, it is possible to see that the discretized controllers match closely with the continuous one until approximately \si{10^{2}\ rad \cdot s^{-1}} where the phase from the discrete versions diverge from the original one. The discrete systems here, are only plotted before the vertical line which represents the Nyquist frequency, i.e. a half of the sampling frequency, chosen earlier in this section\fxnote{If the frequency choic is further explained, the corresponding section should be used as a reference here.}. More importantly, the two discrete versions of the controller, the red one using a simple Tustin method and the orange one using also pre-warping, seem very similar both in frequency and phase.
+From \figref{fig:bodePrewarpVsNoPrewarpVsContinuous}, it is possible to see that the discretized controllers match closely with the continuous one until approximately \si{10^{2}\ rad \cdot s^{-1}} where the phase from the discrete versions diverge from the original one. The discrete systems here, are only plotted before the vertical line which represents the Nyquist frequency, i.e.~a half of the sampling frequency, chosen earlier in this section\fxnote{If the frequency choic is further explained, the corresponding section should be used as a reference here.}. More importantly, the two discrete versions of the controller, the red one using a simple Tustin method and the orange one using also pre-warping, seem very similar both in frequency and phase.
 %
 \begin{figure}[H]
   \centering
