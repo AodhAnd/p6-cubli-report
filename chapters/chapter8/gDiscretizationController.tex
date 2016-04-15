@@ -22,13 +22,13 @@ The inverse transformation of \expr{exp:bilinearTransform} is given by:
 %
 In general, the \expr{exp:inverseBilinearTransform} is used to replace \si{s} in the continuous-time transfer function of the designed controller. However, due to the non-linear mapping induced by the discretization, a pre-warp of the frequencies can be used before. This avoids effects of phase lag near the cross-over frequency and thus, also avoids unwanted reduction of gain and phase margins, see \cite{GGu,AVOppenheim}. 
 
-Moreover, Matlab has an available function, \lstinline{c2d()}, designed to convert a continuous system's transfer function into the discrete domain by specifying the sampling time (here, \si{T = 0.01s}\fxnote{A justification fo this sampling time should be added at some point.}) and the desired method. The \lstinline{'prewarp'} option that is used, needs a supplementary argument corresponding to the critical fequency, chosen here to be \si{33,5\ rad \cdot s^{-1}}, see \cite{Matlabc2d}.
+Moreover, Matlab has an available function, \lstinline{c2d()}, designed to convert a continuous system's transfer function into the discrete domain by specifying the sampling time (here, \si{T = 0,01s}\fxnote{A justification fo this sampling time should be added at some point.}) and the desired method. The \lstinline{'prewarp'} option that is used, needs a supplementary argument corresponding to the critical fequency, chosen here to be \si{33,5\ rad \cdot s^{-1}}, see \cite{Matlabc2d}.
 
-\Figref{fig:bodePrewarpVsNoPrewarpVsContinuous} shows Bode plots comparing the original continuous controller's frequency and phase responses with the discretized controller's with both normal Tustin's method and pre-warping, while \figref{fig:bodePrewarpVsNoPrewarpVsContinuousClosedLoop}, shows the system's closed loop responses with these controllers.\\ 
+\Figref{fig:bodePrewarpVsNoPrewarpVsContinuous} shows Bode plots comparing the original continuous controller's frequency and phase responses with the discretized controller's with both normal Tustin's method and pre-warping, while \figref{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop}, shows the system's open loop responses with these controllers.\\ 
 % 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.67]{figures/prewarpVsNoPrewarpVsContinuousBode.pdf}
+  \includegraphics[scale=0.6]{figures/prewarpVsNoPrewarpVsContinuousBode.pdf}
   \caption{Bode plot of the continuous controller (in blue), discretized controller\\(in red) and pre-warped discretized controller (in orange)}
   \label{fig:bodePrewarpVsNoPrewarpVsContinuous}
 \end{figure}
@@ -37,21 +37,21 @@ From \figref{fig:bodePrewarpVsNoPrewarpVsContinuous}, it is possible to see that
 %
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.67]{figures/prewarpVsNoPrewarpVsContinuousBodeClosedLoop.pdf}
-  \caption{Bode plot of the closed loop system with the continuous controller\\(in blue), discretized controller (in red) and pre-warped discretized controller (in orange)}
-  \label{fig:bodePrewarpVsNoPrewarpVsContinuousClosedLoop}
+  \includegraphics[scale=.6]{figures/prewarpVsNoPrewarpVsContinuousBodeOpenLoop.pdf}
+  \caption{Bode plot of the open loop system with the continuous controller\\(in blue), discretized controller (in red) and pre-warped discretized controller (in orange)}
+  \label{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop}
 \end{figure}
 %
-However, when looking at the second graph, on \figref{fig:bodePrewarpVsNoPrewarpVsContinuousClosedLoop}, it is apparent that the phase of the pre-warped controller follows more closely the phase of the continuous version, which is desirable. Indeed, they both align by a few degrees between \si{10^{-1}\ rad \cdot s^{-1}} and \si{10^{2}\ rad \cdot s^{-1}} and are off by \si{90^{\circ}} maximum elsewhere. On the contrary, the non-pre-warped discrete controller has a huge phase shift of close to a complete cycle (\si{360^{\circ}}) which can reveal some badly unwanted effects when running the system.
+However, when looking at the second graph, on \figref{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop}, it is apparent that the phase of the pre-warped controller follows more closely the phase of the continuous version, which is desirable. On the contrary, the non-pre-warped discrete controller has a huge phase shift of close to a complete cycle (\si{360^{\circ}}) which can reveal some badly unwanted effects when running the system.
 
 Thus, the pre-warped discretized controller is chosen for the actual implementation on the Cubli, in the code base, see \secref{sec:codeBase}, and its discrete transfer function is:
 \begin{flalign}
-  \eq{D(z)} {\frac{\tau_{m,w}(z)}{e_{\theta}(z)} = \frac{\num{-13,25} + \num{11,83} \cdot z^{-1} + \num{13,23} \cdot z^{-2} - \num{11,85} \cdot z^{-3}}{1 - \num{1,382} \cdot z^{-1} + \num{0,3415} \cdot z^{-2} + \num{0,001638} \cdot z^{-3}}} &%\unit{N \cdot m} 
+  \eq{D(z)} {\frac{\tau_{m,w}(z)}{e_{\theta}(z)} = \frac{\num{-8,314} + \num{7,422} \cdot z^{-1} + \num{8,302} \cdot z^{-2} - \num{7,434} \cdot z^{-3}}{1 - \num{1,382} \cdot z^{-1} + \num{0,3415} \cdot z^{-2} + \num{0,001638} \cdot z^{-3}}} &%\unit{N \cdot m} 
   \label{eq:discControllerTf}
 \end{flalign}
 To implement a discrete controller in a code environment, the preferred form is the difference equation. This is why \eqref{eq:discControllerTf} is transformed into:
 \begin{flalign}
-  \eqOne{\tau_{m}[n]}{\num{-13,25} \cdot e_{\theta}[n]+ \num{11,83} \cdot e_{\theta}[n-1] + \num{13,23} \cdot e_{\theta}[n-2] - \num{11,85} \cdot e_{\theta}[n-3] }
+  \eqOne{\tau_{m}[n]}{\num{-8,314} \cdot e_{\theta}[n]+ \num{7,422} \cdot e_{\theta}[n-1] + \num{8,3023} \cdot e_{\theta}[n-2] - \num{7,434} \cdot e_{\theta}[n-3] }
   \eqTwo{+ \num{1,382} \cdot \tau_{m}[n-1] - \num{0,3415} \cdot \tau_{m}[n-2] - \num{0,001638} \cdot \tau_{m}[n-3]}\unit{N \cdot m} 
   \label{eq:discControllerDiffEq}
 \end{flalign}
@@ -59,9 +59,9 @@ To implement a discrete controller in a code environment, the preferred form is 
 %
 \hspace{6mm} Where:\\
 \begin{tabular}{ p{1cm} l l l}
-& \si{\tau_{m}}         & is the wanted motor torque                                          &\unitWh{N \cdot m} \\
-& \si{e_{\theta}}         & is the error between wanted and measured frame angle                &\unitWh{rad}\\
-& \si{x[n-m]}             & is the m-th previous state of a signal x, m = 0,1,2,3 &\unitWh{\cdot}\\
+& \si{\tau_{m}}         & is the wanted motor torque                                      &\unitWh{N \cdot m} \\
+& \si{e_{\theta}}         & is the error between wanted and measured frame angle          &\unitWh{rad}\\
+& \si{x[n-m]}             & is the m-th previous state of a signal x, m = 0,1,2,3         &\unitWh{\cdot}\\
 \end{tabular}
 
 In this subsection, the designed controller has been discretized. The next subsection goes into further analysis of the new feedback control system before the actual implementation on the real system.
