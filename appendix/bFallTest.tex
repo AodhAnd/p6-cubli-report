@@ -3,9 +3,8 @@
 \textbf{Date: 17/03 - 2016}
 
 \subsubsection{Purpose}
-Find the fall response of the frame from the vertical position, \si{\theta_F=0}\fxnote{might change depending on what is decided as the "real" 0 because of potentiometer offset}, and from a \si{10^\circ}\fxnote{Might chance depending on data } tilted position.
+Find the fall response of the frame from the vertical position, \si{\theta_F=0}, and from a \si{10^\circ} tilted position.
 Data is used to compare the measured response and the simulation given by the theoretical nonlinear model.
-
 
 \subsubsection{Setup}
 The wheel is being held in a fixed position with a strip tied to it and the frame. The probe chosen is a 1:1 and is connected to the potentiometer with probe to yellow cable and ground clamp to brown cable. The power supply has to be turned on in order to get readouts from the potentiometer. A sponge is placed on the rubber pad in order to damp the impact of the frame.
@@ -45,9 +44,8 @@ fix of table\fxnote{find the probe used}
 	%\item Plot the result of the simulations in the same figure and compare them
 \end{enumerate}
 
-
 \subsubsection{Results}
-Data from the test is presented in a graph showing the voltage measured, and in a graph with the voltage converted to radians.
+Data from the test is presented in a graph showing the measured  voltage.
 The data is available as a .csv file on the CD\fxnote{Make sure this is put into the CD folder for copying}
 
 \small\textbf{Fall response starting from \si{0^\circ}}
@@ -74,7 +72,7 @@ The data is available as a .csv file on the CD\fxnote{Make sure this is put into
 			\label{FallRad}
 		\end{figure}\vspace{-5mm}
 	\end{minipage}
-\end{minipage} \fxnote{Look at the layout of picture of data placement}
+\end{minipage} 
 
 \small\textbf{Fall response starting from \si{10^\circ}}
 
@@ -82,27 +80,22 @@ The data is available as a .csv file on the CD\fxnote{Make sure this is put into
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
 			\includegraphics[scale=.53]{figures/tenDegFallVolt}
-			\centering
-			\vspace{-.4cm}
 			\captionsetup{justification=centering}
 			\captionof{figure}{Raw data taken from the potentiometer}
 			\label{tenDegFallVolt}
-		\end{figure}\vspace{-5mm}
+		\end{figure}%\vspace{-5mm}
 	\end{minipage}
 	\hspace{0.03\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
 
 			\includegraphics[scale=.53]{figures/tenDegFallRad}
-			\centering
-			\vspace{-.4cm}
 			\captionsetup{justification=centering}
 			\captionof{figure}{Angular position of the frame}
 			\label{tenDegFallRad}
-		\end{figure}\vspace{-5mm}
+		\end{figure}%\vspace{-5mm}
 	\end{minipage}
 \end{minipage} \fxnote{Look at the layout of picture of data placement}
-fix\fxnote{link the correct pictures for the 0 degree experiment}
 
 
 %The result of the experiment (\figref{comparisonRealModel}) shows that the response of the real system has several differences with the one from the simulation.
@@ -114,11 +107,8 @@ fix\fxnote{link the correct pictures for the 0 degree experiment}
 %The other main difference is the shape of the curve, since the simulation is slower than the real case.
 
 \subsubsection{Note}
+The bouncing in the data when the frame reaches the lower position due to the presence of the sponge.
 
-There can be observed some bouncing in the data when the frame reaches the lower position due to the presence of the sponge.
-Because of the sponge used as a cushion, to dampen the impact of the Cubli, there can be observed some bouncing in the data when the frame reaches the outer position.
-
-The conversion from voltage to radians is based upon the test done in appendix X\fxnote{ADD reference to potentiometer test and the math behind the scaling}
 
 
 

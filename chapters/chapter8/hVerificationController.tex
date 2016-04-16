@@ -1,4 +1,12 @@
-\subsection{Discrete Controller Verification}\label{ssec:discreteControllerVerification}
+\section{Controller Analysis}\label{ssec:ControllerVerification}
+A further analysis can be done to the controller, both continuous and discrete, and also to the real response of the system once it is implemented.
+A first approach is to simulate the continuous controller and see how the system behaves with it.
+
+With a constant reference of 0 rad and a disturbance in the form of an small initial angle (\si{0,001 rad}) the response is the one shown in figref{} and figref{}.
+
+\fxnote{Include response of the continuous controller, both torque and position}
+
+
 It is necessary to verify that the discretized controller matches the original continuous one, and is also able to maintain the Cubli in the upright position. This is done firstly, by simulating the feedback system and comparing the newly made discrete controller with the continuous simulation from figref{fig:continuousControllerSimulation}, see \figref{fig:discreteVsContinuousSimulation}.
 %
 \begin{figure}[H]
