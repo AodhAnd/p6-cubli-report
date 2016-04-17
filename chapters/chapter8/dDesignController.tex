@@ -25,9 +25,20 @@ Finally, the gain must be adjusted to make the closed loop poles to be in a stab
 	\label{RLControllerZoom}
 \end{figure}
 %
-The equation of final controller is then given by \eqref{ControllerLaplace}
+The equation of final controller is then given by \eqref{ControllerLaplace}.
 
 \begin{flalign}
 	\eq{D(s)} {0,62737 \cdot \frac{(0,1054\ s + 1)\cdot (0,6254\ s + 1)}{(0,1805\ s - 1) \cdot (0,01\ s + 1) \cdot (0,005\ s + 1)}} & \nonumber\\
 	\label{ControllerLaplace}
 \end{flalign}
+%
+The stability of the controller given by \eqref{ControllerLaplace} can be then analyze using the Nyquist plot of the controller and the plant together, as seen in \figref{nyquistController}.
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[scale=0.46]{figures/nyquistController}	
+	\caption{Nyquist plot of the system with the controller}
+	\label{nyquistController}
+\end{figure}
+
+Now the number of poles in the RHP is two and the number of encirclements around -1 is equals -2 (they are counterclockwise). This means that the system is stable, as the number of zeros in the RHP becomes 0.
