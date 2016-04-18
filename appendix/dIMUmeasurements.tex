@@ -32,7 +32,8 @@ Analyse the data coming from the IMU, specifically the accelerometer and and the
 \subsubsection{Procedure}
 \begin{enumerate}
 	%\item Turn on the power supply
-	\item Upload the code with Simons controller
+	\item Assign a new name to the data file measurements are saved to in the code
+	\item Upload the code with Simons controller activated \fxnote{was it sliding mode that was used?}
 	\item Start the program and let the cubli balance for a few seconds
 	\item Poke the Cubli a few times so there is some random variations in the angle
 	\item Take the measurements and plot them in Matlab
@@ -41,11 +42,23 @@ Analyse the data coming from the IMU, specifically the accelerometer and and the
 
 
 \subsubsection{Results}
-The measured data is partially converted through the code. Accelerometer values and gyro values are thus already in rad/s. \fxnote{might need changing if we have to redo the conversion, B}
+The measured data is partially converted through the code. Accelerometer and gyro values are given in rad/s. \fxnote{might need changing if we have to redo the conversion, B}
+Data from the accelerometer is converted into an angle with arctan and the gyro data is integrated. This is done to see how close to each other the two measurements display the angle of the frame.
 The data is available as a .csv file on the CD\fxnote{Make sure this is put into the CD folder for copying}
 
-\small\textbf{Placeholder text}
+\small\textbf{Accelerometer data to angle}
+\begin{flalign}
+	&\si{\theta_{F}=\arctan(\frac{y_1}{x_1})}&
+	\label{eq:accelToAngle}
+\end{flalign}
 
+\small\textbf{Gyroscope angular velocity to angle}
+The integration is done the same way it would be done in the code on the BeagleBone.
+\begin{flalign}
+	&\si{\theta_{F}[n]=\theta_{F}[n-1]+\omega[n] \cdot \Delta T}&
+	\label{eq:gyroToAngle}
+\end{flalign}
+\si{\Delta T} being the samplingfrequency of the controller.
 \subsubsection{Note}
 
 
