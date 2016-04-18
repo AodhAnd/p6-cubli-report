@@ -1,0 +1,21 @@
+\chapter{Requirements}\label{chap:requirements}
+
+Based on the design considerations and limitations explained earlier in this report, a list of requirements shall be developed.
+
+\begin{enumerate}
+\item \textbf{The Cubli should be able to balance from an unstable equilibrium position and a null velocity.}
+  \begin{itemize}
+  \item[] Considering only naturally occurring perturbations, the Cubli needs to be able to regulate its position by itself, around the \SI{0}{rad \cdot s^{-1}}, without falling directly.
+  \end{itemize}
+\item \textbf{The Cubli should be balancing during X \SI{}{s}.}\fxnote{A number should be determined for X.}
+  \begin{itemize}
+  \item[] The amount of time the system stands should be measured from the moment the controller starts acting on the plant, with initial conditions an unstable equilibrium position (aproximately \SI{0}{rad \cdot s^{-1}}) with a null velocity of the wheel and the frame. The timer should be stopped as soon as the Cubli falls outside of the active region of the controller.
+  \end{itemize}
+\item \textbf{The prototype should be able to balance around \SI{0}{rad \cdot s^{-1}} regardless of the level of the baseplate, using internally mounted sensors.}  
+  \begin{itemize}
+  \item[] This ensures that the 2D design of the Cubli can keep its upright position independently from its base plate and therefore, can be more easily translated to a 3D model.
+  \end{itemize}
+\item \textbf{The implemented controller should keep the Cubli within X \SI{}{rad \cdot s^{-1}}.}\fxnote{A number has to be determined for Xand more arguments should be given.}
+\end{enumerate}
+
+From these established requirements, a controller allowing the Cubli to stabilize in an upright position is to be designed and implemented.
