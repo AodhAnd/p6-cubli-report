@@ -6,7 +6,7 @@ assignin('base', 'J_f', par(2));
 %assignin('base', 'm_f', par(3));
 %assignin('base', 'l_f', par(4));
 
-t = [ 0  t(1:length(t)-1) ]; 
+t = [ 0  t(1:length(t)-1) ];
 
 warning('off');
 sim('CubliSenseToolSim.slx');
