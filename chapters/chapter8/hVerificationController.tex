@@ -1,32 +1,38 @@
-
 \section{Controller Analysis}\label{ssec:ControllerVerification}
 A further analysis can be done to the controller, both continuous and discrete, and also to the real response of the system once it is implemented.
-A first approach is to simulate the continuous controller and see how the system behaves with it.
 
-With a constant reference of 0 rad and a disturbance in the form of an small initial angle (\si{0,001 rad}) the response is the one shown in figref{} and figref{}.
+The first step is to simulate both the continuous and discrete controller with the model of the system and analyse the behavior of the whole closed loop system.
 
-\fxnote{Include response of the continuous controller, both torque and position}
+This is done not only to see the behavior of the designed controller but also to verify that the discretized controller matches the original continuous one. 
 
-It is also necessary to verify that the discretized controller matches the original continuous one, and is also able to maintain the Cubli in the upright position. This is done firstly, by simulating the feedback system and comparing the newly made discrete controller with the continuous simulation from figref{fig:continuousControllerSimulation}, see \figref{fig:discreteVsContinuousSimulation}.
+With a constant reference of 0 rad and a disturbance in the form of a torque applied to the frame of \si{0,55 Nm}, the response is the one shown in \figref{discreteVsContinuousOutputController} and \figref{discreteVsContinuousSimulation}.
 %
-
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]
-      \includegraphics[scale=.53]{figures/torqueComp.pdf}
+\begin{minipage}{0.45\linewidth}
+	\begin{figure}[H]
+      \includegraphics[scale=.53]{figures/torqueComp}
       \captionsetup{justification=centering}
       \captionof{figure}{Controller's output (torque) response in the control loop with the continuous (blue) and discrete (red) controllers}
-      \label{fig:discreteVsContinuousOutputController}
+      \label{discreteVsContinuousOutputController}
     \end{figure}\vspace{-5mm}
-  \end{minipage}
-  \hspace{0.03\linewidth}
-  \begin{minipage}{0.45\linewidth}
-    \begin{figure}[H]\vspace{-9mm}
-      \includegraphics[scale=.53]{figures/positionComp.pdf}
+\end{minipage}
+\hspace{0.03\linewidth}
+\begin{minipage}{0.45\linewidth}
+    \begin{figure}[H]\vspace{-4mm}
+      \includegraphics[scale=.53]{figures/positionComp}
       \captionsetup{justification=centering}
       \captionof{figure}{Closed loop response of the continuous (blue) and discrete (red) controllers}
-      \label{fig:discreteVsContinuousSimulation}
+      \label{discreteVsContinuousSimulation}
     \end{figure}\vspace{-5mm}
-  \end{minipage}
+\end{minipage}
 
+Both controllers seem to have a good behavior and both reach the desired final position. However it is important to look also to the velocity of the wheel, since it has been assumed to be 0 in the equilibrium position.
+%
+\begin{figure}[H]\vspace{-4mm}
+	\centering
+	\includegraphics[scale=.53]{figures/wheelComp}
+	\captionof{figure}{Angular velocity of the wheel}
+   \label{fig:discreteVsContinuousWheel}
+\end{figure}\vspace{-5mm}
 
-In \figref{discreteVsContinuousSimulation}, the system is given an initial condition of. The discretized controller seems to fulfill the basic requirement of putting back the Cubli in the upright (\si{0^{\circ}}) position. However, ...
+In both cases the velocity is different from 0 in the steady-state
+
