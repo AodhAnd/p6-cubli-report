@@ -51,7 +51,15 @@ To do this estimation, the toolbox needs input and output data from a test on th
 	\caption{Schematic of Senstool}
 	\label{SensToolSchema}
 \end{figure}
-The simulation of the system is given by a Simulink file, which includes the block diagram of the system without the influence of the speed of the wheel.
+%
+The simulation of the system is given by a Simulink file, which includes the block diagram of the system without the influence of the speed of the wheel (\figref{blockDiagramSenseTool}).
+%
+\begin{figure}[H]
+	\input{figures/blockDiagramSensTool.tikz}
+		\centering
+	\caption{Block diagram of the system}
+	\label{blockDiagramSenseTool}
+\end{figure}
 
 The data is obtained through a test described in Appendix \ref{impulseResponseAppendix}, which gives the following result:
 

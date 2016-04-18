@@ -14,7 +14,7 @@
       node(sum2) at (9.25,0) [sum]{$\sum$}
       node(sum3) at (10.75,0) [sum]{$\sum$}
 
-      node(torque2rotacc1) at (12.85,0) [block]{\Large $\frac{1}{J_w + m_w \cdot {l_w}^{2}}$}
+      node(torque2rotacc1) at (12.85,0) [block]{\Large $\frac{1}{J_F + m_w \cdot {l_w}^{2}}$}
 
       node(integration1) at (15.75,0) [block] {\Large $\frac{1}{s}$}
       node(integration2) at (18.2,0) [block] {\Large $\frac{1}{s}$}
