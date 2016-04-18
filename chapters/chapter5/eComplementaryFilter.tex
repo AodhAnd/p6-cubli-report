@@ -36,14 +36,13 @@ This is done to counteract drift of the gyroscope and error of the accelerometer
 	node[shape=coordinate][](angle) at (10,-1){}		% output of the complementary filter
 	;
 	
-	\draw[->](acc) -- node {} (lowpas);
-	\draw[->](gyro) -- node {} (integrate);
+	\draw[->](acc) -- node {accel$\_\theta_{F}$} (lowpas);
+	\draw[->](gyro) -- node {gyro$\_\omega_{F}$} (integrate);
 	\draw[->](integrate) -- node {} (highpas);
 	
 	\draw[->](highpas) -| node {} (sum);
 	\draw[->](lowpas) -| node {} (sum);
 	
-	%node at (acc)  [] {\Large \textopenbullet}
 	
 	\draw[->](sum) -- node {$\theta_{F}$} (angle);
 	
