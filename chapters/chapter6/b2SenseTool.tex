@@ -8,7 +8,7 @@ Initial parameters are found in the previous\fxnote{perhaps reff here}, however 
 The data provided is taken from an initial value test of the Cubli hanging down like a pendulum, see \appref{impulseResponseAppendix}. Furthermore the nonlinear model is used to accurately describe the oscillatory behavior of the pendulum. The model is modified, such that it describes the system as a regular pendulum without the dynamics of the reaction wheel, in order to match the test conditions under which the data was extracted\fxnote{Figure of the modified model is need here .. or reff}. In order to minimize the difference between the data points measured in test and the output of the model a function to describe such a relationship is needed. The performance function used to describe goodness of the fit, is a mean square error function.
 %
 \begin{flalign}
-	\eq{\vec{P}(\vec{\theta})} {\frac{1}{mN}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &
+	\eq{\vec{P}(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &
 \label{performanceFunction}
 \end{flalign}
 %
@@ -16,15 +16,13 @@ The data provided is taken from an initial value test of the Cubli hanging down 
 \begin{tabular}{ p{1cm} l l l}
 & \si{\vec{\theta}}   & is the parameter(s) to be adjusted                  & \\
 & \si{N}              & is the degrees of freedom for each parameter        & \\
-& \si{m}              & is the number of parameters to be adjusted          & \\
 & \si{k}              & is the sample indexes, \si{k=1,\ 2,} ...\si{,\ N}   & \\
 & \si{T}              & is the sampling time                                & \\
 & \si{\vec{y}}        & is the test measurement output vector               & \\
 & \si{\vec{y_m}}      & is the model output vector                          & \\
 \end{tabular}
 
-\fxnote{we need to figure out if [m is the number of parameters to be adjusted] is true - stated in where-list - in the documentation for Sense Tool m=2, why? Normally for MSE m=1}
-The optimization problem is then defined as minimization of this performance function.
+A normal mean square error function is only divided by the degrees of freedom, \si{N}, and not \si{2N}. This is done to cancel out the factor two which arises when computing the gradient of the performance function. This only gives the function a constant offset and does not have any impact when minimizing it.
 
 \subsection{Steepest Descent Method}
 One way of solving the optimization problem is through use of the gradient. The gradient indicates in which direction the steepest descent or ascent is found in an infinitesimal surrounding of a given starting point.
@@ -63,7 +61,7 @@ In steepest descend method only the first order Taylor approximation is used, th
 \label{1stOrderTaylorApproximationParThetaEqZero}
 \end{flalign}
 
-That is, if the gradient of the function to be minimized is 0, a minimum or maximum exists as a candidate for a solution in this point. It follows that if standing in some point and taking the gradient in this point, then the gradient, \si{\vec{g}}, is the steepest ascend and the negative gradient, \si{-\vec{g}}, is the steepest descend. This only takes into account the immediate surroundings of the initially chosen point. One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each itteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \figref{SteepestDescendSmallStep}.
+That is, if the gradient of the function to be minimized is 0, a minimum or maximum exists as a candidate for a solution in this point. It follows that if standing in some point and computing the gradient in this point, then the gradient, \si{\vec{g}}, is the steepest ascend and the negative gradient, \si{-\vec{g}}, is the steepest descend. This only takes into account the immediate surroundings of the initially chosen point. One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each itteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \figref{SteepestDescendSmallStep}.
 %
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -120,8 +118,8 @@ This expression can then be used to choose the value of \si{\vec{\delta}} such t
 When implementing Newton's Method both the gradient and the Hessian of the performance function \eqref{performanceFunction} is needed\fxnote{Do we want the whole derivation of this?}.
 %
 \begin{flalign}
-	\frac{\partial \vec{P}(\vec{\theta}) }{\partial \vec{\theta}} &= G(\vec{\theta}) = \frac{\partial}{\partial \vec{\theta}} \left( \frac{1}{mN}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &\\
-  \eq{\vec{G}(\vec{\theta})} {- \frac{2}{mN}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right) } &
+	\frac{\partial \vec{P}(\vec{\theta}) }{\partial \vec{\theta}} &= G(\vec{\theta}) = \frac{\partial}{\partial \vec{\theta}} \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &\\
+  \eq{\vec{G}(\vec{\theta})} {- \frac{1}{N}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right) } &
 \label{gradientOfPerformanceFunction}
 \end{flalign}
 
@@ -165,3 +163,27 @@ Since the Matlab implementation uses a Simulink model the problematic part of \e
   YmDiffBf = ( deltaYmBf - Ym )/ p;
   YmDiffJf = ( deltaYmJf - Ym )/ p;
 \end{lstlisting}
+
+Now that the model partial derivatives are found all parts of the gradient, as represented in \eqref{gradientOfPerformanceFunction}, are known. The Hessian is also needed and can be represented as,
+%
+\begin{flalign}
+	\frac{\partial^2 \vec{P}(\vec{\theta}) }{\partial \vec{\theta}\partial \vec{\theta^T}} &= \vec{H}(\vec{\theta}) = \frac{\partial \vec{G}(\vec{\theta}) }{\partial \vec{\theta}} &
+\end{flalign}
+%
+which leads to the following:
+\begin{flalign}
+	\vec{H}(\vec{\theta}) &= \frac{1}{N}\sum_{k = 1}^{N} \left(   \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \left(\frac{\partial \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right)^T  	  - \left(\frac{\partial^2 \vec{P}(\vec{\theta}) }{\partial \vec{\theta}\partial \vec{\theta^T}}\right) (\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))  \right) &
+\label{hessianOfPerformanceFunction}
+\end{flalign}
+%
+To avoid the 2nd derivative of the performance function in \eqref{hessianOfPerformanceFunction} the Hessian can be approximated simply by removing this last term.
+\begin{flalign}
+	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \left(   \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \left(\frac{\partial \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right)^T \right) &
+\label{hessianApproxOfPerformanceFunction}
+\end{flalign}
+%
+This approximation assumes that the model is only linearly dependent on the parameters, \si{\vec{\theta}}. As the error term, \si{(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))}, approaches zero the approximation becomes increasingly accurate.
+
+
+
+
