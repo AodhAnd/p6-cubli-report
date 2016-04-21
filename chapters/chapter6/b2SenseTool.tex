@@ -69,7 +69,6 @@ That is, if the gradient of the function to be minimized is 0, a minimum or maxi
 			\includegraphics[scale=1.4]{figures/gradientDescendLargeStep}
 			\centering
 			\captionsetup{justification=centering}
-			%\vspace{-.55cm}
 			\captionof{figure}{A too large step will cause the algorithm to step over the valley, resulting in a larger value of f(x) in the \si{-\vec{g}} direction}
 			\label{SteepestDescendLargeStep}
 		\end{figure}
@@ -142,7 +141,7 @@ Since the Matlab implementation uses a Simulink model the problematic part of \e
   J_f = deltaJ_f;
   
   %running the simulation again, now with deviation in J_f
-  sim('CubliSenseToolSim.slx');
+  sim('CubliParameterEstimation.slx');
   
   %storring the result of the simulation
   deltaYmJf = simOut;
@@ -151,7 +150,7 @@ Since the Matlab implementation uses a Simulink model the problematic part of \e
   B_f = deltaB_f; J_f = J_f_old; %<--restoring J_f
   
   %running the simulation again, now with deviation in B_f
-  sim('CubliSenseToolSim.slx');
+  sim('CubliParameterEstimation.slx');
   
   %storring the result of the simulation
   deltaYmBf = simOut;
@@ -184,6 +183,11 @@ To avoid the 2nd derivative of the performance function in \eqref{hessianOfPerfo
 %
 This approximation assumes that the model is only linearly dependent on the parameters, \si{\vec{\theta}}. As the error term, \si{(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))}, approaches zero the approximation becomes increasingly accurate.
 
+Running the implementation of Newton's method approximates the model parameters to \si{J_F = } and \si{B_F = }, while giving a normed root mean square error of \si{31.71 \%} as seen on \figref{ParameterEstimationNewtonCubli}. The normed RMS error is a way to determine the goodness of the fit.
 
-
-
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=\textwidth]{figures/ParameterEstimationNewtonCubli}
+	\caption{The result of implementation of Newton's method}
+	\label{ParameterEstimationNewtonCubli}
+\end{figure}
