@@ -23,7 +23,7 @@ It is plugged to a computer from which the correct code can be sent, started and
 \subsubsection{Procedure}
 
 \begin{enumerate}
-  \item Plug the power supply given with the Cubli setup to a \SI{220}{V} power outlet.
+  \item Plug the power supply given with the Cubli setup to a \si{220}{V} power outlet.
   \item Wait until the blue LEDs on the Beaglebone Black start blinking slowly and connect the USB cable to the PC.
   \item Send the binary compiled program of the controller to the board.
   \item Connect to a distant terminal on the Beaglebone Black through SSH and launch the program.
@@ -52,10 +52,20 @@ It is plugged to a computer from which the correct code can be sent, started and
 	\end{figure}\vspace{-5mm}
 \end{minipage}
 \\
-\begin{figure}[H]\vspace{-4mm}
-	\centering
-	\includegraphics[scale=.53]{figures/torqueTestTustinPre}
-	\captionof{figure}{Torque values asked to the motor}
-	\label{torqueTestTustinPre}
-\end{figure}\vspace{-5mm}
-
+\begin{minipage}{0.45\linewidth}
+	\begin{figure}[H]
+		\includegraphics[scale=.53]{figures/torqueTestTustinPre}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Torque values asked to the motor}
+		\label{torqueTestTustinPre}
+	\end{figure}\vspace{-5mm}
+\end{minipage}
+\hspace{0.03\linewidth}
+\begin{minipage}{0.45\linewidth}
+	\begin{figure}[H]\vspace{-4mm}
+		\includegraphics[scale=.53]{figures/wheelTestTustinPre}
+		\captionsetup{justification=centering}
+		\captionof{figure}{Angular velocity of the wheel}
+		\label{wheelTestTustinPre}
+	\end{figure}\vspace{-5mm}
+\end{minipage}
