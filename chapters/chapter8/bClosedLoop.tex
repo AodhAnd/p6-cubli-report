@@ -1,7 +1,7 @@
 \section{Closed Loop Response}\label{closedLoop}
-A first approximation to the behavior of the system in closed loop can be done through a proportional controller.
+A first approximation of the system's behavior in closed loop can be done through a proportional controller.
 
-When a gain of 10 is put in the controller, the response of the simulation and the one from the real setup are the ones shown in \figref{closedLoopResponse}
+Such a system is tested with a gain of 10 as a controller. \Figref{closedLoopResponse} shows the response of the simulation and the one from the real setup under a similar fall test as in \appref{fallResponseAppendix}. 
 
 \begin{figure}[H] 
 	\centering 
@@ -10,4 +10,4 @@ When a gain of 10 is put in the controller, the response of the simulation and t
 	\label{closedLoopResponse}
 \end{figure}
 %
-It is clear that the closed loop function has an unstable response when a reference of 0 rad is required.
+It is clear that, upon application of a \SI{0}{rad} reference and a minimal initial offset, the closed loop function with only a gain of 10 has an unstable response.
