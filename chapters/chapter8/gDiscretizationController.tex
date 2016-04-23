@@ -33,7 +33,7 @@ Here, it is chosen to use \si{33,5\ rad \cdot s^{-1}} as the critical pre-warp f
   \label{fig:bodeOpenLoopContinuous}
 \end{figure}
 %
-\Figref{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop} shows Bode plots comparing open loops with the original continuous controller agaisnt the discretized controller's with ZOH, normal Tustin's method and pre-warping, while \figref{fig:bodePrewarpVsNoPrewarpVsContinuousClosedLoop}, shows the system's closed loop responses with these controllers.\\ 
+\Figref{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop} shows Bode plots comparing open loops with the original continuous controller agaisnt the discretized controller's with ZOH, normal Tustin's method and pre-warping.
 %
 \begin{figure}[H]
   \centering
@@ -44,16 +44,8 @@ Here, it is chosen to use \si{33,5\ rad \cdot s^{-1}} as the critical pre-warp f
 %
 From \figref{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop}, it is possible to see that the phase of the ZOH discretized controller diverges from the continuous one's, no later than at \si{3\ rad \cdot s^{-1}}. On the other hand, Tustin discretized controllers match closely with the continuous one until approximately \si{10^{1}\ rad \cdot s^{-1}}. \\
 The discrete systems here, are only plotted before the vertical line which represents the Nyquist frequency, i.e.~a half of the sampling frequency, chosen earlier in this section\fxnote{If the frequency choic is further explained, the corresponding section should be used as a reference here.}. More importantly, the two discrete versions of the controller, the orange one using a simple Tustin method and the purple one using also pre-warping, seem very similar both in frequency and phase.
-%
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=.6]{figures/zohVsPrewarpVsNoPrewarpVsContinuousBodeClosedLoop}
-  \caption{Bode plot of the closed loop system with the continuous controller (in blue), ZOH discretized controller (in red), Tustin discretized controller (in orange) and pre-warped Tustin discretized controller (in purple)}
-  \label{fig:bodePrewarpVsNoPrewarpVsContinuousClosedLoop}
-\end{figure}
-%
-More than with the open loop Bode plot, a difference between controllers is visible by looking at the closed loop Bode plot, on \figref{fig:bodePrewarpVsNoPrewarpVsContinuousClosedLoop}. There, it is apparent that the phase of the pre-warped controller follows more closely the phase of the continuous version than with only Tustin approximation, which is desirable. On the contrary, the non-pre-warped discrete controller has a huge phase lag of at least \si{180^{\circ}} compared to the continuous closed-loop which reveals a substantial delay.\fxnote{Add more to justify pre-warp instead of zoh}
 
+However, pre-warping should improve the matching between the discretized version and the continuous version of the controller, by re-mapping frequencies to reduce the bilinear transform's distortion.\\
 Thus, the pre-warped discretized controller is chosen for the actual implementation on the Cubli, in the code base, see \secref{sec:codeBase}, and its discrete transfer function is:
 \begin{flalign}
   \eq{D(z)} {\frac{\tau_{m,w}(z)}{e_{\theta}(z)} = \frac{\num{-8,314} + \num{7,422} \cdot z^{-1} + \num{8,302} \cdot z^{-2} - \num{7,434} \cdot z^{-3}}{1 - \num{1,382} \cdot z^{-1} + \num{0,3415} \cdot z^{-2} + \num{0,001638} \cdot z^{-3}}} &%\unit{N \cdot m} 

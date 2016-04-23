@@ -29,12 +29,12 @@ Gz=c2d(G_reduced,T,'zoh');
 D=-4583.5*(s+9.483)*(s+1.599)/((s-5.539)*(s+100)*(s+200));
 
 disp('Discretized controller: Zero-Order Hold method');
-Dz = c2d(D,T,'zoh');
+Dz = c2d(D,T,'zoh')
 disp('Discretized controller: Tustin method');
-Dt = c2d(D,T,'tustin');
+Dt = c2d(D,T,'tustin')
 disp('Discretized controller: Tustin w/ pre-warping method');
 opts = c2dOptions('Method', 'tustin', 'PrewarpFrequency', 33.5); % Look at wp = 38.351 or 33.27356999 or in between
-Dtp = c2d(D,T,opts);
+Dtp = c2d(D,T,opts)
 
 %-- Bode plot --%
 figure
