@@ -9,7 +9,7 @@ assignin('base', 'J_f', par(2));
 t = [ 0  t(1:length(t)-1) ];
 
 warning('off');
-sim('CubliSenseToolSim.slx');
+sim('CubliSenseToolSimOLD.slx');
 warning('on');
 
 y = output;
