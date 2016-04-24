@@ -1,8 +1,29 @@
 \section{Parameter Estimation using Optimization}
-In this section two methods for optimization will be investigated. The bases of implementation is in this case a Matlab script which is fed test data along with the model simulation, and then given the task to fit the model output to the test data by adjusting one or more parameters in the model. In this case the model representation supplied to the script is a Simulink model, which can then be run by the script whenever needed and the script can modify the parameters to be adjusted. The process is iterative in most cases.
+In this section two methods for optimization will be investigated. The base of the implementation is in this case a Matlab script which is fed with test data along with the model simulation, whose task is to fit the model output to the test data by adjusting one or more parameters in the model. In this case the model representation supplied to the script is a Simulink model, which can then be run by the script whenever needed and the script can modify the parameters to be adjusted. The process is iterative in most cases.
 
 \subsection{The Optimization Problem}
-The data provided is taken from an initial value test of the Cubli hanging down like a pendulum, see \appref{impulseResponseAppendix}. Furthermore the nonlinear model is used to accurately describe the oscillatory behavior of the pendulum. The model is modified, as seen in \figref{blockDiagramSenseTool}, such that it describes the system as a regular pendulum without the dynamics of the reaction wheel, in order to match the test conditions under which the data was extracted. In order to minimize the difference between the data points measured in test and the output of the model a function to describe such a relationship is needed. The performance function used to describe goodness of the fit, is a mean square error function.
+The basic scheme for the optimization problem is given in \figref{SensToolSchema}.
+%
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{figures/SensToolSchema}
+	\caption{Schematic of the optimization problem}
+	\label{SensToolSchema}
+\end{figure}
+%
+The provided data is taken from an initial value test of the Cubli hanging down like a pendulum, see \appref{impulseResponseAppendix}.
+As the operating angle goes from \si{-0,15\ to\ 0,15\ rad}, the behavior at this range will be better if the fit is done between this operating points. 
+
+Furthermore, the nonlinear model is used to accurately describe the oscillatory behavior of the pendulum. The model is modified such that it describes the system as a regular pendulum without the dynamics of the reaction wheel, in order to match the test conditions under which the data was extracted, as seen in \figref{blockDiagramSenseTool},
+%
+\begin{figure}[H]
+	\input{figures/blockDiagramSensTool.tikz}
+	\centering
+	\caption{Block diagram of the system}
+	\label{blockDiagramSenseTool}
+\end{figure}
+%
+ In order to minimize the difference between the data points measured in test and the output of the model, a function to describe such a relationship is needed. The performance function used to describe goodness of the fit, is a mean square error function.
 %
 \begin{flalign}
 	\eq{\vec{P}(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &
@@ -19,13 +40,12 @@ The data provided is taken from an initial value test of the Cubli hanging down 
 & \si{\vec{y_m}}      & is the model output vector                          & \\
 \end{tabular}
 
-A normal mean square error function is only divided by the degrees of freedom, \si{N}, and not \si{2N}. This is done to cancel out the factor two which arises when computing the gradient of the performance function. This only gives the function a constant offset and does not have any impact when minimizing it.
+A normal mean square error function is only divided by the degrees of freedom, \si{N}, but in tis case is divided by \si{2N} to cancel out the factor which arises when computing its gradient. This only gives the function a constant offset and does not have any impact when minimizing it.
 
 \subsection{Steepest Descent Method}
-One way of solving the optimization problem is through use of the gradient. The gradient indicates in which direction the steepest descent or ascent is found in an infinitesimal surrounding of a given starting point.
+One way of solving the optimization problem is through the use of the gradient. It indicates in which direction the steepest descent (or ascent) is found in an infinitesimal surrounding of a given starting point.
 
-For a function \si{f(x)} with a change in \si{x} of \si{\delta} the following can be obtained 
-from the Taylor series.
+For a function \si{f(x)} with a change in \si{x} of \si{\delta}, the following can be obtained from the Taylor series.
 %
 \begin{flalign}
   f(x) + \Delta f(x) = f(\vec{x}+\vec{\delta}) &\approx f(x) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
@@ -51,7 +71,7 @@ from the Taylor series.
 %& \si{\theta} 					    	   & is the angle between \si{\vec{g}} and \si{\vec{\delta}}     & \\
 %\end{tabular}
 
-In steepest descend method only the first order Taylor approximation is used, that is, the last term, \si{\frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta}} is discarded. If the derivative of the first order approximation, is set to zero, the following is obtained.
+In steepest descend method only the first order Taylor approximation is used, that is, the last term, \si{\frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta}} is discarded. If the derivative of the first order approximation is set to zero, the following is obtained.
 %
 \begin{flalign}
   \frac{\partial}{\partial \vec{\delta}} \ f(\vec{x}+\vec{\delta}) &\approx \vec{g} = 0 &
@@ -91,7 +111,7 @@ One way of implementation is to set a step-size which decides how far in the \si
 	\end{minipage}
 \end{minipage}
 
-The steepest descend method does find a minimum, however, it converges to the minimum rather slowly. An implementation where it is possible to directly retrieve the gradient of the function, \si{f(x)}, which is to be minimized is shown in \figref{steepestDescendEx}.
+The steepest descend method does find a minimum. However, it converges to it rather slowly. An implementation where it is possible to directly retrieve the gradient of the function which is to be minimized, \si{f(x)}, is shown in \figref{steepestDescendEx}.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -99,7 +119,7 @@ The steepest descend method does find a minimum, however, it converges to the mi
 			\includegraphics[scale=.6]{figures/steepestDescendEx}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{An example of a direct implementation of the steepest descend method. The read is where an iteration steps over the valley and the step size is reduced.}
+			\captionof{figure}{An example of a direct implementation of the steepest descend method. It steps over the valley and the step size is reduced in the red iteration}
 			\label{steepestDescendEx}
 		\end{figure}
 	\end{minipage}
@@ -109,16 +129,16 @@ The steepest descend method does find a minimum, however, it converges to the mi
 			\includegraphics[scale=.6]{figures/steepestDesendExZoom}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{From the zoom on the convergence it is clear that many iterations (here 100) are needed using the steepest descend method.}
+			\captionof{figure}{From the zoom on the convergence, it can be seen that many iterations (here 100) are needed using this method}
 			\label{steepestDesendExZoom}
 		\end{figure}
 	\end{minipage}
 \end{minipage}
 
-From the zoom on \figref{steepestDesendExZoom} the convergence toward the minimum is clear, however it is also clear that many iterations are needed to get there.
+%From the zoom on \figref{steepestDesendExZoom} the convergence toward %the minimum is clear, however it is also clear that many iterations are %needed to get there.
 
 \subsection{Newton's Method}
-An other approach is called Newton's Method is also rooted in the Taylor approximation, this however method however also uses the second order term of the approximation.
+Another approach is called Newton's Method, which is also rooted in the Taylor approximation. However, this method also uses the second order term of the approximation.
 %
 \begin{flalign}
   f(x) + \Delta f(x) = f(\vec{x}+\vec{\delta}) &\approx f(x) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
@@ -141,8 +161,8 @@ Using this to find an expression for the difference in \si{x}, \si{\vec{\delta}}
 \label{NewtonsMethod}
 \end{flalign}
 
-This expression can then be used to choose the value of \si{\vec{\delta}} such that \si{f(x)} is minimized. An implementation where it is possible to directly retrieve the gradient and a Hessian of the function, \si{f(x)}, which is to be minimized is shown in \figref{NewtonsMethodEx}. If compared to the steepest descend method in \figref{steepestDescendEx} and \ref{steepestDesendExZoom}, where 100 iterations were used, it is clear how Newton's method converges much faster, 30 iterations, to the minimum of \si{f(x)}. 
-
+This expression can then be used to choose the value of \si{\vec{\delta}} such that \si{f(x)} is minimized. An implementation where it is possible to directly retrieve the gradient and a Hessian of the function which is to be minimized, \si{f(x)}, is shown in \figref{NewtonsMethodEx}. 
+%
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.7\textwidth]{figures/NewtonsMethodEx}
@@ -150,8 +170,10 @@ This expression can then be used to choose the value of \si{\vec{\delta}} such t
 	\label{NewtonsMethodEx}
 \end{figure}
 
+If compared to the steepest descend method in \figref{steepestDescendEx} and \ref{steepestDesendExZoom}, where 100 iterations were used, it is clear how Newton's method converges much faster, in 30 iterations, to the minimum of \si{f(x)}. 
+
 \subsection{Implementation of Newton's Method}
-When implementing Newton's Method both the gradient and the Hessian of the performance function \eqref{performanceFunction} is needed.
+When implementing Newton's Method both the gradient and the Hessian of the performance function \eqref{performanceFunction} are needed.
 %
 \begin{flalign}
 	\frac{\partial \vec{P}(\vec{\theta}) }{\partial \vec{\theta}} &= G(\vec{\theta}) = \frac{\partial}{\partial \vec{\theta}} \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &\\
@@ -212,7 +234,7 @@ which leads to the following:
 \label{hessianOfPerformanceFunction}
 \end{flalign}
 %
-To avoid the 2nd derivative of the performance function in \eqref{hessianOfPerformanceFunction} the Hessian can be approximated simply by removing this last term.
+To avoid the second derivative of the performance function in \eqref{hessianOfPerformanceFunction}, the Hessian can be approximated simply by removing this last term.
 \begin{flalign}
 	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \left(   \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \left(\frac{\partial \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right)^T \right) &
 \label{hessianApproxOfPerformanceFunction}
@@ -220,7 +242,7 @@ To avoid the 2nd derivative of the performance function in \eqref{hessianOfPerfo
 %
 This approximation assumes that the model is only linearly dependent on the parameters, \si{\vec{\theta}}. As the error term, \si{(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))}, approaches zero the approximation becomes increasingly accurate.
 
-Running the implementation of Newton's method approximates the model parameters to \si{J_F = } and \si{B_F = }, while giving a normed root mean square error of \si{31.71 \%} as seen on \figref{ParameterEstimationNewtonCubli}. The normed RMS error is a way to determine the goodness of the fit.
+Running the implementation of Newton's method approximates the model parameters to \si{J_F = } and \si{B_F = }, while giving a normed root mean square error of \si{31.71 \%} as seen on \figref{ParameterEstimationNewtonCubli}. %The normed RMS error is a way to determine the goodness of the fit.
 
 \begin{figure}[H] 
 	\centering
@@ -229,48 +251,22 @@ Running the implementation of Newton's method approximates the model parameters 
 	\label{ParameterEstimationNewtonCubli}
 \end{figure}
 
-A lot of the background for the implementation above comes from documentation on a Matlab toolbox called Sense Tool, which is discussed in the following.
+\subsection{SensTool}
+A lot of the background for the implementation above comes from documentation on a Matlab toolbox called SensTool \fxnote{Reference Senstool guide}. The optimization method is implemented in it and it also includes an extra feature based on parameter sensitivity and frequency domain. For a better accuracy on the estimation it is a good decision to use this tool as the final approach to the parameters of the Cubli model.
 
-\subsection{Sense Tool}
-To do this estimation, the toolbox needs input and output data from a test on the real system. In this case the data is from an initial value test of the Cubli hanging down like a pendulum, see \appref{impulseResponseAppendix} and the input is a zero-vector. A functional simulation of the model which depends on the parameters which need to be estimated must also be provided. Then it tries to minimize the error between the output data and the output of the simulation, using Gauss-Newton method.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.4]{figures/SensToolSchema}
-	\caption{Schematic of Senstool}
-	\label{SensToolSchema}
-\end{figure}
+The same data, Simulink model and initial parameters as the previous case are given to this toolbox and the result of the fit can be seen in \figref{SenseToolParameterEstimation}. 
 %
-The simulation of the system is given by a Simulink file, which includes the block diagram of the system without the influence of the speed of the wheel (\figref{blockDiagramSenseTool}).
-%
-\begin{figure}[H]
-	\input{figures/blockDiagramSensTool.tikz}
-		\centering
-	\caption{Block diagram of the system}
-	\label{blockDiagramSenseTool}
-\end{figure}
-
-The data is obtained through a test described in Appendix \ref{impulseResponseAppendix}, which gives the following result:
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.6]{figures/PendRad}
-	\caption{Angular position of the Cubli for the initial condition test}
-	\label{cubliInitCondTest}
-\end{figure}
-
-As the operating angle goes from \si{-0,15\ to\ 0,15\ rad}, the behavior at this range will be better if the fit is done between this operating points.
-
-The result of this fit is seen in \figref{SenseToolParameterEstimation}, where the final estimated parameters are \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2\ and\ B_F=7,7 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}. The normed RMS error is \si{27,4\ \%} compared to the \si{31,7\ \%} shown in \figref{ParameterEstimationNewtonCubli}. The \si{4,3\ \%} error reduction is likely due to additional algorithms based on parameter sensitivity and frequency domain analysis, which are implemented in the Sense Tool toolbox.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{figures/SenseToolParameterEstimation}
 	\caption{Data from the test (red) and final fit with the new parameters (blue)}
 	\label{SenseToolParameterEstimation}
 \end{figure}
+%
 
-\subsection{Final Parameters}
+The final estimated parameters are \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2\ and\ B_F=7,7 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}. The normed RMS error is \si{27,4\ \%} compared to the \si{31,7\ \%} shown in \figref{ParameterEstimationNewtonCubli}. The \si{4,3\ \%} error reduction is likely due to additional algorithms.
+
+\section{Final Parameters}
 The final parameters of the system can be seen in \ref{ParametersSystem}
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{3cm}|}
