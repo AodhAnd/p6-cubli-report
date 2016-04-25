@@ -2,10 +2,41 @@
 \label{sec:Sensors}
 
 \subsection{Potentiometer}
+The potentiometer is a precision potentiometer with a continuous turning and the text on it is: 65383-1-103 LIN \si{\pm1,0\%} RES 10K \si{\pm10\%} 9642EY. 
+
+\subsection{IMU type MPU-6050}
+  
+The Motion Processing Unit (MPU) is a triple axis accelerometer with a gyro mounted on the breakout board from SparkFun. This is also called 6 Degrees of Freedom (6-DOF).
+
+The MPU 6050 is a sensor based on Micro Electro Mechanical Systems (MEMS) technology. This chip uses Inter Integrated Circuit (I2C) protocol for communication, and is using I2C speed op to 400 kHz. 
+
+The unit have a built in Digital-output temperature sensor for more precision measurement, embedded algorithms for run-time bias and compass calibration so no user calibration are required.
+The unit collects gyroscope and accelerometer data while synchronizing data sampling at a user defined rate. 
+
+For more precision measurement of the gyroscope and accelerometer, the unit can be programmed for the measurement of different intervals for the gyroscope from ±250 to ±2000 Degrees Per Second (DPS) and for a accelerometer range of ±2 g to ±16 g. 
+
+The unit have built in 16-bit ADC converters for digitizing the gyroscope and accelerometer outputs and a digitally low-pass filter that can be programmed.
+
+MPU-6050 have a buffer of 1024 Byte. The buffer is First In First Out (FIFO) type and is reducing timing requirements on the system processor.
+
+The Digital Motion Processor (DMP) is capable of processing, so the Digital-output of the unit can be calculated as 6-Axis or 9-Axis MotionFusion on the unit. The output-data can come as rotation matrix, quaternion, Euler Angle, or raw data format. 
+
+The MPU’s calculated output to the system processor can also include heating data from a digital 3-axis third party magnetometer.
+
+
+
+\subsection{Planning of different test.}
+The Cubli is analyzed so the parameters is confirmed and also to find the changes that have been made after the electronic board has been added to the frame during the last parameters measurement. For this reason, different tests will be made on the Cubli to find the different parameters and sensor inputs that will be used in making a model of the system.
+
+The objective of this test is to find the linearity of the potentiometer and find the outer range of the frame rotation in degrees and potentiometer and BeagleBone Black A/D converter value, and the same for the balancing point, and at the same time get the new parameters of the frame like the weight and the placement of center of mass.
+
+
+\subsection{Analyze the Potentiometer}
 The potentiometer is placed at the corner of the frame which is fixed to an axis and it can be used to measure the actual position of the frame.\\
 However its use is restricted to the one-dimensional Cubli, as it is attached and gives only an angle in relation to the base, which is not present in the 3D case.\\
 In the project the potentiometer is used to test the dynamics of the Cubli and for feedback in the initial controller design.\\
-Since the tests and feedback dependent on the reliability of the potentiometer, a test is carried out to find the voltage to angle conversion along with potential offset, see \appref{potentiometerRes}.
+Since the tests and feedback dependent on the reliability of the potentiometer, different tests are carried out on the potentiometer.
+Test to find the voltage to angle conversion along with potential offset, see \appref{potentiometerRes}.
 
 \begin{minipage}{\linewidth}
   	\begin{minipage}{0.45\linewidth}
@@ -32,12 +63,18 @@ Since the tests and feedback dependent on the reliability of the potentiometer, 
 \end{minipage}
 
 The results of this test is shown above in \figref{PotentiometerResolution}, where the reference lines reveals an offset between the middle of the range and the equilibrium point of the Cubli frame.\\
-This offset, also seen angle offset on \figref{PotentiometerResolutionRadDeg}, exists in the physical position of the frame. When the frame is standing it its equilibrium position it is displaces by approximately \si{3,9} degrees due to uneven distribution of mass around its center.\\
+This offset, also seen angle offset on \figref{PotentiometerResolutionRadDeg}, exists in the physical position of the frame. When the frame is standing in its equilibrium position it is displaced by approximately \si{3,9} degrees due to uneven distribution of mass around its center.\\
 This results in a \si{48,9} degree range to one side of the optimal position and \si{41,1} degrees on the other\fxnote{STILL INVESTIGATING. IS NOT THAT UNEVEN AFTER ALL}.\\
 To avoid complications it is chosen that the angle-offset must be accounted for such that the equilibrium position of the frame is at angle 0.
 
+%Equilibrium point has been tested to have a range of 1 degree and the angle between the base and the frame is 42,5 degree. To avoid complications it is chosen that the angle-offset must be accounted for such that the equilibrium position of the frame is at 0 degree angle. This results in a 48,9 degree range to one side of the optimal position and 41,1 degree on the other.
 
-\subsection{IMU}
-Acceleration is measured by the 3-axis accelerometer.
+The result gives an almost straight line well below of the 1 procent linearity of the potentiometer, but at a certain angle the potentiometer have an area where the measurement is deviating. The reason for this deviation is that it is a continuous rotating potentiometer and hit the point where it changes. A way to correct this problem is to turn the potentiometer a bit.\fxnote{Inset the to pictures} 
 
-Angular velocity is measured by the 3-axis gyroscope. \fxnote{make a table with important info}
+Testing the Linearity by measuring every 10 degree the value of the potential meter around Equilibrium point.
+
+Equilibrium point have a range of 1 degree this is due to friction in the barreling.
+\fxnote{make a table with important info}
+
+\fxnote{the strange number from the code "16384" comes from datasheet, B}
+
