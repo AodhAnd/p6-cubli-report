@@ -33,7 +33,7 @@ The brushless motor used on the Cubli setup is a EC 45 flat 50 Watt (part no. 25
 Connected between the BeagleBone and the Brushless DC-motor is a ESCON Module 50/5, which is a motor control board. It is specifically made to work with ESCON motors (which the EC 45 flat is) and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}
 The control board has a setup selected by the previous group working with the Cubli setup.\\ 
 %The PWM signal has a range of 10 \% to 90 \%. 
-Inside the board is a 4-quadrant configuration and is controlled by a PWM signal which is limited to the range 10 \% to 90 \%. Through the software the current is limited to 4 A at 90 \% and -4 A at 10 \%.\\
+Inside the board is a 4-quadrant configuration and it is controlled by a PWM signal which is limited to the range 10 \% to 90 \%. Through the software the current is limited to 4 A at 90 \% and -4 A at 10 \%.\\
 The control board is set to run with a current control loop, which will keep the set current while the motor runs. It takes a signal, representing a current, as an input and then regulates the voltage over the motor to counteract back-EMF.\fxnote{double check the emf thing, i might be wrong, B}
 
 \begin{table}[H]
@@ -55,7 +55,40 @@ The control board is set to run with a current control loop, which will keep the
 	\label{MotorControlBoardTable}
 \end{table}
 
-\subsection{Jump Brake}
-The last important part included on the system is the braking mechanism, which is used for making the frame go from rest to vertical position. 
+\subsection{Connecting and breakout board}
+On this board there is a power distribution for the different voltage to each unit.
 
-To perform this task the motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it. This makes that all the energy of the wheel is then transfer to the frame, which reaches the vertical position.
+There is also a built-in gain for the potentiometer so it is configured for the ideal range of the BeagleBone Black ADC's and the rotation of the frame. 
+
+Simon Jensen, Electronic Technician, have made the connecting and breakout board. The text on the board is Automation \& Control made by Simon Jensen 2C 94V-0 15/01. The Schematic of the connecting and breakout board can be found in the appendix.\fxnote{Schematic in appendix}
+
+From the schematic of the connecting and breakout 
+board the gain has been built to have a gain of 3.  
+
+
+\subsection{Jump Brake}
+The Kump Brake is a Hitec HS225 Mighty Mini Servomotor
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{4cm}|p{7cm}|}
+		\hline%------------------------------------------------------------------------------------
+		Hitec HS225                & Analog Servomotor   \\
+		\hline%------------------------------------------------------------------------------------
+		Speed                    &  (4,8V/6,0V): 0,14x0,11 sec @ 60 deg.  	\\
+		\hline%------------------------------------------------------------------------------------
+		Torque kg/cm                    &  (4,8V/6,0V): 3,9 / 4,8  	\\
+		\hline%------------------------------------------------------------------------------------
+		Size in Millimeters 							 &  32,26 x 16,76 x 31,00    \\
+		\hline%------------------------------------------------------------------------------------
+		Weight grams      &  27,94    \\
+		\hline%------------------------------------------------------------------------------------
+	\end{tabular}
+	\caption{Hitec HS225 Mighty Mini Servomotor Specifications}
+	\label{HitecHS225Servomotor}
+\end{table}
+
+
+The last important part included on the system is the braking mechanism, which is used for making the frame go from a resting position to vertical position. 
+
+To perform this task the motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it. All the energy of the wheel is thus transfered to the frame, which then reaches the vertical position.
