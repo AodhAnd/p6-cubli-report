@@ -1,6 +1,8 @@
 \chapter{System Description}\label{systemDescription}
 One-frame Cubli is a non-linear unstable system which is capable of laying on one of its corners as long as it is properly controlled, using the inertia created in the reaction wheel present in the setup.
 
+
+
 This system is composed by several hardware parts, listed in the following table. \fxnote{Include picture of the real model, mark all the parts in the picture}
 
 \begin{table}[H]
@@ -16,15 +18,26 @@ This system is composed by several hardware parts, listed in the following table
 		\hline %-----------------------------------------------------------------------------------
 		4            & Potentiometer			\\
 		\hline %-----------------------------------------------------------------------------------
-		5            & IMU          			\\
+		5            & Inertia Measurement Units (IMU)       			\\
 		\hline %-----------------------------------------------------------------------------------
 		6            & Brushless DC-motor   	\\
 		\hline %-----------------------------------------------------------------------------------
 		7            & Motor control board     	\\
 		\hline %-----------------------------------------------------------------------------------
-		8            & Jump brake		    	\\
+		8            & Jump brake (servomotor)		    	\\
+		\hline %-----------------------------------------------------------------------------------
+		9            & Connecting and breakout board		    	\\
 		\hline %-----------------------------------------------------------------------------------
 	\end{tabular}
 	\caption{Main parts of the Cubli setup}
 \label{TableAAUCubliComponent}
 \end{table}
+
+BeagleBone Black and Maxon motor control board and Maxon motor and break servomotor is mounted to the frame. On the motor shaft a freewheel is mounted. 
+
+There is 2 pieces of IMU mounted on the frame. The IMU measures acceleration and angular velocity. The frame is mounted on the platform by a potentiometer so the angle of the frame can be measured.
+
+To connect the BeagleBone Black to the other units like the Maxon motor control board and the IMU and potentiometer there is a connecting and breakout board.
+
+The Cubli is a complete finish mechanical electronic system and have been built by others. From the previous groups that have been working on the Cubli some of the parameters have been found. To confirm and investigate the configuration of the mechanical parts changes has been made to the Cubli and the new parameters has not been measured and verified.
+
