@@ -9,25 +9,37 @@ The root locus of the system can be seen in \figref{rlocusCubli2}.
  	\captionof{figure}{Root Locus of the system}
  	\label{rlocusCubli2}
 \end{figure}
+%
+As there exists one pole in the Right Half Plane (RHP), the controller must also have one there to create two branches which can be attracted to the Left Half Plane (LHP).
 
-As there exist one pole in the Right Half Plane (RHP), the controller must also have one there to create two branches which can be attracted to the Left Half Plane (LHP).
+Then, two zeros must be placed in the LHP to make the branches enter in the stable region of the plot.
 
-\fxnote{Include root locus with just one pole in the RHP}
+It is also important for the number of poles to be greater than the number of zeros so that the controller is feasible in reality. This means that two poles need to be placed somewhere so they don't affect the behavior of the final system. This can be achieved if they are placed in the LHP and far from the imaginary axis.
 
-Then, two zeros must be placed in the LHP to make the branches enter in the stable region of the plot, as can be seen in 
+Finally, the gain must be adjusted to make the closed loop poles to be in a stable location. The resultant Root Locus can be seen in \figref{RLControllerZoom}.
 
-\fxnote{Include RL with the two zeros}
-
-It is also important that the number of poles must be greater that the number of zeros for the controller to be feasible in reality. this means that two poles need to be placed somewhere so they don't affect the behavior of the final system. This can be achieve if they are placed in the LHP and far from the imaginary axis.
-
-Finally, the gain must be adjusted to make the closed loop poles to be in a stable location.
-
-\fxnote{Include final root locus of the system}
-
-
-The final controller, is given by \eqref{ControllerLaplace}
+\begin{figure}[H]
+	\centering 
+	\includegraphics[scale=.56]{figures/RLControllerZoom}
+	\captionof{figure}{Root Locus of the final system}
+	\label{RLControllerZoom}
+\end{figure}
+%
+The equation of the final controller is then given by \eqref{ControllerLaplace}.
 
 \begin{flalign}
 	\eq{D(s)} {0,62737 \cdot \frac{(0,1054\ s + 1)\cdot (0,6254\ s + 1)}{(0,1805\ s - 1) \cdot (0,01\ s + 1) \cdot (0,005\ s + 1)}} & \nonumber\\
 	\label{ControllerLaplace}
 \end{flalign}
+%
+The stability of the controller given by \eqref{ControllerLaplace} can be then analyzed using the Nyquist plot of the controller and the plant together in open loop, as seen in \figref{nyquistController}.
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[scale=0.46]{figures/nyquistController}	
+	\caption{Nyquist plot of the system with the controller}
+	\label{nyquistController}
+\end{figure}
+
+Now there are two poles in the RHP and the number of encirclements around -1 equals -2 (they are counterclockwise). 
+This means that the system is stable, as the number of zeros in the RHP becomes 0, see \secref{sec:stabilityAnalysis}.

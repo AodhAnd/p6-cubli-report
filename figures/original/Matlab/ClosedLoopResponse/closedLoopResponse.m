@@ -1,8 +1,8 @@
 % Cubli model parameters
 J_w=0.601e-3;
-J_f=5.6e-3;
+J_f=4.8e-3;
 B_w=17.03e-6;
-B_f=7.4e-3;
+B_f=7.7e-3;
 m_w=0.222;
 m_f=0.77-m_w;%0.354;
 g=9.82;
@@ -16,8 +16,8 @@ warning('on');
 
 %Data of the real model
 data=csvread('PRINT_03.CSV');
-time=data(1080:2000,1)-data(1080,1);
-pot=data(1080:2000,2);
+time=data(1111:2000,1)-data(1111,1);
+pot=data(1111:2000,2);
 
 Vmin=0.0039924;
 Vmax=0.4705509;
@@ -39,6 +39,6 @@ set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 xlabel('Time (s)');
 ylabel('Angular Position (rad)');
 legend('Simulation','Real Cubli');
-axis([0 2.3 -0.8 0.1]);
+axis([0 2.2 -0.8 0.1]);
 hold off;
 
