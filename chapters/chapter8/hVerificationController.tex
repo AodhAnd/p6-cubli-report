@@ -38,29 +38,35 @@ In both cases the velocity is different from 0 in steady state, with means that 
 
 The conclusion of the simulation is that the controller is not able to maintain the system in equilibrium position. This means that another kind of controller in needed, which also takes care of the velocity of the wheel. Since now the system will have two outputs it is reasonable to consider a State Space approach to solve the problem.
 
-Moreover, the response of the real Cubli with the controller can also be tested (see \appref{app:sisoToolDControllerTest}). The torque requested by the controller and the position of the frame are shown in \figref{torqueTustinPre} and \figref{positionTustinPre}.
-
-\begin{minipage}{0.45\linewidth}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=.53]{figures/torqueTestTustinPre}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Torque requested by the controller}
-		\label{torqueTustinPre}
-	\end{figure}\vspace{-5mm}
-\end{minipage}
-\hspace{0.03\linewidth}
-\begin{minipage}{0.45\linewidth}
-	\begin{figure}[H]\vspace{-0mm}
-		\centering
-		\includegraphics[scale=.53]{figures/positionTestTustinPre}
-		\captionsetup{justification=centering}
-		\captionof{figure}{Angular position of the Cubli}
-		\label{positionTustinPre}
-	\end{figure}\vspace{-5mm}
-\end{minipage}
-
- In that case the Cubli starts form equilibrium position and no disturbance is applied to it. Initially the torque should be very low since the error is almost 0. However its value is very high, which makes
- the Cubli fall. 
- 
+%Moreover, the response of the real Cubli with the controller can also be tested (see \appref{app:sisoToolDControllerTest}). The torque requested by the controller, the position of the frame and the velocity of the wheel are shown in \figref{torqueTustinPre}, \figref{positionTustinPre} and \figref{wheelTustinPre}.
+%
+%\begin{minipage}{0.45\linewidth}
+%	\begin{figure}[H]
+%		\centering
+%		\includegraphics[scale=.53]{figures/torqueTestTustinPre}
+%		\captionsetup{justification=centering}
+%		\captionof{figure}{Torque requested by the controller}
+%		\label{torqueTustinPre}
+%	\end{figure}\vspace{-5mm}
+%\end{minipage}
+%\hspace{0.03\linewidth}
+%\begin{minipage}{0.45\linewidth}
+%	\begin{figure}[H]\vspace{-5mm}
+%		\centering
+%		\includegraphics[scale=.53]{figures/positionTestTustinPre}
+%		\captionsetup{justification=centering}
+%		\captionof{figure}{Angular position of the Cubli}
+%		\label{positionTustinPre}
+%	\end{figure}\vspace{-5mm}
+%\end{minipage}
+%
+%\begin{figure}[H]\vspace{-4mm}
+%	\centering
+%	\includegraphics[scale=.53]{figures/wheelTestTustinPre}
+%	\captionof{figure}{Angular velocity of the real wheel}
+%	\label{wheelTustinPre}
+%\end{figure}\vspace{-5mm}
+%
+% In that case the Cubli starts form equilibrium position and no disturbance is applied to it. Initially the torque should be very low since the error is almost 0. However its value is very high, which makes the Cubli fall. 
+% 
 
