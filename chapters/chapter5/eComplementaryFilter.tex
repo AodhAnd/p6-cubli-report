@@ -16,9 +16,17 @@ This is done to counteract drift of the gyroscope and error of the accelerometer
 \begin{figure}[H]
 	\input{figures/complementaryFilterBlockDiagram.tikz}
 	\centering
-	\caption{Block diagram of the complementary filter}
+	\caption{Block diagram of the complementary filter setup used with the IMU on the Cubli}
 	\label{blockDrawingComplementaryFilter}
 \end{figure}
+
+The filter for the IMU is going to be done as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope.
+\begin{flalign}
+	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
+	\eq{\theta_{F}} {\frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F}}&
+	\label{WheelRotEq2Laplace}
+\end{flalign}
+ 
 
 %\begin{figure}[H] 
 %	\centering

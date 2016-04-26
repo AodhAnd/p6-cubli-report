@@ -26,7 +26,7 @@ node[shape=coordinate][](angle) at (11,-1){}		% output of the complementary filt
 
 \draw[-](acc) -- node {accel$\_\theta_{F}$} (acc1);
 \draw[->](acc) -- node {} (lowpas);
-\draw[->](gyro) -- node {gyro$\_\omega_{F}$} (integrate);
+\draw[->](gyro) -- node {gyro$\_\dot{\theta}_{F}$} (integrate);
 \draw[->](integrate) -- node {} (highpas);
 
 \draw[->](highpas) -| node {} (sum);
