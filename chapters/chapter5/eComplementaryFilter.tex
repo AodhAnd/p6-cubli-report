@@ -24,10 +24,32 @@ The filter for the IMU is going to be done as shown in \figref{blockDrawingCompl
 \begin{flalign}
 	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
 	\eq{\theta_{F}} {\frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F}}&
-	\label{WheelRotEq2Laplace}
+	\label{complementaryBlockFilters}
 \end{flalign}
+Combining the two equations yields \eqref{complementaryCombinedFilter}
+\begin{flalign}
+	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F} + \frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F} = \frac{accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F}}{1 + \tau \cdot s}}
+	\label{complementaryCombinedFilter}
+\end{flalign}
+ The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much two different sensor measurements weight in on the combined angle.
  
-
+ In oder to use the complementary filter on the cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}
+ Rewritting \eqref{complementaryCombinedFilter} yields
+ \begin{flalign}
+ 	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+ 	\label{discreteComplementaryFilter1}
+ \end{flalign}
+ Now s is replaced
+  \begin{flalign}
+  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+  	\label{discreteComplementaryFilter2}
+  \end{flalign}
+  
+  \begin{flalign}
+  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+  	\label{discreteComplementaryFilter3}
+  \end{flalign}
+ 
 %\begin{figure}[H] 
 %	\centering
 %	\includegraphics[scale=0.08]{figures/tempComplementaryFilter}
