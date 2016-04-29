@@ -18,6 +18,7 @@ del "*.synctex.gz(busy)"
 del "*.tdo"
 del "*.toc"
 del "*.tps"
+del "*.thm"
 
 cd .\Chapters\Chapter1
 del "*.aux"

@@ -16,14 +16,54 @@ This is done to counteract drift of the gyroscope and error of the accelerometer
 \begin{figure}[H]
 	\input{figures/complementaryFilterBlockDiagram.tikz}
 	\centering
-	\caption{Block diagram of the complementary filter}
+	\caption{Block diagram of the complementary filter setup used with the IMU on the Cubli}
 	\label{blockDrawingComplementaryFilter}
 \end{figure}
 
-%\begin{figure}[H] 
-%	\centering
-%	\includegraphics[scale=0.08]{figures/tempComplementaryFilter}
-%	\caption{Sketch of the structure of the complementary filter. Measurements from the accelerometer are calculated into an angle on the axis of movement. Data from gyro is used to find the angular velocity on the axis of movement}
-%	\label{blockComplementaryFilter}
-%\end{figure}
-%\fxnote{Make a proper sketch of the complementary filter, B}
+The filter for the IMU is going to be done as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope. \cite{OlliW} \fxnote{might not be the correct source for this part, but it is a source that is useful for the part, B}
+\begin{flalign}
+	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
+	\eq{\theta_{F}} {\frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F}}&
+	\label{complementaryBlockFilters}
+\end{flalign}
+Combining the two equations yields \eqref{complementaryCombinedFilter}
+\begin{flalign}
+	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F} + \frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F} = \frac{accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F}}{1 + \tau \cdot s}}
+	\label{complementaryCombinedFilter}
+\end{flalign}
+The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much two different sensor measurements weight in on the combined angle.
+ 
+In oder to use the complementary filter on the cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}
+Rewritting \eqref{complementaryCombinedFilter} yields
+\begin{flalign}
+ 	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+ 	\label{discreteComplementaryFilter1}
+\end{flalign}
+Now s is replaced
+\begin{flalign}
+  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+  	\label{discreteComplementaryFilter2}
+\end{flalign}
+  
+\begin{flalign}
+  	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T \cdot (1 + z^{-1})}{\Delta T \cdot (1 + z^{-1})+2\cdot (1 - z^{-1})\cdot \tau} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+  	\label{discreteComplementaryFilter3}
+\end{flalign}
+  
+\begin{flalign}
+   	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T + \Delta T \cdot z^{-1})}{(2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+   	\label{discreteComplementaryFilter4}
+\end{flalign}
+   
+Implementing \eqref{discreteComplementaryFilter4} yields following piece of code \fxnote{USE the current form in the controller code file}
+\begin{lstlisting}
+/**
+*  delta_T is the sampling time = 0.01 s
+*  tau is the cut-off frequency of the low and high pass filters
+*/
+theta_f[n] = ((2*tau-delta_T) / (2*tau+delta_T)) * theta[n-1] + 
+	(delta_T / (2*tau+delta_T)) * (acc_theta[n] + gyro_thetaDot[n] + acc_theta[n-1] + gyro_thetaDot[n-1]) 
+
+\end{lstlisting}
+
+The cut-off frequency for the filters can be determined by making a least square approximation of the error between the complimentary angle and the angle measured with the potentiometer. 
