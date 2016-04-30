@@ -87,7 +87,7 @@ That is, if the gradient of the function to be minimized is 0, a minimum or maxi
 	\label{visualizationOfGradient}
 \end{figure}
 
-One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each iteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \ref{SteepestDescendSmallStep}, where \si{s^*} is the value of \si{x} which minimizes \si{f(x)}, \si{x_0} is the starting point at which \si{-\vec{g}} is computed and \si{x} is the point reached after the step.
+One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each iteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \ref{SteepestDescendSmallStep}, where \si{x^*} is the value of \si{x} which minimizes \si{f(x)}, \si{x_0} is the starting point at which \si{-\vec{g}} is computed and \si{x} is the point reached after the step.
 %
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -242,7 +242,7 @@ To avoid the second derivative of the performance function in \eqref{hessianOfPe
 %
 This approximation assumes that the model is only linearly dependent on the parameters, \si{\vec{\theta}}. As the error term, \si{(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))}, approaches zero the approximation becomes increasingly accurate.
 
-Running the implementation of Newton's method approximates the model parameters to \si{J_F = } and \si{B_F = }, while giving a normed root mean square error of \si{31.71 \%} as seen on \figref{ParameterEstimationNewtonCubli}. %The normed RMS error is a way to determine the goodness of the fit.
+Running the implementation of Newton's method approximates the model parameters to \si{J_F = } and \si{B_F = }, while giving a normed root mean square error of \si{31,71 \%} as seen on \figref{ParameterEstimationNewtonCubli}. %The normed RMS error is a way to determine the goodness of the fit.
 
 \begin{figure}[H] 
 	\centering
