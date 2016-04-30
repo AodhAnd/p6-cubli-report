@@ -12,7 +12,7 @@ The parameters from the wheel (mass, distance from its center to the pivoting po
 		%-----------------------------------------------------------------------------------
 		\si{l_w}         & \si{0,093}       &m\\
 		\hline %-----------------------------------------------------------------------------------
-		\si{J_w}            & \si{0,601 \cdot 10^{-3}}	&\si{kg \cdot m^2}\\
+		\si{J_w}         & \si{0,601 \cdot 10^{-3}}	&\si{kg \cdot m^2}\\
 		\hline  
 		%-----------------------------------------------------------------------------------
 		\si{B_w}         & \si{17,03 \cdot 10^{-6}}       &N \si{\cdot m \cdot s \cdot rad^{-1}}\\
@@ -22,13 +22,13 @@ The parameters from the wheel (mass, distance from its center to the pivoting po
 	\label{ParametersWheel}
 \end{table}
 
-However, the rest of the parameters (\si{m_F, l_F, J_F\ and\ B_F}) must be find out. This is due to the addition of the electronics to the frame, which were not there when the tests were made.
+However, the rest of the parameters (\si{m_F, l_F, J_F\ and\ B_F}) must be found out. This is due to the addition of the electronics to the frame, which were not there when the tests were made.
 
 \subsection{Mass of the Frame}
-The first one to find is the mass of the frame, which can be measured weighting the setup without the base and substracting the known mass of the wheel. This gives a mass of \si{0,548\ kg}.
+The first one to find is the mass of the frame, which can be measured weighing the setup without the base and substracting the known mass of the wheel. This gives a mass of \si{0,548\ kg}.
 
 \subsection{Center of Mass of the Frame}
-The new center of mass can be found hanging the frame from different corners and measuring he deviation angle from the vertical position in every direction. This gives a center of mass which can be seen in \figref{centerOfMassDiagram}. 
+The new center of mass can be found hanging the frame from different corners and measuring the deviation angle from the vertical position in every direction. This gives a center of mass which can be seen in \figref{centerOfMassDiagram}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{figures/centerOfMassDiagram}
@@ -39,7 +39,7 @@ The new center of mass can be found hanging the frame from different corners and
 
 The new point is not in the vertical line as it was assumed in the model, but this can be solved correcting the offset in the calculation of the angle inside the control loop and taking this new point as the equilibrium one. 
 
-The new \si{l_F} can be obtained then projecting the center of mass onto the vertical line, resulting in \si{8,498\ cm}.
+The new \si{l_F} can then be obtained projecting the center of mass onto the vertical line, resulting in \si{8,498\ cm}.
 
 \subsection{Inertia and Friction of the Frame}
 In the previous sections parameters have been found, however, some critical parameters were given from a previous project. When these parameters were found, the Cubli had another mass, due to some physical modifications of the platform, which were performed after the refereed project. The critical parameters are \si{J_F} and \si{B_F}. If the model is compared with reality, as seen on \figref{InitialModelParameterCompare}, it is evident that some further tuning of the parameters is needed.
