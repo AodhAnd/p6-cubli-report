@@ -1,0 +1,26 @@
+\section{System Analysis in State-Space}\label{sec:SSAnalysis}
+The stability of the system can be derived from matrix A. The denominator of the transfer function of the system is equal to the characteristic polynomial of A, which means that its eigenvalues are the poles of the system. The eigenvalues of A are, as expected, \si{-10.5014,\ 9.3531\ and\ -0.0283}.
+
+Once the system is confirmed as unstable, its controllability in state-space must be determine. It refers of the ability to go from one state to another in a finite amount of time by means of admissible inputs. To do that, the controllability matrix must be analyzed.
+%
+\begin{equation}  \label{controlability}
+	controlability\ matrix = 
+	\begin{bmatrix}
+		A & AB & A^2B \\
+	\end{bmatrix}
+\end{equation}
+%
+The control matrix in this case is full row rank which means that the system is controllable.
+
+Another important characteristic for the design of controllers is the observability, which refers to the capability of inferring the internal states knowing the outputs of the system. In this case there exists a matrix which includes only C and A, which meas that the observability is not related with the inputs of the system. 
+%
+\begin{equation}  \label{observability}
+	observability\ matrix = 
+	\begin{bmatrix}
+		C \\
+		CA \\
+		CA^2 \\
+	\end{bmatrix}
+\end{equation}
+%
+This matrix has also full row rank so the states can be observed.
