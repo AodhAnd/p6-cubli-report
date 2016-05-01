@@ -1,6 +1,4 @@
-\section{Motor}
-\label{sec:Motor}
-
+\section{Motor}\label{sec:Motor}
 
 \subsection{Brushless DC-Motor}
 To control the reaction wheel a brushless DC-motor is used. \fxnote{put datasheet on the cd appendix}
@@ -11,7 +9,7 @@ The brushless motor used on the Cubli setup is a EC 45 flat 50 Watt (part no. 25
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|p{5cm}|p{2.3cm}|}
+	\begin{tabular}{|p{4.8cm}|p{3.3cm}|}
 		\hline%------------------------------------------------------------------------------------
 		\textbf{Motor Data}                        &  \textbf{Value} \unitWh{Unit}  \\
 		\hline%------------------------------------------------------------------------------------
@@ -19,7 +17,7 @@ The brushless motor used on the Cubli setup is a EC 45 flat 50 Watt (part no. 25
 %		\hline%------------------------------------------------------------------------------------
 		Nominal current                   		  &  2,33 \unitWh{A}	\\
 		\hline%------------------------------------------------------------------------------------
-		Motor constant (\si{K_t})				 &  33,5 \unitWh{\frac{\si{m\cdot Nm}}{\si{A}}}  \\
+		Motor constant (\si{K_t})				 &  33,5 \unitWh{m^2\cdot N \cdot A^{-1}}  \\
 		\hline%------------------------------------------------------------------------------------
 		Mechanical time contant                 &  12,4 \unitWh{ms}  \\
 		\hline%------------------------------------------------------------------------------------
@@ -30,10 +28,10 @@ The brushless motor used on the Cubli setup is a EC 45 flat 50 Watt (part no. 25
 
 
 \subsection{Motor Control Board}
-Connected between the BeagleBone and the Brushless DC-motor is a ESCON Module 50/5, which is a motor control board. It is specifically made to work with ESCON motors (which the EC 45 flat is) and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}
+Connected between the BeagleBone and the Brushless DC-motor is an ESCON Module 50/5, which is a motor control board. It is specifically made to work with ESCON motors (which the EC 45 flat is) and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}
 The control board has a setup selected by the previous group working with the Cubli setup.\\ 
 %The PWM signal has a range of 10 \% to 90 \%. 
-Inside the board is a 4-quadrant configuration and it is controlled by a PWM signal which is limited to the range 10 \% to 90 \%. Through the software the current is limited to 4 A at 90 \% and -4 A at 10 \%.\\
+Inside the board is a 4-quadrant configuration and it is controlled by a PWM signal which is limited to the range 10 \% to 90 \%. Through the software the current is limited to \SI{4}{A} at 90 \% and \SI{-4}{A} at 10 \%.\\
 The control board is set to run with a current control loop, which will keep the set current while the motor runs. It takes a signal, representing a current, as an input and then regulates the voltage over the motor to counteract back-EMF.\fxnote{double check the emf thing, i might be wrong, B}
 
 \begin{table}[H]
@@ -56,18 +54,21 @@ The control board is set to run with a current control loop, which will keep the
 \end{table}
 
 \subsection{Connecting and breakout board}
-On this board there is a power distribution for the different voltage to each unit.
+This board aims at power distribution with different voltages sent to each unit.
 
 There is also a built-in gain for the potentiometer so it is configured for the ideal range of the BeagleBone Black ADC's and the rotation of the frame. 
 
-Simon Jensen, Electronic Technician, have made the connecting and breakout board. The text on the board is Automation \& Control made by Simon Jensen 2C 94V-0 15/01. The Schematic of the connecting and breakout board can be found in the appendix.\fxnote{Schematic in appendix}
+Simon Jensen, Electronic Technician at Aalborg University, has made the connecting and breakout board. The text on the board is Automation \& Control made by Simon Jensen 2C 94V-0 15/01.\fxnote{Do we need all this information ? J.} The Schematic of the connecting and breakout board can be found in the appendix.\fxnote{Schematic in appendix}
 
-From the schematic of the connecting and breakout 
-board the gain has been built to have a gain of 3.  
+From the schematic of the connecting and breakout board the gain has been built to have a gain of 3.\fxnote{It would be nice if the mention of the gain value were put with the initial statement that there is one instead of having a `cutting' paragraph in between. J.}
 
 
 \subsection{Jump Brake}
-The Kump Brake is a Hitec HS225 Mighty Mini Servomotor
+The last important part included on the system is the braking mechanism, which is used for making the frame go from a resting position to vertical position. 
+
+To perform this task the motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it. All the energy of the wheel is thus transfered to the frame, which then reaches the vertical position.
+
+The corresponding part used on the Cubli setup is a Hitec HS225 Mighty Mini Servomotor.\fxnote{Add reference}
 
 \begin{table}[H]
 	\centering
@@ -87,8 +88,3 @@ The Kump Brake is a Hitec HS225 Mighty Mini Servomotor
 	\caption{Hitec HS225 Mighty Mini Servomotor Specifications}
 	\label{HitecHS225Servomotor}
 \end{table}
-
-
-The last important part included on the system is the braking mechanism, which is used for making the frame go from a resting position to vertical position. 
-
-To perform this task the motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it. All the energy of the wheel is thus transfered to the frame, which then reaches the vertical position.
