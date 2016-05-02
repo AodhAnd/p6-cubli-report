@@ -10,13 +10,22 @@ real_current=-data(:,4);    % The measurement has the opposite sign
 figure(1);
 hold on;
 plot(time, asked_current,'k','linewidth',1.2);
-plot(time, real_current,'b','linewidth',1.2); 
-
 title('Motor Current Test');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 xlabel('Time (s)');
 ylabel('Current (A)');
-legend('Required Current','Real Current','Location','NorthWest');
+legend('Asked Current','Real Current','Location','NorthWest');
+axis([0 28 -4.5 4.5]);
+hold off;
+
+
+plot(time, real_current,'b','linewidth',1.2); 
+title('Motor Current Test');
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+xlabel('Time (s)');
+ylabel('Current (A)');
+legend('Asked Current','Real Current','Location','NorthWest');
 axis([0 28 -4.5 4.5]);
 hold off;
