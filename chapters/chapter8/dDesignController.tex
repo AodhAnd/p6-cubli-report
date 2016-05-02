@@ -1,15 +1,6 @@
-\section{Design of the Controller}\label{designController}
+\section{Design of the PID Controller}\label{designController}
 The design of the controller is based on the Root Locus plot, where the final location of the poles in closed loop can be seen. Their position will depend on the different poles, zeros and gain of the controller and that is used to move them to a stable and better location.
 
-The root locus of the system can be seen in \figref{rlocusCubli2}.
-
-\begin{figure}[H]
-	\centering 
-	\includegraphics[scale=.56]{figures/rlocusCubli}
- 	\captionof{figure}{Root Locus of the system}
- 	\label{rlocusCubli2}
-\end{figure}
-%
 As there exists one pole in the Right Half Plane (RHP), the controller must also have one there to create two branches which can be attracted to the Left Half Plane (LHP).
 
 Then, two zeros must be placed in the LHP to make the branches enter in the stable region of the plot.
@@ -25,14 +16,21 @@ Finally, the gain must be adjusted to make the closed loop poles to be in a stab
 	\label{RLControllerZoom}
 \end{figure}
 %
-The equation of the final controller is then given by \eqref{ControllerLaplace}.
-
+The final system looks like \figref{blockDiagramController} and the transfer function of the controller is give by \eqref{ControllerLaplace}.
+%
+\begin{figure}[H]
+	\input{figures/blockDiagramController.tikz}
+	\centering
+	\caption{Block diagram of the system}
+	\label{blockDiagramController}
+\end{figure}
+%
 \begin{flalign}
 	\eq{D(s)} {0,62737 \cdot \frac{(0,1054\ s + 1)\cdot (0,6254\ s + 1)}{(0,1805\ s - 1) \cdot (0,01\ s + 1) \cdot (0,005\ s + 1)}} & \nonumber\\
 	\label{ControllerLaplace}
 \end{flalign}
 %
-The stability of the controller given by \eqref{ControllerLaplace} can be then analyzed using the Nyquist plot of the controller and the plant together in open loop, as seen in \figref{nyquistController}.
+The stability of the controlled system can be then analyzed using the Nyquist plot of the controller and the plant together in open loop, as seen in \figref{nyquistController}.
 
 \begin{figure}[H] 
 	\centering 
@@ -42,4 +40,4 @@ The stability of the controller given by \eqref{ControllerLaplace} can be then a
 \end{figure}
 
 Now there are two poles in the RHP and the number of encirclements around -1 equals -2 (they are counterclockwise). 
-This means that the system is stable, as the number of zeros in the RHP becomes 0, see \secref{sec:stabilityAnalysis}.
+This means that the system is stable, as the number of zeros in the RHP becomes 0, (see \secref{sec:stabilityAnalysis}).

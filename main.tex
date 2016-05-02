@@ -50,8 +50,7 @@
 
 %---------- Chapter 2 ---------------------------------------- Design Considerations
 \input{chapters/chapter2/aChapters2.tex}
-\input{chapters/chapter2/b3DimensionalCubli.tex}      %-------- 3 Dimensional Cubli
-\input{chapters/chapter3/aChapters3.tex}              %-------- Design Limitations
+%\input{chapters/chapter2/b3DimensionalCubli.tex}      %-------- 3 Dimensional Cubli
 
 %---------- Chapter 3 ---------------------------------------- System Description
 \input{chapters/chapter4/aChapters4.tex}
@@ -81,14 +80,20 @@
 
 %%% Part 2 %%%
 \part{Design \& Implementation}
-%---------- Chapter 8 ---------------------------------------- Control
+%---------- Chapter 8 ---------------------------------------- Classical Control Design
 \input{chapters/chapter8/aChapters8.tex}
-\input{chapters/chapter8/bClosedLoop.tex}			            %-------- Closed Loop response
 \input{chapters/chapter8/cRootLocusBasics.tex}			      %-------- Root Locus Theory
+\input{chapters/chapter8/bClosedLoop.tex}			            %-------- Closed Loop response
 \input{chapters/chapter8/dDesignController.tex}			      %-------- Design of the Controller
 \input{chapters/chapter8/fImplementationController.tex}	  %-------- Implementation
 \input{chapters/chapter8/gDiscretizationController.tex}   %-------- Discretization
 \input{chapters/chapter8/hVerificationController.tex}     %-------- Verification
+
+%---------- Chapter 9 ---------------------------------------- State Space Controller
+\input{chapters/chapter9/aChapters9.tex}
+\input{chapters/chapter9/bSSDescription.tex}	%-------- Description in State Space
+\input{chapters/chapter9/cSSAnalysis.tex}	%-------- Analysis in State Space
+\input{chapters/chapter9/dSSController.tex}	%-------- Controller in State Space
 
 %%% Part 3 %%%
 \part{Test \& Conclusion}
@@ -120,17 +125,20 @@
 %----------Appendix C ---------------------------------------- 
 \input{appendix/cImpTest.tex}
 
-%---------- Appendix E ----------------------------------------
+%---------- Appendix D ----------------------------------------
 \input{appendix/dPotmeterLinearity.tex}
 
-%---------- Appendix F ----------------------------------------
+%---------- Appendix E ----------------------------------------
 \input{appendix/eFrameTest.tex}
 
-%----------Appendix D ---------------------------------------- 
-\input{appendix/fIMUmeasurements.tex}
+%---------- Appendix F ----------------------------------------
+\input{appendix/fIMUConfig.tex}
 
-%---------- Appendix E ---------------------------------------- 
-\input{appendix/gSISOToolDesignedController.tex}
+%----------Appendix G ---------------------------------------- 
+\input{appendix/gIMUmeasurements.tex}
+
+%---------- Appendix H ---------------------------------------- 
+\input{appendix/hSISOToolDesignedController.tex}
 
 
 %%% Bibliography %%%

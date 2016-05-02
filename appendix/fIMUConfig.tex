@@ -1,0 +1,52 @@
+\chapter{IMU Setup Retrieval} \label{app:IMUSetupRetrieval}
+\textbf{Name: Group 630}\\
+\textbf{Date: 30/04 - 2016}
+
+\subsubsection{Purpose}
+Determine how the IMU is configured on the Cubli to help analyzing the data that is measured from it.
+
+\subsubsection{Setup}
+The Cubli is plugged through USB to a PC which has the ability to connect via Secure SHell (SSH) to the Beaglebone Black.\\
+A program is written with parts of the given code to communicate with the IMU from the Beaglebone Black and retrieve the registers data from the sensor chip, see CD\fxnote{Add code to the CD}.
+                                                     
+\subsubsection{List of Equipment}
+\begin{table}[H]
+\begin{tabular}{|p{10cm}|p{4cm}|}
+\hline%------------------------------------------------------------------------------------
+  \textbf{Instrument}                &  \textbf{Type} \\
+\hline%------------------------------------------------------------------------------------
+  Computer                           &  Asus UX301LA  \\
+\hline%------------------------------------------------------------------------------------
+\end{tabular}
+\end{table}
+
+\subsubsection{Procedure}
+
+\begin{enumerate}
+  \item Plug the Beaglebone Black through USB and wait until the blue LEDs on the Beaglebone Black start blinking slowly.
+  \item Send the binary compiled program to the board.
+  \item Connect to a distant terminal on the Beaglebone Black through SSH and launch the program.
+  \item Read the output of the program.
+\end{enumerate}
+\subsubsection{Results}
+From the output of the program, the following table is built.
+
+\begin{table}[H]
+\begin{tabular}{|l|l|l|}
+\hline%--------------------------------------------------------------------------------------------------
+  \textbf{Register}       &  \textbf{Hex Value on IMU 1}  & \textbf{Hex Value on IMU 2} \\
+\hline%--------------------------------------------------------------------------------------------------
+  CONFIG                  &   0x00                                & 0x00 \\
+\hline%--------------------------------------------------------------------------------------------------
+  GYRO\_CONFIG            &   0x00                                & 0x00 \\
+\hline%--------------------------------------------------------------------------------------------------
+  ACCEL\_CONFIG           &   0x00                                & 0x00 \\
+\hline%--------------------------------------------------------------------------------------------------
+\end{tabular}
+\end{table}
+
+Having a 0 in the CONFIG registers means that both IMU use a low pass filter for the noise on their output with the highest possible frequency of \SI{260}{Hz} for the accelerometers and \SI{256}{Hz} and that the accelerometers have no delay while the gyroscopes have a rather small delay of \SI{0,98}{ms}.
+
+The GYRO\_CONFIG and ACCEL\_CONFIG three most significant bits indicate that no self-test are asked to the sensor. The two next give information on the pre-selected range of measurement of these sensors.\\
+Since there are all set to 0, gyroscopes will measure data within \si{\pm\ }\SI{250}{^\circ \cdot s^{-1}}, whereas accelerometers will present values in the range of \si{\pm\ 2g} (g being the Earth's gravitational acceleration).\\
+Eventually, the three least significant bits in ACCEL\_CONFIG being set to 0, the digital filter on the accelerometers are disabled and the output value is put to 0 after each sample.

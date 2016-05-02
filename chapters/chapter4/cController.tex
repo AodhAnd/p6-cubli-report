@@ -1,5 +1,6 @@
 \section{Microcontroller - BeagleBone Black}
 
-The microcontroller used on this system is a BeagleBone Black, which is in charge of managing the data from the motor and the sensors and calculating the required control action.
-In order to use the data from the potentiometer it has to be sampled by the ADC in  the BeagleBone.
-The ADC's of the BeagleBone have a 12-bit resolution that is limited to a range of \si{0 - 1,8 V}. Sampling time is 125ns \cite{Cameon}
+The microcontroller used on this system is a BeagleBone Black, which is in charge of managing the data from the motor and the sensors and of calculating the required control action.\\
+It uses an ARM processor at a clock frequency of \SI{1}{GHz} and has a large amount of general purpose inputs and outputs, of which some of them support the I2C protocol or include an Analogue to Digital Converter (ADC).\\
+In order to use the data from the potentiometer it has to be sampled by the ADC in  the BeagleBone. 
+The ADCs of the BeagleBone have a 12-bit resolution that is limited to a range of \si{0 - 1,8 V}. The fastest sampling time it can provide is 125ns\cite{Cameon}.

@@ -1,2 +1,28 @@
 \chapter{Design Considerations}
+% - Mechanical description of 3 dimensional cubli (focus: control)
+%     - jump up on side
+%     - jump up on corner 
+%     - balancing on side
+%     - balancing on corner
+% - What have other cubli-makers achieved
+%     - balance deviation (if moved x degrees away from equilibrium
+%                          point - for how big x can it still find
+%                          its equilibrium again)
+%     - corner balance (duration?)
+%     - general on stability
+%         - Different slopes
+%     - moving (rolling)
+%     - spin
+
 The setup for this project is given by the university, which means that some considerations must be taken into account when modeling the system and designing a controller to balance it.
+
+The full Cubli setup is a 3 dimensional cube, whose structure is a metallic frame. Inside the frame, three reaction wheels are mounted and driven by DC motors and a brake system and additionally there are different kind of sensors inside the frame, that are used to determine the position of the Cubli.
+%\fxnote{Look in source material what kind of sensors the cubli is using}
+
+The system is controlled by the use of reaction wheels, which make it able to balance on a side or a corner and to jump up from rest position when braking the wheels. It is also possible to make it move in one direction, if the control of the wheels is combined.% At this point, the Cubli can be considered a cube robot.\\
+
+On the other hand, the working setup that exists at Aalborg University (AAU) is composed by one of the sides of the 3D cube. One of the most important characteristics is that one of its corners is attached to a base plate. This feature limits the number of movements the Cubli can do, as it can only be balance in one direction.
+
+Since all the hardware is already build, the goal of the project is focus on deriving the model of the system, simulate it to compare it with the real Cubli and, moreover, design a controller capable of balance it in the equilibrium position.
+
+%At Aalborg University (AAU), there exists a working setup of a one-dimensional Cubli. The overall goals of this semester are to make a model of a system, to simulate this model and then to design and implement a controller for that system. Students on this semester are encouraged to work with pre-made setups, since the focus is rather on the control engineering than the hardware solution.\fxnote{moved the section directly from introduction. Will need a top to catch the previous chapter}
