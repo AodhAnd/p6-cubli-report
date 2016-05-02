@@ -39,4 +39,4 @@ It is plugged to a computer from which the correct code can be sent, started and
 	\caption{}
 \end{figure} \label{motorCurrentTest}
 
-Note that the saturation on the blue curve is due to the AD converter, since 1.8A is given as 0V by the motor control board.
+Note that the saturation on the blue curve is due to the AD converter, since the range for the value of current that the control board sends (-6,2 to 1,8A) goes from 4 to 0V, so any current above 1,8A will have saturation in the measurement.
