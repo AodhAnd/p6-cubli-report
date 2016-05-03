@@ -19,14 +19,14 @@ Furthermore, the nonlinear model is used to accurately describe the oscillatory 
 \begin{figure}[H]
 	\input{figures/blockDiagramSensTool.tikz}
 	\centering
-	\caption{Block diagram of the system}
+	\caption{Block diagram of the system as a regular pendulum with the wheel fixed to the frame.}
 	\label{blockDiagramSenseTool}
 \end{figure}
 %
  In order to minimize the difference between the data points measured in test and the output of the model, a function to describe such a relationship is needed. The performance function used to describe goodness of the fit, is a mean square error function.
 %
 \begin{flalign}
-	\eq{\vec{P}(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &
+	\eq{P(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &
 \label{performanceFunction}
 \end{flalign}
 %
@@ -42,21 +42,21 @@ Furthermore, the nonlinear model is used to accurately describe the oscillatory 
 
 A normal mean square error function is only divided by the degrees of freedom, \si{N}, but in tis case is divided by \si{2N} to cancel out the factor which arises when computing its gradient. This only gives the function a constant offset and does not have any impact when minimizing it.
 
-\subsection{Steepest Descent Method}
+\subsection{Optimization using the Gradient}
 One way of solving the optimization problem is through the use of the gradient. It indicates in which direction the steepest descent (or ascent) is found in an infinitesimal surrounding of a given starting point.
 
-For a function \si{f(x)} with a change in \si{x} of \si{\delta}, the following can be obtained from the Taylor series.
+For a function \si{f(\vec{x})} with a change in \si{\vec{x}} of \si{\vec{\delta}}, the following can be obtained from the Taylor series.
 %
 \begin{flalign}
-  f(x) + \Delta f(x) = f(\vec{x}+\vec{\delta}) &\approx f(x) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
+  f(\vec{x}+\vec{\delta}) &\approx f(\vec{x}) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
 \label{taylorApproximation}
 \end{flalign}
 %
 \hspace{6mm} Where:\\
 \begin{tabular}{ p{1cm} l l l}
-& \si{\vec{g}} 					    	   & is the gradient \si{\nabla f(x)}     & \\
-& \si{\vec{H}} 					    	   & is the Hessian                       & \\
-& \si{\vec{\delta}} 					   & is the change in \si{x}              & \\
+& \si{\vec{g}} 					    	   & is the gradient \si{\nabla f(\vec{x})} & \\
+& \si{\vec{H}} 					    	   & is the Hessian                         & \\
+& \si{\vec{\delta}} 					   & is the change in \si{\vec{x}}          & \\
 \end{tabular}
 
 %Then the change in \si{f(x)} as \si{||\vec{\delta}||_2 \rightarrow 0} can be approximated as follows.
@@ -87,31 +87,31 @@ That is, if the gradient of the function to be minimized is 0, a minimum or maxi
 	\label{visualizationOfGradient}
 \end{figure}
 
-One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each iteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \ref{SteepestDescendSmallStep}, where \si{s^*} is the value of \si{x} which minimizes \si{f(x)}, \si{x_0} is the starting point at which \si{-\vec{g}} is computed and \si{x} is the point reached after the step.
+One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each iteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \ref{SteepestDescendSmallStep}, where \si{x^*} is the value of \si{x} which minimizes \si{f(x)}, \si{x_0} is the starting point at which \si{-g} is computed and \si{x} is the point reached after the step.
 %
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
-			\includegraphics[scale=1.4]{figures/gradientDescendLargeStep}
+			\includegraphics[scale=1.4]{figures/gradientDescendLargeStep2}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{A too large step will cause the algorithm to step over the valley, resulting in a larger value of f(x) in the \si{-\vec{g}} direction}
+			\captionof{figure}{A too large step will cause the algorithm to step over the valley, resulting in a larger value of f(x) in the \si{-\vec{g}} direction.}
 			\label{SteepestDescendLargeStep}
 		\end{figure}
 	\end{minipage}
 	\hspace{0.03\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
-			\includegraphics[scale=1.4]{figures/gradientDescendReducedStep}
+			\includegraphics[scale=1.44]{figures/gradientDescendReducedStep2}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{By going back and choosing a smaller step, a smaller value for f(x) is obtained}
+			\captionof{figure}{By going back and choosing a smaller step, a smaller value for f(x) is obtained.}
 			\label{SteepestDescendSmallStep}
 		\end{figure}
 	\end{minipage}
 \end{minipage}
 
-The steepest descend method does find a minimum. However, it converges to it rather slowly. An implementation where it is possible to directly retrieve the gradient of the function which is to be minimized, \si{f(x)}, is shown in \figref{steepestDescendEx}.
+The steepest descend method does find a minimum. However, it converges to it rather slowly. An implementation where it is possible to directly retrieve the gradient of the function which is to be minimized, \si{f(\vec{x})}, is shown in \figref{steepestDescendEx}.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -119,7 +119,7 @@ The steepest descend method does find a minimum. However, it converges to it rat
 			\includegraphics[scale=.6]{figures/steepestDescendEx}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{An example of a direct implementation of the steepest descend method. It steps over the valley and the step size is reduced in the red iteration}
+			\captionof{figure}{An example of a direct implementation of the steepest descend method. It steps over the valley and the step size is reduced in the red iteration.}
 			\label{steepestDescendEx}
 		\end{figure}
 	\end{minipage}
@@ -129,7 +129,7 @@ The steepest descend method does find a minimum. However, it converges to it rat
 			\includegraphics[scale=.6]{figures/steepestDesendExZoom}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{From the zoom on the convergence, it can be seen that many iterations (here 100) are needed using this method}
+			\captionof{figure}{From the zoom on the convergence, it is seen that many iterations (here 100) are needed using this method.\vspace{12pt}}
 			\label{steepestDesendExZoom}
 		\end{figure}
 	\end{minipage}
@@ -141,7 +141,7 @@ The steepest descend method does find a minimum. However, it converges to it rat
 Another approach is called Newton's Method, which is also rooted in the Taylor approximation. However, this method also uses the second order term of the approximation.
 %
 \begin{flalign}
-  f(x) + \Delta f(x) = f(\vec{x}+\vec{\delta}) &\approx f(x) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
+  f(\vec{x}+\vec{\delta}) &\approx f(\vec{x}) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
 \label{taylorApproximation2ndOrder}
 \end{flalign}
 
@@ -153,7 +153,7 @@ In this case the derivative of the approximation is set to 0, and the following 
 \label{2stOrderTaylorApproximationParThetaEqZero}
 \end{flalign}
 
-Using this to find an expression for the difference in \si{x}, \si{\vec{\delta}}, yields the following.
+Using this to find an expression for the difference in \si{\vec{x}}, \si{\vec{\delta}}, yields the following.
 %
 \begin{flalign}
   0 &= \vec{g} + \vec{H}\vec{\delta}  &\\
@@ -161,7 +161,7 @@ Using this to find an expression for the difference in \si{x}, \si{\vec{\delta}}
 \label{NewtonsMethod}
 \end{flalign}
 
-This expression can then be used to choose the value of \si{\vec{\delta}} such that \si{f(x)} is minimized. An implementation where it is possible to directly retrieve the gradient and a Hessian of the function which is to be minimized, \si{f(x)}, is shown in \figref{NewtonsMethodEx}. 
+This expression can then be used to choose the value of \si{\vec{\delta}} such that the approximation of \si{f(\vec{x})} is minimized. An implementation where it is possible to directly retrieve the gradient and a Hessian of the function which is to be minimized, \si{f(\vec{x})}, is shown in \figref{NewtonsMethodEx}. 
 %
 \begin{figure}[H] 
 	\centering
@@ -170,18 +170,25 @@ This expression can then be used to choose the value of \si{\vec{\delta}} such t
 	\label{NewtonsMethodEx}
 \end{figure}
 
-If compared to the steepest descend method in \figref{steepestDescendEx} and \ref{steepestDesendExZoom}, where 100 iterations were used, it is clear how Newton's method converges much faster, in 30 iterations, to the minimum of \si{f(x)}. 
+If compared to the steepest descend method in \figref{steepestDescendEx} and \ref{steepestDesendExZoom}, where 100 iterations were used, it is clear how Newton's method converges much faster, in 30 iterations, to the minimum of \si{f(\vec{x})}. 
 
 \subsection{Implementation of Newton's Method}
 When implementing Newton's Method both the gradient and the Hessian of the performance function \eqref{performanceFunction} are needed.
 %
 \begin{flalign}
-	\frac{\partial \vec{P}(\vec{\theta}) }{\partial \vec{\theta}} &= G(\vec{\theta}) = \frac{\partial}{\partial \vec{\theta}} \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &\\
-  \eq{\vec{G}(\vec{\theta})} {- \frac{1}{N}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right) } &
+	\frac{\partial  }{\partial \vec{\theta}} P(\vec{\theta}) &= \vec{G}(\vec{\theta}) = \frac{\partial}{\partial \vec{\theta}} \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &
+\end{flalign}
+\begin{flalign}
+  \eq{\vec{G}(\vec{\theta})} {- \frac{1}{N}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \frac{\partial  }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \right) } &
 \label{gradientOfPerformanceFunction}
 \end{flalign}
+%\begin{flalign}
+%	\frac{\partial \vec{P}(\vec{\theta}) }{\partial \vec{\theta}} &= G(\vec{\theta}) = \frac{\partial}{\partial \vec{\theta}} \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &\\
+%  \eq{\vec{G}(\vec{\theta})} {- \frac{1}{N}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right) } &
+%\label{gradientOfPerformanceFunction}
+%\end{flalign}
 
-Since the Matlab implementation uses a Simulink model the problematic part of \eqref{gradientOfPerformanceFunction} is the derivative of the model with respect to the model parameters, \si{\frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}}}. To solve this problem a numerical differentiation of the model is applied as shown in \autoref{AlgorithmForNummericalDiff}.
+Since the Matlab implementation uses a Simulink model the problematic part of \eqref{gradientOfPerformanceFunction} is the derivative of the model with respect to the model parameters, \si{\frac{\partial  }{\partial \vec{\theta}}\ \vec{y_m}(kT, \vec{\theta})}. To solve this problem a numerical differentiation of the model is applied as shown in \autoref{AlgorithmForNummericalDiff}.
 
 \begin{lstlisting}[ language = Matlab,
                     caption  = {Algorithm for numerical differentiation of the simulated model},
@@ -225,24 +232,40 @@ Since the Matlab implementation uses a Simulink model the problematic part of \e
 Now that the model partial derivatives are found, all parts of the gradient, as represented in \eqref{gradientOfPerformanceFunction}, are known. The Hessian is also needed and can be represented as,
 %
 \begin{flalign}
-	\vec{H}(\vec{\theta}) &= \frac{\partial^2 \vec{P}(\vec{\theta}) }{\partial \vec{\theta}\partial \vec{\theta^T}} = \frac{\partial \vec{G}(\vec{\theta}) }{\partial \vec{\theta}} &
+	\vec{H}(\vec{\theta}) &= \frac{\partial^2 }{\partial \vec{\theta}^2}\  P(\vec{\theta}) = \frac{\partial }{\partial \vec{\theta}} \ \vec{G}(\vec{\theta}) &
 \end{flalign}
 %
 which leads to the following:
 \begin{flalign}
-	\vec{H}(\vec{\theta}) &= \frac{1}{N}\sum_{k = 1}^{N} \left(   \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \left(\frac{\partial \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right)^T  	  - \left(\frac{\partial^2 \vec{P}(\vec{\theta}) }{\partial \vec{\theta}\partial \vec{\theta^T}}\right) (\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))  \right) &
+	\vec{H}(\vec{\theta}) &= \frac{1}{N}\sum_{k = 1}^{N} \left(     \frac{\partial  }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \left(\frac{\partial }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \right)^T  	  - \left(\frac{\partial^2  }{\partial \vec{\theta}^2} \ \vec{y_m}(kT, \vec{\theta}) \right) (\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))  \right) &
 \label{hessianOfPerformanceFunction}
 \end{flalign}
+%\begin{flalign}
+%	\vec{H}(\vec{\theta}) &= \frac{1}{N}\sum_{k = 1}^{N} \left(   \left\Vert \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right\Vert_2^2  	  - \left(\frac{\partial^2 \vec{y_m}(kT, \vec{\theta}) }{\partial^2 \vec{\theta}^2}\right) (\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))  \right) &
+%\label{hessianOfPerformanceFunction}
+%\end{flalign}
+%\begin{flalign}
+%	\vec{H}(\vec{\theta}) &= \frac{1}{N}\sum_{k = 1}^{N} \left(   \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \left(\frac{\partial \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right)^T  	  - \left(\frac{\partial^2 \vec{y_m}(kT, \vec{\theta}) }{\partial^2 \vec{\theta}^2}\right) (\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))  \right) &
+%\label{hessianOfPerformanceFunction}
+%\end{flalign}
 %
 To avoid the second derivative of the performance function in \eqref{hessianOfPerformanceFunction}, the Hessian can be approximated simply by removing this last term.
 \begin{flalign}
-	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \left(   \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \left(\frac{\partial \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right)^T \right) &
+	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \frac{\partial  }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \left(\frac{\partial }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \right)^T &
 \label{hessianApproxOfPerformanceFunction}
 \end{flalign}
+%\begin{flalign}
+%	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \ \left\Vert  \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right\Vert_2^2 &
+%\label{hessianApproxOfPerformanceFunction}
+%\end{flalign}
+%\begin{flalign}
+%	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \left(   \frac{\partial  \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \left(\frac{\partial \vec{y_m}(kT, \vec{\theta})}{\partial \vec{\theta}} \right)^T \right) &
+%\label{hessianApproxOfPerformanceFunction}
+%\end{flalign}
 %
 This approximation assumes that the model is only linearly dependent on the parameters, \si{\vec{\theta}}. As the error term, \si{(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))}, approaches zero the approximation becomes increasingly accurate.
 
-Running the implementation of Newton's method approximates the model parameters to \si{J_F = } and \si{B_F = }, while giving a normed root mean square error of \si{31.71 \%} as seen on \figref{ParameterEstimationNewtonCubli}. %The normed RMS error is a way to determine the goodness of the fit.
+Running the implementation of Newton's method approximates the model parameters to \si{J_F = } and \si{B_F = }, while giving a normed root mean square error of \si{31,71 \%} as seen on \figref{ParameterEstimationNewtonCubli}. %The normed RMS error is a way to determine the goodness of the fit.
 
 \begin{figure}[H] 
 	\centering

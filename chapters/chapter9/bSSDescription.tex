@@ -1,0 +1,106 @@
+\section{State Space Representation of the System}\label{sec:SSDescription}
+The first step to give a representation of the system in state space is to choose the input, output and state variables. In this case the input is the torque from the motor (\si{\tau_m}), the state variables are the position of the frame and the velocities of frame and wheel (\si{\theta_F,\ \dot{\theta}_F,\ \dot{\theta}_w}), and the outputs are those of the state variables which are controlled (\si{\theta_F,\ \dot{\theta}_w}).
+%
+\begin{minipage}{0.32\linewidth}
+	\begin{flalign}
+		\vec{x} = 
+		\begin{bmatrix}
+			\theta_F \\
+			\dot{\theta}_F \\ 
+			\dot{\theta}_w \\
+		\end{bmatrix}	\nonumber
+		\label{xVector}
+	\end{flalign}  
+\end{minipage}\hfill
+%\hspace{0.03\linewidth}
+\begin{minipage}{0.32\linewidth}
+	\begin{flalign}
+		\vec{y} = 
+		\begin{bmatrix}
+			\theta_F \\
+			\dot{\theta}_w \\
+		\end{bmatrix}	\nonumber
+		\label{yVector}
+	\end{flalign}
+\end{minipage}\hfill
+%\hspace{0.03\linewidth}
+\begin{minipage}{0.32\linewidth}
+	\begin{flalign}
+		\vec{u}= 
+		\begin{bmatrix}
+			\tau_m\\
+		\end{bmatrix}
+		\label{uVector}
+	\end{flalign}
+\end{minipage}\hfill
+
+The relationship between them is  given in the form of first-order differential equations:
+\begin{flalign}
+	\eq{\vec{\dot{x}}}{f(\vec{x},\vec{u})}
+	\label{xDotDiffEq} 
+\end{flalign}
+\begin{flalign}
+	\eq{\vec{y}}{g(\vec{x},\vec{u})} 
+	\label{yDiffEq} 
+\end{flalign}
+%
+In this case f and g can be derived from \eqref{finalWheel} and \eqref{finalFrame} and they are non-linear functions since there exist a sinusoidal term in both.
+
+However, it has been shown that a linear approximation near the equilibrium point is possible. Then, the system can be describe in the form of linear state space equations as seen in \eqref{xDotLinear} and \eqref{yLinear}.
+%
+\begin{flalign}
+	\eq{\vec{\dot{x}}(\vec{t})}{\vec{A} \cdot \vec{x}(\vec{t}) + \vec{B} \cdot \vec{u}(\vec{t})}
+	\label{xDotLinear} 
+\end{flalign}
+\begin{flalign}
+	\eq{\vec{y}(\vec{t})}{\vec{C} \cdot \vec{x}(\vec{t}) + \vec{D} \cdot \vec{u}(\vec{t})}
+	\label{yLinear} 
+\end{flalign}
+%
+\hspace{6mm} Where:\\
+\begin{tabular}{ p{1cm} l l l}
+	& \si{\vec{A}}			& is the \si{3x3}  state matrix       \\                       
+	& \si{\vec{B}}			& is the \si{3x1}  input matrix       \\ 
+	& \si{\vec{C}}			& is the \si{2x3}  output matrix      \\ 
+	& \si{\vec{D}}			& is the \si{2x1}  feedforward matrix \\ 
+\end{tabular} 
+\\
+The state space description can be seen also in the form of a block diagram like the one from \figref{SSBlocks}.
+%
+\begin{figure}[H]
+	\input{figures/SSBlockDiagram.tikz}
+	\centering
+	\caption{Block diagram of the state space representation}
+\end{figure} \label{SSBlocks}
+%
+This matrices can be obtained from the linearized equations of the system from \ref{sec:linearization}, given the final system description as \eqref{xDotSS} and \eqref{ySS}.
+
+\begin{flalign}  \label{xDotSS}
+	\si{\vec{\dot{x}}(\vec{t})} &= 
+	\begin{bmatrix}
+		\si{0} & \si{1} & \si{0} \\
+		\si{\frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F + m_w \cdot {l_w}^2}} & \si{-\frac{B_F}{J_F + m_w \cdot {l_w}^2}} & \si{\frac{B_w}{J_F + m_w \cdot {l_w}^2}} \\
+		\si{- \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F+m_w \cdot {l_w}^{2}}} & \si{\frac{B_F}{J_F+m_w \cdot {l_w}^{2}}} & \si{\frac{(J_w+J_F+{l_w}^{2} \cdot m_w) \cdot B_w}{J_w \cdot (J_F+m_w \cdot  {l_w}^2)}} \\
+	\end{bmatrix}
+	\si{\cdot \vec{x}(\vec{t}) +}
+	\begin{bmatrix}
+		\si{0} \\
+		\si{- \frac{1}{J_F + m_w \cdot {l_w}^2}} \\
+		\si{\frac{J_w+J_F+m_w \cdot {l_w}^{2}}{J_w \cdot (J_F+m_w \cdot {l_w}^{2})}} \\
+	\end{bmatrix}
+	\si{\cdot \vec{u}(\vec{t})}&
+\end{flalign}
+\begin{flalign} \label{ySS}
+	\si{\vec{y}(\vec{t})} &=
+	\begin{bmatrix}
+		\si{1} & \si{0} & \si{0} \\
+		\si{0} & \si{0} & \si{1} \\
+	\end{bmatrix}
+	\cdot \vec{x}(\vec{t}) +
+	\begin{bmatrix}
+		\si{0} \\
+		\si{0} \\
+	\end{bmatrix}
+\si{\cdot \vec{u}(\vec{t})}&
+\end{flalign}
+
