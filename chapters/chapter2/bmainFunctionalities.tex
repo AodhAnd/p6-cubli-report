@@ -1,0 +1,17 @@
+\section{Main Functionalities}\label{sec:mainFunctionalities}
+In this section, a non exhaustive list of actions a Cubli prototype should implement is developed.
+
+A simple design method, for the Cubli to stand on one of its corner, is to make it jump to this position in two steps. First, it is made to stand on one of its edges before going to a balancing position on a corner\fxnote{Add ref}.
+
+Therefore, as a basic ability, it is chosen so that the prototype can jump onto any one of its edges.
+By rotating one of its reaction wheels to a determined and controlled velocity and braking it suddenly, it is able to raise the cube to an unstable position on an edge, enough so that another controller can catch it.\\
+This second controller is essential to allow the prototype to keep balancing. It reacts fast enough when put into action so that the Cubli doesn't fall back. With some more considerations regarding this controller's resilience to certain disturbances, it is possible to change the inclination of the surface under it to a certain extent.\\
+In a similar fashion, the second step of the process consists of speeding up wheels and braking them one more time to raise on a corner of the Cubli. The latter is finally caught by a controller able to maintain it in this unstable equilibrium.
+
+Once standing on a corner, a spinning functionality allows the prototype to turn around itself.\\
+This change in orientation also permits the Cubli to move in its environment by falling and raising repeatedly towards the desired direction.
+
+With a cube, wires are not practical if the prototype has to move around. To ensure a complete autonomy, the prototype should be remotely controllable, i.e. it should be possible to ask it to run pre-defined routines (stand on an edge or a corner, spin, make a full turn, etc.) from a distant computer.\\
+Moreover, it should be self-sustained by an internal battery able to run the main computer, the actuators and the sensors for a reasonable amount of time.
+
+All these functionalities are potential features to implement. The next section sets some limits as to what is actually achieved for this project.
