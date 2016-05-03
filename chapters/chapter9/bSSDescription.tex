@@ -103,4 +103,30 @@ This matrices can be obtained from the linearized equations of the system from \
 	\end{bmatrix}
 \cdot u(t)
 \end{equation}
+%
+Substituting the values for the parameter in \eqref{xDotSS} and \eqref{ySS} gives the final description for the system.
+%
+\begin{equation}  \label{xDotSS}
+	\dot{x}(t) = 
+	\begin{bmatrix}
+		0 & 1 & 0 \\
+		98,2208 & -1,1458 & 0,0025 \\
+		-98,2208 & 1,1458 & -0,0309 \\
+	\end{bmatrix}
+	\cdot x(t) +
+	\begin{bmatrix}
+		0 \\
+		- 148,8077 \\
+		1812,7013 \\
+	\end{bmatrix}
+	\cdot u(t)
+\end{equation}
+\begin{equation} \label{ySS}
+	y(t) = 
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & 0 & 1 \\
+	\end{bmatrix}
+	\cdot x(t) +
+\end{equation}
 
