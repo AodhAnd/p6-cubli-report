@@ -4,15 +4,15 @@ Now that a model of the Cubli frame is put forth in \eqref{FrameEqFinal} \fxnote
 Based on \eqref{FrameEq3} the system is described in an operating point, around which it varies with \si{\Delta \theta_F}.
 %
 \begin{flalign}
-	\si{(J_F+m_w \cdot {l_w}^{2}) (\overline{\ddot{\theta}}_F + \Delta \ddot{\theta}_F )} &= \si{- B_F \cdot (\overline{\dot{\theta}}_F + \Delta \dot{\theta}_F) }   \nonumber\\
-	&\ \ \ \ \si{+ (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\overline{\theta}_F + \Delta \theta_F)} \nonumber\\
-	&\ \ \ \ \si{- (\overline{\tau}_m + \Delta \tau_m) + B_w \cdot (\overline{\dot{\theta}}_w +\Delta \dot{\theta}_w)}  \unit{N \cdot m}\\
-	\eq{(J_F+m_w \cdot {l_w}^{2}) (\overline{\ddot{\theta}}_F + \Delta \ddot{\theta}_F )}{ f( (\overline{\dot{\theta}}_F + \Delta \dot{\theta}_F), \ (\overline{\theta}_F + \Delta \theta_F), \ (\overline{\tau}_m + \Delta \tau_m),\  (\overline{\dot{\theta}}_w + \Delta \dot{\theta}_w) ) } \unit{N \cdot m}
+	\si{(J_F+m_w \cdot {l_w}^{2}) (\vec{\ddot{\theta}}_F + \Delta \ddot{\theta}_F )} &= \si{- B_F \cdot (\vec{\dot{\theta}}_F + \Delta \dot{\theta}_F) }   \nonumber\\
+	&\ \ \ \ \si{+ (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\vec{\theta}_F + \Delta \theta_F)} \nonumber\\
+	&\ \ \ \ \si{- (\vec{\tau}_m + \Delta \tau_m) + B_w \cdot (\vec{\dot{\theta}}_w +\Delta \dot{\theta}_w)}  \unit{N \cdot m}\\
+	\eq{(J_F+m_w \cdot {l_w}^{2}) (\vec{\ddot{\theta}}_F + \Delta \ddot{\theta}_F )}{ f( (\vec{\dot{\theta}}_F + \Delta \dot{\theta}_F), \ (\vec{\theta}_F + \Delta \theta_F), \ (\vec{\tau}_m + \Delta \tau_m),\  (\vec{\dot{\theta}}_w + \Delta \dot{\theta}_w) ) } \unit{N \cdot m}
 \label{FrameEq4OperatingPoint}
 \end{flalign}
 %
 %The operating point is chosen to be \si{\theta_F = 0}, which corresponds to the frame being in upright position, see \figref{cubliMechanical}.
-The operating point is chosen as \si{\overline{\theta}_F} and \si{\overline{\theta}_w} and their derivatives being equal to 0. This corresponds to the frame being in the upright position, see \figref{cubliMechanical}. At this position all the velocities and accelerations are 0, which results in 0 torque \si{\tau_m} as well.
+The operating point is chosen as \si{\vec{\theta}_F} and \si{\vec{\theta}_w} and their derivatives being equal to 0. This corresponds to the frame being in the upright position, see \figref{cubliMechanical}. At this position all the velocities and accelerations are 0, which results in 0 torque \si{\tau_m} as well.
 Taking this into account and applying the Taylor series approximation yields the following.
 %
 \begin{flalign}
