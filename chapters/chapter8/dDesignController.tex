@@ -25,6 +25,8 @@ The final system looks like \figref{blockDiagramController} and the transfer fun
 	\label{blockDiagramController}
 \end{figure}
 %
+Where
+%
 \begin{flalign}
 	\eq{D(s)} {0,62737 \cdot \frac{(0,1054\ s + 1)\cdot (0,6254\ s + 1)}{(0,1805\ s - 1) \cdot (0,01\ s + 1) \cdot (0,005\ s + 1)}} & \nonumber\\
 	\label{ControllerLaplace}
@@ -36,8 +38,7 @@ The stability of the controlled system can be then analyzed using the Nyquist pl
 	\centering 
 	\includegraphics[scale=0.46]{figures/nyquistController}	
 	\caption{Nyquist plot of the system with the controller}
-	\label{nyquistController}
-\end{figure}
+\end{figure}	\label{nyquistController}
 
 Now there are two poles in the RHP and the number of encirclements around -1 equals -2 (they are counterclockwise). 
 This means that the system is stable, as the number of zeros in the RHP becomes 0, (see \secref{sec:stabilityAnalysis}).
