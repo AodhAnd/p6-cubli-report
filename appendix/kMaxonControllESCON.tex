@@ -1,0 +1,126 @@
+\chapter{Maxon Control Board: ESCON Software}\label{MaxonControlESCON} 
+\textbf{Name: Group 630}\\
+\textbf{Date: 29/04 - 2016}
+
+\subsubsection{Purpose}
+ESCON software is used to configure the Maxon controller, the software can also read of the configuration. The ESCON software is used to read the Cubli Maxon control board to figure out how the Cubli is configured. 
+
+\subsubsection{Procedure}
+\begin{enumerate}
+  \item ESCON software is installed on the computer.
+  \item The control is connected by a USB cable to the computer and the ESCON software is started.
+  \item Software automatically detects the controller and the configuration are uploaded from the controller to the software.
+  \item If there are changes to be made it can be done now on the controller.
+\end{enumerate}
+
+\subsubsection{Results/Data}
+In the following text you can find the data for the different items on the Maxon Control Board used in this project. The following data has been found on the data sheet of the ESCON module 50/5 and the Maxon Motor data sheet:
+
+PWM controller:\\
+The control PWM runs at a frequency of 53,6 kHz and the Maxon motor is customized for this frequency.
+The PWM controller has been configured to use a Maxon motor EC 45 flat 50 Watt (part no. 251601). The parameters in the controller are:
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Motor characteristics}       &  \textbf{Value}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Speed constant                                & 285,0 rpm/V           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Terminal time constant winding							  & 17,6 sec              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Number of pole pairs							  & 8              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+
+Controller:\\
+The controller has a maximum current drag in continuous operation of 5 A.
+The motor has a no load speed of 6710 rpm and a stall current of 23,3 A.
+The motor has been limited in the configuration software to the following:
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{System data}       &  \textbf{Value}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Max. permitted speed                                & 1000 rpm           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Nominal current							  & 2,33 A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Max. output current limit							  & 9,00 A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+
+Hall Sensor:\\
+There is a built-in hall sensor on the control board, it is used for detecting the direction and rotation of the Cubli so the speed can be determined. The Hall sensor on the controller has been configured to the following:
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Detection of rotation and speed}       &  \textbf{Value}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Speed sensor                                & Available Hall sensor           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Digital sensor polarity							  & Inverted              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+
+Loop Control:\\
+The control can operate in open loop, close loop and current mode. The close loop and the current mode runs at a frequency of 5,36 kHz. The controller has been configured to the following:
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Mode of operation}       &  \textbf{Value}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Close loop                                & Current control           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Gain							  & 268              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+
+Digital Input:\\
+The digital input can be configured, so the motor can be activated or change direction by a signal. The speed or current can be set by a PWM signal. The controller has been configured to the following:
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Digital input}       &  \textbf{Value}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Digital input 1                                & PWM           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Current at 10\%							  & -4.00 A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Current at 90\%							  & 4.00 A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Fixed offset							  & 0.00 A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Digital input 2                                & Enable motor           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		On     &  High active       \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+
+Analog Output:\\
+The analog output can be configured to different voltage ranges on the output, and which information you want out of the control.
+The analog output resolution is 12-bit and the voltage ranges from -4 V to 4 V. The controller has been configured to the following:
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Analog outputs}       &  \textbf{Value}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Analog output 1                                & Actual current           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Current at: 0 V							  & -1,8 A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Current at: 4 V							  & 6,2 A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Analog output 2							  & Actual speed A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Speed at: 1 V							  & -1000 rpm A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Speed at: 3 V							  & 1000 rpm A              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+

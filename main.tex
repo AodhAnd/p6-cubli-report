@@ -27,7 +27,7 @@
 	%\cleardoublepage
 	\input{formalities/preface.tex}
 	
-	\pdfbookmark[0]{Table of Contents}{label: tableOfCentents}
+	\pdfbookmark[0]{Table of Contents}{label: tableOfContents}
 	\tableofcontents
 	\cleardoublepage
 	
@@ -67,7 +67,6 @@
 	\input{chapters/chapter5/bDerivationOfModel.tex}      %-------- Derivation
 	\input{chapters/chapter5/cLinearizationOfModel.tex}   %-------- Linearization
 	\input{chapters/chapter5/dBlockDiagram.tex}    		    %-------- Block Diagram
-	\input{chapters/chapter5/eComplementaryFilter.tex}		%-------- Complementary Filter
 	
 	%---------- Chapter 6 ---------------------------------------- Plant Analysis
 	\input{chapters/chapter6/aChapters6.tex}
@@ -96,11 +95,14 @@
 	\input{chapters/chapter9/cSSAnalysis.tex}	%-------- Analysis in State Space
 	\input{chapters/chapter9/dSSController.tex}	%-------- Controller in State Space
 	
+	%---------- Chapter 10 ----------------------------------------- Complementary Filter
+	\input{chapters/chapter10/aComplementaryFilter.tex}		
+	
 	%%% Part 3 %%%
 	\part{Test \& Conclusion}
-	%\input{chapters/aAcceptanceTest/AcceptanceTest}
-	%\input{chapters/bConclusion/conclusion}
-	%\input{chapters/cDiscussion/discussion.tex}
+	\input{chapters/aAcceptanceTest/AcceptanceTest}
+	\input{chapters/bConclusion/conclusion}
+	\input{chapters/cDiscussion/discussion.tex}
 	
 	%%% Setup for Appendix and Bibliography %%%
 	\bookmarksetup{startatroot}
@@ -143,13 +145,18 @@
 	
 	%---------- Appendix I ---------------------------------------- 
 	\input{appendix/iFrameMeasuring.tex}
-	
+
 	%---------- Appendix J ---------------------------------------- 
 	\input{appendix/jMotorCurrentTest.tex}
+	
+	%---------- Appendix K ---------------------------------------- 
+	\input{appendix/kMaxonControllESCON.tex}
+
+	%---------- Appendix L ---------------------------------------- 
+	\input{appendix/lConnectingBreakoutBoard.tex}
 		
 	%%% Bibliography %%%
 	\printbibliography
 	
 	%%% To Do List %%%
 	\end{document}
-

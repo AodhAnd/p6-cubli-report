@@ -49,11 +49,11 @@ In this case f and g can be derived from \eqref{finalWheel} and \eqref{finalFram
 However, it has been shown that a linear approximation near the equilibrium point is possible. Then, the system can be describe in the form of linear state space equations as seen in \eqref{xDotLinear} and \eqref{yLinear}.
 %
 \begin{flalign}
-	\eq{\vec{\dot{x}}(\vec{t})}{\vec{A} \cdot \vec{x}(\vec{t}) + \vec{B} \cdot \vec{u}(\vec{t})}
+	\eq{\vec{\dot{x}}(t)}{\vec{A} \cdot \vec{x}(t) + \vec{B} \cdot \vec{u}(t)}
 	\label{xDotLinear} 
 \end{flalign}
 \begin{flalign}
-	\eq{\vec{y}(\vec{t})}{\vec{C} \cdot \vec{x}(\vec{t}) + \vec{D} \cdot \vec{u}(\vec{t})}
+	\eq{\vec{y}(t)}{\vec{C} \cdot \vec{x}(t) + \vec{D} \cdot \vec{u}(t)}
 	\label{yLinear} 
 \end{flalign}
 %
@@ -76,31 +76,57 @@ The state space description can be seen also in the form of a block diagram like
 This matrices can be obtained from the linearized equations of the system from \ref{sec:linearization}, given the final system description as \eqref{xDotSS} and \eqref{ySS}.
 
 \begin{flalign}  \label{xDotSS}
-	\si{\vec{\dot{x}}(\vec{t})} &= 
+	\si{\vec{\dot{x}}(t)} &= 
 	\begin{bmatrix}
 		\si{0} & \si{1} & \si{0} \\
 		\si{\frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F + m_w \cdot {l_w}^2}} & \si{-\frac{B_F}{J_F + m_w \cdot {l_w}^2}} & \si{\frac{B_w}{J_F + m_w \cdot {l_w}^2}} \\
 		\si{- \frac{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}{J_F+m_w \cdot {l_w}^{2}}} & \si{\frac{B_F}{J_F+m_w \cdot {l_w}^{2}}} & \si{\frac{(J_w+J_F+{l_w}^{2} \cdot m_w) \cdot B_w}{J_w \cdot (J_F+m_w \cdot  {l_w}^2)}} \\
 	\end{bmatrix}
-	\si{\cdot \vec{x}(\vec{t}) +}
+	\si{\cdot \vec{x}(t) +}
 	\begin{bmatrix}
 		\si{0} \\
 		\si{- \frac{1}{J_F + m_w \cdot {l_w}^2}} \\
 		\si{\frac{J_w+J_F+m_w \cdot {l_w}^{2}}{J_w \cdot (J_F+m_w \cdot {l_w}^{2})}} \\
 	\end{bmatrix}
-	\si{\cdot \vec{u}(\vec{t})}&
+	\si{\cdot \vec{u}(t)}&
 \end{flalign}
 \begin{flalign} \label{ySS}
-	\si{\vec{y}(\vec{t})} &=
+	\si{\vec{y}(t)} &=
 	\begin{bmatrix}
 		\si{1} & \si{0} & \si{0} \\
 		\si{0} & \si{0} & \si{1} \\
 	\end{bmatrix}
-	\cdot \vec{x}(\vec{t}) +
+	\cdot \vec{x}(t) +
 	\begin{bmatrix}
 		\si{0} \\
 		\si{0} \\
 	\end{bmatrix}
-\si{\cdot \vec{u}(\vec{t})}&
+	\si{\cdot \vec{u}(t)}
 \end{flalign}
+%
+Substituting the values for the parameter in \eqref{xDotSS} and \eqref{ySS} gives the final description for the system.
+%
 
+\begin{equation}  \label{xDotSSNum}
+	\dot{\vec{x}}(t)  = 
+	\begin{bmatrix}
+		0 & 1 & 0 \\
+		98,2208 & -1,1458 & 0,0025 \\
+		-98,2208 & 1,1458 & -0,0309 \\
+	\end{bmatrix}
+	\cdot \vec{x}(t) +
+	\begin{bmatrix}
+		0 \\
+		- 148,8077 \\
+		1812,7013 \\
+	\end{bmatrix}
+	\cdot \vec{u}(t) 
+\end{equation}
+\begin{equation} \label{ySSNum}
+	\vec{y}(t) = 
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & 0 & 1 \\
+	\end{bmatrix}
+	\cdot \vec{x}(t) 
+\end{equation}
