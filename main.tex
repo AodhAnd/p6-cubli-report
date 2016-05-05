@@ -94,15 +94,17 @@
 	\input{chapters/chapter9/bSSDescription.tex}	%-------- Description in State Space
 	\input{chapters/chapter9/cSSAnalysis.tex}	%-------- Analysis in State Space
 	\input{chapters/chapter9/dSSController.tex}	%-------- Controller in State Space
-	
+	\input{chapters/chapter9/dSSImplementation.tex}	%-------- Implementation of the Controller 
+		
 	%---------- Chapter 10 ----------------------------------------- Complementary Filter
 	\input{chapters/chapter10/aComplementaryFilter.tex}		
 	
 	%%% Part 3 %%%
 	\part{Test \& Conclusion}
-	\input{chapters/aAcceptanceTest/AcceptanceTest}
-	\input{chapters/bConclusion/conclusion}
-	\input{chapters/cDiscussion/discussion.tex}
+	\input{chapters/aAcceptanceTest/acceptanceTest}
+	\input{chapters/bDiscussion/discussion}
+	\input{chapters/cConclusion/conclusion}
+	\input{chapters/dPerspective/perspective}
 	
 	%%% Setup for Appendix and Bibliography %%%
 	\bookmarksetup{startatroot}
@@ -112,13 +114,20 @@
 	\fancyhead[LE]{\color{aaublue}\small Appendix \nouppercase\rightmark} %uneven page - section title
 	\fancyhead[RE,LO]{}
 	\titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{aaublue}{|}\hsp}{0pt}{\Large\bfseries}
-	\renewcommand{\thechapter}{\Alph{chapter}}
-	\setcounter{chapter}{0}
-	
+
 	%%% Appendix %%%
-	\part*{Appendix}
-	\addcontentsline{toc}{chapter}{Appendix}
+		%\renewcommand{\thechapter}{\Alph{chapter}}
+		%	\addcontentsline{toc}{chapter}{Appendix}
+		%	\setcounter{chapter}{0}
+		%	\setcounter{section}{0}
+		%	\setcounter{table}{0}
+		%	\setcounter{equation}{0}
+		%	\setcounter{figure}{0}
+	\appendix
 	
+	\part*{Appendix}
+	\addcontentsline{toc}{chapter}{Appendix}	
+		
 	%---------- Appendix A ---------------------------------------- 
 	\input{appendix/aPotmeterOffset.tex}
 	
@@ -148,6 +157,8 @@
 	
 	%---------- Appendix J ---------------------------------------- 
 	\input{appendix/jMotorCurrentTest.tex}
+	
+%	\end{appendices}
 		
 	%%% Bibliography %%%
 	\printbibliography

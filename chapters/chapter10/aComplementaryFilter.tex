@@ -1,4 +1,4 @@
-\chapter{Complementary filter}
+\chapter{Complementary filter}\label{chap:CompFilter}
 The complementary filter is used to combine the measurement data from the accelerometer and gyros in the two IMUs mounted on the Cubli frame. 
 Based on the data from \appref{IMUMeasurementsAppendix} it can be seen that the accelerometer can detect changes in the angle, but has problems with measuring fast changes in the angle.\fxnote{source?, also reason for error seems to be fast and large?} 
 The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement.\fxnote{source on gyro error?, B}

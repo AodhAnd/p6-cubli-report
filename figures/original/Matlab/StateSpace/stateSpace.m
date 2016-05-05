@@ -85,7 +85,7 @@ for i=1:0.5:20
 end
 
 figure(1);
-title('Catching Response with Initial Velocity of the Wheel');
+title('Catching Response with Initial Velocity of the Frame');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 xlabel('Time (s)');
