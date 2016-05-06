@@ -1,11 +1,31 @@
-\chapter{Complementary filter}
-The complementary filter is used to combine the measurement data from the accelerometer and gyros in the two IMUs mounted on the Cubli frame. 
-Based on the data from \appref{IMUMeasurementsAppendix} it can be seen that the accelerometer can detect changes in the angle, but has problems with measuring fast changes in the angle.\fxnote{source?, also reason for error seems to be fast and large?} 
-The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement.\fxnote{source on gyro error?, B}
- 
-As described in \secref{sec:Sensors} there are mounted two IMU's on the frame of the Cubli. One of the requirements are to have the Cubli balance in an upright position independently of the orientation of the baseplate.
+\chapter{Complementary filter} \fxnote{different chapter names, since this might be more of a chapter how to get IMU working than just about complementary filter?, B}
+It is a goal to get the Cubli setup to balance the frame in an upright position independently of the baseplate's horizontal orientation.\fxnote{edit this depending on what we call the requirements section, B} % --- fxnote
 
-Based on ... \fxnote{why did we choose an complementary filter?}
+As described in \secref{sec:Sensors} there are mounted two IMU's on the frame of the Cubli. These are intended to be used to determine the angle of the frame instead of relying on the potentiometer. \fxnote{instead?, maybe rephrase?, B}
+
+\subsubsection{Angle of frame from accelerometer}
+To determine the angle of the frame with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted as shown in \ref{systemDescription}. \fxnote{correct the ref to the picture of the cubli setup}
+
+"insert triangle drawing" \fxnote{drawing of how angle is determined by accel, B}
+
+As shown in the figure the angle can be found by taking the inverse tangens of the y-axis and x-axis.
+\begin{flalign}
+	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right)}
+	\label{accelAngle}
+\end{flalign}
+
+Based on the data from \appref{app:IMUMeasurementsAppendix} it can be seen that the accelerometer can detect changes in the angle, but has problems with measuring fast changes in the angle.\fxnote{source?, also reason for error seems to be fast and large?} 
+
+\subsubsection{Angle of frame from accelerometer}
+The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \ref{systemDescription}. \fxnote{correct the ref to the picture of the cubli setup}
+\begin{flalign}
+	\eq{gyro\_\theta_{F}} {\int \omega_{F}}
+	\label{accelGyro}
+\end{flalign}
+The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement.\fxnote{source on gyro error?, B}
+
+\subsection{Data fusing} \fxnote{better section name?}
+The complementary filter is used to combine the measurement data from the accelerometer and gyros in the two IMUs mounted on the Cubli frame. 
 
 The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli frame.
 %Data from the accelerometer is used to calculate an angle of the Cubli frame.
@@ -67,4 +87,5 @@ theta_f[n] = ((2*tau-delta_T) / (2*tau+delta_T)) * theta[n-1] +
 
 \end{lstlisting}
 
-The cut-off frequency for the filters can be determined by making a least square approximation of the error between the complimentary angle and the angle measured with the potentiometer. 
+The cut-off frequency for the filters can be determined by using SensTool\fxnote{correct way to spell Senstool?} to find a value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
+%making a least square approximation of the error between the complimentary angle and the angle measured with the potentiometer. 
