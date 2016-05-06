@@ -1,5 +1,5 @@
 \section{State Space Representation of the System}\label{sec:SSDescription}
-The first step to give a representation of the system in state space is to choose the input, output and state variables. In this case the input is the torque from the motor (\si{\tau_m}), the state variables are the position of the frame and the velocities of frame and wheel (\si{\theta_F,\ \dot{\theta}_F,\ \dot{\theta}_w}), and the outputs are those of the state variables which are controlled (\si{\theta_F,\ \dot{\theta}_w}).
+The first step to give a representation of the system in state space is to choose the input, output and state variables. In this case the state variables are chosen to be the position of the frame and the velocities of frame and wheel (\si{\theta_F,\ \dot{\theta}_F,\ \dot{\theta}_w}). The input is the torque from the motor (\si{\tau_m}) and the chosen outputs are  the ones to control, (\si{\theta_F,\ \dot{\theta}_w}).
 %
 \begin{minipage}{0.32\linewidth}
 	\begin{flalign}
@@ -59,10 +59,10 @@ However, it has been shown in \secref{sec:linearization} that a linear approxima
 %
 \hspace{6mm} Where:\\
 \begin{tabular}{ p{1cm} l l l}
-	& \si{\vec{A}}			& is the \si{3x3}  state matrix       \\                       
-	& \si{\vec{B}}			& is the \si{3x1}  input matrix       \\ 
-	& \si{\vec{C}}			& is the \si{2x3}  output matrix      \\ 
-	& \si{\vec{D}}			& is the \si{2x1}  feedforward matrix \\ 
+	& \si{\vec{A}=\frac{\partial}{\partial \vec{x}} \ f(\vec{x_o},\vec{u_o})}			& is the \si{3x3}  state matrix     \\                       
+	& \si{\vec{B}=\frac{\partial}{\partial \vec{u}} \ f(\vec{x_o},\vec{u_o})}			& is the \si{3x1}  input matrix       \\ 
+	& \si{\vec{C}=\frac{\partial}{\partial \vec{x}} \ g(\vec{x_o},\vec{u_o})}			& is the \si{2x3}  output matrix      \\ 
+	& \si{\vec{D}=\frac{\partial}{\partial \vec{u}} \ g(\vec{x_o},\vec{u_o})}			& is the \si{2x1}  feedforward matrix \\ 
 \end{tabular} 
 \\
 The state space description can be seen also in the form of a block diagram like the one from \figref{SSBlocks}.
