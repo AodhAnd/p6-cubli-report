@@ -38,7 +38,7 @@ D=[0;
 
 %% Analisys of the system
 eigenvalues=eig(A);
-cont=[A A*B A^2*B];
+cont=[B A*B A^2*B];
 rank(cont); % is equal to 3 - the system can be controlled
 obs=[C;
     C*A;

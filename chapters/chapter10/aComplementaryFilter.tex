@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 \chapter{Complementary filter}\label{chap:CompFilter} \fxnote{different chapter names, since this might be more of a chapter how to get IMU working than just about complementary filter?, B}
 It is a goal to get the Cubli setup to balance the frame in an upright position independently of the baseplate's horizontal orientation.\fxnote{edit this depending on what we call the requirements section, B} % --- fxnote
 
@@ -22,6 +23,11 @@ The angle of the frame can be found with the gyroscope by integrating the angula
 	\eq{gyro\_\theta_{F}} {\int \omega_{F}}
 	\label{accelGyro}
 \end{flalign}
+=======
+\chapter{Complementary filter}\label{chap:CompFilter}
+The complementary filter is used to combine the measurement data from the accelerometer and gyros in the two IMUs mounted on the Cubli frame. 
+Based on the data from \appref{app:IMUMeasurementsAppendix} it can be seen that the accelerometer can detect changes in the angle, but has problems with measuring fast changes in the angle.\fxnote{source?, also reason for error seems to be fast and large?} 
+>>>>>>> Stashed changes
 The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement.\fxnote{source on gyro error?, B}
 
 \subsection{Data fusing} \fxnote{better section name?}
