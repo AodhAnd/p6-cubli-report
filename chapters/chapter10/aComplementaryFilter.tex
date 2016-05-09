@@ -30,7 +30,7 @@ Based on the data from \appref{app:IMUMeasurementsAppendix} it can be seen that 
 >>>>>>> Stashed changes
 The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement.\fxnote{source on gyro error?, B}
 
-\subsection{Data fusing} \fxnote{better section name?}
+\section{Data Fusing} \fxnote{better section name?}
 The complementary filter is used to combine the measurement data from the accelerometer and gyros in the two IMUs mounted on the Cubli frame. 
 
 The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli frame.
@@ -58,8 +58,9 @@ Combining the two equations yields \eqref{complementaryCombinedFilter}
 	\label{complementaryCombinedFilter}
 \end{flalign}
 The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much two different sensor measurements weight in on the combined angle.
- 
-In oder to use the complementary filter on the cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}
+
+\section{Discretization of the Complementary Filter} 
+In oder to use the complementary filter on the cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{T\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}}
 Rewritting \eqref{complementaryCombinedFilter} yields
 \begin{flalign}
  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
@@ -67,17 +68,17 @@ Rewritting \eqref{complementaryCombinedFilter} yields
 \end{flalign}
 Now s is replaced
 \begin{flalign}
-  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{T\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}}
   	\label{discreteComplementaryFilter2}
 \end{flalign}
   
 \begin{flalign}
-  	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T \cdot (1 + z^{-1})}{\Delta T \cdot (1 + z^{-1})+2\cdot (1 - z^{-1})\cdot \tau} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+  	\eq{\Updownarrow \theta_{F}} {\frac{T \cdot (1 + z^{-1})}{ T \cdot (1 + z^{-1})+2\cdot (1 - z^{-1})\cdot \tau} \cdot (accel_{\theta_{F}} + \tau \cdot gyro_{\dot{\theta}_{F}})}
   	\label{discreteComplementaryFilter3}
 \end{flalign}
   
 \begin{flalign}
-   	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T + \Delta T \cdot z^{-1})}{(2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+   	\eq{\Updownarrow \theta_{F}} {\frac{ T +  T \cdot z^{-1}}{(2\cdot \tau +  T) - (2\tau - T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
    	\label{discreteComplementaryFilter4}
 \end{flalign}
    

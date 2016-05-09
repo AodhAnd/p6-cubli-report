@@ -19,11 +19,11 @@ This new configuration gives a new equation for \si{\vec{\dot{x}}}:
 The objective is to find K such that the eigenvalues of \si{\vec{A}-\vec{B}\vec{K}} are placed at the LHP. This gain matrix can be found using the Matlab command K = place(A,B,P), where P is a vector containing the desired position of the new poles.
 
 To choose the position of these poles two simulations are made for different values. In the first one the Cubli starts from equilibrium and a disturbance torque is applied while in the second one it starts from an initial angle different from \si{0\ rad} and with an initial acceleration.
-
+%
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
-			\includegraphics[scale=.5]{figures/disturbanceStateSpace}
+			\includegraphics[scale=.55]{figures/disturbanceStateSpace}
 			\centering
 			\captionsetup{justification=centering}
 			\captionof{figure}{Response of the system to a disturbance with different locations of poles}
@@ -33,7 +33,7 @@ To choose the position of these poles two simulations are made for different val
 	\hspace{0.03\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]\vspace{4mm}
-			\includegraphics[scale=.5]{figures/catchingStateSpace}
+			\includegraphics[scale=.55]{figures/catchingStateSpace}
 			\centering
 			\captionsetup{justification=centering}
 			\captionof{figure}{Response starting from \si{0.2\ rad} and an initial velocity of the wheel with different locations of poles}
