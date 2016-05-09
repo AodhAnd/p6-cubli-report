@@ -1,8 +1,8 @@
 \section{Code Base}\label{sec:codeBase}
 More than the physical setup, a certain amount of code allowing to run controllers on the present hardware is also available. \\
-Written in C\texttt{++}, it comprises all the drivers necessary to interface the BeagleBone board with the motor and all the different sensors described upper, in \secref{sec:Motor} and \secref{sec:Sensors}.
+Written in C\texttt{++}, it comprises all the drivers necessary to interface the BeagleBone board with the motor and all the different sensors described above, in \secref{sec:Motor} and \secref{sec:Sensors}.
 
-As of the actual controllers to make the Cubli stand up on its corner, they are all composed of two of three files in a folder named \textit{controller/controller\_code/}. Each controller has to implement three functions, as shown in \autoref{lst:StandardControllerInterface}.
+The actual controllers which make the Cubli stand up on its corner, are all composed of two or three files in a folder named \textit{controller/controller\_code/}. Each controller has to implement three functions, as shown in \autoref{lst:StandardControllerInterface}.
 %
 \lstset{language=C++, caption={Code snippet of the standard controller interface}, label=lst:StandardControllerInterface}
 \begin{lstlisting}
@@ -28,7 +28,7 @@ As of the actual controllers to make the Cubli stand up on its corner, they are 
   extern void AAU3_CUSTOM_CONTROLLER_terminate(void);
 
 \end{lstlisting}
-This is a default model based on the way MATLAB auto-generates controller code into C\texttt{++} files and shall be used in this project as a general reference, to keep some common structure between the different controllers to be implemented. It is however possible to adapt the arguments and the returned variables depending on the needs.
+This is a default model based on the way MATLAB auto-generates controller code into C\texttt{++} files. This model shall be used in this project as a general reference, to keep some common structure between the different controllers to be implemented. However, it is possible to adapt the arguments and the returned variables depending on the needs. Moreover, MATLAB auto-generation of code is not used in this project.
 
 The file \textit{controller/controller\_test.cpp} contains the core part of the controllers operation. One of its functions, \lstinline{void ControllerTest::runController(ControllerArgs* args)}, is called at some regular pre-defined intervals which is the desired sampling time. This initializes the available controllers, retrieves and processes the data from the sensors, and finally uses the controller code to compute the output current to send to the motor. This updated output current is actually sent at the beginning of the next call.
 
