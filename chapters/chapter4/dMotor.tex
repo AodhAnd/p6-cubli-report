@@ -1,8 +1,9 @@
-\section{Motor}\label{sec:Motor}
+\section{Actuators}\label{sec:Motor}
+There are two actuators in the system, the brushless DC-motor as the main actuator which controls the stability and the servo motor which brakes on the wheel to raise the frame.
 
 \subsection{Brushless DC-Motor}
 To control the reaction wheel a brushless DC-motor is used. \fxnote{put datasheet on the cd appendix}
-The brushless motor used on the Cubli setup is a EC 45 flat 50 Watt (part no. 251601). 
+The brushless motor on the Cubli setup is an EC 45 flat 50 Watt (part no. 251601). Additionally the motor features three hall-sensors for measurement of velocity.
 %can take a nominal current of 2.33 A, and 23 A at very short peaks.It has a mechanical time constant of 12,4 ms \cite{MaxonMotors}. The nominal current puts a limit on the control signal that can be sent to the motor control board.\fxnote{Should this control signal be mentioned here?}.
 %\fxnote{Should there be made a table listing the motors data instead of writing a paraghap with the info?}
 
@@ -17,9 +18,9 @@ The brushless motor used on the Cubli setup is a EC 45 flat 50 Watt (part no. 25
 %		\hline%------------------------------------------------------------------------------------
 		Nominal current                   		  &  2,33 \unitWh{A}	\\
 		\hline%------------------------------------------------------------------------------------
-		Motor constant (\si{K_t})				 &  33,5 \unitWh{m^2\cdot N \cdot A^{-1}}  \\
+		Motor constant (\si{K_t})				 &  33,5 \unitWh{N\cdot m \cdot A^{-1}}  \\
 		\hline%------------------------------------------------------------------------------------
-		Mechanical time contant                 &  12,4 \unitWh{ms}  \\
+		Mechanical time constant                 &  12,4 \unitWh{ms}  \\
 		\hline%------------------------------------------------------------------------------------
 	\end{tabular}
 	\caption{Important parameters of the brushless DC-motor}
@@ -28,63 +29,56 @@ The brushless motor used on the Cubli setup is a EC 45 flat 50 Watt (part no. 25
 
 
 \subsection{Motor Control Board}
-Connected between the BeagleBone and the Brushless DC-motor is an ESCON Module 50/5, which is a motor control board. It is specifically made to work with ESCON motors (which the EC 45 flat is) and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}
-The control board has a setup selected by the previous group working with the Cubli setup.\\ 
+There is a motor control board, ESCON Module 50/5, connected between the BeagleBone and the Brushless DC-motor. It is specifically made to work with ESCON motors and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}\\ 
 %The PWM signal has a range of 10 \% to 90 \%. 
-Inside the board is a 4-quadrant configuration and it is controlled by a PWM signal which is limited to the range 10 \% to 90 \%. Through the software the current is limited to \SI{4}{A} at 90 \% and \SI{-4}{A} at 10 \%.\\
-The control board is set to run with a current control loop, which will keep the set current while the motor runs. It takes a signal, representing a current, as an input and then regulates the voltage over the motor to counteract back-EMF.\fxnote{double check the emf thing, i might be wrong, B}
+Inside the board is a 4-quadrant configuration.\\
+The control board is set to run with a current control loop, which will ensure that the set current is reached while the motor runs\fxnote{Reference to material providing proof that the current loop is fast enough.}.\\
+The reference current is sent as a PWM signal with its duty cycle configured within the range of 10 \% to 90 \% corresponding to \SI{4}{A} at 90 \% and \SI{-4}{A} at 10 \% see \appref{MaxonControlESCON}\fxnote{make sure that the appref links appropriately to the information in the appendix}.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|p{7cm}|p{2.3cm}|}
 		\hline%------------------------------------------------------------------------------------
-		\textbf{ESCON Module 50/5}                &  \textbf{Value} \unitWh{Unit}  \\
+		\textbf{Characteristics}                 &  \textbf{Value} \unitWh{Unit}  \\
 		\hline%------------------------------------------------------------------------------------
-		Nominal output current                    &  5 \unitWh{A}  	\\
+		Nominal output current                   &  5 \unitWh{A}  	\\
 		\hline%------------------------------------------------------------------------------------
-		Peak current (<20 s)                    &  15 \unitWh{A}	\\
+		Peak current (<20 s)                     &  15 \unitWh{A}	\\
 		\hline%------------------------------------------------------------------------------------
-		PWM frequency 							 &  53,6 \unitWh{kHz}  \\
+		Current control PWM frequency 				   &  53,6 \unitWh{kHz}  \\
 		\hline%------------------------------------------------------------------------------------
-		Sample Rate of PI current controller      &  53,6 \unitWh{kHz}  \\
+		Sample Rate of PI current controller     &  53,6 \unitWh{kHz}  \\
 		\hline%------------------------------------------------------------------------------------
 	\end{tabular}
 	\caption{Important parameters of the motor control board}
 	\label{MotorControlBoardTable}
 \end{table}
 
-\subsection{Connecting and breakout board}
-This board aims at power distribution with different voltages sent to each unit.
+\subsection{Braking System}
+Also included in the system is the braking mechanism, which is used for making the frame go from a resting position to vertical position.
 
-There is also a built-in gain for the potentiometer so it is configured for the ideal range of the BeagleBone Black ADC's and the rotation of the frame. 
+To perform this task the motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it. The inertia of the wheel is thus transfered to the frame, in order to raise it to standing position.
 
-Simon Jensen, Electronic Technician at Aalborg University, has made the connecting and breakout board. The text on the board is Automation \& Control made by Simon Jensen 2C 94V-0 15/01.\fxnote{Do we need all this information ? J.} The Schematic of the connecting and breakout board can be found in the appendix.\fxnote{Schematic in appendix}
+The actuator used to brake the reaction wheel Cubli setup is a Hitec HS225 Mighty Mini Servomotor\fxnote{Add reference}. The brake system is however not used in this project, since the jump up procedure is out of its scope.
 
-From the schematic of the connecting and breakout board the gain has been built to have a gain of 3.\fxnote{It would be nice if the mention of the gain value were put with the initial statement that there is one instead of having a `cutting' paragraph in between. J.}
-
-
-\subsection{Jump Brake}
-The last important part included on the system is the braking mechanism, which is used for making the frame go from a resting position to vertical position. 
-
-To perform this task the motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it. All the energy of the wheel is thus transfered to the frame, which then reaches the vertical position.
-
-The corresponding part used on the Cubli setup is a Hitec HS225 Mighty Mini Servomotor.\fxnote{Add reference}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|p{4cm}|p{7cm}|}
-		\hline%------------------------------------------------------------------------------------
-		Hitec HS225                & Analog Servomotor   \\
-		\hline%------------------------------------------------------------------------------------
-		Speed                    &  (4,8V/6,0V): 0,14x0,11 sec @ 60 deg.  	\\
-		\hline%------------------------------------------------------------------------------------
-		Torque kg/cm                    &  (4,8V/6,0V): 3,9 / 4,8  	\\
-		\hline%------------------------------------------------------------------------------------
-		Size in Millimeters 							 &  32,26 x 16,76 x 31,00    \\
-		\hline%------------------------------------------------------------------------------------
-		Weight grams      &  27,94    \\
-		\hline%------------------------------------------------------------------------------------
-	\end{tabular}
-	\caption{Hitec HS225 Mighty Mini Servomotor Specifications}
-	\label{HitecHS225Servomotor}
-\end{table}
+%\fxnote{For gods sake fix this table!..:p}
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|l|llll|}
+%		\hline%------------------------------------------------------------------------------------
+%		\textbf{Characteristics}           & \textbf{Values} &                      &  &\\
+%		\hline%------------------------------------------------------------------------------------
+%		Reaction time                      & @\SI{4,8}{V}    &\si{0,14/60} \si{s\cdot deg^{-1}} &and @\SI{6,0}{V} \si{0,11/60} &\si{s\cdot deg^{-1}} \\
+%		\hline%------------------------------------------------------------------------------------
+%		Speed                              & @\SI{4,8}{V}    &\SI{7,48}{rad\cdot s^{-1}} &and @\SI{6,0}{V} \si{9,52} &\si{rad\cdot s^{-1}}             \\
+%		\hline%------------------------------------------------------------------------------------
+%		Torque                             & @\SI{4,8}{V}    &\SI{3,9}{kgF\cdot cm} &and @\SI{6,0}{V} \si{4,8} &\si{kgF\cdot cm} \\
+%		\hline%------------------------------------------------------------------------------------
+%		Size                							 &  \multicolumn{4}{l|}{\si{32,26\ x\ 16,76\ x\ 31,00} \si{mm}}             \\
+%		\hline%------------------------------------------------------------------------------------
+%		Weight                             &  \SI{27,94}{g}  &                       &     &        \\
+%		\hline%------------------------------------------------------------------------------------
+%	\end{tabular}
+%	\caption{Hitec HS225 Mighty Mini Servomotor Specifications}
+%	\label{HitecHS225Servomotor}
+%\end{table}
