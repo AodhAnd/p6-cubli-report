@@ -7,7 +7,9 @@ As described in \secref{sec:Sensors} there are two IMUs mounted on the frame of 
 The angular position of the Cubli can be calculated using the accelerometer, the gyroscope or combining both. In this section each of the options is describe and analyzed.
 
 \subsection{Angle from the Accelerometer}
-To determine the angle of the frame with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted, as shown in \ref{accelerometer}.
+The accelerometer measures acceleration. If the object the accelerometer is attached to does not accelerate with respect to the earth, the accelerometer will measure the gravitational acceleration. This can be used to determine the orientation of the accelerometer sensor and with it the object it is attached to with respect to the earth. The accelerometers used with the Cubli setup have 3-axis detection as described in \ref{sec:IMU}. \\
+To determine the angle of the frame with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted, as shown in \ref{tbd}. \fxnote{section reference to the picture that shows imu location on frame}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{figures/accelerometer}
