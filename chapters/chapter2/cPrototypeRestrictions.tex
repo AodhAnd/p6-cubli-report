@@ -1,15 +1,15 @@
 \section{Prototype Restrictions}\label{sec:protoRestrictions}
 After some potential functionalities have been described, it is necessary to put some restrictions to the scope of this project.
 
-To achieve a full Cubli, an intermediary step with a two-dimensional (2D) prototype is considered as the focus for this project. This is to simplify the design process of the model and the controller before scaling it to three dimensions.\\
-This 2D prototype simply consists of a single square face of a cube, later on called frame. It should have one reaction wheel to raise it and a base plate to which the frame is fixed so it only has one degree of freedom.
+To achieve a full Cubli, an intermediary step with a one-faced prototype is considered as the focus for this project. This is to simplify the design process of the model and the controller before scaling it to a full cube.\\
+This simplified prototype consists of a single square face of a cube, later on called frame. It should have one reaction wheel to raise it and a base plate to which the frame is fixed so it only has one degree of freedom.
 
-With only one frame, the prototype cannot spin around itself nor move as described in \secref{sec:protoRestrictions}. Instead of balancing up in two steps, the frame can only balance on its corner which is comparable to getting the cube to balance on its edge.\\
+With only one frame, the prototype cannot spin around itself nor move as described in \secref{sec:mainFunctionalities}. Instead of balancing up in two steps, the frame can only balance on its corner which is comparable to getting the cube to balance on its edge.\\
 The jump-up of the cube is also set aside in this project, since it is considered out of scope for this Bachelor project.
 
 Concerning the wireless capabilities of the prototype, since it is only going to be built as a single frame in this project, the need for power autonomy and remote communication is not critical for it to work properly. Moreover, wireless communication and hardware design are also out of scope for this Control Engineering project. This means the system will be powered by an external power supply and communication will be done by physically connecting to the prototype.
 
-Uncritical functionalities are now set aside. The remaining focus is put on the control of a balancing single frame that is scalable to a cubic model.\\
+Noncritical functionalities are now set aside. The remaining focus is put on the control of a balancing single frame that is scalable to a cubic model.\\
 At Aalborg University (AAU), there exists a working setup of a single-sided Cubli. The overall goals of this semester are to make a model of this system, to simulate the model and then to design and implement a controller for it to balance around its equilibrium point. Furthermore, the prototype should be able to balance even when its baseplate is inclined.
 In the next chapter, the available Cubli setup is described in more details.
 
