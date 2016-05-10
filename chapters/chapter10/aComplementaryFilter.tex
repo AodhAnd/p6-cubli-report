@@ -20,15 +20,15 @@ To determine the angle of the frame with the accelerometer it is needed to get t
 As shown in the figure the angle can be found using \eqref{accelAngle}.
 %
 \begin{flalign}
-	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right)}
+	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right) + 0.84}
 	\label{accelAngle}
 \end{flalign}
 
-Based on the data from \appref{app:IMUMeasurementsAppendix}, a calculation of the angle can be done, whose result is shown in \figref{angleAccel}.
+Based on the data from \appref{app:IMUMeasurementsAppendix}, a calculation of the angle can be done, whose result is shown in \figref{angleAcc}.
 %
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{figures/angleAcc}
+	\includegraphics[scale=0.65]{figures/angleAcc}
 	\caption{Angular position calculation with the data of the accelerometer}
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
