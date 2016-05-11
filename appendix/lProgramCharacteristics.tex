@@ -40,3 +40,30 @@ It should be made sure that the current sent to the motor controller is null, so
 \end{enumerate}
 
 \subsubsection{Results}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.6]{figures/programTiming}
+  \caption{Pulse signal of the monitored code region executing the main controller operations.}
+  \label{fig:programTiming}
+\end{figure}
+\Figref{fig:programTiming} shows that the function \lstinline{runController()} which runs the main operations of the controller as well as the sensor readings, is called every \SI{10}{ms} along the few periods shown on the graph. This is the expected behavior since the function runs in a scheduled thread and it seems to respect, rather precisely, the timing period it is asked in the code to run at.\\
+It is also interesting to note that each call made to the function lasts approximately \SI{8}{ms} which means this critical section of the code has the time to run completely before the next call. However, this does not leave a very large margin to add other potential features in this code environment.\\
+By running a few other similar tests and removing parts of the code, the sensor readings are identified to be the most time consuming feature. Furthermore, jumps in the potentiometer readings, which can be seen on \figref{fig:potMeterJumps1} and \figref{fig:potMeterJumps2} seem to arise from the way the ADC values are read by the program through the operating system's I/O system. The area at issue in this situation seems identifiable, but since it is decided to eliminate the potentiometer in this project, and since the measured data is only negligeably affected in any case, no further investigation is to be made on this matter during this project.
+
+\begin{minipage}{0.45\linewidth}
+  \begin{figure}[H]
+    \includegraphics[scale=.48]{figures/potMeterJumps1}
+    \captionsetup{justification=centering}
+    \captionof{figure}{Potentiometer readings from a range test. Groups of data points can be observed.}
+    \label{fig:potMeterJumps1}
+  \end{figure}\vspace{-5mm}
+\end{minipage}
+\hspace{0.03\linewidth}
+\begin{minipage}{0.45\linewidth}
+  \begin{figure}[H]\vspace{-4mm}
+    \includegraphics[scale=.48]{figures/potMeterJumps2}
+    \captionsetup{justification=centering}
+    \captionof{figure}{Zoom-in on the potentiometer readings. Irregularities can be clearly seen in the ADC values.}
+    \label{fig:potMeterJumps2}
+  \end{figure}\vspace{-5mm}
+\end{minipage}
