@@ -31,7 +31,8 @@ Based on the data from \appref{app:IMUMeasurementsAppendix}, a calculation of th
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
 %
-While the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame and the spikes seen on the angle calculated from the accelerometer data in \ref{angleAcc} are because the IMU is accelerating and this creates a disturbance.
+While the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame and the spikes seen on the calculated angle data from the accelerometer data in \ref{angleAcc} are because the IMU is moving and the acceleration from this creates a disturbance on the measurement of the gravitational acceleration \cite{JWarren}.\\
+A way to minimize this disturbance would be to move the IMU as close as possible to the point of rotation. This way the accelerometer is still able to see the angle of the frame, but the distance it is moved is shorter and the acceleration will be smaller. \fxnote{we didnt do this because we would have to remount the sensor and create a new mount. how to best word that?, B}
 
 \subsection{Angle from the Gyroscope}
 The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \ref{systemDescription}. \fxnote{correct the ref to the picture of the cubli setup}
