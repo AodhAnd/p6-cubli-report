@@ -68,7 +68,7 @@ The two angle measurements of the IMU are sent through a filter and then summed 
 	\label{blockDrawingComplementaryFilter}
 \end{figure}
 
-The filter for the IMU is designed as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope. \cite{OlliW} \fxnote{might not be the correct source for this part, but it is a source that is useful for the part, B}
+The filter for the IMU is designed as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope \cite{OlliW}. \cite{PGui}
 \begin{flalign}
 	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
 	\eq{\theta_{F}} {\frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F}}&
@@ -136,7 +136,7 @@ theta_f[n] = ((2*tau-delta_T) / (2*tau+delta_T)) * theta[n-1] +
 \section{Calculation of the Cut-off Frequency}
 The cut-off frequency for the filters can be determined by using SensTool and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}. 
 
-The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilterFinal}. With this data it can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
+The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilter7}. With this data it can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
 
 The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si{\tau\ =\ 0,5399\ s}. This results in a cutting frequency for the filter equal to \si{11,63\ rad \cdot s^{-1}}.
 %
