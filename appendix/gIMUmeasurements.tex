@@ -25,7 +25,7 @@ Get data from the IMU and the potentiometer when running the state-space control
 	  \item Wait until the blue LEDs on the Beaglebone Black start blinking slowly and connect the USB cable to the PC.
 	  \item Send the binary compiled program of the controller to the board.
 	  \item Connect to a distant terminal on the Beaglebone Black through SSH and launch the program.
-	  \item Let the program run.
+	  \item Let the program run with the state-space controller.
 	  \item Apply small disturbances to the Cubli so there is some variations in the angle
 	  \item Stop the program (by pressing \textit{Q} and \textit{ENTER}).
 	  \item Retrieve the log file from the Cubli setup with the recorded data.
@@ -54,17 +54,17 @@ Get data from the IMU and the potentiometer when running the state-space control
 \begin{figure}[H]
 	\includegraphics[scale=.75]{figures/accData}
 	\centering
-	\caption{Measurements form the accelerometer and the calculated gravity magnitude}
+	\caption{Linear acceleration measurements from the accelerometer and the calculated gravity magnitude}
 \end{figure} \label{accData}
 %
 \begin{figure}[H]
 	\includegraphics[scale=.75]{figures/gyroData}
 	\centering
-	\caption{Measurements from the gyroscope}
+	\caption{Angular velocity measurements from the gyroscope}
 \end{figure} \label{gyroData}
 %
 \begin{figure}[H]
 	\includegraphics[scale=.75]{figures/potData}
 	\centering
-	\caption{Measurements from the potentiometer}
+	\caption{Angle measurements from the potentiometer}
 \end{figure} \label{potData}
