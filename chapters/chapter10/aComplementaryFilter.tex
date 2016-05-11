@@ -51,9 +51,8 @@ The angle of the frame can be found with the gyroscope by integrating the angula
 The problem with the data from the gyro is it will exhibit a drifting error when experiencing no movement \cite{JWarren} and since the angular velocity has to be integrated to get the angel there will be an accumulation error. 
 
 \subsection{Data fusing} \fxnote{better section name?}
-In order to filter the drift of the gyroscope and the disturbance errors of the accelerometer a complementary filter can be used to combine both measurements from the IMU mounted on the Cubli frame. This is done with the goal to get a more reliable angle measurement for both when the frame is moving and when its standing still in the equilibrium point. \fxnote{elaborate on the errors} 
-
-The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli's frame.
+In order to filter the drift of the gyroscope and the disturbance errors of the accelerometer a complementary filter can be used to combine both measurements from the IMU mounted on the Cubli frame. This is done with the goal to get a more reliable angle measurement for both when the frame is moving and when its standing still in the equilibrium point.\\
+The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli's frame. When the frame is moving fast it is better to rely on the gyroscope data, and when the frame is moving slowly or not at all it is better to rely on the accelerometer data \cite{PGui}.
 
 \begin{figure}[H]
 	\input{figures/complementaryFilterBlockDiagram.tikz}
