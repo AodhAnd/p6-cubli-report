@@ -48,10 +48,16 @@ The angle of the frame can be found with the gyroscope by integrating the angula
 	\eq{gyro\_\theta_{F}} {\int \omega_{F}}
 	\label{accelGyro}
 \end{flalign}
-The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement \cite{JWarren}.
+The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement \cite{JWarren}. These problems can be observed in \figref{angleGyro}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.65]{figures/angleGyro}
+	\caption{Angular position calculation with the data of the gyroscope}
+	\label{angleGyro}
+\end{figure}\vspace{-5mm}
 
-\subsection{Data fusing} \fxnote{better section name?}
-To counteract the drift of the gyroscope and the errors of the accelerometer a complementary filter can be used to combine both measurements from the two IMUs mounted on the Cubli frame.\fxnote{elaborate on the errors} 
+\subsection{Data fusing}
+To counteract the drift of the gyroscope and the errors of the accelerometer a complementary filter can be used to combine both measurements from the two IMUs mounted on the Cubli frame.
 
 The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli's frame.
 
@@ -82,7 +88,7 @@ Rewritting \eqref{complementaryCombinedFilter} yields
  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
  	\label{discreteComplementaryFilter1}
 \end{flalign}
-Now s is replaced
+If s is replaced by its discrete expression, the difference equation can be derived.
 \begin{flalign}
   	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
   	\label{discreteComplementaryFilter2}
@@ -97,23 +103,26 @@ Now s is replaced
    	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T + \Delta T \cdot z^{-1}}{(2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
 \end{flalign}\label{discreteComplementaryFilter4}
 %
-\begin{flalign}
-	\eq{\Updownarrow \theta_{F} \cdot ((2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1})} {\Delta T + \Delta T \cdot z^{-1} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
-\end{flalign}\label{discreteComplementaryFilter5}
-%
+%\begin{flalign}
+%	\eq{\Updownarrow \theta_{F} \cdot ((2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1})} {\Delta T + \Delta T \cdot z^{-1} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
+%\end{flalign}\label{discreteComplementaryFilter5}
+%%
 \begin{flalign}
 	\eqOne{\Updownarrow \theta_{F}[n] \cdot (2\cdot \tau + \Delta T) - \theta_{F}[n-1] \cdot (2\tau - \Delta T)} {\Delta T \cdot (accel\_\theta_{F}[n] + accel\_\theta_{F}[n-1]} 
 	\eqTwo{ + \tau \cdot gyro\_\dot{\theta}_{F}[n] + \tau \cdot gyro\_\dot{\theta}_{F}[n+1])} 
-\end{flalign}	\label{discreteComplementaryFilter6}
+	\label{discreteComplementaryFilter6}
+\end{flalign}
 %  
 \begin{flalign}
 	\eqOne{\Updownarrow \theta_{F}[n]}{\frac{(2\cdot \tau + \Delta T)}{2\cdot \tau + \Delta } \cdot \theta_{F}[n-1] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n-1]} 
 	\eqTwo{ + \frac{\Delta T \cdot \tau}{2\cdot \tau + \Delta T} \cdot gyro\_\dot{\theta}_{F}[n] + \frac{\Delta T \cdot \tau}{2\cdot \tau + \Delta T} \cdot gyro\_\dot{\theta}_{F}[n-1]} 
-\end{flalign} 	\label{discreteComplementaryFilterFinal}
+	\label{discreteComplementaryFilter7}
+\end{flalign}
 %
-Implementing \eqref{discreteComplementaryFilterFinal} yields to following piece of code. \fxnote{USE the current form in the controller code file}
+
+Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. \fxnote{USE the current form in the controller code file}
 %
-\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C++},
+\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
 label    = codeCompFilter ]
 /**
 *  delta_T is the sampling time = 0.01 s

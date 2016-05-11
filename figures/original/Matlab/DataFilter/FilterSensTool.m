@@ -25,6 +25,7 @@ title('Measurements from the Potentiometer')
 xlabel('Time (s)')
 ylabel('Angular Position (rad)')
 hold off;
+
 % Accelerometer data
 figure(3);
 gravity=sqrt(accX1.^2+accY1.^2+accZ1.^2);
@@ -47,16 +48,35 @@ xlabel('Time (s)')
 ylabel('Angular Velocity (rad/s)')
 hold off;
 
-% Accelerometer angle data
+% Plot of angle calculations
+% Plot of the angle calculated with the accelerometer
 accAngle1 = atan(accY1./accX1);
 accAngle1offset = accAngle1 + 0.84;
 
-figure(6);
+figure(5);
 plot(t,accAngle1offset,t,potRad,'linewidth',1.2);
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
-title('Measurements from the Accelerometer')
+title('Angle Calculation using the Accelerometer Data')
 xlabel('Time (s)')
 ylabel('Angular Position (rad)')
 legend('Accelerometer','Potentiometer');
+hold off;
+
+% Angle from gyroscope data
+% Plot of the angle calculated with the gyro
+gyro_angle=zeros(length(gyroRads1),1);
+gyro_angle(1)=0;
+for i=2:length(gyroRads1)
+    gyro_angle(i) = gyro_angle(i-1) + T * gyroRads1(i);
+end
+
+figure(6);
+plot(t,gyro_angle,t',potRad,'linewidth',1.2);
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+title('Angle Calculation using the Gyroscope Data')
+xlabel('Time (s)')
+ylabel('Angular Position (rad)')
+legend('Gyroscope','Potentiometer');
 hold off;
