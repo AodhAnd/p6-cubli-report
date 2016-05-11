@@ -9,7 +9,8 @@ The potentiometer is a precision potentiometer with continuous turning, linearit
 The potentiometer is placed at the corner of the frame which is fixed to an axis and it can be used to measure the actual position of the frame.\\
 However its use is restricted to the one-dimensional Cubli, as it is attached and gives only an angle in relation to the base, which is not present in the 3D case.\\
 In the project the potentiometer is used to test the dynamics of the Cubli and for feedback in the initial controller design.\\
-Since the tests and feedback are depending on the reliability of the potentiometer, different tests are carried out on the potentiometer.
+
+Since all the future tests and feedback will depend on the reliability of the potentiometer, different tests are carried out on the potentiometer.
 %The objective of this test is to find the linearity of the potentiometer and find the outer range of the frame rotation in degrees and potentiometer and BeagleBone Black A/D converter value, and the same for the balancing point, and at the same time get the new parameters of the frame like the weight and the placement of center of mass.
 %
 %
@@ -22,7 +23,7 @@ Equilibrium point have a range of 1 degree this is due to friction in the bearin
 %
 %
 \subsubsection{Range Test}
-Test to find the voltage to angle conversion along with potential offset, see \appref{app:potentiometerRes}.
+It is also needed a test to find the voltage to angle conversion along with potential offset, see \appref{app:potentiometerRes}.
 
 \begin{minipage}{\linewidth}
   	\begin{minipage}{0.45\linewidth}
@@ -55,7 +56,7 @@ It is chosen that the angle-offset must be accounted for such that the equilibri
 
 %Equilibrium point has been tested to have a range of 1 degree and the angle between the base and the frame is 42,5 degree. To avoid complications it is chosen that the angle-offset must be accounted for such that the equilibrium position of the frame is at 0 degree angle. This results in a 48,9 degree range to one side of the optimal position and 41,1 degree on the other.
 
-\subsection{Inertial Measurement Unit}
+\subsection{Inertial Measurement Unit} \label(sec:IMU)
 The Motion Processing Unit (MPU) is a triple axis accelerometer and gyro mounted integrated in the same chip mounted on the breakout board from SparkFun. This is also called 6 Degrees of Freedom (6-DOF).
 
 The MPU 6050 is a sensor based on Micro Electro Mechanical Systems (MEMS) technology. This chip uses Inter Integrated Circuit (\si{I^2C}) protocol for communication, and is using \si{I^2C} speed up to 400 kHz. 

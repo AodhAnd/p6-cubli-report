@@ -5,12 +5,12 @@
 Based on the design considerations and limitations explained earlier in this report, a list of requirements shall be developed.
 %
 \begin{enumerate}
-\item \textbf{The Cubli should be able to balance from an unstable equilibrium position and a null velocity.}
+\item \textbf{The Cubli should be able to balance starting from an unstable equilibrium position and a null velocity.}
   \begin{itemize}
-  \item[] Considering only naturally occurring perturbations, the Cubli needs to be able to regulate its position by itself, around the \si{0\ rad \cdot s^{-1}}, without falling directly.
+  \item[] Considering only naturally occurring perturbations, the Cubli needs to be able to regulate its position by itself, around \si{0\ rad}, without falling directly.
   \end{itemize}
 
-\item \textbf{The prototype should be able to balance around \si{0 \rad \cdot s^{-1}} regardless of the level of the baseplate, using internally mounted sensors.}  
+\item \textbf{The prototype should be able to balance around \si{0\ \rad} regardless of the level of the baseplate, using internally mounted sensors.}  
   \begin{itemize}
   \item[] This ensures that the 2D design of the Cubli can keep its upright position independently from its base plate and therefore, can be more easily translated to a 3D model.
   \end{itemize}
@@ -25,7 +25,7 @@ Based on the design considerations and limitations explained earlier in this rep
 %
 From these established requirements, a controller allowing the Cubli to stabilize in an upright position is to be designed and implemented.
 
-\section{Title}\label{title}
+\section{Further Capabilities Analysis}\label{title}
 Moreover, a further investigation on the behavior of the controlled system is to be done in order to determine the capabilities of the final prototype. This includes:
 \begin{enumerate}
 \item \textbf{Duration of the stable operation}
@@ -45,7 +45,7 @@ Moreover, a further investigation on the behavior of the controlled system is to
 		%
 		\begin{figure}[H] 
 			\centering
-			\includegraphics[scale=0.55]{figures/limitationTorque}
+			\includegraphics[scale=0.65]{figures/limitationTorque}
 			\caption{Force acting on the system that create an initial torque}
 			\label{limitationTorque}
 		\end{figure}
