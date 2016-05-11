@@ -122,15 +122,41 @@ If s is replaced by its discrete expression, the difference equation can be deri
 
 Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. \fxnote{USE the current form in the controller code file}
 %
+%\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
+%label    = codeCompFilter ]
+%/**
+%*  delta_T is the sampling time = 0.01 s
+%*  tau is the cut-off frequency of the low and high pass filters
+%*/
+%theta_f[n] = ((2*tau-delta_T) / (2*tau+delta_T)) * theta[n-1] + 
+%	(delta_T / (2*tau+delta_T)) * (acc_theta[n] + tau * gyro_thetaDot[n] + 
+%	acc_theta[n-1] + tau * gyro_thetaDot[n-1]) 
+%\end{lstlisting}
+
 \begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
 label    = codeCompFilter ]
-/**
-*  delta_T is the sampling time = 0.01 s
-*  tau is the cut-off frequency of the low and high pass filters
-*/
-theta_f[n] = ((2*tau-delta_T) / (2*tau+delta_T)) * theta[n-1] + 
-	(delta_T / (2*tau+delta_T)) * (acc_theta[n] + tau * gyro_thetaDot[n] + 
-	acc_theta[n-1] + tau * gyro_thetaDot[n-1]) 
+//---------------------- IMU --------------------------//
+
+const double acc_off = 0.84;  	// accel meass offset
+const double tau = 0.5399;	// cut-off for the complementary filter
+
+static double acc_angle[2]={atan(accY1/accX1) + acc_off,0},
+gyro_angle[2]={gyroRads1,gyroRads1},
+comp_angle[2]={acc_angle[0],0};
+
+// Set old measurement data
+acc_angle[1] = acc_angle[0];
+gyro_angle[1] = gyro_angle[0];
+gyro_angle[0] = gyroRads1;
+comp_angle[1] = comp_angle[0];
+
+// Get angle from accel axis measurements
+acc_angle[0] = atan(accY1/accX1) + acc_off;
+
+//Complementary equation using Tustin
+const double K1 = (2*tau-Ts)/(2*tau+Ts);
+const double K2 = Ts/(2*tau + Ts);
+comp_angle[0] = K1*comp_angle[1] + K2*(acc_angle[0] + acc_angle[1] + tau*gyro_angle[0] + tau*gyro_angle[1]);
 \end{lstlisting}
 
 \section{Calculation of the Cut-off Frequency}
