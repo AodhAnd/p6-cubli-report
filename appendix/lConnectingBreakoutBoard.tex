@@ -2,35 +2,75 @@
 
 Schematic of the Connecting and Breakout Board and Measuring of the system.
 
-%\subsubsection{Setup}
+Voltage info:\\
+The powersupply that supplies the entire system is 24 V. There has been built voltage regulators in to the connecting and breakout board to supply the different units with operation voltage. Many connections between the different units and the BeagleBone Black has to be in the same voltage level, for the BeagleBone Black to be compatible with the units.
+
+Many of the sensors are operating on different voltage. Below is a list of the different voltage usage:
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Unit}       &  \textbf{Volgates (V)}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		BeagleBone Black                               & 5 V           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		BeagleBone Black ADC							  & Max. 1,8 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		BeagleBone Black logic level							  & 3,3 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Maxon Controller Board 							  & 10 V to 50 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Maxon Motor							  & 24 V             \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Potentiometer							  & Max. 50 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		ServoMotor							  & 4,8 V to 6 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		IMU PMU6050							  & 3,3 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+
+
+The BeagleBone Black input and output connections diagram \figref{labExpanionHeader}:\\
 \begin{figure}[H]
   \centering
 	\includegraphics[scale=0.92]{figures/ExpanionHeader.pdf}
-	\caption{Expansion header diagram}
+	\caption{Expansion header diagram.}
 	\label{labExpanionHeader}
 \end{figure}\vspace{-5mm}
 
+The Potentiometer connections diagram \figref{labPotmeter}:\\
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/Potmeter.pdf}
-	\caption{Potmeter diagram}
+	\caption{Potentiometer diagram.}
 	\label{labPotmeter}
 \end{figure}\vspace{-5mm}
 
+The Potentiometer is connected to the BeagleBone’s A/D and only a small area is used on the Potentiometer, and for this reason the signal is gained and it is done by using an Operational Amplifiers (op-amp) which can only gain the voltage to 1,8 V, because of the supply voltage to the op-amp is only 1,8 V.
+
+The Potentiometer is only using a small area of rotation on the Cubli, about ¼ of the full rotation. The gain is calculated from the max. rotation voltage and the result is a gain of 3 V. After the signal has been gained a low-pass filter with a frequency of 194 Hz is added to damp noise on the signal. Since the sampling frequency is 100 Hz it is almost upholding New Quest by double or faster
+
+The Maxon Motor Driver Board connections diagram \figref{labMotorDriver}:\\
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/MotorDriver.pdf}
-	\caption{Motor Driver diagram}
+	\caption{Motor Driver diagram.}
 	\label{labMotorDriver}
 \end{figure}\vspace{-5mm}
+
+Since the BeagleBone Black ADC only operates up to 1.8 V and the Maxon control board operates at -4 V to 4 V there has been put in a voltage divider from the Maxon motor control to the Beagle Bone so the BeagleBone’s A/D limit is not exceeded.
+
+The voltage divider gain the voltages 0,44382 and the Maxon controller operates at a maximum of 4 V and by the gain it becomes 1,77528 V below the BeagleBones A/D limit of 1,8 V.
+
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/PMU9150.pdf}
-	\caption{PMU9150 diagram}
+	\caption{PMU9150 diagram.}
 	\label{labPMU9150}
 \end{figure}\vspace{-5mm}
 
@@ -38,7 +78,7 @@ Schematic of the Connecting and Breakout Board and Measuring of the system.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/ServoMotor.pdf}
-	\caption{Servo Motor diagram}
+	\caption{Servo Motor diagram.}
 	\label{labServoMotor}
 \end{figure}\vspace{-5mm}
 
@@ -46,7 +86,7 @@ Schematic of the Connecting and Breakout Board and Measuring of the system.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/BeagleBone.pdf}
-	\caption{Beagle Bone diagram}
+	\caption{Beagle Bone diagram.}
 	\label{labBeagleBone}
 \end{figure}\vspace{-5mm}
 
@@ -54,7 +94,7 @@ Schematic of the Connecting and Breakout Board and Measuring of the system.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/Power.pdf}
-	\caption{Power diagram}
+	\caption{Power diagram.}
 	\label{labPower}
 \end{figure}\vspace{-5mm}
 
@@ -62,7 +102,7 @@ Schematic of the Connecting and Breakout Board and Measuring of the system.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/Led.pdf}
-	\caption{LED diagram}
+	\caption{LED diagram.}
 	\label{labLed}
 \end{figure}\vspace{-5mm}
 
