@@ -45,13 +45,13 @@ A way to minimize this disturbance would be to move the IMU as close as possible
 \subsection{Angle from the Gyroscope}
 The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \ref{systemDescription}. \fxnote{correct the ref to the picture of the cubli setup}
 \begin{flalign}
-	\eq{gyro\_\theta_{F}} {\int \omega_{F}}
+	\eq{gyro\_\theta_{F}} {\int_{\Delta T}^{} \omega_{F} \, \mathrm{d}t}
 	\label{accelGyro}
 \end{flalign}
-The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement \cite{JWarren}.
+The problem with the data from the gyro is it will exhibit a drifting error when experiencing no movement \cite{JWarren}. 
 
 \subsection{Data fusing} \fxnote{better section name?}
-To counteract the drift of the gyroscope and the errors of the accelerometer a complementary filter can be used to combine both measurements from the two IMUs mounted on the Cubli frame.\fxnote{elaborate on the errors} 
+In order to filter the drift of the gyroscope and the disturbance errors of the accelerometer a complementary filter can be used to combine both measurements from the IMU mounted on the Cubli frame. This is done with the goal to get a more reliable angle measurement for both when the frame is moving and when its standing still in the equilibrium point. \fxnote{elaborate on the errors} 
 
 The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli's frame.
 
