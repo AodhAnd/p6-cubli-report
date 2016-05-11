@@ -1,4 +1,4 @@
-\chapter{Complementary filter}\label{chap:CompFilter} \fxnote{different chapter names, since this might be more of a chapter how to get IMU working than just about complementary filter?, B}
+\chapter{Angle Measurement with Build-in Sensors}\label{chap:CompFilter} \fxnote{different chapter names, since this might be more of a chapter how to get IMU working than just about complementary filter?, B}
 It is a goal to get the Cubli setup to balance the frame in an upright position independently of the baseplate orientation.
 
 As described in \secref{sec:Sensors} there are two IMUs mounted on the frame of the Cubli. They can be used to achieve this goal since they only depend on the absolute angle and they can also be used in the full Cubli.
@@ -42,9 +42,9 @@ The angle of the frame can be found with the gyroscope by integrating the angula
 The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement.\fxnote{source on gyro error?, B}
 
 \subsection{Data fusing} \fxnote{better section name?}
-The complementary filter is used to combine the measurement data from the accelerometer and gyros in the two IMUs mounted on the Cubli frame. 
+To counteract the drift of the gyroscope and the errors of the accelerometer a complementary filter can be used to combine both measurements from the two IMUs mounted on the Cubli frame.\fxnote{elaborate on the errors} 
 
-The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli frame. This is done to counteract drift of the gyroscope and error of the accelerometer.\fxnote{elaborate on the errors} 
+The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli's frame.
 
 \begin{figure}[H]
 	\input{figures/complementaryFilterBlockDiagram.tikz}
@@ -53,7 +53,7 @@ The two angle measurements of the IMU are sent through a filter and then summed 
 	\label{blockDrawingComplementaryFilter}
 \end{figure}
 
-The filter for the IMU is going to be done as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope. \cite{OlliW} \fxnote{might not be the correct source for this part, but it is a source that is useful for the part, B}
+The filter for the IMU is designed as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope. \cite{OlliW} \fxnote{might not be the correct source for this part, but it is a source that is useful for the part, B}
 \begin{flalign}
 	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
 	\eq{\theta_{F}} {\frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F}}&
@@ -61,36 +61,51 @@ The filter for the IMU is going to be done as shown in \figref{blockDrawingCompl
 \end{flalign}
 Combining the two equations yields \eqref{complementaryCombinedFilter}
 \begin{flalign}
-	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F} + \frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F} = \frac{accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F}}{1 + \tau \cdot s}}
+	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F} + \frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F} = \frac{accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F}}{1 + \tau \cdot s}} &
 	\label{complementaryCombinedFilter}
 \end{flalign}
-The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much two different sensor measurements weight in on the combined angle.
+The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much the two different sensor measurements weight in on the combined angle.
  
 \section{Discretization of the Complementary Filter} 
-In oder to use the complementary filter on the cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}
+In oder to use the complementary filter on the cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}, with a sample time of 
 Rewritting \eqref{complementaryCombinedFilter} yields
 \begin{flalign}
- 	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+ 	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
  	\label{discreteComplementaryFilter1}
 \end{flalign}
 Now s is replaced
 \begin{flalign}
-  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
   	\label{discreteComplementaryFilter2}
 \end{flalign}
-  
+%
+%\begin{flalign}
+%  	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T \cdot (1 + z^{-1})}{\Delta T \cdot (1 + z^{-1})+2\cdot (1 - z^{-1})\cdot \tau} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
+%  	\label{discreteComplementaryFilter3}
+%\end{flalign}
+  %
 \begin{flalign}
-  	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T \cdot (1 + z^{-1})}{\Delta T \cdot (1 + z^{-1})+2\cdot (1 - z^{-1})\cdot \tau} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
-  	\label{discreteComplementaryFilter3}
-\end{flalign}
-  
+   	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T + \Delta T \cdot z^{-1}}{(2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
+\end{flalign}\label{discreteComplementaryFilter4}
+%
 \begin{flalign}
-   	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T + \Delta T \cdot z^{-1})}{(2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})}
-   	\label{discreteComplementaryFilter4}
-\end{flalign}
-   
-Implementing \eqref{discreteComplementaryFilter4} yields following piece of code \fxnote{USE the current form in the controller code file}
-\begin{lstlisting}
+	\eq{\Updownarrow \theta_{F} \cdot ((2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1})} {\Delta T + \Delta T \cdot z^{-1} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
+\end{flalign}\label{discreteComplementaryFilter5}
+%
+\begin{flalign}
+	\eqOne{\Updownarrow \theta_{F}[n] \cdot (2\cdot \tau + \Delta T) - \theta_{F}[n-1] \cdot (2\tau - \Delta T)} {\Delta T \cdot (accel\_\theta_{F}[n] + accel\_\theta_{F}[n-1]} 
+	\eqTwo{ + \tau \cdot gyro\_\dot{\theta}_{F}[n] + \tau \cdot gyro\_\dot{\theta}_{F}[n+1])} 
+\end{flalign}	\label{discreteComplementaryFilter6}
+%  
+\begin{flalign}
+	\eqOne{\Updownarrow \theta_{F}[n]}{\frac{(2\cdot \tau + \Delta T)}{2\cdot \tau + \Delta } \cdot \theta_{F}[n-1] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n-1]} 
+	\eqTwo{ + \frac{\Delta T \cdot \tau}{2\cdot \tau + \Delta T} \cdot gyro\_\dot{\theta}_{F}[n] + \frac{\Delta T \cdot \tau}{2\cdot \tau + \Delta T} \cdot gyro\_\dot{\theta}_{F}[n-1]} 
+\end{flalign} 	\label{discreteComplementaryFilterFinal}
+%
+Implementing \eqref{discreteComplementaryFilterFinal} yields to following piece of code. \fxnote{USE the current form in the controller code file}
+%
+\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C++},
+label    = codeCompFilter ]
 /**
 *  delta_T is the sampling time = 0.01 s
 *  tau is the cut-off frequency of the low and high pass filters
@@ -98,7 +113,19 @@ Implementing \eqref{discreteComplementaryFilter4} yields following piece of code
 theta_f[n] = ((2*tau-delta_T) / (2*tau+delta_T)) * theta[n-1] + 
 	(delta_T / (2*tau+delta_T)) * (acc_theta[n] + tau * gyro_thetaDot[n] + 
 	acc_theta[n-1] + tau * gyro_thetaDot[n-1]) 
-
 \end{lstlisting}
 
-The cut-off frequency for the filters can be determined by using SensTool\fxnote{correct way to spell Senstool?}. It can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
+\section{Calculation of the Cut-off Frequency}
+The cut-off frequency for the filters can be determined by using SensTool and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}. 
+
+The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilterFinal}. With this data it can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
+
+The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si{\tau\ =\ 0,5399\ s}. This results in a cutting frequency for the filter equal to \si{11,63\ rad \cdot s^{-1}}.
+%
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.65]{figures/filterSensTool}
+	\caption{Final result od the complementary filter compared with the data from the potentiometer}
+	\label{filterSensTool}
+\end{figure}\vspace{-5mm}
+%
