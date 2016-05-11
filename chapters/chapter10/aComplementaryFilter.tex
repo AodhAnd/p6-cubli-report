@@ -7,17 +7,15 @@ As described in \secref{sec:Sensors} there are two IMUs mounted on the frame of 
 The angular position of the Cubli can be calculated using the accelerometer, the gyroscope or combining both. In this section each of the options is describe and analyzed.
 
 \subsection{Angle from the Accelerometer}
-The accelerometer measures acceleration. If the object the accelerometer is attached to does not accelerate with respect to the earth, the accelerometer will measure the gravitational acceleration. This can be used to determine the orientation of the accelerometer sensor and with it the object it is attached to with respect to the earth. The accelerometers used with the Cubli setup have 3-axis detection as described in \ref{sec:IMU}. \\
-To determine the angle of the frame with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted, as shown in \ref{tbd}. \fxnote{section reference to the picture that shows imu location on frame}
-while the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame. This creates a disturbance on the accelerometer measurements.
+The accelerometer measures acceleration. If the object the accelerometer is attached to does not accelerate with respect to the earth, the accelerometer will measure the gravitational acceleration. This can be used to determine the orientation of the accelerometer sensor and with it the object it is attached to with respect to the earth \cite{JWarren}. The accelerometers used with the Cubli setup have 3-axis detection as described in \ref{sec:IMU}. \\
+To determine the angle of the frame with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted, as shown in \figref{accelerometer}. Based on the markings on the IMU, those are the x and y-axis directions.\\
+Taking the two axis measurements shown in figure \ref{accelerometer} the angle can be found using \eqref{accelAngle} \cite{CFisher}. The offset is added because the IMU is mounted with a \si{\frac{\pi}{4}} rotation compared to the orientation of the frame.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{figures/accelerometer}
 	\caption{Position of the IMU in the setup}
 	\label{accelerometer}
 \end{figure}\vspace{-5mm}
-
-As shown in the figure the angle can be found using \eqref{accelAngle} \cite{JWarren}. The offset is added because the IMU is mounted with a \si{\frac{\pi}{4}} rotation compared to the orientation of the frame.
 %
 \begin{flalign}
 	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right) + offset}
@@ -33,8 +31,7 @@ Based on the data from \appref{app:IMUMeasurementsAppendix}, a calculation of th
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
 %
-It can be seen that the accelerometer can detect changes in the angle, but has problems with noise and measuring fast changes in the angle.\fxnote{source?, also reason for error seems to be fast and large?} 
-The spikes seen on the angle calculated from the accelerometer data is because the IMU is not sitting still, but moving around with the frame.
+While the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame and the spikes seen on the angle calculated from the accelerometer data in \ref{angleAcc} are because the IMU is accelerating and this creates a disturbance.
 
 \subsection{Angle from the Gyroscope}
 The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \ref{systemDescription}. \fxnote{correct the ref to the picture of the cubli setup}
@@ -42,7 +39,7 @@ The angle of the frame can be found with the gyroscope by integrating the angula
 	\eq{gyro\_\theta_{F}} {\int \omega_{F}}
 	\label{accelGyro}
 \end{flalign}
-The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement.\fxnote{source on gyro error?, B}
+The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement \cite{JWarren}.
 
 \subsection{Data fusing} \fxnote{better section name?}
 The complementary filter is used to combine the measurement data from the accelerometer and gyros in the two IMUs mounted on the Cubli frame. 
