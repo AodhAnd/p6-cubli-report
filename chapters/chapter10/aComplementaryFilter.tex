@@ -9,7 +9,7 @@ The angular position of the Cubli can be calculated using the accelerometer, the
 \subsection{Angle from the Accelerometer}
 The accelerometer measures acceleration. If the object the accelerometer is attached to does not accelerate with respect to the earth, the accelerometer will measure the gravitational acceleration. This can be used to determine the orientation of the accelerometer sensor and with it the object it is attached to with respect to the earth. The accelerometers used with the Cubli setup have 3-axis detection as described in \ref{sec:IMU}. \\
 To determine the angle of the frame with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted, as shown in \ref{tbd}. \fxnote{section reference to the picture that shows imu location on frame}
-
+while the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame. This creates a disturbance on the accelerometer measurements.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{figures/accelerometer}
@@ -17,13 +17,13 @@ To determine the angle of the frame with the accelerometer it is needed to get t
 	\label{accelerometer}
 \end{figure}\vspace{-5mm}
 
-As shown in the figure the angle can be found using \eqref{accelAngle}.
+As shown in the figure the angle can be found using \eqref{accelAngle}. The offset is added because the IMU is mounted with a \si{\frac{\pi}{4}} rotation compared to the orientation of the frame.
 %
 \begin{flalign}
-	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right) + 0.84}
+	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right) + offset}
 	\label{accelAngle}
 \end{flalign}
-
+The offset has the value \si{\frac{\pi}{4} + 0,06 = 0,84}. The \si{0,06} comes from the fact that the frame is slightly off center. \fxnote{reference the section where it is explained the first time}
 Based on the data from \appref{app:IMUMeasurementsAppendix}, a calculation of the angle can be done, whose result is shown in \figref{angleAcc}.
 %
 \begin{figure}[H]
@@ -33,7 +33,8 @@ Based on the data from \appref{app:IMUMeasurementsAppendix}, a calculation of th
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
 %
- It can be seen that the accelerometer can detect changes in the angle, but has problems with noise and measuring fast changes in the angle.\fxnote{source?, also reason for error seems to be fast and large?} 
+It can be seen that the accelerometer can detect changes in the angle, but has problems with noise and measuring fast changes in the angle.\fxnote{source?, also reason for error seems to be fast and large?} 
+The spikes seen on the angle calculated from the accelerometer data is because the IMU is not sitting still, but moving around with the frame.
 
 \subsection{Angle from the Gyroscope}
 The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \ref{systemDescription}. \fxnote{correct the ref to the picture of the cubli setup}
