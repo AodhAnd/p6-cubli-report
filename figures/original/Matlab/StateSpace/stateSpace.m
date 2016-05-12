@@ -46,7 +46,6 @@ obs=[C;
 rank(obs); % is equal to 3 - the internal states can be found through the outputs
 
 %% Comparison between different position of closed-loop poles
-
 P=[-4 -5 -15];
 K=place(A,B,P);
    
@@ -76,6 +75,12 @@ for i=1:0.5:20
     hold on;
     figure(2);
     plot(position2,'linewidth',1.2);
+    hold on;
+    figure(3);
+    plot(wheel1,'linewidth',1.2);
+    hold on;
+    figure(4);
+    plot(wheel2,'linewidth',1.2);
     hold on;   
     drawnow;    
     hold on;
@@ -99,6 +104,22 @@ grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
 xlabel('Time (s)');
 ylabel('Angular Position (rad)');
+hold off;
+
+figure(3);
+title('Velocity of the Wheel with Initial Velocity of the Frame ');
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+xlabel('Time (s)');
+ylabel('Angular Velocity (rad/s)');
+hold off;
+
+figure(4);
+title('Velocity of the Wheel with a Disturbance Torque ');
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+xlabel('Time (s)');
+ylabel('Angular Velocity (rad/s)');
 hold off;
 
 
