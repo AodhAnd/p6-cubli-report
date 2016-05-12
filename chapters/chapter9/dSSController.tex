@@ -19,7 +19,7 @@ This new configuration gives a new equation for \si{\vec{\dot{x}}}:
 The objective is to find K such that the eigenvalues of \si{\vec{A}-\vec{B}\vec{K}} are placed at the LHP. This gain matrix can be found using the Matlab command K = place(A,B,P), where P is a vector containing the desired position of the new poles.
 
 To choose the position of these poles two simulations are made for different values. In the first one the Cubli starts from equilibrium and a disturbance torque is applied while in the second one it starts from an initial angle different from \si{0\ rad} and with an initial acceleration.
-%
+
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
@@ -32,7 +32,19 @@ To choose the position of these poles two simulations are made for different val
 	\end{minipage}
 	\hspace{0.03\linewidth}
 	\begin{minipage}{0.45\linewidth}
-		\begin{figure}[H]\vspace{4mm}
+		\begin{figure}[H]\vspace{0mm}
+			\includegraphics[scale=.55]{figures/disturbanceStateSpaceWheel}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Velocity of the wheel with the same disturbance}
+			\label{disturbanceStateSpaceWheel}
+		\end{figure}
+	\end{minipage}
+\end{minipage}
+%
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
 			\includegraphics[scale=.55]{figures/catchingStateSpace}
 			\centering
 			\captionsetup{justification=centering}
@@ -40,14 +52,24 @@ To choose the position of these poles two simulations are made for different val
 			\label{catchingStateSpace}
 		\end{figure}
 	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]\vspace{-4mm}
+			\includegraphics[scale=.55]{figures/catchingStateSpaceWheel}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Velocity of the wheel in the same starting conditions}
+			\label{catchingStateSpaceWheel}
+		\end{figure}
+	\end{minipage}
 \end{minipage}
 
-The final combination of poles is \si{-6}, \si{-7} and \si{-10}, which gives the yellow responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. The gain matrix for this combination results in the following:
+The final combination of poles is \si{-4}, \si{-5} and \si{-13}, which gives the red responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. The gain matrix for this combination results in the following:
 %
 \begin{equation}  \label{controllerSS}
 	\vec{K} = 
 	\begin{bmatrix}
-		-2,3021 & -0,227 & -0,0039 \\
+		-1,6011 & -01595 & -0,0016 \\
 	\end{bmatrix}
 \end{equation}
 %

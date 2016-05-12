@@ -25,8 +25,8 @@
     ;
     \draw
       % FEEDBACKS %
-      node(veloFeedback) at (7,-2) [block] {\large \si{B_F}}
-      node(angleFeedback) at (8,-4) [block] {\large \si{(m_F \cdot l_F + m_w \cdot l_w)g}}
+      node(veloFeedback) at (7,-1) [block] {\large \si{B_F}}
+      node(angleFeedback) at (8,-2) [block] {\large \si{(m_F \cdot l_F + m_w \cdot l_w)g}}
     ;
     %-- Block linking --%
     % INPUT %
