@@ -34,39 +34,15 @@ Both controllers seem to have a good behavior and both reach the desired final p
    \label{fig:discreteVsContinuousWheel}
 \end{figure}\vspace{-5mm}
 
-In both cases the velocity is different from 0 in steady state, with means that the Cubli is not in the equilibrium position defined for it. 
+In both cases the velocity is different from 0 in steady state. It should not be any problem since a constant velocity does not produce any torque 
+to the system, but since there is friction in the wheel it will start to slow down, producing an acceleration on the system. This will make the Cubli to slightly move from equilibrium position and the controller will try to apply some torque to the system to balance it. The problem is that if the motor was already very closed to its maximum speed it will not be able to accelerate more and produce the torque needed, making the frame to fall.
 
-The conclusion of the simulation is that the controller is not able to maintain the system in equilibrium position. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior. Since now the system will have two outputs it is reasonable to consider a State Space approach to solve the problem.
+The conclusion is that the controller is not able to assure zero velocity in equilibrium. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
 
-%Moreover, the response of the real Cubli with the controller can also be tested (see \appref{app:sisoToolDControllerTest}). The torque requested by the controller, the position of the frame and the velocity of the wheel are shown in \figref{torqueTustinPre}, \figref{positionTustinPre} and \figref{wheelTustinPre}.
-%
-%\begin{minipage}{0.45\linewidth}
-%	\begin{figure}[H]
-%		\centering
-%		\includegraphics[scale=.53]{figures/torqueTestTustinPre}
-%		\captionsetup{justification=centering}
-%		\captionof{figure}{Torque requested by the controller}
-%		\label{torqueTustinPre}
-%	\end{figure}\vspace{-5mm}
-%\end{minipage}
-%\hspace{0.03\linewidth}
-%\begin{minipage}{0.45\linewidth}
-%	\begin{figure}[H]\vspace{-5mm}
-%		\centering
-%		\includegraphics[scale=.53]{figures/positionTestTustinPre}
-%		\captionsetup{justification=centering}
-%		\captionof{figure}{Angular position of the Cubli}
-%		\label{positionTustinPre}
-%	\end{figure}\vspace{-5mm}
-%\end{minipage}
-%
-%\begin{figure}[H]\vspace{-4mm}
-%	\centering
-%	\includegraphics[scale=.53]{figures/wheelTestTustinPre}
-%	\captionof{figure}{Angular velocity of the real wheel}
-%	\label{wheelTustinPre}
-%\end{figure}\vspace{-5mm}
-%
-% In that case the Cubli starts form equilibrium position and no disturbance is applied to it. Initially the torque should be very low since the error is almost 0. However its value is very high, which makes the Cubli fall. 
-% 
+One way could be using a cascade controller to control both the velocity of the wheel and the position of the frame. 
 
+\fxnote{Include block diagram for cascade}
+
+The problem of this solution in the case of the Cubli is that both are coupled together, which means that it is not possible to split the plant in a way that there is no feedback between them. \fxnote{reference revolutionary paper}
+
+Another way is to use an state-space approach since now the system will have two outputs to control, and it can also take care of coupled systems. This controller solution is further detailed in \chapref{chap:stateSpaceController}.
