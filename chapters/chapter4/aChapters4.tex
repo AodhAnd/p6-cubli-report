@@ -2,14 +2,29 @@
 %One-frame Cubli is a non-linear unstable system which is capable of standing on one of its corners as long as it is properly controlled, using the inertia created in the reaction wheel present in the setup.
 The system is composed of a frame and reaction wheel as the main objects to be controlled.\\ The actuation is done with a brushless dc motor which actuates both on the frame and the wheel.\\ A board with microcontroller is mounted on the frame through a connecting and breakout board on which a dedicated motor controller board is also mounted\fxnote{source Simon connector board}.\\ The frame is fixed to a base-plate, connected with a potentiometer provided for direct angle measurements.\\ Two additional sensor breakout boards, including an integrated circuit with gyro and accelerometer, are located at the top of the frame. These are to be used for angle and velocity measurements independently of the angle with respect to the base-plate.\\ A servomotor is also attached controlling the brake system, which consists of an arm capable of blocking the wheel by hitting one of the two break-blocks mounted on the edge of the reaction wheel.
 
-\fxnote{insert picture of the system with its components, featuring numbers corresponding to table 3.1}
-
-%\begin{figure}[H]
-%  \centering
-%	\includegraphics[scale=.8]{figures/SystemComponents}
-%	\caption{}
-%	\label{fig:SystemComponents}
-%\end{figure}
+  \begin{minipage}{\linewidth}
+  	\begin{minipage}{0.45\linewidth}
+  		\begin{figure}[H]
+  			\includegraphics[scale=0.21]{figures/Cubli-5}
+  			\centering
+  			\vspace{-.4cm}
+  			\captionsetup{justification=centering}
+  			\captionof{figure}{Cubli System viewed from the front.}
+  			\label{Cubli-5}
+  		\end{figure}\vspace{-5mm}
+  	\end{minipage}
+  	\hspace{0.11\linewidth}
+  	\begin{minipage}{0.45\linewidth}
+  		\begin{figure}[H]
+  			\includegraphics[scale=.18]{figures/Cubli-6}
+  			\centering
+  			\vspace{.8cm}
+  			\captionsetup{justification=centering}
+  			\captionof{figure}{Cubli System viewed from the Back.}
+  			\label{Cubli-6}
+  		\end{figure}\vspace{-6mm}
+  	\end{minipage}
+  \end{minipage}
 
 This system is composed of several hardware parts, listed in the following table. \fxnote{reconstruct sentence to match both figure and table  .. Maybe put the table on the picture or make it smaller.. maybe by the side of the picture.. do something - watch the caption placement}
 

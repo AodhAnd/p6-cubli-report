@@ -1,0 +1,53 @@
+  \begin{tikzpicture}[ auto,
+thick,                         %<--setting line style
+node distance=2cm,             %<--setting default node distance
+scale=1.0,                     %<--|these two scale the whole thing
+every node/.style={scale=1.0}, %<  |(always change both)
+>=triangle 45 ]                %<--sets the arrowtype
+  ]
+  
+  %-- Blocks creation --%
+  \draw
+	node[shape=coordinate][](ref) at (0,0){}			% start of reference
+ 
+	node(K) at (2,0) [block] {\si{K_t}}
+	
+	node(sum) at (4,0) [sum] {$\sum$}
+	
+	node(J) at (6,0) [block] {\si{\frac{1}{J_w}}}
+	
+	node(int) at (8,0) [block] {\si{\frac{1}{s}}}
+	
+	node[shape=coordinate][](velFeed) at (9,0){theta\_f}
+	
+	node[shape=coordinate][](out) at (10,0){theta\_f}
+	
+	% - feedback nodes
+	node(B) at (7,-1.5) [block] {\si{B_w}}
+	
+  ;
+  
+  \draw[->](ref) -- node {\si{i}} (K);
+  
+  \draw[->](K) -- node {\si{\tau}} (sum);
+   
+  \draw[->](sum) -- node {} (J);
+  
+  \draw[->](J) -- node {\si{\ddot{\theta}_F}} (int);
+  
+  \draw[->](int) -- node {\si{\dot{\theta}_F}} (out);
+  
+  % - drawing feedback lines
+  
+  \draw[-](velFeed) |- node {} (B);
+  
+  \draw[-](B) -| node {} (sum);
+  
+  % - adding + and - at the sum nodes
+    \draw 
+  node at (sum) [right = -6.6mm, below = .6mm] {$+$}
+  node at (sum) [right = -3mm, below = 3.9mm]  {$-$} 
+  ;
+ 
+  
+  \end{tikzpicture}
