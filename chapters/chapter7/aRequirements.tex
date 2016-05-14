@@ -1,7 +1,7 @@
 \chapter{Design Specifications}\label{chap:specifications}
 
 
-\section{Requirements}\label{requirements}
+\section{Requirements}\label{sec:requirements}
 Based on the design considerations and limitations explained earlier in this report, a list of requirements shall be developed.
 %
 \begin{enumerate}
@@ -41,31 +41,6 @@ Moreover, a further investigation on the behavior of the controlled system is to
 	\item \textbf{Maximum catching angle with no initial velocity of the wheel}
 	\begin{itemize}
 		\item[] The maximum starting angle the system can have and still be able to balance is to be tested.\\
-		However, there exists a limitation which is given by the maximum current that the motor can provide which conditions the maximum catching angle. As can be seen in \figref{limitationTorque}, if the initial angle is different from 0 rad both the mass of the frame ans the mass of the wheel exert an initial torque to the system. This must be overcame by the motor to avoid the Cubli to fall.
-		%
-		\begin{figure}[H] 
-			\centering
-			\includegraphics[scale=0.65]{figures/limitationTorque}
-			\caption{Force acting on the system that create an initial torque}
-			\label{limitationTorque}
-		\end{figure}
-		
-		The minimum torque that the motor must apply is give by \eqref{minTorque}.
-		%
-		\begin{flalign}
-		\eq{T} { (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F)} \unit{N\cdot m}
-		\label{minTorque}
-		\end{flalign}
-		
-		Since the torque is restricted by the characteristics of the motor and the control board, the maximum initial angle is derived in \eqref{maxAngle}.
-		%
-		\begin{flalign}
-		\eq{\theta_F} { asin\left(\frac{T}{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}\right)} \unit{N\cdot m}
-		\label{maxAngle}
-		\end{flalign}
-		%
-		Substituding the values of the maximum torque (see section \ref{sec:Motor}) and the parameters of the Cubli (see section \ref{sec:Param}) the maximum starting angle is \si{0,2024\ rad}.
-
 	\end{itemize}
 	
 \end{enumerate}

@@ -14,7 +14,7 @@
 	node(B) at (1.5,0) [block] {B}
 	node(C) at (6.5,0) [block] {C}
 	node(int) at (4.5,0) [block] {\si{\int}} 
-	node(K) at (3,-2.5) [block] {-K}	
+	node(K) at (2.8,-2.5) [block] {-K}	
 	%Drawing the Sumation Blocks:	    	 	
 	node(sum1) [sum, right of = B] {\si{\sum}}
 	%Drawing the Feedback/Feedforward Nodes:    	

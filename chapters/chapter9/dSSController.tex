@@ -1,4 +1,4 @@
-\section{Design of a Controller in State Space}\label{sec:SSController}
+\section{Design of the Controller in State Space}\label{sec:SSController}
 The aim of the controller is to maintain the system in equilibrium position, which means that the reference for each state is always zero. 
 
 With this assumption a new state matrix can be created such that its poles are placed in the LHP and then the system becomes stable.This is done by adding a state feedback and a \si{3x1} gain matrix to the whole system, as seen in \figref{SSBlocksFeedback}.
@@ -64,12 +64,12 @@ To choose the position of these poles two simulations are made for different val
 	\end{minipage}
 \end{minipage}
 
-The final combination of poles is \si{-4}, \si{-5} and \si{-13}, which gives the red responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. The gain matrix for this combination results in the following:
+The final combination of poles is \si{-4}, \si{-5} and \si{-13}, which gives the red responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. It can also be observed that the velocity of the frame is in all the cases \si{0\ rad \cdot s^{-1}} The gain matrix for this combination results in the following:
 %
 \begin{equation}  \label{controllerSS}
 	\vec{K} = 
 	\begin{bmatrix}
-		-1,6011 & -01595 & -0,0016 \\
+		-1,6011 & -0,1595 & -0,0016 \\
 	\end{bmatrix}
 \end{equation}
 %

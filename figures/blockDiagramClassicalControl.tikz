@@ -8,9 +8,9 @@ every node/.style={scale=1.0}, %<  |(always change both)
   
   %-- Blocks creation --%
   \draw
-	node[shape=coordinate][](ref) at (0,0){\si{\theta_F}}			% start of reference
+	node[shape=coordinate][](ref) at (0,0){\si{\theta_{F_{reference}}}}			% start of reference
  
-	node(sum1) at (2,0) [sum] {$\sum$}
+	node(sum1) at (2.2,0) [sum] {$\sum$}
  
 	node(D2) at (4,0) [block] {$D2$}
 	
@@ -20,7 +20,7 @@ every node/.style={scale=1.0}, %<  |(always change both)
 	
 	node(G1) at (10,0) [block] {$G1$}
 	
-	node[shape=coordinate][](velFeed) at (11,0){omega\_f}
+	node[shape=coordinate][](velFeed) at (11,0){omega\_w}
 	
 	node(G2) at (12,0) [block] {$G2$}
 	
@@ -36,11 +36,11 @@ every node/.style={scale=1.0}, %<  |(always change both)
 	
 	node[shape=coordinate][](feed2) at (9,-2){feed2}
 	
-	node[shape=coordinate][](feed3) at (12,-1){feed3}
+	node[shape=coordinate][](feed3) at (12.1,-1){feed3}
 	
   ;
   
-  \draw[->](ref) -- node {\si{\theta_F}} (sum1);
+  \draw[->](ref) -- node {\si{\theta_{F_{reference}}}} (sum1);
   
   \draw[->](sum1) -- node {} (D2);
   
@@ -50,7 +50,7 @@ every node/.style={scale=1.0}, %<  |(always change both)
   
   \draw[->](D1) -- node {} (G1);
   
-  \draw[->](G1) -- node {\si{\dot{\theta}_F}} (G2);
+  \draw[->](G1) -- node {\si{\dot{\theta}_w}} (G2);
   
   \draw[->](G2) -- node {\si{\theta_F}} (out);
   

@@ -35,14 +35,19 @@ Both controllers seem to have a good behavior and both reach the desired final p
 \end{figure}\vspace{-5mm}
 
 In both cases the velocity is different from 0 in steady state. It should not be any problem since a constant velocity does not produce any torque 
-to the system, but since there is friction in the wheel it will start to slow down, producing an acceleration on the system. This will make the Cubli to slightly move from equilibrium position and the controller will try to apply some torque to the system to balance it. The problem is that if the motor was already very closed to its maximum speed it will not be able to accelerate more and produce the torque needed, making the frame to fall.
+to the system. However there is friction in the wheel, which will make it to slow down, producing an acceleration on the system. This will make the Cubli to slightly move from equilibrium position and the controller will try to apply some torque to the system to balance it. The problem arises if the motor was already very closed to its maximum speed and it will not be able to accelerate more and produce the torque needed, making the frame to fall.
 
-The conclusion is that the controller is not able to assure zero velocity in equilibrium. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
+The conclusion is that the controller is not able to ensure zero velocity in equilibrium with only a feedback in the position of the frame. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
 
-One way could be using a cascade controller to control both the velocity of the wheel and the position of the frame. 
+One way could be using a cascade controller to control both the velocity of the wheel and the position of the frame. In \figref{cascadeControl} it can be seen the block diagram for a cascade control, with the particularity of a feedback from the position of frame to the velocity of the wheel.
 
-\fxnote{Include block diagram for cascade}
+\begin{figure}[H]
+	\input{figures/blockDiagramClassicalControl.tikz}
+	\centering
+	\caption{Block diagram for a cascade control (the dotted line corresponds to a feedback in the Cubli system that is not present in the normal cascade control)}
+	\label{cascadeControl}
+\end{figure}
 
-The problem of this solution in the case of the Cubli is that both are coupled together, which means that it is not possible to split the plant in a way that there is no feedback between them. \fxnote{reference revolutionary paper}
+The problem of this solution in the case of the Cubli is that both variables to control are coupled together, which means that it is not possible to split the plant in a way that there is no feedback between them. \fxnote{reference revolutionary paper}
 
-Another way is to use an state-space approach since now the system will have two outputs to control, and it can also take care of coupled systems. This controller solution is further detailed in \chapref{chap:stateSpaceController}.
+Another way is to use an state space approach, which can handle this singularity, since now the system will have two outputs to control. This controller solution is further detailed in \chapref{chap:stateSpaceController}.

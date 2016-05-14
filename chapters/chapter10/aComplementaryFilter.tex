@@ -71,7 +71,7 @@ The two angle measurements of the IMU are sent through a filter and then summed 
 The filter for the IMU is designed as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope \cite{OlliW}. \cite{PGui}
 \begin{flalign}
 	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
-	\eq{\theta_{F}} {\frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F}}&
+	\eq{\theta_{F}} {\frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F}}	&
 	\label{complementaryBlockFilters}
 \end{flalign}
 Combining the two equations yields \eqref{complementaryCombinedFilter}
@@ -82,8 +82,8 @@ Combining the two equations yields \eqref{complementaryCombinedFilter}
 The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much the two different sensor measurements weight in on the combined angle.
  
 \section{Discretization of the Complementary Filter} 
-In oder to use the complementary filter on the cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}, with a sample time of 
-Rewritting \eqref{complementaryCombinedFilter} yields
+In oder to use the complementary filter on the Cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}, with a sample time of 
+Rewriting \eqref{complementaryCombinedFilter} yields
 \begin{flalign}
  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
  	\label{discreteComplementaryFilter1}
@@ -169,7 +169,7 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.65]{figures/filterSensTool}
-	\caption{Final result od the complementary filter compared with the data from the potentiometer}
+	\caption{Final result of the complementary filter compared with the data from the potentiometer}
 	\label{filterSensTool}
 \end{figure}\vspace{-5mm}
 %

@@ -14,7 +14,7 @@ The basic scheme for the optimization problem is given in \figref{SensToolSchema
 The provided data is taken from an initial value test of the Cubli hanging down like a pendulum, see \appref{app:impulseResponseAppendix}.
 As the operating angle goes from \si{-0,15\ to\ 0,15\ rad}, the behavior at this range will be better if the fit is done between this operating points. 
 
-Furthermore, the nonlinear model is used to accurately describe the oscillatory behavior of the pendulum. The model is modified such that it describes the system as a regular pendulum without the dynamics of the reaction wheel, in order to match the test conditions under which the data was extracted, as seen in \figref{blockDiagramSenseTool},
+Furthermore, the nonlinear model is used to accurately describe the oscillatory behavior of the pendulum. The model is modified such that it describes the system as a regular pendulum without the dynamics of the reaction wheel, in order to match the test conditions under which the data was extracted, as seen in \figref{blockDiagramSenseTool}.
 %
 \begin{figure}[H]
 	\input{figures/blockDiagramSensTool.tikz}
@@ -285,7 +285,6 @@ The same data, Simulink model and initial parameters as the previous case are gi
 	\caption{Data from the test (red) and final fit with the new parameters (blue)}
 	\label{SenseToolParameterEstimation}
 \end{figure}
-%
 
 The final estimated parameters are \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2\ and\ B_F=7,7 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}. The normed RMS error is \si{27,4\ \%} compared to the \si{31,7\ \%} shown in \figref{ParameterEstimationNewtonCubli}. The \si{4,3\ \%} error reduction is likely due to additional algorithms.
 
