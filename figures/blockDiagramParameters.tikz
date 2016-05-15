@@ -1,9 +1,9 @@
   \begin{tikzpicture}[ auto,
-thick,                         %<--setting line style
-node distance=2cm,             %<--setting default node distance
-scale=1.0,                     %<--|these two scale the whole thing
-every node/.style={scale=1.0}, %<  |(always change both)
->=triangle 45 ]                %<--sets the arrowtype
+						thick,                         %<--setting line style
+						node distance=2cm,             %<--setting default node distance
+						scale=1.0,                     %<--|these two scale the whole thing
+						every node/.style={scale=1.0}, %<  |(always change both)
+						>=triangle 45 ]                %<--sets the arrowtype
   ]
   
   %-- Blocks creation --%
@@ -18,9 +18,9 @@ every node/.style={scale=1.0}, %<  |(always change both)
 	
 	node(int) at (8,0) [block] {\si{\frac{1}{s}}}
 	
-	node[shape=coordinate][](velFeed) at (9,0){theta\_f}
+	node[shape=coordinate][](velFeed) at (9,0){theta\_w}
 	
-	node[shape=coordinate][](out) at (10,0){theta\_f}
+	node[shape=coordinate][](out) at (10,0){theta\_w}
 	
 	% - feedback nodes
 	node(B) at (7,-1.5) [block] {\si{B_w}}
@@ -33,9 +33,9 @@ every node/.style={scale=1.0}, %<  |(always change both)
    
   \draw[->](sum) -- node {} (J);
   
-  \draw[->](J) -- node {\si{\ddot{\theta}_F}} (int);
+  \draw[->](J) -- node {\si{\ddot{\theta}_w}} (int);
   
-  \draw[->](int) -- node {\si{\dot{\theta}_F}} (out);
+  \draw[->](int) -- node {\si{\dot{\theta}_w}} (out);
   
   % - drawing feedback lines
   

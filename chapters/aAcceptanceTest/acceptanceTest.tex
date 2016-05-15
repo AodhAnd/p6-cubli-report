@@ -50,12 +50,18 @@ The output of this experiment shows that the calculation of the position using t
 
 \section{Capabilities Analysis}
 - \textbf{Maximum recovery angle}
+
+To obtain the maximum recovery angle, the Cubli is place in equilibrium at the start. Once the controller has balance it, its position is changed with little disturbances. The result can be seen in \figref{testRecovery}.
+%
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.65]{figures/testRecovery}
 	\caption{}
 	\label{testRecovery}
 \end{figure}\vspace{-5mm}
+%
+As it can be observed, the controller is able to return to equilibrium position but it creates a remarkable overshoot in the other direction. This behavior limits the recovery angle since the overshoot may drive the Cubli to an angle beyond its handling limit even though the initial disturbance is within it.\\
+It can be seen that the controller is capable of recovering from \si{0,08\ rad} but it fails when the angle is \si{0,1\ rad}. Then, it can be concluded that the maximum recovery angle for the system with the designed controller is \si{0,08\ rad}.
 
 - \textbf{Maximum catching angle with no initial velocity of the wheel}
 
