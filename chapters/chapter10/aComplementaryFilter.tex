@@ -43,9 +43,14 @@ A way to minimize this disturbance would be to move the IMU as close as possible
 \subsection{Angle from the Gyroscope}
 The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \figref{cubliMechanical}.
 \begin{flalign}
-	\eq{gyro\_\theta_{F}} {\int_{0}^{n\cdot \Delta T} \omega_{F} \, \mathrm{d}t}
+	\eq{gyro\_\theta_{F}[n]} {\int_{0}^{n\cdot \Delta T} \omega_{F} \, \mathrm{d}t}
 	\label{accelGyro}
 \end{flalign}
+\hspace{6mm} Where:\\
+\begin{tabular}{ p{1cm} l l l}
+	& \si{\omega_{F}}			& is the angular velocity of the frame     \\                       
+\end{tabular} 
+\\
 The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement \cite{JWarren}. These problems can be observed in \figref{angleGyro}.
 \begin{figure}[H]
 	\centering
@@ -54,6 +59,10 @@ The problem with the data from the gyro is an accumulating error which is caused
 	\label{angleGyro}
 \end{figure}\vspace{-5mm}
 %The problem with the data from the gyro is it will exhibit a drifting error when experiencing no movement \cite{JWarren} and since the angular velocity has to be integrated to get the angel there will be an accumulation error. 
+
+Assuming that the drift is constant, a way to minimize its influence on the data would be to do a test while keeping the frame motionless. The inclination of the slope from the data graph multiplied with the samplingtime is then the offset that has to be subtracted from each measurement.
+
+
 
 \subsection{Data Fusing with Complementary Filter}
 In order to filter the drift of the gyroscope and the disturbance errors of the accelerometer a complementary filter can be used to combine both measurements from the IMU mounted on the Cubli frame. This is done with the goal to get a more reliable angle measurement for both when the frame is moving and when its standing still in the equilibrium point.\\
