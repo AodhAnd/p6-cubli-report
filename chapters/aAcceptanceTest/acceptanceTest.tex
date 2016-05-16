@@ -35,12 +35,12 @@ To test this requirement the Cubli is placed at equilibrium and the controller i
 
 The results show that the requirement is fulfilled in both cases since the system is maintained around the equilibrium position.
 
-- \textbf{The prototype should be able to balance around \si{0\ \rad} regardless of the level of the baseplate, using internally mounted sensors.}
+- \textbf{The prototype should be able to balance around \si{0\ \rad}, even though the angle of inclination of the baseplate is changed within a reasonable range, using internally mounted sensors.}
 
 To check this requirement a similar test is done, but is this case the angle of the base plate is change to check that the measurements of the IMU are  still capable of balance the Cubli.
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.65]{figures/testReq2}
+	\includegraphics[scale=0.62]{figures/testReq2}
 	\caption{Angular position of the frame. The red curve is the result of the complementary filter, which does not depend on the angle of the base, while the blue one shows the measurements of the potentiometer}
 	\label{testReq2}
 \end{figure}\vspace{-5mm}
@@ -55,8 +55,8 @@ To obtain the maximum recovery angle, the Cubli is place in equilibrium at the s
 %
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.65]{figures/testRecovery}
-	\caption{}
+	\includegraphics[scale=0.62]{figures/testRecovery}
+	\caption{Angular position of the frame when some disturbances are applied to the frame to change the angle and see how is the behavior of the system}
 	\label{testRecovery}
 \end{figure}\vspace{-5mm}
 %
@@ -84,9 +84,45 @@ The minimum torque that the motor must apply is give by \eqref{minTorque}.
 Since the torque is restricted by the characteristics of the motor and the control board, the maximum initial angle is derived in \eqref{maxAngle}.
 %
 \begin{flalign}
-	\eq{\theta_F} { asin\left(\frac{T}{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}\right)} \unit{N\cdot m}
+	\eq{\theta_F} { asin\left(\frac{T}{(m_F \cdot l_F + m_w \cdot l_w) \cdot g}\right)} \unit{rad}
 	\label{maxAngle}
 \end{flalign}
 %
-Substituting the values of the maximum torque (see section \ref{sec:Motor}) and the parameters of the Cubli (see section \ref{sec:Param}) the maximum possible starting angle is \si{0,2024\ rad}.
+Substituting the values of the maximum torque (see section \secref{sec:Motor}) and the parameters of the Cubli (see section \secref{sec:Param}) the maximum possible starting angle is \si{0,2024\ rad} (also applies for the negative angle since the limitation of torque is the same but with opposite sign). 
 
+Taking this limit into account some starting angles are test to check if the controller is able to balance the system with these initial conditions. 
+
+As it can be seen in \figref{testCatch_12} and \figref{testCatch_17}, the controller is capable of moving the system wo equilibrium position starting from -0,12 and -0,17 (also valid for the positive angles). It is also remarkable that as the starting angles goes away from the equilibrium the controller takes more time and there is more oscillations in the response.
+
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.55]{figures/testCatch_12}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Angular position of the frame when the system starts from -0,12 rad (\si{-6,87^\circ})}
+			\label{testCatch_12}
+		\end{figure}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]\vspace{-3mm}
+			\includegraphics[scale=.55]{figures/testCatch_17}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Angular position of the frame when it starts from -0,17 rad (\si{-9,74^\circ})}
+			\label{testCatch_17}
+		\end{figure}
+	\end{minipage}
+\end{minipage}
+
+However, when the starting angle is -0,185 rad the balance is no longer possible for the controller and the frame falls.
+%
+\begin{figure}[H] 
+	\centering
+	\includegraphics[scale=0.60]{figures/testCatch_185}
+	\caption{Angular position of the frame when it starts from -0,185 rad (\si{-10,59^\circ})}
+	\label{testCatch_185}
+\end{figure}
+%
+It can be concluded that the maximum range for the starting angle with zero initial conditions goes from -0,17 to 0,17 rad, in which the controller is able to balance the system around equilibrium position.

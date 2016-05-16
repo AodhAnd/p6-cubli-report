@@ -12,7 +12,7 @@ The accelerometers used with the Cubli setup have 3-axis detection as described 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{figures/accelerometer}
-	\caption{Position of the IMU on the setup. It is rotatet by \si{\frac{\pi}{4}} in relation to the angle \si{\theta_F} Shown here is the orientation of the accelerometer in relation to the Cubli frame. On the IMU are the components of the acceleration vector shown. In case of no movement by the frame these are the components of the gravitational acceleration vector.}
+	\caption{Position of the IMU on the setup. The orientation of the accelerometer in relation to the Cubli frame is shown, which is rotated by \si{\frac{\pi}{4}} in relation to the angle \si{\theta_F}. On the IMU the components of the acceleration vector are shown. In case of no movement by the frame these are the components of the gravitational acceleration vector.}
 	\label{accelerometer}
 \end{figure}\vspace{-5mm}
 %
@@ -23,6 +23,12 @@ Based on the markings on the IMU, those are the x- and y-axis components of the 
 	\label{accelAngle}
 \end{flalign}
 %
+\hspace{6mm} Where:\\
+\begin{tabular}{ p{1cm} l l l}
+	& x			& is the x component of the measured linear acceleration   & \unitWh{m \cdot s^{-2}} \\  
+	& y			& is the y component of the measured linear acceleration   & \unitWh{m \cdot s^{-2}} \\ 	                     
+\end{tabular} \\
+\\
 The offset (\si{\frac{\pi}{4}}) is added because the IMU is mounted with a \si{\frac{\pi}{4}} rotation compared to the orientation of the frame.\\
 A test to measure the angle of the frame with the accelerometer is performed, and with the purpose to compare it to data from the potentiometer taken at the same time. The data from both sensors is read at the same time, to make it possible to compare the accelerometer to the potentiometer to determine if the accelerometer can be used instead of the potentiometer.\\
 A comparison of the two measurements is shown in \figref{angleAcc}. The accelerometer angle (\si{accel\_\theta_{F}}) is found by taking the x- and y-axis components and calculating the angle with \eqref{accelAngle}.
@@ -47,7 +53,7 @@ The angle of the frame can be found with the gyroscope by integrating the angula
 \end{flalign}
 \hspace{6mm} Where:\\
 \begin{tabular}{ p{1cm} l l l}
-	& \si{\omega_{F}}			& is the angular velocity of the frame     \\                       
+	& \si{\omega_{F}}			& is the measured angular velocity of the frame  & \unitWh{rad \cdot s^{-1}} \\  \\                       
 \end{tabular} 
 \\
 The problem with the data from the gyro is an accumulating error which is caused by the integration done to convert angular velocity into an usable angle. It is also known that the gyros will exhibit a drifting error when experiencing small and slow movement \cite{JWarren}. These problems can be observed in \figref{angleGyro}.
@@ -59,8 +65,9 @@ The problem with the data from the gyro is an accumulating error which is caused
 \end{figure}\vspace{-5mm}
 %The problem with the data from the gyro is it will exhibit a drifting error when experiencing no movement \cite{JWarren} and since the angular velocity has to be integrated to get the angel there will be an accumulation error. 
 
-Assuming that the drift is constant, a way to minimize its influence on the data would be to do a test while keeping the frame motionless. The inclination of the slope from the data graph multiplied with the sampling time is then the offset that has to be subtracted from each measurement.\\
+Assuming that the drift is proportional to time (the slope is always constant), a way to minimize its influence on the data would be to do a test while keeping the frame motionless. The inclination of the slope from the data graph multiplied with the sampling time is then the offset that has to be subtracted from each measurement.
 
+It can also be calculated online, while the controller is running. In this case the accelerometer can provide information to compensate this drift. One solution to fuse these two sets of data is to use a complementary filter, explained in detailed in next section.
 
 \subsection{Data Fusing with Complementary Filter}
 In order to filter the drift of the gyroscope and the disturbance errors of the accelerometer a complementary filter can be used to combine both measurements from the IMU mounted on the Cubli frame. This is done with the goal to get a more reliable angle measurement for both when the frame is moving and when its standing still in the equilibrium point.\\
