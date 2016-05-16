@@ -136,7 +136,7 @@ Now \eqref{discreteComplementaryFilter4} is transformed from z-domain to discret
 
 Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. \fxnote{USE the current form in the controller code file}
 
-\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
+\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}. The comp\_angle[0] is the newest found angle of the frame.},
 label    = codeCompFilter ]
 //---------------------- IMU --------------------------//
 
@@ -162,7 +162,9 @@ const double K2 = Ts/(2*tau + Ts);
 comp_angle[0] = K1*comp_angle[1] + K2*(acc_angle[0] + acc_angle[1] + tau*gyro_angle[0] + tau*gyro_angle[1]);
 \end{lstlisting}
 The offset for the accelerometer measurement and the cut-off frequency of the filter are defined as constants. When the controller start up it initializes the accel array and the gyro array with data pulled from the sensor. The initial complementary angle is set to be what the accelerometer measures.\\
-The old values from accel\_angle, gyro\_angle and comp\_angle are moved up in their arrays and new data is saved in gyro\_angle and accel\_angle on index 0. The accel\_angle value is calculated from the x and y components. 
+The old values from accel\_angle, gyro\_angle and comp\_angle are moved up in their arrays and new data is saved in gyro\_angle and accel\_angle on index 0. The accel\_angle value is calculated from the x and y components.
+The constants K1 and K2 are calculated from the sampling time and the set cut-off frequency. They are used in the complimentary filter.\\
+The complimentary filter takes the new measurements from accelerometer and gyroscope and sums it with the previous measurements from said sensor and sums it with the previous calculated frame angle.
 
 \section{Calculation of the Cut-off Frequency}
 The cut-off frequency for the filters can be determined by using SensTool and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}. 
