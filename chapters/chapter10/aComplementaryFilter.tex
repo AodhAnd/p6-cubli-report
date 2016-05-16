@@ -35,8 +35,7 @@ The data from the test can be found in  \appref{app:IMUMeasurementsAppendix}.
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
 %
-The measurements of the potentiometer and accelerometer are both showing the Cubli frame in the same position. The measurement from the accelerometer has a lot more noise than the potentiometer.
-
+The measurements of the potentiometer and accelerometer are both showing the Cubli frame in the same position. The measurement from the accelerometer has a lot more noise than the potentiometer.\\
 While the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame and the spikes seen on the calculated angle data from the accelerometer data in \figref{angleAcc} are because the IMU is moving and the acceleration from this creates a disturbance on the measurement of the gravitational acceleration \cite{JWarren}.\\
 A way to minimize this disturbance would be to move the IMU as close as possible to the point of rotation. This way the accelerometer is still able to see the angle of the frame, but the distance it is moved is shorter and the acceleration will be smaller. \fxnote{we didnt do this because we would have to remount the sensor and create a new mount. how to best word that?, B}
 
@@ -60,8 +59,7 @@ The problem with the data from the gyro is an accumulating error which is caused
 \end{figure}\vspace{-5mm}
 %The problem with the data from the gyro is it will exhibit a drifting error when experiencing no movement \cite{JWarren} and since the angular velocity has to be integrated to get the angel there will be an accumulation error. 
 
-Assuming that the drift is constant, a way to minimize its influence on the data would be to do a test while keeping the frame motionless. The inclination of the slope from the data graph multiplied with the samplingtime is then the offset that has to be subtracted from each measurement.
-
+Assuming that the drift is constant, a way to minimize its influence on the data would be to do a test while keeping the frame motionless. The inclination of the slope from the data graph multiplied with the sampling time is then the offset that has to be subtracted from each measurement.\\
 
 
 \subsection{Data Fusing with Complementary Filter}
@@ -71,7 +69,7 @@ The two angle measurements of the IMU are sent through a filter and then summed 
 \begin{figure}[H]
 	\input{figures/complementaryFilterBlockDiagram.tikz}
 	\centering
-	\caption{Block diagram of the complementary filter setup used with the IMU on the Cubli}
+	\caption{Block diagram of the complementary filter setup used with the IMU on the Cubli. The calculated accelerometer angle gets passed through a low pas filter. The angular velocity measurement from the gyro is integrated and then passed through a high pas filter. Both measurements are then summed to get the angle of the frame.}
 	\label{blockDrawingComplementaryFilter}
 \end{figure}
 
@@ -89,7 +87,7 @@ Combining the two equations yields \eqref{complementaryCombinedFilter}
 The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much the two different sensor measurements weight in on the combined angle.
  
 \section{Discretization of the Complementary Filter} 
-In oder to use the complementary filter on the Cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}, with a sample time of 
+In oder to use the complementary filter on the Cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}, with a sample time of \SI{10}{ms}.
 Rewriting \eqref{complementaryCombinedFilter} yields
 \begin{flalign}
  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
