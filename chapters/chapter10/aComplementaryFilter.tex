@@ -164,7 +164,7 @@ comp_angle[0] = K1*comp_angle[1] + K2*(acc_angle[0] + acc_angle[1] + tau*gyro_an
 The offset for the accelerometer measurement and the cut-off frequency of the filter are defined as constants. When the controller start up it initializes the accel array and the gyro array with data pulled from the sensor. The initial complementary angle is set to be what the accelerometer measures.\\
 The old values from accel\_angle, gyro\_angle and comp\_angle are moved up in their arrays and new data is saved in gyro\_angle and accel\_angle on index 0. The accel\_angle value is calculated from the x and y components.
 The constants K1 and K2 are calculated from the sampling time and the set cut-off frequency. They are used in the complimentary filter.\\
-The complimentary filter takes the new measurements from accelerometer and gyroscope and sums it with the previous measurements from said sensor and sums it with the previous calculated frame angle.
+The complimentary filter takes the new measurements from accelerometer and gyroscope and sums it with the previous measurements. The new calculated angle is then again summed with the old calculated angle.
 
 \section{Calculation of the Cut-off Frequency}
 The cut-off frequency for the filters can be determined by using SensTool and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}. 
