@@ -1,7 +1,7 @@
 \chapter{Angle Measurement with Built-in Sensors}\label{chap:CompFilter}
-It is a goal to get the Cubli setup to balance the frame in an upright position independently of the baseplate orientation.
+It is a goal to get the Cubli setup to balance the frame in an upright position independently of the baseplate orientation within the possible angle of rotation.
 
-As described in \secref{sec:Sensors}\fxnote{get the correct reference to the picture in system describtion} there are two IMUs mounted on the frame of the Cubli. They can be used to achieve this goal since they only depend on the absolute angle and they can also be used in the full Cubli.
+As described in \secref{sec:Sensors} there are two IMUs mounted on the frame of the Cubli (shown on \figref{Cubli-6}). They can be used to achieve this goal since they only depend on the absolute angle and they can also be used in the full Cubli.
 
 \section{Angle Calculations from the IMUs}
 The angular position of the Cubli can be calculated using the accelerometer, the gyroscope or combining both. In this section each of the options is describe and analyzed.
@@ -41,7 +41,7 @@ While the Cubli setup tries to balance the frame, the IMU mounted on the top of 
 A way to minimize this disturbance would be to move the IMU as close as possible to the point of rotation. This way the accelerometer is still able to see the angle of the frame, but the distance it is moved is shorter and the acceleration will be smaller. \fxnote{we didnt do this because we would have to remount the sensor and create a new mount. how to best word that?, B}
 
 \subsection{Angle from the Gyroscope}
-The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \ref{systemDescription}. \fxnote{correct the ref to the picture of the cubli setup}
+The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \figref{cubliMechanical}.
 \begin{flalign}
 	\eq{gyro\_\theta_{F}} {\int_{0}^{n\cdot \Delta T} \omega_{F} \, \mathrm{d}t}
 	\label{accelGyro}
@@ -98,7 +98,7 @@ If s is replaced by its discrete expression, the difference equation can be deri
 %\end{flalign}
   %
 \begin{flalign}
-   	\eq{\Updownarrow \theta_{F}} {\frac{\Delta T + \Delta T \cdot z^{-1}}{(2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
+   	\eq{\theta_{F}} {\frac{\Delta T + \Delta T \cdot z^{-1}}{(2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
 \end{flalign}\label{discreteComplementaryFilter4}
 %
 %\begin{flalign}
@@ -106,13 +106,13 @@ If s is replaced by its discrete expression, the difference equation can be deri
 %\end{flalign}\label{discreteComplementaryFilter5}
 %%
 \begin{flalign}
-	\eqOne{\Updownarrow \theta_{F}[n] \cdot (2\cdot \tau + \Delta T) - \theta_{F}[n-1] \cdot (2\tau - \Delta T)} {\Delta T \cdot (accel\_\theta_{F}[n] + accel\_\theta_{F}[n-1]} 
+	\eqOne{\theta_{F}[n] \cdot (2\cdot \tau + \Delta T) - \theta_{F}[n-1] \cdot (2\tau - \Delta T)} {\Delta T \cdot (accel\_\theta_{F}[n] + accel\_\theta_{F}[n-1]} 
 	\eqTwo{ + \tau \cdot gyro\_\dot{\theta}_{F}[n] + \tau \cdot gyro\_\dot{\theta}_{F}[n+1])} 
 	\label{discreteComplementaryFilter6}
 \end{flalign}
 %  
 \begin{flalign}
-	\eqOne{\Updownarrow \theta_{F}[n]}{\frac{(2\cdot \tau + \Delta T)}{2\cdot \tau + \Delta } \cdot \theta_{F}[n-1] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n-1]} 
+	\eqOne{\theta_{F}[n]}{\frac{(2\cdot \tau + \Delta T)}{2\cdot \tau + \Delta } \cdot \theta_{F}[n-1] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n-1]} 
 	\eqTwo{ + \frac{\Delta T \cdot \tau}{2\cdot \tau + \Delta T} \cdot gyro\_\dot{\theta}_{F}[n] + \frac{\Delta T \cdot \tau}{2\cdot \tau + \Delta T} \cdot gyro\_\dot{\theta}_{F}[n-1]} 
 	\label{discreteComplementaryFilter7}
 \end{flalign}
