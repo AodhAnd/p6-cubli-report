@@ -12,30 +12,26 @@ The accelerometers used with the Cubli setup have 3-axis detection as described 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{figures/accelerometer}
-	\caption{Position of the IMU in the setup}
+	\caption{Position of the IMU on the setup. It is rotatet by \si{\frac{\pi}{4}} in relation to the angle \si{\theta_F} Shown here is the orientation of the accelerometer in relation to the Cubli frame. On the IMU are the components of the acceleration vector shown. In case of no movement by the frame these are the components of the gravitational acceleration vector.}
 	\label{accelerometer}
 \end{figure}\vspace{-5mm}
 %
-Based on the markings on the IMU, those are the x and y-axis directions. Taking the two axis measurements shown in figure \ref{accelerometer} the angle can be found using \eqref{accelAngle} \cite{CFisher}. 
+Based on the markings on the IMU, those are the x- and y-axis components of the linear acceleration. Taking the two axis measurements shown in figure \ref{accelerometer} the angle can be found using \eqref{accelAngle} \cite{CFisher}. 
 %
 \begin{flalign}
-	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right) + offset}
+	\eq{accel\_\theta_{F}} {\arctan\left(\frac{y}{x}\right) + \frac{\pi}{4}} \unit{rad} 
 	\label{accelAngle}
 \end{flalign}
 %
-\hspace{6mm} Where:\\
-\begin{tabular}{ p{1cm} l l l}
-	& \si{offset=\frac{\pi}{4} + 0,06 = 0,84}                   
-\end{tabular}
-%
-
-The offset is added because the IMU is mounted with a \si{\frac{\pi}{4}} rotation compared to the orientation of the frame and the \si{0,06} comes from the fact that the equilibrium position is slightly different than the vertical one (see \secref{sec:Sensors}). \fxnote{reference the section where it is explained the first time}.\\
+The offset (\si{\frac{\pi}{4}}) is added because the IMU is mounted with a \si{\frac{\pi}{4}} rotation compared to the orientation of the frame.\\
+An test to measure the angle of the cubli frame \si{\theta_F} is performed with the accelerometer and potentiometer and comparison of the data is shown in \figref{angleAcc}. The accelerometer angle was found by taking the x- and y-axis components and calculating the angle with \eqref{accelAngle}
+The data from the test can be found in  \appref{app:IMUMeasurementsAppendix}. 
 Based on the data from \appref{app:IMUMeasurementsAppendix}, a calculation of the angle using the accelerometers can be done, whose result is shown in \figref{angleAcc}.
 %
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.65]{figures/angleAcc}
-	\caption{Angular position calculation with the data of the accelerometer}
+	\caption{The graph shows a comparison of the angle of the frame measured by the potentiometer(orange) and the same angle found with the accelerometer(blue). The accelerometer angle is calculated based on the measurement data from the x- and y-axis component (\appref{app:IMUMeasurementsAppendix})}
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
 %
