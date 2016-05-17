@@ -168,7 +168,7 @@ The complimentary filter takes the new measurements from accelerometer and gyros
 
 \section{Calculation of the Cut-off Frequency}
 The cut-off frequency for the filters can be determined by using Senstools and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}.\\
-Based on the setup of the complementary filter as seen in \figref{blockDrawingComplementaryFilter} it was decided to start out by the same cut-off frequency for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1.
+Based on the setup of the complementary filter as seen in \figref{blockDrawingComplementaryFilter} the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1.
 
 The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilter7}. With this data Senstools can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
 
