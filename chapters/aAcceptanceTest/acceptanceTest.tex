@@ -1,10 +1,7 @@
 \chapter{Acceptance Test}
-
-The system has been investigated and described in Part I through the modeling and the analysis. A proper controller and a solution to avoid the use of external sensors have been designed in Part II.
-
 This chapter deals with the needed tests that the system must overcome in order to fulfill the requirements as well as an analysis of the other capabilities, described in \chapref{chap:specifications}.
 
-\section{Requirements}
+\section{Requirements test}
 
 - \textbf{The Cubli should be able to balance starting from an unstable equilibrium position and a null velocity.}
 
@@ -37,16 +34,15 @@ The results show that the requirement is fulfilled in both cases since the syste
 
 - \textbf{The prototype should be able to balance around \si{0\ \rad}, even though the angle of inclination of the baseplate is changed within a reasonable range, using internally mounted sensors.}
 
-To check this requirement a similar test is done, but is this case the angle of the base plate is change to check that the measurements of the IMU are  still capable of balance the Cubli.
+To check this requirement a similar test, like the previous one, is done, but is this case the angle of the baseplate is changed to check that the measurements of the IMU are still capable of balance the Cubli. Since the potentiometer is attached to the baseplate its measurements are done in relation to the baseplate's position and can be used to show that baseplate and frame are at different angles.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.62]{figures/testReq2}
-	\caption{Angular position of the frame. The red curve is the result of the complementary filter, which does not depend on the angle of the base, while the blue one shows the measurements of the potentiometer}
+	\caption{Angular position of the frame. The red curve is the result of the complementary filters angle calculation, which does not depend on the angle of the baseplate. The blue curve shows the measurements of the potentiometer, which are in relation to the baseplate.}
 	\label{testReq2}
 \end{figure}\vspace{-5mm}
 %
-The output of this experiment shows that the calculation of the position using the IMU makes the system able to keep in equilibrium position when the angle is changed.
-
+The output of this experiment shows that the calculation of the position using the IMU makes the system able to keep in equilibrium position when the angle of the Baseplate is changed. This can be seen on the graph in \figref{testReq2}. Here the angle calculated by the complementary filter shows the frame keeping its upright position, while the potentiometer angle changes as the baseplate is lifted up and down. 
 
 \section{Capabilities Analysis}
 - \textbf{Maximum recovery angle}
@@ -56,7 +52,7 @@ To obtain the maximum recovery angle, the Cubli is place in equilibrium at the s
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.62]{figures/testRecovery}
-	\caption{Angular position of the frame when some disturbances are applied to the frame to change the angle and see how is the behavior of the system}
+	\caption{Angular position of the frame while disturbances are applied to the frame. The intention is to find the maximum recovery angle of the controller. The controller is not able to recover from a disturbance that pushes the frame over \SI{0,08}{rad} from resting position, because of overshoot from trying to recover from the disturbance.}
 	\label{testRecovery}
 \end{figure}\vspace{-5mm}
 %
@@ -65,16 +61,16 @@ It can be seen that the controller is capable of recovering from \si{0,08\ rad} 
 
 - \textbf{Maximum catching angle with no initial velocity of the wheel}
 
-There exists a limitation in this capability which is given by the maximum current that the motor can provide. As can be seen in \figref{limitationTorque}, if the initial angle is different from 0 rad both the mass of the frame ans the mass of the wheel exert an initial torque to the system. This must be overcame by the motor to avoid the Cubli to fall.
+There exists a limitation in this capability which is given by the maximum current that the motor can provide. As can be seen in \figref{limitationTorque}, if the initial angle is different from 0 rad both the mass of the frame and the mass of the wheel exert an initial torque to the system. This must be overcame by the motor to avoid the Cubli to fall.
 %
 \begin{figure}[H] 
 	\centering
 	\includegraphics[scale=0.65]{figures/limitationTorque}
-	\caption{Forces acting on the system that create an initial torque}
+	\caption{Forces acting on the system that create an initial torque when the frame starts from a position different from 0 rad}
 	\label{limitationTorque}
 \end{figure}
 
-The minimum torque that the motor must apply is give by \eqref{minTorque}.
+The minimum torque (T) that the motor must apply is give by \eqref{minTorque}.
 %
 \begin{flalign}
 	\eq{T} { (m_F \cdot l_F + m_w \cdot l_w) \cdot g \cdot sin(\theta_F)} \unit{N\cdot m}
