@@ -167,12 +167,12 @@ The constants K1 and K2 are calculated from the sampling time and the set cut-of
 The complimentary filter takes the new measurements from accelerometer and gyroscope and sums it with the previous measurements. The new calculated angle is then again summed with the old calculated angle.
 
 \section{Calculation of the Cut-off Frequency}
-Based on the setup of the complementary filter as seen in \figref{blockDrawingComplementaryFilter} the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1.
+Based on the setup of the complementary filter as seen in \figref{blockDrawingComplementaryFilter} the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1. In \figref{bodeFilters} it is shown how a summation of the gain from the low and high pass filter, when both of them have the same cut-off frequency.
 %
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{figures/bodeFilters}
-	\caption{Bode diagrams of the high pass and low pass filters as well as the summation of both}
+	\caption{Bode diagrams of the high pass and low pass filters from the complementary filter as well as the summation of both filters to show the resulting gain of the angle}
 	\label{bodeFilters}
 \end{figure}\vspace{-5mm}
 %
