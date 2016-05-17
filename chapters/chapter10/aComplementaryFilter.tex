@@ -12,7 +12,7 @@ The accelerometers used with the Cubli setup have 3-axis detection as described 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.58]{figures/accelerometer}
-	\caption{Position of the IMU on the setup. The orientation of the accelerometer in relation to the Cubli frame is shown, which is rotated by \si{\frac{\pi}{4}} in relation to the angle \si{\theta_F}. On the IMU the components of the acceleration vector are shown. In case of no movement by the frame these are the components of the gravitational acceleration vector.}
+	\caption{Position of the IMU on the setup. The orientation of the accelerometer in relation to the Cubli frame is shown. The sensor is rotated by \si{\frac{\pi}{4}} in relation to the angle \si{\theta_F}. On the IMU the components of the acceleration vector are shown. In case of no movement by the frame these are the components of the gravitational acceleration vector.}
 	\label{accelerometer}
 \end{figure}\vspace{-5mm}
 %
@@ -167,7 +167,7 @@ The constants K1 and K2 are calculated from the sampling time and the set cut-of
 The complimentary filter takes the new measurements from accelerometer and gyroscope and sums it with the previous measurements. The new calculated angle is then again summed with the old calculated angle.
 
 \section{Calculation of the Cut-off Frequency}
-Based on the setup of the complementary filter as seen in \figref{blockDrawingComplementaryFilter} the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1.
+Based on the setup of the complementary filter in \figref{blockDrawingComplementaryFilter}, the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1 (see \figref{bodeFilters}). As it can be seen in \figref{bodeFilters2}, if both filters have different cut-off frequencies the gain is less than one at some frequencies, which could be a problem in the calculation of the angular position of the frame. 
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -205,4 +205,4 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 	\label{filterSensTool}
 \end{figure}\vspace{-5mm}
 %
-Using the same cut-off frequency for both filters has been sucessfully implemented and hence it there was not done any investigation into different cut-off frequencies for the low and high pass filter.\\
+Using the same cut-off frequency for both filters has been successfully implemented and hence it there was not done any investigation into different cut-off frequencies for the low and high pass filter.\\
