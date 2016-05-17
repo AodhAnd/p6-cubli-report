@@ -84,11 +84,11 @@ Since the torque is restricted by the characteristics of the motor and the contr
 	\label{maxAngle}
 \end{flalign}
 %
-Substituting the values of the maximum torque (see section \secref{sec:Motor}) and the parameters of the Cubli (see section \secref{sec:Param}) the maximum possible starting angle is \si{0,2024\ rad} (also applies for the negative angle since the limitation of torque is the same but with opposite sign). 
+Substituting the values of the maximum torque (see section \secref{sec:Motor}) and the parameters of the Cubli (see section \secref{sec:Param}) the maximum possible starting angle is \si{0,2024\ rad} (\si{1,59^\circ}). This also applies for the negative angle since the limitation of torque is the same but with opposite sign. 
 
-Taking this limit into account some starting angles are test to check if the controller is able to balance the system with these initial conditions. 
+Taking this limit into account some starting angles are tested to check if the controller is able to balance the system with these initial conditions. 
 
-As it can be seen in \figref{testCatch_12} and \figref{testCatch_17}, the controller is capable of moving the system wo equilibrium position starting from -0,12 and -0,17 rad (also valid for the positive angles). It is also remarkable that as the starting angles goes away from the equilibrium the controller takes more time and there is more oscillations in the response.
+As it can be seen in \figref{testCatch_12} and \figref{testCatch_17}, the controller is capable of moving the system to equilibrium position starting from -0,12 and -0,17 rad (also valid for the positive angles). It is also noteworthy that as the starting angles goes away from the equilibrium the controller takes more time and there is more oscillations in the response.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -112,7 +112,7 @@ As it can be seen in \figref{testCatch_12} and \figref{testCatch_17}, the contro
 	\end{minipage}
 \end{minipage}
 
-However, when the starting angle is -0,185 rad is no longer possible to balance the system in equilibrium position and the frame falls.
+However, when the starting angle is -0,185 rad (\si{-10,59^\circ}) is no longer possible to balance the system in equilibrium position and the frame falls.
 %
 \begin{figure}[H] 
 	\centering
