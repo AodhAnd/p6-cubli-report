@@ -119,11 +119,13 @@ If s is replaced by its discrete expression, the difference equation can be deri
 %	\eq{\Updownarrow \theta_{F} \cdot ((2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1})} {\Delta T + \Delta T \cdot z^{-1} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
 %\end{flalign}\label{discreteComplementaryFilter5}
 %%
-\begin{flalign}
-	\eqOne{\theta_{F}[n] \cdot (2\cdot \tau + \Delta T) - \theta_{F}[n-1] \cdot (2\tau - \Delta T)} {\Delta T \cdot (accel\_\theta_{F}[n] + accel\_\theta_{F}[n-1]} 
-	\eqTwo{ + \tau \cdot gyro\_\dot{\theta}_{F}[n] + \tau \cdot gyro\_\dot{\theta}_{F}[n+1])} 
-	\label{discreteComplementaryFilter6}
-\end{flalign}
+Now \eqref{discreteComplementaryFilter4} is transformed from z-domain to discrete time domain. Which gives us \eqref{discreteComplementaryFilter7}.
+% OLD 9.9
+%\begin{flalign}
+%	\eqOne{\theta_{F}[n] \cdot (2\cdot \tau + \Delta T) - \theta_{F}[n-1] \cdot (2\tau - \Delta T)} {\Delta T \cdot (accel\_\theta_{F}[n] + accel\_\theta_{F}[n-1]} 
+%	\eqTwo{ + \tau \cdot gyro\_\dot{\theta}_{F}[n] + \tau \cdot gyro\_\dot{\theta}_{F}[n+1])} 
+%	\label{discreteComplementaryFilter6}
+%\end{flalign}
 %  
 \begin{flalign}
 	\eqOne{\theta_{F}[n]}{\frac{(2\cdot \tau + \Delta T)}{2\cdot \tau + \Delta } \cdot \theta_{F}[n-1] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n] + \frac{\Delta T}{2\cdot \tau + \Delta T} \cdot accel\_\theta_{F}[n-1]} 
@@ -133,19 +135,8 @@ If s is replaced by its discrete expression, the difference equation can be deri
 %
 
 Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. \fxnote{USE the current form in the controller code file}
-%
-%\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
-%label    = codeCompFilter ]
-%/**
-%*  delta_T is the sampling time = 0.01 s
-%*  tau is the cut-off frequency of the low and high pass filters
-%*/
-%theta_f[n] = ((2*tau-delta_T) / (2*tau+delta_T)) * theta[n-1] + 
-%	(delta_T / (2*tau+delta_T)) * (acc_theta[n] + tau * gyro_thetaDot[n] + 
-%	acc_theta[n-1] + tau * gyro_thetaDot[n-1]) 
-%\end{lstlisting}
 
-\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
+\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}. The comp\_angle[0] is the newest found angle of the frame.},
 label    = codeCompFilter ]
 //---------------------- IMU --------------------------//
 
@@ -170,9 +161,13 @@ const double K1 = (2*tau-Ts)/(2*tau+Ts);
 const double K2 = Ts/(2*tau + Ts);
 comp_angle[0] = K1*comp_angle[1] + K2*(acc_angle[0] + acc_angle[1] + tau*gyro_angle[0] + tau*gyro_angle[1]);
 \end{lstlisting}
+The offset for the accelerometer measurement and the cut-off frequency of the filter are defined as constants. When the controller start up it initializes the accel array and the gyro array with data pulled from the sensor. The initial complementary angle is set to be what the accelerometer measures.\\
+The old values from accel\_angle, gyro\_angle and comp\_angle are moved up in their arrays and new data is saved in gyro\_angle and accel\_angle on index 0. The accel\_angle value is calculated from the x and y components.
+The constants K1 and K2 are calculated from the sampling time and the set cut-off frequency. They are used in the complimentary filter.\\
+The complimentary filter takes the new measurements from accelerometer and gyroscope and sums it with the previous measurements. The new calculated angle is then again summed with the old calculated angle.
 
 \section{Calculation of the Cut-off Frequency}
-
+Based on the setup of the complementary filter as seen in \figref{blockDrawingComplementaryFilter} the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1.
 %
 \begin{figure}[H]
 	\centering
@@ -181,11 +176,12 @@ comp_angle[0] = K1*comp_angle[1] + K2*(acc_angle[0] + acc_angle[1] + tau*gyro_an
 	\label{bodeFilters}
 \end{figure}\vspace{-5mm}
 %
-The cut-off frequency for the filters can be determined by using SensTool and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}. 
+The cut-off frequency for the filters can be determined by using Senstools and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}.
 
-The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilter7}. With this data it can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
+The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilter7}. With this data Senstools can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
 
 The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si{\tau\ =\ 0,5399}. This results in a cutting frequency for the filter equal to \si{1,85\ rad \cdot s^{-1}}.
+
 %
 \begin{figure}[H]
 	\centering
@@ -194,3 +190,4 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 	\label{filterSensTool}
 \end{figure}\vspace{-5mm}
 %
+Using the same cut-off frequency for both filters has been sucessfully implemented and hence it there was not done any investigation into different cut-off frequencies for the low and high pass filter.\\
