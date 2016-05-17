@@ -168,14 +168,29 @@ The complimentary filter takes the new measurements from accelerometer and gyros
 
 \section{Calculation of the Cut-off Frequency}
 Based on the setup of the complementary filter as seen in \figref{blockDrawingComplementaryFilter} the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1.
-%
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.7]{figures/bodeFilters}
-	\caption{Bode diagrams of the high pass and low pass filters as well as the summation of both}
-	\label{bodeFilters}
-\end{figure}\vspace{-5mm}
-%
+
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.55]{figures/bodeFilters}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Magnitude bode diagrams of the high pass and low pass filters with the same cut-off frequency as well as the summation of both}
+			\label{bodeFilters}
+		\end{figure}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]\vspace{0mm}
+			\includegraphics[scale=.55]{figures/bodeFilters2}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Magnitude bode diagrams of the high pass and low pass filters with different cut-off frequencies as well as the summation of both}
+			\label{bodeFilters2}
+		\end{figure}
+	\end{minipage}
+\end{minipage}
+
 The cut-off frequency for the filters can be determined by using Senstools and the data obtained through the test detailed in \appref{app:IMUMeasurementsAppendix}.
 
 The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilter7}. With this data Senstools can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
