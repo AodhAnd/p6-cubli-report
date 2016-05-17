@@ -1,7 +1,14 @@
 \chapter{System Description}\label{systemDescription}
 %One-frame Cubli is a non-linear unstable system which is capable of standing on one of its corners as long as it is properly controlled, using the inertia created in the reaction wheel present in the setup.
-The system is composed of a frame and reaction wheel as the main objects to be controlled.\\ The actuation is done with a brushless dc motor which actuates both on the frame and the wheel.\\ A board with microcontroller is mounted on the frame through a connecting and breakout board on which a dedicated motor controller board is also mounted\fxnote{source Simon connector board}.\\ The frame is fixed to a base-plate, connected with a potentiometer provided for direct angle measurements.\\ Two additional sensor breakout boards, including an integrated circuit with gyro and accelerometer, are located at the top of the frame. These are to be used for angle and velocity measurements independently of the angle with respect to the base-plate.\\ A servomotor is also attached controlling the brake system, which consists of an arm capable of blocking the wheel by hitting one of the two break-blocks mounted on the edge of the reaction wheel.
+The system is composed of a frame and reaction wheel as the main objects to be controlled.\\
+The actuation is done with a brushless dc motor which actuates both on the frame and the wheel.\\ 
+A board with a microcontroller and a motor control board are mounted on the frame through a connecting and breakout board.\fxnote{source Simon connector board}.\\ 
+The frame is fixed to a base-plate, connected with a potentiometer that can be used for direct angle measurements.\\ 
+Two additional sensor breakout boards, including an integrated circuit with gyro and accelerometer, are located at the top of the frame. These are to be used for angle and velocity measurements independently of the angle with respect to the base-plate.\\ 
+A servomotor that controls the brake system is also attached, which has an arm capable of blocking the wheel by hitting one of the two break-blocks mounted on the edge of the reaction wheel.
 
+The different components of the existing system can be seen in \figref{Cubli-5} and \figref{Cubli-6}.
+%
   \begin{minipage}{\linewidth}
   	\begin{minipage}{0.45\linewidth}
   		\begin{figure}[H]
@@ -25,9 +32,7 @@ The system is composed of a frame and reaction wheel as the main objects to be c
   		\end{figure}\vspace{-6mm}
   	\end{minipage}
   \end{minipage}
-
-This system is composed of several hardware parts, listed in the following table. \fxnote{reconstruct sentence to match both figure and table  .. Maybe put the table on the picture or make it smaller.. maybe by the side of the picture.. do something - watch the caption placement}
-
+%
 \begin{table}[H]
 	\begin{tabular}{|l|p{6.7cm}|}
 		\hline %-----------------------------------------------------------------------------------
@@ -56,6 +61,7 @@ This system is composed of several hardware parts, listed in the following table
 \label{TableAAUCubliComponent}
 \end{table}
 
+A detailed description of all the components, which is needed for the model and control of the system, is presented in this chapter.
 %The BeagleBone Black, the break servomotor, the Maxon motor control board and the motor itself are mounted directly on the frame. On the motor shaft a freewheel is mounted. 
 
 %There are 2 pieces of IMU mounted on the frame to measure the acceleration and angular velocity of that frame. The latter is fixed to the platform via a potentiometer so the angular position of the frame can be measured.

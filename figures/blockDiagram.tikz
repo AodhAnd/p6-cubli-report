@@ -26,20 +26,20 @@
     ;
     \draw
       % REACTION WHEEL EQUATIONS %  
-      node(sum4) at (1.5,-2) [sum]{\si{\sum}}
-      node(sum5) at (2.85,-2) [sum]{\si{\sum}}
+      node(sum4) at (1.5,-1.6) [sum]{\si{\sum}}
+      node(sum5) at (2.85,-1.6) [sum]{\si{\sum}}
 
-      node(torque2rotacc2) at (4.3,-2) [block]{\large \si{\frac{1}{J_w \cdot s}}}
+      node(torque2rotacc2) at (4.3,-1.6) [block]{\large \si{\frac{1}{J_w \cdot s}}}
       % node(integration3) [block, right of = torque2rotacc2] {$\frac{1}{s}$}
-      node(frictionWheel) at (6.9,-2) [block] {\large $B_w$}
+      node(frictionWheel) at (6.9,-1.6) [block] {\large $B_w$}
 
-      node[shape=coordinate][](veloWheelFeedback) at (7.75,-3.5){}
+      node[shape=coordinate][](veloWheelFeedback) at (7.75,-3.2){}
     ;
     \draw
       % FEEDBACKS %
-      node(accFeedback) at (4, -6) [block] {\large \si{J_w}}
-      node(veloFeedback) at (12.65,-2) [block] {\large \si{B_F}}
-      node(angleFeedback) at (11.65,-4) [block] {\large \si{(m_F \cdot l_F + m_w \cdot l_w)g}}
+      node(accFeedback) at (8, -4.8) [block] {\large \si{J_w}}
+      node(veloFeedback) at (12.65,-1.6) [block] {\large \si{B_F}}
+      node(angleFeedback) at (11.65,-3.2) [block] {\large \si{(m_F \cdot l_F + m_w \cdot l_w)g}}
     ;
     %-- Block linking --%
     % INPUT %
@@ -54,14 +54,14 @@
     \draw[->] (sum1)            -- (sum2);
     \draw[->] (sum2)            -- (sum3);
     \draw[->] (sum3)            -- (torque2rotacc1);
-    \draw[->] (torque2rotacc1)  -- node{\large \si{\alpha_F(s)}}(integration1);
-    \draw[->] (integration1)    -- node{\large \si{\omega_F(s)}}(integration2);
+    \draw[->] (torque2rotacc1)  -- node{\large \si{\ddot{\theta}_F(s)}}(integration1);
+    \draw[->] (integration1)    -- node{\large \si{\dot{\theta}_F(s)}}(integration2);
 
     % REACTION WHEEL EQUATIONS %
     \draw[->] (feedForward)     |- (sum4);
     \draw[->] (sum4)            -- (sum5);
     \draw[->] (sum5)            -- (torque2rotacc2);
-    \draw[->] (torque2rotacc2)  -- node{\large \si{\omega_w(s)}}(frictionWheel);
+    \draw[->] (torque2rotacc2)  -- node{\large \si{\dot{\theta}_w(s)}}(frictionWheel);
     % \draw[->] (integration3)    -- (frictionWheel);
     \draw[->] (frictionWheel)   -| (sum1);
 
