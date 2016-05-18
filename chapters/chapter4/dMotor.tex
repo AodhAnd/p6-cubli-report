@@ -1,12 +1,12 @@
 \section{Actuators}\label{sec:Motor}
-There are two actuators in the system, the brushless DC-motor as the main actuator which controls the stability and the servo motor which brakes on the wheel to raise the frame.
+There are two actuators in the system, a brushless DC-motor as the main actuator which is used to apply the required control action and aservo motor, which can be used to brake the wheel in order to raise the frame.
 
 \subsection{Brushless DC-Motor}
-To control the reaction wheel a brushless DC-motor is used. \fxnote{put datasheet on the cd appendix}
-The brushless motor on the Cubli setup is an EC 45 flat 50 Watt (part no. 251601). Additionally the motor features three Hall-sensors for angular velocity measurements.
+The brushless DC-motor is attached to the wheel and it is in charge of providing the required torque to the system.
+It is an EC 45 flat 50 Watt (part no. 251601), which has additional features such three Hall effect sensors for angular velocity measurements.
 %can take a nominal current of 2.33 A, and 23 A at very short peaks.It has a mechanical time constant of 12,4 ms \cite{MaxonMotors}. The nominal current puts a limit on the control signal that can be sent to the motor control board.\fxnote{Should this control signal be mentioned here?}.
 %\fxnote{Should there be made a table listing the motors data instead of writing a paraghap with the info?}
-
+Table~\ref{BrushlessDCMotorTable} contains some of the characteristics for this motor.
 
 \begin{table}[H]
 	\centering
@@ -29,11 +29,9 @@ The brushless motor on the Cubli setup is an EC 45 flat 50 Watt (part no. 251601
 
 
 \subsection{Motor Control Board}
-There is a Motor Control Board, Maxon ESCON Module 50/5, connected between the BeagleBone and the Brushless DC-Motor. It is specifically made to work with ESCON motors and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}\\ 
-%The PWM signal has a range of 10 \% to 90 \%. 
-Inside the board is a 4-quadrant configuration.\\
-The control board is set to run with a current control loop, which will ensure that the set current is reached while the motor runs\fxnote{Reference to material providing proof that the current loop is fast enough.}.\\
-The reference current is sent as a PWM signal with its duty cycle configured within the range of 10 \% to 90 \% corresponding to \SI{4}{A} at 90 \% and \SI{-4}{A} at 10 \% see \appref{MaxonControlESCON}\fxnote{make sure that the appref links appropriately to the information in the appendix}.
+There is a motor control board, Maxon ESCON Module 50/5, connected between the BeagleBone and the brushless DC-motor, and it is specifically made to work with ESCON motors.
+
+The following table shows some of the main characteristics of the board.
 
 \begin{table}[H]
 	\centering
@@ -53,13 +51,26 @@ The reference current is sent as a PWM signal with its duty cycle configured wit
 	\caption{Important parameters of the motor control board}
 	\label{MotorControlBoardTable}
 \end{table}
+%The PWM signal has a range of 10 \% to 90 \%. 
+%Inside the board is a 4-quadrant configuration.\\
+The motor control board can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}\\ 
+The board is set to run with a closed loop control for the current. It is assumed that the reference current is the one given to the motor so the loop can be seen just as a unit gain. This assumption is validated through a test described in \appref{app:motorCurrentTest}, where it can be seen that both currents can be assumed to be equal.
+
+\begin{figure}[H]
+	\includegraphics[scale=.75]{figures/motorCurrentTest}
+	\centering
+	\caption{Result of the test done to the motor to check that the reference current }
+\end{figure} \label{motorCurrentTest2}
+
+The reference current is sent to the control board as a PWM signal, whose duty cycle is configured within the range of 10 \% to 90 \% corresponding to \SI{4}{A} at 90 \% and \SI{-4}{A} at 10 \%. All the configurations can be seen \appref{MaxonControlESCON}.
+
 
 \subsection{Braking System}
-Also included in the system is the braking mechanism, which is used for making the frame go from a resting position to vertical position.
+There is a braking mechanism included in the system, which can be used to make the frame go from resting position to vertical position.
 
-To perform this task the motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it. The inertia of the wheel is thus transfered to the frame, in order to raise it to standing position.
+To perform this task the brushless DC-motor spins up the reaction wheel and when it has enough kinetic energy the braking mechanism suddenly brake it, using for this task a Hitec HS225 Mighty Mini Servomotor. The inertia of the wheel is thus transfered to the frame, in order to raise it to standing position.
 
-The actuator used to brake the reaction wheel Cubli setup is a Hitec HS225 Mighty Mini Servomotor\fxnote{Add reference(did you mean citation?)}. The brake system is however not used in this project, since the jump up procedure is out of its scope.
+%The brake system is however not used in this project, since the jump up procedure is out of its scope.
 
 %\fxnote{For gods sake fix this table!..:p}
 %\begin{table}[H]

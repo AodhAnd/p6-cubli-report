@@ -1,10 +1,10 @@
 \chapter{System Description}\label{systemDescription}
 %One-frame Cubli is a non-linear unstable system which is capable of standing on one of its corners as long as it is properly controlled, using the inertia created in the reaction wheel present in the setup.
 The system is composed of a frame and reaction wheel as the main objects to be controlled.\\
-The actuation is done with a brushless DC-Motor which actuates both on the frame and the wheel.\\ 
+The control action is done with a brushless DC-Motor which actuates both on the frame and the wheel.\\ 
 A board with a microcontroller and a motor control board are mounted on the frame through a connecting and breakout board.\fxnote{source Simon connector board}.\\ 
 The frame is fixed to a base-plate, connected with a potentiometer that can be used for direct angle measurements.\\ 
-Two additional sensor breakout boards, including an integrated circuit with gyro and accelerometer, are located at the top of the frame. These are to be used for angle and velocity measurements independently of the angle with respect to the base-plate.\\ 
+Two additional sensor breakout boards, including an integrated circuit with gyro and accelerometer, are located at the top of the frame. These are to be used for angle and velocity measurements independently of the angle of the baseplate.\\ 
 A servomotor that controls the brake system is also attached, which has an arm capable of blocking the wheel by hitting one of the two break-blocks mounted on the edge of the reaction wheel.
 
 The different components of the existing system can be seen in \figref{Cubli-11}.
@@ -40,8 +40,6 @@ The different components of the existing system can be seen in \figref{Cubli-11}
 	\label{Cubli-11}
 \end{figure}
 %
-A detailed description of all the components, which is needed for the model and control of the system, is presented in this chapter.
-
 \begin{table}[H]
 	\begin{tabular}{|l|p{6.7cm}|}
 		\hline %-----------------------------------------------------------------------------------
@@ -69,6 +67,8 @@ A detailed description of all the components, which is needed for the model and 
 	\caption{Main parts of the Cubli setup}
 	\label{TableAAUCubliComponent}
 \end{table}
+
+A detailed description of all the components, which is needed for the model and control of the system, is presented in this chapter.
 
 %The BeagleBone Black, the break servomotor, the Maxon motor control board and the motor itself are mounted directly on the frame. On the motor shaft a freewheel is mounted. 
 

@@ -1,28 +1,30 @@
 \section{Sensors}
 \label{sec:Sensors}
-The prototype setup is provided with some sensors; a potentiometer for direct angle reference with respect to the base-plate and two inertial measurement units, containing accelerometer and gyro, for global angle measurements.
+The prototype setup is provided with some sensors such a potentiometer for direct angle reference with respect to the base-plate and two inertial measurement units (IMU), containing accelerometer and gyro, for global angle measurements.
 %\subsection{Potentiometer}
 %The potentiometer is a precision potentiometer with a continuous turning and the text on it is: 65383-1-103 LIN %\si{\pm1,0\%} RES 10K \si{\pm10\%} 9642EY.
 
 \subsection{Potentiometer}
-The potentiometer is a precision potentiometer with continuous turning, linearity within \si{\pm1,0\%} and a resolution of \SI{10}{k\Omega} \si{\pm10\%}.\\
+This sensor is a precision potentiometer with continuous turning, linearity within \si{\pm1,0\%} and a resolution of \SI{10}{k\Omega} \si{\pm10\%}.\\
 The potentiometer is placed at the corner of the frame which is fixed to an axis and it can be used to measure the actual position of the frame.\\
-However its use is restricted to the one-dimensional Cubli, as it is attached and gives only an angle in relation to the base, which is not present in the 3D case.\\
-In the project the potentiometer is used to test the dynamics of the Cubli and for feedback in the initial controller design.\\
-Since all the future tests and feedback will depend on the reliability of the potentiometer, different tests are carried out on the potentiometer.
+However, its use is restricted to the existing setup, since it is fixed and gives only an angle in relation to the base, which is not present in the full Cubli.\\
+In this project the potentiometer is used to test the dynamics of the Cubli, as feedback in the initial controller design and to check if the calculation of the angle using th IMU is done correctly.\\
+Since some of the analysis and design will depend on the reliability of the potentiometer, different tests are carried out to check its characteristics and behavior.
 %The objective of this test is to find the linearity of the potentiometer and find the outer range of the frame rotation in degrees and potentiometer and BeagleBone Black A/D converter value, and the same for the balancing point, and at the same time get the new parameters of the frame like the weight and the placement of center of mass.
 %
 %
 \subsubsection{Linearity Test}
-As seen in \appref{app:potentiometerLin} the result gives an almost straight line well below of the \si{1\ \%} linearity of the potentiometer, but at a certain angle the potentiometer have an area where the measurement is deviating. The reason for this deviation is that it is a continuous rotating potentiometer and hit the point where it changes. A way to correct this problem is to turn the potentiometer a bit, however in this project it is not necessary since precise measurements are only needed around the control region.\fxnote{Inset the two graphs} 
-Equilibrium point have a range of 1 degree this is due to friction in the bearing.
-\fxnote{make a table with important info}
-%
-\fxnote{the strange number from the code "16384" comes from datasheet, B}
-%
-%
+This test is detailed described in \appref{app:potentiometerLin}. As it can be seen in \figref{linearityOfPotmeterTest}, the result gives an almost straight within the \si{1\ \%} linearity of the potentiometer, but at a certain angle the potentiometer has an area where the measurement is deviating. The reason for this deviation lies in the fact that it is a continuous rotating potentiometer and at that point it changes its turn. A way to correct this problem is to turn the potentiometer and recalibrate its limits. However, in this project it is not necessary since precise measurements are only needed around the control region.
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[scale=0.5]{figures/linearityOfPotmeterTest2-1}
+	\caption{Raw test data plot}
+	\label{linearityOfPotmeterTest}
+\end{figure}
+
 \subsubsection{Range Test}
-It is also needed a test to find the voltage to angle conversion along with potential offset, see \appref{app:potentiometerRes}.
+It is also needed a test to find the conversion from voltage to angle along with potential offset (see \appref{app:potentiometerRes}).
 
 \begin{minipage}{\linewidth}
   	\begin{minipage}{0.45\linewidth}
@@ -69,7 +71,7 @@ The unit collects gyroscope and accelerometer data while synchronizing data samp
 
 %The unit have built in 16-bit ADC converters for digitizing the gyroscope and accelerometer outputs and a digitally low-pass filter that can be programmed.
 
-%MPU-6050 have a buffer of 1024 Byte. The buffer is First In First Out (FIFO) type and is reducing timing requirements on the system processor.
+% MPU-6050 have a buffer of 1024 Byte. The buffer is First In First Out (FIFO) type and is reducing timing requirements on the system processor.
 
 %The Digital Motion Processor (DMP) is capable of processing, so the digital output of the unit can be calculated as 6-Axis or 9-Axis MotionFusion on the unit. The output-data can come as rotation matrix, quaternion, Euler Angle, or raw data format. 
 
