@@ -1,1 +1,14 @@
 \chapter{Discussion}
+
+{\Large notes} \fxnote{delete this part its just to brainstorm what to write in this section}\\
+- Placement of IMU\\
+- Choice of Statspace variables for controller - minimize overshoot vs faster braking for wheel\\
+- cut-off frequency of the complementary filter?\\
+- 
+- 
+
+
+As already mentioned briefly in the complementary section the measurement from the accelerometer in the IMU could be improved by moving the sensor to a position where it would be influenced less by the acceleration of the frame but still be able to measure the angle of the frame. 
+
+For the state space controller a set of poles where selected that gave a good response for the system as seen on the two graphs, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using the different pole combinations shown on the graphs results in different overshoots and brake times for the wheel. Another pole combination could be selected if a different behavior of the Cubli was desired. The choice is whether a small overshoot is desired or if the wheel is to reach \SI{0}{rad\cdot s^{-1}} faster.
+
