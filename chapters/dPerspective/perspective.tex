@@ -1,7 +1,16 @@
 \chapter{Perspective}
 
+One of the next steps will be to build the full Cubli, since now the control can be done using only components attached to the frame. This design needs to include the control of three reaction wheels to control each of the directions that the full Cubli could move in.
+
+The Cubli will have to be able to jump up from a resting position. To do that the reaction wheel has to spin up. Once at the desired speed the wheel will be braked and the resulting torque will raise the Cubli. Now the system has to catch itself. In order to do that a separate controller might have to be designed that handles the jump up part, and then switches to the balancing controller for the position keeping part.\\
+For the full Cubli there will be 3 brakes, one on each wheel, that have to be coordinated to raise the cube up to a desired position.
+%This new configuration may also need the system to be able to jump up from resting position and then the brake system must be taken into account for each of the wheels. 
+
+It is possible that the controller no longer needs to balance each of them in upright position but to do another kind of maneuvers, which will require a new controller since the chosen one is not able to get a reference for the internal states different from zero.
+
+
 - Jump up\\
 - 3D Cube\\
 - Deep more in other possibilities of controllers\\
-- May not need to balance, but to do another maneuvers ---> other controller -----> same model\\
+- May not need to balance, but to do another maneuvers -----> other controller -----> same model\\
 - Show and advertise control engineering \\
