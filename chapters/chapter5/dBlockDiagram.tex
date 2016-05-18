@@ -29,7 +29,7 @@ The angle of the reaction wheel, \si{\theta_w}, still features in \eqref{Laplace
 \si{\frac{\frac{s}{-J_F - m_w \cdot {l_w}^2}}{s^3 + \left( \frac{B_w}{J_w} + \frac{B_w + B_F}{J_F + m_w \cdot {l_w}^2} \right) s^2 - \left( \frac{ \left( m_F \cdot l_F + m_w \cdot l_w \right)\cdot g}{ \left( J_F + m_w \cdot {l_w}^2 \right) J_w} - \frac{B_F B_w}{ \left(J_F + m_w \cdot {l_w}^2 \right) J_w} \right) s - \frac{\left(m_F \cdot l_F + m_w \cdot l_w \right) B_w\cdot g}{\left(J_F + m_w \cdot {l_w}^2 \right) J_w} }}}\normalsize\vspace{-1.9cm}\\
 \vspace{1.8cm}\begin{flalign}\label{2ndCubliTransferFunction}\end{flalign}
 %
-The transfer function from \eqref{2ndCubliTransferFunction} can be represented as well in the form of a block diagram, as seen in \figref{cubliSimulink}.
+The transfer function from \eqref{2ndCubliTransferFunction} can also be represented in the form of a block diagram, as seen in \figref{cubliSimulink}.
 
 % \begin{figure}[H] 
 % 	\centering 
@@ -38,7 +38,7 @@ The transfer function from \eqref{2ndCubliTransferFunction} can be represented a
 % \end{figure} 
 \begin{figure}[H]
 	\input{figures/blockDiagram.tikz}
-	\caption{Block diagram of the system}
+	\caption{Block diagram of the system. Input is the torque that the wheel is supposed to act on the frame with. Output is the angle of the Cubli frame}
 	\label{cubliSimulink}
 \end{figure}
 
