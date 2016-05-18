@@ -48,7 +48,7 @@ To choose the position of these poles two simulations are made for different val
 			\includegraphics[scale=.55]{figures/catchingStateSpace}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{Response starting from \si{0.2\ rad} and an initial velocity of the wheel with different locations of poles}
+			\captionof{figure}{Response starting from \si{0,2\ rad} and an initial velocity of the wheel with different locations of poles}
 			\label{catchingStateSpace}
 		\end{figure}
 	\end{minipage}
@@ -64,12 +64,12 @@ To choose the position of these poles two simulations are made for different val
 	\end{minipage}
 \end{minipage}
 
-The final combination of poles is \si{-4}, \si{-5} and \si{-13}, which gives the red responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. It can also be observed that the velocity of the frame is in all the cases \si{0\ rad \cdot s^{-1}} The gain matrix for this combination results in the following:
+The final combination of poles is \si{-6}, \si{-7} and \si{-15}, which gives the yellow responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. It can also be observed that the velocity of the frame is in all the cases \si{0\ rad \cdot s^{-1}} The gain matrix for this combination results in the following:
 %
 \begin{equation}  \label{controllerSS}
 	\vec{K} = 
 	\begin{bmatrix}
-		-1,6011 & -0,1595 & -0,0016 \\
+		-2,3021 & -0,2274 & -0.0039 \\
 	\end{bmatrix}
 \end{equation}
 %

@@ -52,7 +52,26 @@ The Potentiometer connections diagram \figref{labPotmeter}:\\
 
 The Potentiometer is connected to the BeagleBone’s A/D and only a small area is used on the Potentiometer, and for this reason the signal is gained and it is done by using an Operational Amplifiers (op-amp) which can only gain the voltage to 1,8 V, because of the supply voltage to the op-amp is only 1,8 V.
 
-The Potentiometer is only using a small area of rotation on the Cubli, about ¼ of the full rotation. The gain is calculated from the max. rotation voltage and the result is a gain of 3 V. After the signal has been gained a low-pass filter with a frequency of 194 Hz is added to damp noise on the signal. Since the sampling frequency is 100 Hz it is almost upholding New Quest by double or faster
+The Potentiometer is only using a small area of rotation on the Cubli, about ¼ of the full rotation. The gain is calculated from the max. rotation voltage and the result is a gain of 3 V. 
+
+To verify the gain the potentiometer voltage is a measured and ADC value is readout from the BeagleBone Black.
+\begin{table}[H]
+	\begin{tabular}{|l|l|p{4.3cm}|}
+		\hline%------------------------------------------------------------------------------------------------------------
+		\textbf{Unit}       &  \textbf{Voltage (V)}         \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Measured before the gain                               & 0,470 V           \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		0,470 V with a gain of 3							  & 1,410 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		Measured after the gain							  & 1,417 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+		ADC value in voltaged 							  & 1,419 V              \\
+		\hline%------------------------------------------------------------------------------------------------------------
+	\end{tabular}
+\end{table}
+After the signal has been gained a low-pass filter with a frequency of 194 Hz is added to damp noise on the signal. 
+%Since the sampling frequency is 100 Hz it is almost upholding New Quest by double or faster
 
 \subsection{Motor Control Board Connections}
 The Maxon Motor Driver Board connections diagram \figref{labMotorDriver}:\\
@@ -67,27 +86,31 @@ The Maxon Motor Driver Board connections diagram \figref{labMotorDriver}:\\
 Since the BeagleBone Black ADC only operates up to 1.8 V and the Maxon control board operates at -4 V to 4 V, a voltage divider has been put in from the Maxon motor control to the Beagle Bone so the BeagleBone’s A/D limit is not exceeded so the voltage is multiplied by 0,44382. Then if the Maxon controller operates at a maximum of 4 V it becomes 1,77528 V below the BeagleBone A/D limit of 1,8 V.
 
 \subsection{Extra Connections}
+MPU6050's I2C and 3,3 V connections to the BeagleBone Black.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/PMU9150.pdf}
-	\caption{PMU9150 diagram.}
+	\caption{PMU6050 connections diagram.}
 	\label{labPMU9150}
 \end{figure}\vspace{-5mm}
 
+5 V power supply for the ServoMotor on Connecting and Breakout Board, and 3,3 V to 5 V level converter is needed to get the BeagleBone Black PWM signals to the ServoMotors logic circuit. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/ServoMotor.pdf}
-	\caption{Servo Motor diagram.}
+	\caption{ServoMotor diagram.}
 	\label{labServoMotor}
 \end{figure}\vspace{-5mm}
 
+5 V power supply for the BeagleBone Black and the LED’s on Connecting and Breakout Board.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/BeagleBone.pdf}
-	\caption{Beagle Bone diagram.}
+	\caption{Power converter from 25 V to 5 V for the BeagleBone Black.}
 	\label{labBeagleBone}
 \end{figure}\vspace{-5mm}
 
+25 V power and grounding connections and 5 v and 3,3 V LED's connections.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/Power.pdf}
@@ -95,10 +118,11 @@ Since the BeagleBone Black ADC only operates up to 1.8 V and the Maxon control b
 	\label{labPower}
 \end{figure}\vspace{-5mm}
 
+5 V LED's connections to the BeagleBone Black.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/Led.pdf}
-	\caption{LED diagram.}
+	\caption{LED's diagram to the BeagleBone Black.}
 	\label{labLed}
 \end{figure}\vspace{-5mm}
 
