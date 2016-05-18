@@ -50,8 +50,8 @@
 	
 	%---------- Chapter 2 ---------------------------------------- Design Considerations
 	\input{chapters/chapter2/aChapters2.tex}
-  \input{chapters/chapter2/bmainFunctionalities.tex}    %-------- Main Functionalities
-  \input{chapters/chapter2/cPrototypeRestrictions.tex}  %-------- Main Functionalities
+	\input{chapters/chapter2/bmainFunctionalities.tex}    %-------- Main Functionalities
+	\input{chapters/chapter2/cPrototypeRestrictions.tex}  %-------- Prototype Restrictions
 
 	%---------- Chapter 3 ---------------------------------------- System Description
 	\input{chapters/chapter4/aChapters4.tex}
@@ -107,6 +107,8 @@
 	\input{chapters/dPerspective/perspective}
 	
 	%%% Setup for Appendix and Bibliography %%%
+
+	
 	\bookmarksetup{startatroot}
 	\addtocontents{toc}{\bigskip}
 	\newpage
@@ -123,9 +125,11 @@
 		%	\setcounter{table}{0}
 		%	\setcounter{equation}{0}
 		%	\setcounter{figure}{0}
-	\appendix
+
 	
-	\part*{Appendix} 	\addcontentsline{toc}{chapter}{Appendix}	
+	\part*{Appendix} %\addcontentsline{toc}{chapter}{Appendix}
+	\cleardoublepage\makeatletter\@openrightfalse\makeatother
+	\appendix
 	
 	%---------- Appendix A ----------------------------------------
 	\input{appendix/dPotmeterLinearity.tex}

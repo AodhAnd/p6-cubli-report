@@ -1,12 +1,12 @@
 \chapter{Acceptance Test}
 This chapter deals with the needed tests that the system must overcome in order to fulfill the requirements as well as an analysis of the other capabilities, described in \chapref{chap:specifications}.
 
-\section{Requirements test}
+\section{Requirements Test}
 
 - \textbf{The Cubli should be able to balance starting from an unstable equilibrium position and a null velocity.}
 
 To test this requirement the Cubli is placed at equilibrium and the controller is then started. The test is done twice, with the measurements of the potentiometer and the IMU, to ensure that the controller works in both cases.
-%
+
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
@@ -35,6 +35,7 @@ The results show that the requirement is fulfilled in both cases since the syste
 - \textbf{The prototype should be able to balance around \si{0\ \rad}, even though the angle of inclination of the baseplate is changed within a reasonable range, using internally mounted sensors.}
 
 To check this requirement a similar test, like the previous one, is done, but is this case the angle of the baseplate is changed to check that the measurements of the IMU are still capable of balance the Cubli. Since the potentiometer is attached to the baseplate its measurements are done in relation to the baseplate's position and can be used to show that baseplate and frame are at different angles.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.62]{figures/testReq2}
@@ -48,7 +49,7 @@ The output of this experiment shows that the calculation of the position using t
 - \textbf{Maximum recovery angle}
 
 To obtain the maximum recovery angle, the Cubli is place in equilibrium at the start. Once the controller has balance it, its position is changed with little disturbances. The result can be seen in \figref{testRecovery}.
-%
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.62]{figures/testRecovery}
@@ -62,7 +63,7 @@ It can be seen that the controller is capable of recovering from \si{0,08\ rad} 
 - \textbf{Maximum catching angle with no initial velocity of the wheel}
 
 There exists a limitation in this capability which is given by the maximum current that the motor can provide. As can be seen in \figref{limitationTorque}, if the initial angle is different from 0 rad both the mass of the frame and the mass of the wheel exert an initial torque to the system. This must be overcame by the motor to avoid the Cubli to fall.
-%
+
 \begin{figure}[H] 
 	\centering
 	\includegraphics[scale=0.65]{figures/limitationTorque}
@@ -113,7 +114,7 @@ As it can be seen in \figref{testCatch_12} and \figref{testCatch_17}, the contro
 \end{minipage}
 
 However, when the starting angle is -0,185 rad (\si{-10,59^\circ}) is no longer possible to balance the system in equilibrium position and the frame falls.
-%
+
 \begin{figure}[H] 
 	\centering
 	\includegraphics[scale=0.55]{figures/testCatch_185}
