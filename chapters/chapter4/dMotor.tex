@@ -3,7 +3,7 @@ There are two actuators in the system, the brushless DC-motor as the main actuat
 
 \subsection{Brushless DC-Motor}
 To control the reaction wheel a brushless DC-motor is used. \fxnote{put datasheet on the cd appendix}
-The brushless motor on the Cubli setup is an EC 45 flat 50 Watt (part no. 251601). Additionally the motor features three hall-sensors for angular velocity measurements.
+The brushless motor on the Cubli setup is an EC 45 flat 50 Watt (part no. 251601). Additionally the motor features three Hall-sensors for angular velocity measurements.
 %can take a nominal current of 2.33 A, and 23 A at very short peaks.It has a mechanical time constant of 12,4 ms \cite{MaxonMotors}. The nominal current puts a limit on the control signal that can be sent to the motor control board.\fxnote{Should this control signal be mentioned here?}.
 %\fxnote{Should there be made a table listing the motors data instead of writing a paraghap with the info?}
 
@@ -29,7 +29,7 @@ The brushless motor on the Cubli setup is an EC 45 flat 50 Watt (part no. 251601
 
 
 \subsection{Motor Control Board}
-There is a motor control board, ESCON Module 50/5, connected between the BeagleBone and the Brushless DC-motor. It is specifically made to work with ESCON motors and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}\\ 
+There is a Motor Control Board, Maxon ESCON Module 50/5, connected between the BeagleBone and the Brushless DC-Motor. It is specifically made to work with ESCON motors and can be configured with a program provided by Maxon called ESCON studio.\cite{ESCONStudio}\\ 
 %The PWM signal has a range of 10 \% to 90 \%. 
 Inside the board is a 4-quadrant configuration.\\
 The control board is set to run with a current control loop, which will ensure that the set current is reached while the motor runs\fxnote{Reference to material providing proof that the current loop is fast enough.}.\\
