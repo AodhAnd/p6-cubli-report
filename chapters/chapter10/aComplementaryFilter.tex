@@ -8,7 +8,7 @@ The angular position of the Cubli can be calculated using the accelerometer, the
 
 \subsection{Angle from the Accelerometer}
 The accelerometer measures linear acceleration, and if the accelerometer is attached to a object that does not accelerate with respect to the Earth, the accelerometer will measure the gravitational acceleration. This can be used to determine the orientation of the accelerometer sensor with respect to the Earth \cite{JWarren}.\\
-The accelerometers used with the Cubli setup have 3-axis detection as described in \secref{sec:Sensors}. To determine the angle of the frame (\si{\theta_F}) with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted, as shown in \figref{accelerometer}. 
+The accelerometers used with the Cubli setup have 3-axis detection as described in \secref{sec:Sensors}. To determine the angle of the frame (\si{accel\_\theta_{F}}) with the accelerometer it is needed to get the measurements from two of the three axes. The two measurements needed are the ones in line with the frames movement direction, based on the way the IMU is mounted, as shown in \figref{accelerometer}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.58]{figures/accelerometer}
@@ -46,7 +46,7 @@ While the Cubli setup tries to balance the frame, the IMU mounted on the top of 
 A way to minimize this disturbance would be to move the IMU as close as possible to the point of rotation. This way the accelerometer is still able to see the angle of the frame, but the distance it is moved is shorter and the acceleration will be smaller. \fxnote{we didnt do this because we would have to remount the sensor and create a new mount. how to best word that?, B}
 
 \subsection{Angle from the Gyroscope}
-The angle of the frame can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \figref{cubliMechanical}.
+The angle of the frame (\si{gyro\_\theta_{F}}) can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \figref{cubliMechanical}.
 \begin{flalign}
 	\eq{gyro\_\theta_{F}[n]} {\int_{0}^{n\cdot \Delta T} \omega_{F} \, \mathrm{d}t}
 	\label{accelGyro}
