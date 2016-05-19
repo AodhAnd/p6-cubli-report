@@ -1,1 +1,15 @@
 \chapter{Conclusion}
+
+The aim of this project was to work with an unstable nonlinear system and be able to construct an appropriate model and design a controller capable of balancing it around equilibrium position.
+
+First, a pre-analysis of the system has been made, starting from a description of all the components present in the given setup. It also included the derivation of the equations that describe the dynamics and the description of the system in s-domain. Then the parameters of the setup have been found, both with measurements and with an estimation using optimization, to be able to analyze the behavior of the system and compare it with the real model.
+
+Afterwards, a controller has been designed to balance the Cubli in upright position using root locus. It has been shown necessary to control both the angular position of the frame and the velocity of the wheel so it was decided to use a state space approach.
+
+It was also a requirement to be able to change the angle of the baseplate, which means that the calculation of the angle had to be independent of the inclination. A very convenient option was to use built-in sensors for this purpose, so the final chosen solution was to use an IMU present on the setup and calculate the angle through a complementary filter.
+
+Finally, some acceptance tests have been performed to ensure that the final controlled system was able to accomplish the requirements and, similarly, a further analysis has been carried out to check other capabilities of the Cubli.
+
+In conclusion, a control system that can balance the Cubli in upright position independently of the angle of the baseplate, within a reasonable range, has been designed, implemented and tested successfully within the requirements.
+
+

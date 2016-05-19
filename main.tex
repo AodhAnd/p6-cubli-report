@@ -19,10 +19,10 @@
 	
 	%%% Introductory Formalities %%%
 	%\includepdf[pages={1}]{formalities/frontpage.pdf}
-	\include{chapters/frontpage}
+	\input{chapters/frontpage}
 	\pagestyle{fancy}
-	\include{formalities/kolofon}
-	\input{formalities/titleSheet.tex}
+	\input{formalities/kolofon}
+	\input{formalities/titleSheet}
 	%%% Preface %%%
 	%\cleardoublepage
 	\input{formalities/preface.tex}
@@ -41,7 +41,7 @@
 	\pagestyle{fancy}
 	
 	%%% Part 1 %%%
-	\part{Preanalysis}
+	\part{Pre-analysis}
 	
 	%---------- Chapter 1 ---------------------------------------- Introduction
 	\input{chapters/chapter1/aChapters1.tex}
@@ -50,8 +50,8 @@
 	
 	%---------- Chapter 2 ---------------------------------------- Design Considerations
 	\input{chapters/chapter2/aChapters2.tex}
-  \input{chapters/chapter2/bmainFunctionalities.tex}    %-------- Main Functionalities
-  \input{chapters/chapter2/cPrototypeRestrictions.tex}  %-------- Main Functionalities
+	\input{chapters/chapter2/bmainFunctionalities.tex}    %-------- Main Functionalities
+	\input{chapters/chapter2/cPrototypeRestrictions.tex}  %-------- Prototype Restrictions
 
 	%---------- Chapter 3 ---------------------------------------- System Description
 	\input{chapters/chapter4/aChapters4.tex}
@@ -115,6 +115,8 @@
 	\input{chapters/dPerspective/perspective}
 	
 	%%% Setup for Appendix and Bibliography %%%
+
+	
 	\bookmarksetup{startatroot}
 	\addtocontents{toc}{\bigskip}
 	\newpage
@@ -131,9 +133,11 @@
 		%	\setcounter{table}{0}
 		%	\setcounter{equation}{0}
 		%	\setcounter{figure}{0}
-	\appendix
+
 	
-	\part*{Appendix} 	\addcontentsline{toc}{chapter}{Appendix}	
+	\part*{Appendix} %\addcontentsline{toc}{chapter}{Appendix}
+	\cleardoublepage\makeatletter\@openrightfalse\makeatother
+	\appendix
 	
 	%---------- Appendix A ----------------------------------------
 	\input{appendix/dPotmeterLinearity.tex}
@@ -154,25 +158,23 @@
 	\input{appendix/fIMUConfig.tex}
 	
 	%---------- Appendix G ---------------------------------------- 
-	%\input{appendix/hSISOToolDesignedController.tex}
-	
-	%---------- Appendix H ---------------------------------------- 
 	\input{appendix/kMaxonControllESCON.tex}
 	
-	%----------Appendix I ---------------------------------------- 
+	%----------Appendix H ---------------------------------------- 
 	\input{appendix/gIMUmeasurements.tex}
 	
-	%---------- Appendix J ---------------------------------------- 
+	%---------- Appendix I ---------------------------------------- 
 	\input{appendix/jMotorCurrentTest.tex}
 
-	%---------- Appendix K ---------------------------------------- 
-	\input{appendix/lConnectingBreakoutBoard.tex}
-
-	%---------- Appendix L ---------------------------------------- 
+	%---------- Appendix J ---------------------------------------- 
 	\input{appendix/lProgramCharacteristics.tex}
 
-	%---------- Appendix N ---------------------------------------- 
+	%---------- Appendix K ---------------------------------------- 
 	\input{appendix/nParametersOfTheWheel.tex}
+			
+	%---------- Appendix L ---------------------------------------- 
+	\input{appendix/lConnectingBreakoutBoard.tex}
+
 	
 %	\end{appendices}
 		

@@ -1,14 +1,28 @@
-\chapter*{Preface}
-\vspace{-12 pt}
-\lipsum[3]\fxnote{Write prephase}
+\textbf{\huge{Preface}}
+\\
+\\
+The purpose of this project is to design and implement a control system that can maintain a reaction wheel inverted pendulum in upright position using only internally mounted sensors.
+
+This report has been written by a group of students on the sixth semester of "Electronics and IT" at Aalborg University.
+The reader should have a basic knowledge on Electronic Engineering, specially in Modeling and Control Theory, and Convex Optimization, although specific topics will be described in more detail. Code for the implementation is written in C++ and the reader is assumed to be able to comprehend this programming language. 
+
+Thanks:\\
+- Simon
+- Benjamin
+- Jonh and Palle
 
 \textbf{Reading Instructions}
-\vspace{-10 pt}
+\\
+\\
+The report is structured in three parts:
 \begin{itemize}
-\item[-] \lipsum[6]\fxnote{Write reading instructions}
+\item[-] Part I contains an analysis of the system, which includes a description of the given setup, the derivation of the dynamic model and the acquisition of the parameters of the system.
+\item[-] Part II deals with the design and implementation of the controller and the complementary filter used to measure the angular position of hte frame.
+\item[-] Part III includes the acceptance tests made to the system and the conclusions that can be derived from the project.
 \end{itemize}
 
-%
+The attached CD contains a digital copy of this report, all the data and Matlab files needed to plot the figures in the report, datasheets, the code needed to run the controller, the code needed for the implementation of the optimization, the Senstools manual and a video of the working system.  
+
 \textbf{Text by:}\\
 \vspace{-12 pt}
 \begin{table}[H]
