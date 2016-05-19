@@ -1,0 +1,40 @@
+\subsection{The Optimization Problem}
+The basic scheme for the optimization problem is given in \figref{SensToolSchema}.
+%
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{figures/SensToolSchema}
+	\caption{Schematic of the optimization problem}
+	\label{SensToolSchema}
+\end{figure}
+%
+The provided data is taken from an initial value test of the Cubli hanging down like a pendulum, see \appref{app:impulseResponseAppendix}.
+As the operating angle goes from \si{-0,15\ to\ 0,15\ rad}, the behavior at this range will be better if the fit is done between this operating points. 
+
+Furthermore, the nonlinear model is used to accurately describe the oscillatory behavior of the pendulum. The model is modified such that it describes the system as a regular pendulum without the dynamics of the reaction wheel, in order to match the test conditions under which the data was extracted, as seen in \figref{blockDiagramSenseTool}.
+%
+\begin{figure}[H]
+	\input{figures/blockDiagramSensTool.tikz}
+	\centering
+	\caption{Block diagram of the system as a regular pendulum with the wheel fixed to the frame.}
+	\label{blockDiagramSenseTool}
+\end{figure}
+%
+ In order to minimize the difference between the data points measured in test and the output of the model, a function to describe such a relationship is needed. The performance function used to describe goodness of the fit, is a mean square error function.
+%
+\begin{flalign}
+	\eq{P(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &
+\label{performanceFunction}
+\end{flalign}
+%
+\hspace{6mm} Where:\\
+\begin{tabular}{ p{1cm} l l l}
+& \si{\vec{\theta}}   & is the parameter(s) to be adjusted                  & \\
+& \si{N}              & is the degrees of freedom for each parameter        & \\
+& \si{k}              & is the sample indexes, \si{k=1,\ 2,} ...\si{,\ N}   & \\
+& \si{T}              & is the sampling time                                & \\
+& \si{\vec{y}}        & is the test measurement output vector               & \\
+& \si{\vec{y_m}}      & is the model output vector                          & \\
+\end{tabular}
+
+A normal mean square error function is only divided by the degrees of freedom, \si{N}, but in tis case is divided by \si{2N} to cancel out the factor which arises when computing its gradient. This only gives the function a constant offset and does not have any impact when minimizing it.
