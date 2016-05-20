@@ -179,36 +179,44 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 %Using the same cut-off frequency for both filters has been successfully implemented and hence it there was not done any investigation into different cut-off frequencies for the low and high pass filter.\\
 
 \section{Implementation of the Complementary Filter}
-Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. \fxnote{USE the current form in the controller code file}
+Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. 
 
 \begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
 				label    = codeCompFilter ]
 //---------------------- IMU --------------------------//
+double Imu::getPosition(double accAngleNow, double gyroVelocityNow, double Ts, int imuNb)
+{
+	const double acc_off_1 = 0.84;  	// accel meass offset
+	const double tau = 0.5399;			// cut-off for the complementary filter
 
-const double acc_off = 0.84;  	// accel meass offset
-const double tau = 0.5399;	// cut-off for the complementary filter
+	// Coefficients for the complementary equation
+	const double K1 = (2 * tau - Ts) / (2 * tau + Ts);
+	const double K2 = Ts / (2 * tau + Ts);
 
-static double acc_angle[2]={atan(accY1/accX1) + acc_off,0},
-gyro_angle[2]={gyroRads1,gyroRads1},
-comp_angle[2]={acc_angle[0],0};
+	if(imuNb == 1) 
+	{
+		static double acc_angle_1[2] = {accAngleNow + acc_off_1, 0},
+		gyro_angle_1[2] = {gyroVelocityNow, gyroVelocityNow},
+		comp_angle_1[2] = {acc_angle_1[0], 0};
 
-// Set old measurement data
-acc_angle[1] = acc_angle[0];
-gyro_angle[1] = gyro_angle[0];
-gyro_angle[0] = gyroRads1;
-comp_angle[1] = comp_angle[0];
+		// Set old measurement data
+		acc_angle_1[1] = acc_angle_1[0];
+		gyro_angle_1[1] = gyro_angle_1[0];
+		gyro_angle_1[0] = gyroVelocityNow;
+		comp_angle_1[1] = comp_angle_1[0];
 
-// Get angle from accel axis measurements
-acc_angle[0] = atan(accY1/accX1) + acc_off;
+		acc_angle_1[0] = accAngleNow + acc_off_1;
 
-//Complementary equation using Tustin
-const double K1 = (2*tau-Ts)/(2*tau+Ts);
-const double K2 = Ts/(2*tau + Ts);
-comp_angle[0] = K1*comp_angle[1] + K2*(acc_angle[0] + acc_angle[1] + tau*gyro_angle[0] + tau*gyro_angle[1]);
+		//Complementary equation using Tustin
+		comp_angle_1[0] = K1 * comp_angle_1[1] + K2 * (acc_angle_1[0] + acc_angle_1[1] + tau * gyro_angle_1[0] + tau * gyro_angle_1[1]);
+		return comp_angle_1[0];
+	}
+}
+
 \end{lstlisting}
 
-The offset for the accelerometer measurement and the cut-off frequency of the filter are defined as constants.\\
-When the controller start up it initializes the accelerometer array and the gyroscope array with data pulled from the sensor. The initial angle is set to be what the accelerometer measures.\\
-The old values from accel\_angle, gyro\_angle and comp\_angle are moved up in their arrays and new data is saved in gyro\_angle and accel\_angle on index 0. The accel\_angle value is calculated from the x and y components.
-The constants K1 and K2 are calculated from the sampling time and the set cut-off frequency.\\
+The position is calculated through the function \lstinline{getPosition()}. \\
+First, the values for the offset of the accelerometer angle and the cut-off frequency are initialized, as well as the two constants for the filter, K1 and K2.\\
+When this function is called the first time, accelerometer, gyroscope and angle arrays are initialized.\\
+The old values from \lstinline{accel_angle}, \lstinline{gyro_angle} and \lstinline{comp_angle} are moved up in their arrays and new data is saved in \lstinline{gyro_angle} and \lstinline{accel_angle} on index 0. \\
 Finally, the equation of the complementary filter in implemented to get the angular position of the frame.

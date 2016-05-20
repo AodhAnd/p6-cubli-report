@@ -20,17 +20,17 @@ With a constant reference of 0 rad and a disturbance in the form of a torque app
     \begin{figure}[H]\vspace{-4mm}
       \includegraphics[scale=.53]{figures/positionComp}
       \captionsetup{justification=centering}
-      \captionof{figure}{Closed loop response of the continuous (blue) and discrete (red) controllers}
+      \captionof{figure}{Closed loop response of the continuous (blue) and discrete (red) controllers}c run -nc -t sisotool -l2f siso2.csv
       \label{discreteVsContinuousSimulation}
     \end{figure}\vspace{-5mm}
 \end{minipage}
 
-Both controllers seem to have a good behavior and both reach the desired final position in simulation. However after testing the controller on the cubli, it was discovered that it is important to also look at the velocity of the wheel. It has been assumed to be 0 in the equilibrium position, and that is not the case.\fxnote{add some eplanation with test result on the problem}
+Both controllers seem to have a good behavior and both reach the desired final position in simulation. However after testing the controller on the cubli, it was discovered that it is important to also look at the velocity of the wheel. It has been assumed to be 0 in the equilibrium position, and that is not the case.
 %
 \begin{figure}[H]\vspace{-4mm}
 	\centering
 	\includegraphics[scale=.53]{figures/wheelComp}
-	\captionof{figure}{Angular velocity of the wheel}
+	\captionof{figure}{Angular velocity of the wheel from the simulation when a disturbance torque is applied. When angular position reaches steady state (\figref{discreteVsContinuousSimulation}) the value of the velocity is not \SI{0}{rad \cdot s^{-1}}.}
    \label{fig:discreteVsContinuousWheel}
 \end{figure}\vspace{-5mm}
 

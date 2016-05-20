@@ -21,7 +21,7 @@ Get data from the IMU and the potentiometer when running the state-space control
 \end{table}
 \subsubsection{Procedure}
 \begin{enumerate}
-	  \item Plug the power supply given with the Cubli setup to a \si{220}{V} power outlet.
+	  \item Plug the power supply given of the Cubli.
 	  \item Wait until the blue LEDs on the Beaglebone Black start blinking slowly and connect the USB cable to the PC.
 	  \item Send the binary compiled program of the controller to the board.
 	  \item Connect to a distant terminal on the Beaglebone Black through SSH and launch the program.
@@ -32,24 +32,6 @@ Get data from the IMU and the potentiometer when running the state-space control
 \end{enumerate}
 
 \subsubsection{Results}
-%The measured data is partially converted through the code. Accelerometer and gyro values are given in rad/s. \fxnote{might need changing if we have to redo the conversion, B}
-%Data from the accelerometer is converted into an angle with arctan and the gyro data is integrated because the gyroscope is measuring the angular velocity in the direction of the frames rotation. This is done to see how close the potentiometer the angle the data comes.
-%The data is available as a .csv file on the CD\fxnote{Make sure this is put into the CD folder for copying}
-%
-%To find the angle from the accelerometer data is done the following equation:
-%\begin{flalign}
-%	&\si{\theta_{F}=\arctan(\frac{y_1}{x_1})}&
-%	\label{eq:accelToAngle}
-%\end{flalign}
-%
-%The gyroscopes angular velocity measurement is integrated.
-%The integration is done the same way it would be done in the code on the BeagleBone.
-%\begin{flalign}
-%	&\si{\theta_{F}[n]=\theta_{F}[n-1]+\omega[n] \cdot \Delta T}&
-%	\label{eq:gyroToAngle}
-%\end{flalign}
-%
-%\si{\Delta T} being the samplingfrequency of the controller.
 
 \begin{figure}[H]
 	\includegraphics[scale=.75]{figures/accData}

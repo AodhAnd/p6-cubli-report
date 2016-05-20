@@ -4,7 +4,7 @@ The basic scheme for the optimization problem is given in \figref{SensToolSchema
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{figures/SensToolSchema}
-	\caption{Schematic of the optimization problem}
+	\caption{Schematic of the optimization problem \cite{Senstools}}
 	\label{SensToolSchema}
 \end{figure}
 %
@@ -20,8 +20,7 @@ Furthermore, the nonlinear model is used to accurately describe the oscillatory 
 	\label{blockDiagramSenseTool}
 \end{figure}
 %
-\fxnote{picture needs a source in the picture description}
- In order to minimize the difference between the data points measured in test and the output of the model, a function to describe such a relationship is needed. The performance function used to describe goodness of the fit, is a mean square error function.
+In order to minimize the difference between the data points measured in test and the output of the model, a function to describe such a relationship is needed. The performance function used to describe goodness of the fit, is a mean square error function.
 %
 \begin{flalign}
 	\eq{P(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &

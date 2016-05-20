@@ -2,10 +2,10 @@
 When implementing Newton's Method both the gradient and the Hessian of the performance function \eqref{performanceFunction} are needed.
 %
 \begin{flalign}
-	\frac{\partial  }{\partial \vec{\theta}} P(\vec{\theta}) &= \vec{G}(\vec{\theta}) = \frac{\partial}{\partial \vec{\theta}} \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &
+	\nabla\ P(\vec{\theta}) &= \vec{G}(\vec{\theta}) = \nabla \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &
 \end{flalign}
 \begin{flalign}
-  \eq{\vec{G}(\vec{\theta})} {- \frac{1}{N}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \frac{\partial  }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \right) } &
+  \eq{\vec{G}(\vec{\theta})} {- \frac{1}{N}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \nabla \ \vec{y_m}(kT, \vec{\theta}) \right) } &
 \label{gradientOfPerformanceFunction}
 \end{flalign}
 %\begin{flalign}
@@ -58,12 +58,12 @@ Since the Matlab implementation uses a Simulink model the problematic part of \e
 Now that the model partial derivatives are found, all parts of the gradient, as represented in \eqref{gradientOfPerformanceFunction}, are known. The Hessian is also needed and can be represented as,
 %
 \begin{flalign}
-	\vec{H}(\vec{\theta}) &= \frac{\partial^2 }{\partial \vec{\theta}^2}\  P(\vec{\theta}) = \frac{\partial }{\partial \vec{\theta}} \ \vec{G}(\vec{\theta}) &
+	\vec{H}(\vec{\theta}) &= \nabla\ (\nabla\  P(\vec{\theta})) = \nabla\ \vec{G}(\vec{\theta}) &
 \end{flalign}
 %
 which leads to the following:
 \begin{flalign}
-	\vec{H}(\vec{\theta}) &= \frac{1}{N}\sum_{k = 1}^{N} \left(     \frac{\partial  }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \left(\frac{\partial }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \right)^T  	  - \left(\frac{\partial^2  }{\partial \vec{\theta}^2} \ \vec{y_m}(kT, \vec{\theta}) \right) (\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))  \right) &
+	\vec{H}(\vec{\theta}) &= \frac{1}{N}\sum_{k = 1}^{N} \left(\nabla \ \vec{y_m}(kT, \vec{\theta}) \left(\nabla \ \vec{y_m}(kT, \vec{\theta}) \right)^T  	  - \left(\nabla\ (\nabla\ \vec{y_m}(kT, \vec{\theta})) \right) (\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta}))  \right) &
 \label{hessianOfPerformanceFunction}
 \end{flalign}
 %\begin{flalign}
@@ -77,7 +77,7 @@ which leads to the following:
 %
 To avoid the second derivative of the performance function in \eqref{hessianOfPerformanceFunction}, the Hessian can be approximated simply by removing this last term.
 \begin{flalign}
-	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \frac{\partial  }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \left(\frac{\partial }{\partial \vec{\theta}} \ \vec{y_m}(kT, \vec{\theta}) \right)^T &
+	\vec{\widetilde{H}}(\vec{\theta}) &\triangleq \frac{1}{N}\sum_{k = 1}^{N} \nabla \ \vec{y_m}(kT, \vec{\theta}) \left(\nabla \ \vec{y_m}(kT, \vec{\theta}) \right)^T &
 \label{hessianApproxOfPerformanceFunction}
 \end{flalign}
 %\begin{flalign}
