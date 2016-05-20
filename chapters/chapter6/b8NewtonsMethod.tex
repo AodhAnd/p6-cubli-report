@@ -1,0 +1,34 @@
+\subsection{Newton's Method}
+Another approach is called Newton's Method, which is also rooted in the Taylor approximation. However, this method also uses the second order term of the approximation.
+%
+\begin{flalign}
+  f(\vec{x}+\vec{\delta}) &\approx f(\vec{x}) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
+\label{taylorApproximation2ndOrder}
+\end{flalign}
+
+In this case the derivative of the approximation is set to 0, and the following is obtained.
+%
+\begin{flalign}
+  \frac{\partial}{\partial \vec{\delta}} \ f(\vec{x}+\vec{\delta}) &\approx \vec{g} + \frac{1}{2}\ \frac{\partial}{\partial \vec{\delta}}\ \vec{H}\vec{\delta}^2 &\\
+  \frac{\partial}{\partial \vec{\delta}} \ f(\vec{x}+\vec{\delta}) &\approx \vec{g} + \vec{H}\vec{\delta} = 0 &
+\label{2stOrderTaylorApproximationParThetaEqZero}
+\end{flalign}
+
+Using this to find an expression for the difference in \si{\vec{x}}, \si{\vec{\delta}}, yields the following.
+%
+\begin{flalign}
+  0 &= \vec{g} + \vec{H}\vec{\delta}  &\\
+  \vec{\delta} &= -\vec{H}^{-1}\vec{g} &
+\label{NewtonsMethod}
+\end{flalign}
+
+This expression can then be used to choose the value of \si{\vec{\delta}} such that the approximation of \si{f(\vec{x})} is minimized. An implementation where it is possible to directly retrieve the gradient and a Hessian of the function which is to be minimized, \si{f(\vec{x})}, is shown in \figref{NewtonsMethodEx}. 
+%
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=.7\textwidth]{figures/NewtonsMethodEx}
+	\caption{Example of a direct implementation of Newton's method for optimization.}
+	\label{NewtonsMethodEx}
+\end{figure}
+
+If compared to the steepest descend method in \figref{steepestDescendEx} and \ref{steepestDesendExZoom}, where 100 iterations were used, it is clear how Newton's method converges much faster, in 30 iterations, to the minimum of \si{f(\vec{x})}. 

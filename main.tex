@@ -46,34 +46,43 @@
 	%---------- Chapter 1 ---------------------------------------- Introduction
 	\input{chapters/chapter1/aChapters1.tex}
 	%\input{chapters/chapter1/bSectionAndSubsections.tex}
-	%\input{chapters/chapter1/cSectionAndSubsections.tex} %-------- For Overview, sometimes short headlines here works well
+	%\input{chapters/chapter1/cSectionAndSubsections.tex}        %-------- For Overview, sometimes short headlines here works well
 	
 	%---------- Chapter 2 ---------------------------------------- Design Considerations
 	\input{chapters/chapter2/aChapters2.tex}
-	\input{chapters/chapter2/bmainFunctionalities.tex}    %-------- Main Functionalities
-	\input{chapters/chapter2/cPrototypeRestrictions.tex}  %-------- Prototype Restrictions
+	\input{chapters/chapter2/bmainFunctionalities.tex}           %-------- Main Functionalities
+	\input{chapters/chapter2/cPrototypeRestrictions.tex}         %-------- Prototype Restrictions
 
 	%---------- Chapter 3 ---------------------------------------- System Description
 	\input{chapters/chapter4/aChapters4.tex}
-	\input{chapters/chapter4/bMechanicalComponents.tex}		%-------- Mechanical Components
-	\input{chapters/chapter4/cController.tex}				      %-------- Controller
-	\input{chapters/chapter4/dMotor.tex}					        %-------- Motor and Control Board
-	\input{chapters/chapter4/eSensors.tex}                %-------- Sensors
-	\input{chapters/chapter4/fCodeBase.tex}					      %-------- Code Base
-	\input{chapters/chapter4/gTail.tex}                   %-------- Chapter's tail
+	\input{chapters/chapter4/bMechanicalComponents.tex}	         %-------- Mechanical Components
+	\input{chapters/chapter4/cController.tex}				             %-------- Controller
+	\input{chapters/chapter4/dMotor.tex}					               %-------- Motor and Control Board
+	\input{chapters/chapter4/eSensors.tex}                       %-------- Sensors
+	\input{chapters/chapter4/fCodeBase.tex}					             %-------- Code Base
+	\input{chapters/chapter4/gTail.tex}                          %-------- Chapter's tail
 	
 	%---------- Chapter 5 ---------------------------------------- System Modelling
 	\input{chapters/chapter5/aChapters5.tex}
-	\input{chapters/chapter5/bDerivationOfModel.tex}      %-------- Derivation
-	\input{chapters/chapter5/cLinearizationOfModel.tex}   %-------- Linearization
-	\input{chapters/chapter5/dBlockDiagram.tex}    		    %-------- Block Diagram
+	\input{chapters/chapter5/bDerivationOfModel.tex}             %-------- Derivation
+	\input{chapters/chapter5/cLinearizationOfModel.tex}          %-------- Linearization
+	\input{chapters/chapter5/dBlockDiagram.tex}    		           %-------- Block Diagram
 	
 	%---------- Chapter 6 ---------------------------------------- Plant Analysis
 	\input{chapters/chapter6/aChapters6.tex}
-	\input{chapters/chapter6/bParamEstimation.tex}  	    %-------- Parameter Estimation
-	\input{chapters/chapter6/b2SenseTool.tex}             %-------- Optimization and SensTool
-	\input{chapters/chapter6/cModelAnalysis.tex}		      %-------- Model Analysis
-	\input{chapters/chapter6/dStability.tex}			        %-------- Stability Analysis
+	\input{chapters/chapter6/bParamEstimation.tex}  	           %-------- Parameter Estimation
+	\input{chapters/chapter6/b2ParameterEstimationUsingOptimization.tex}%-Parameter Estimation using Optimization
+	\input{chapters/chapter6/b3TheOptimizationProblem.tex}       %-------- The Optimization Problem
+	\input{chapters/chapter6/b4OptimizationUsingTheGradient.tex} %-------- Optimization Using the Gradient
+	\input{chapters/chapter6/b5SteepestDescend.tex}              %-------- Steepest Descend
+	\input{chapters/chapter6/b6aDichotomousLineSearch.tex}       %-------- Dichotomous Line Search
+	\input{chapters/chapter6/b6FibonacciLineSearch.tex}         %-------- Fibonacci Line Search
+	\input{chapters/chapter6/b7ForwardBackwardMethod.tex}        %-------- Forward Backward Method
+	\input{chapters/chapter6/b8NewtonsMethod.tex}                %-------- Newton's Method
+	\input{chapters/chapter6/b9ImplementationOfNewton.tex}       %-------- Implementation of Newtion's
+	\input{chapters/chapter6/b10SensToolsAndFinalParameters.tex} %-------- Senstools and Final Parameters
+	\input{chapters/chapter6/cModelAnalysis.tex}		             %-------- Model Analysis
+	\input{chapters/chapter6/dStability.tex}			               %-------- Stability Analysis
 	
 	%---------- Chapter 7 ---------------------------------------- Requirements
 	\input{chapters/chapter7/aRequirements.tex}
@@ -82,19 +91,19 @@
 	\part{Design \& Implementation}
 	%---------- Chapter 8 ---------------------------------------- Classical Control Design
 	\input{chapters/chapter8/aChapters8.tex}
-	\input{chapters/chapter8/cRootLocusBasics.tex}			      %-------- Root Locus Theory
-	\input{chapters/chapter8/bClosedLoop.tex}			            %-------- Closed Loop response
-	\input{chapters/chapter8/dDesignController.tex}			      %-------- Design of the Controller
-	\input{chapters/chapter8/fImplementationController.tex}	  %-------- Implementation
-	\input{chapters/chapter8/gDiscretizationController.tex}   %-------- Discretization
-	\input{chapters/chapter8/hVerificationController.tex}     %-------- Verification
+	\input{chapters/chapter8/cRootLocusBasics.tex}			         %-------- Root Locus Theory
+	\input{chapters/chapter8/bClosedLoop.tex}			               %-------- Closed Loop response
+	\input{chapters/chapter8/dDesignController.tex}			         %-------- Design of the Controller
+	\input{chapters/chapter8/fImplementationController.tex}	     %-------- Implementation
+	\input{chapters/chapter8/gDiscretizationController.tex}      %-------- Discretization
+	\input{chapters/chapter8/hVerificationController.tex}        %-------- Verification
 	
 	%---------- Chapter 9 ---------------------------------------- State Space Controller
 	\input{chapters/chapter9/aChapters9.tex}
-	\input{chapters/chapter9/bSSDescription.tex}	%-------- Description in State Space
-	\input{chapters/chapter9/cSSAnalysis.tex}	%-------- Analysis in State Space
-	\input{chapters/chapter9/dSSController.tex}	%-------- Controller in State Space
-	\input{chapters/chapter9/dSSImplementation.tex}	%-------- Implementation of the Controller 
+	\input{chapters/chapter9/bSSDescription.tex}           	     %-------- Description in State Space
+	\input{chapters/chapter9/cSSAnalysis.tex}	                   %-------- Analysis in State Space
+	\input{chapters/chapter9/dSSController.tex}	                 %-------- Controller in State Space
+	\input{chapters/chapter9/dSSImplementation.tex}	             %-------- Implementation of the Controller 
 		
 	%---------- Chapter 10 ----------------------------------------- Complementary Filter
 	\input{chapters/chapter10/aComplementaryFilter.tex}		

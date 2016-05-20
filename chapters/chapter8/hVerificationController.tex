@@ -25,7 +25,7 @@ With a constant reference of 0 rad and a disturbance in the form of a torque app
     \end{figure}\vspace{-5mm}
 \end{minipage}
 
-Both controllers seem to have a good behavior and both reach the desired final position. However it is important to also look at the velocity of the wheel, since it has been assumed to be 0 in the equilibrium position.
+Both controllers seem to have a good behavior and both reach the desired final position in simulation. However after testing the controller on the cubli, it was discovered that it is important to also look at the velocity of the wheel. It has been assumed to be 0 in the equilibrium position, and that is not the case.\fxnote{add some eplanation with test result on the problem}
 %
 \begin{figure}[H]\vspace{-4mm}
 	\centering
@@ -35,7 +35,7 @@ Both controllers seem to have a good behavior and both reach the desired final p
 \end{figure}\vspace{-5mm}
 
 In both cases the velocity is different from 0 in steady state. It should not be any problem since a constant velocity does not produce any torque 
-to the system. However there is friction in the wheel, which will make it to slow down, producing an acceleration on the system. This will make the Cubli to slightly move from equilibrium position and the controller will try to apply some torque to the system to balance it. The problem arises if the motor was already very closed to its maximum speed and it will not be able to accelerate more and produce the torque needed, making the frame to fall.
+to the system. However there is friction in the wheel, which will make it to slow down, producing an acceleration on the system. This will make the Cubli to slightly move from equilibrium position and the controller will try to apply some torque to the system to balance it. The problem arises if the motor was already very closed to its maximum speed and it will not be able to accelerate more and produce the torque needed, making the frame fall over.
 
 The conclusion is that the controller is not able to ensure zero velocity in equilibrium with only a feedback in the position of the frame. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
 

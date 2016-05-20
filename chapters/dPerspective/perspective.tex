@@ -2,7 +2,7 @@
 
 In the state space controller a set of poles were selected looking at the response they showed in two simulations, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using different pole combinations results in different overshoots and settling time, so another pole combination could be selected if a different behavior of the Cubli was desired. The choice is whether a small overshoot is desired or if the frame is to reach \SI{0}{rad} faster.
 
-One of the next steps will be to build the full Cubli, since now the control can be done using only components attached to the frame. This design needs to include the control of three reaction wheels to control each of the directions that the full Cubli could move in.
+One of the next steps will be to build the full Cubli, since the control now can be done using only components attached to the frame and is not dependent on any fixed component to find its angle. The full cube design needs to include the control of three reaction wheels to control each of the directions that Cubli can move in. 
 
 The Cubli will have to be able to jump up from a resting position. To do that the reaction wheel has to spin up. Once at the desired speed the wheel will be braked and the resulting torque will raise the Cubli. Now the system has to catch itself. In order to do that a separate controller might have to be designed that handles the jump up part, and then switches to the balancing controller for the position keeping part.\\
 For the full Cubli there will be 3 brakes, one on each wheel, that have to be coordinated to raise the cube up to a desired position.
@@ -10,9 +10,13 @@ For the full Cubli there will be 3 brakes, one on each wheel, that have to be co
 
 It is possible that the controller no longer needs to balance each of them in upright position but to do another kind of maneuvers, which will require a new controller since the chosen one is not able to get a reference for the internal states different from zero.
 
+The placement of the IMU on the full Cubli is something that has to be determined. One way to do it if possible is to place the IMU in the very center of the Cubli. This would give the same disturbance regardless of which angle has to be measured.\\
+Alternatively one sensor could be placed in each corner of the Cubli. That would mean using 4 IMU's. This way there is always at least one sensor very close the point of rotation, and thus it should be possible to get measurements with minimal disturbance from linear acceleration. A system could be implemented that keeps track of the orientation of the Cubli, so that the most reliable sensor always is selected as the one the controller trusts more. 
+
 
 - Jump up\\
 - 3D Cube\\
 - Deep more in other possibilities of controllers\\
 - May not need to balance, but to do another maneuvers -----> other controller -----> same model\\
 - Show and advertise control engineering \\
+- Sensor placement on the 3D cube.\\
