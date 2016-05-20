@@ -48,6 +48,6 @@ One way could be using a cascade controller to control both the velocity of the 
 	\label{cascadeControl}
 \end{figure}
 
-The problem of this solution in the case of the Cubli is that both variables to control are coupled together, which means that it is not possible to split the plant in a way that there is no feedback between them. \fxnote{reference revolutionary paper}
+The problem of this solution in the case of the Cubli is that both variables to control are coupled together, which means that it is not possible to split the plant in a way that there is no feedback between them.\cite{LRusso}
 
 Another way is to use an state space approach, which can handle this singularity, since now the system will have two outputs to control. This controller solution is further detailed in \chapref{chap:stateSpaceController}.

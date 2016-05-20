@@ -6,11 +6,9 @@
 - cut-off frequency of the complementary filter?\\
 - code accessibility?\\
 - classical controller?\\
-- 
-- 
 
 
-As already mentioned briefly in the complementary section the measurement from the accelerometer in the IMU could be improved by moving the sensor to a position where it would be influenced less by the acceleration of the frame but still be able to measure the angle of the frame. 
+As already mentioned briefly in the complementary filter section, the measurement from the accelerometer in the IMU could be improved by moving the sensor to a position where it would be influenced less by the acceleration of the frame but still be able to measure the angle of the frame. 
 
-For the state space controller a set of poles where selected that gave a good response for the system as seen on the two graphs, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using the different pole combinations shown on the graphs results in different overshoots and brake times for the wheel. Another pole combination could be selected if a different behavior of the Cubli was desired. The choice is whether a small overshoot is desired or if the wheel is to reach \SI{0}{rad\cdot s^{-1}} faster.
+For the state space controller a set of poles were selected looking at the response they showed in the two simulations, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using different pole combinations results in different overshoots and settling time, so another pole combination could be selected if a different behavior of the Cubli was desired. The choice is whether a small overshoot is desired or if the frame is to reach \SI{0}{rad} faster.
 

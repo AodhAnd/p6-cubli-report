@@ -1,5 +1,7 @@
 \chapter{Perspective}
 
+In the state space controller a set of poles were selected looking at the response they showed in two simulations, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using different pole combinations results in different overshoots and settling time, so another pole combination could be selected if a different behavior of the Cubli was desired. The choice is whether a small overshoot is desired or if the frame is to reach \SI{0}{rad} faster.
+
 One of the next steps will be to build the full Cubli, since now the control can be done using only components attached to the frame. This design needs to include the control of three reaction wheels to control each of the directions that the full Cubli could move in.
 
 The Cubli will have to be able to jump up from a resting position. To do that the reaction wheel has to spin up. Once at the desired speed the wheel will be braked and the resulting torque will raise the Cubli. Now the system has to catch itself. In order to do that a separate controller might have to be designed that handles the jump up part, and then switches to the balancing controller for the position keeping part.\\

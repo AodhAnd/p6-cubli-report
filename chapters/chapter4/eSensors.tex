@@ -12,19 +12,21 @@ In this project the potentiometer is used to test the dynamics of the Cubli, as 
 Since some of the analysis and design will depend on the reliability of the potentiometer, different tests are carried out to check its characteristics and behavior.
 %The objective of this test is to find the linearity of the potentiometer and find the outer range of the frame rotation in degrees and potentiometer and BeagleBone Black A/D converter value, and the same for the balancing point, and at the same time get the new parameters of the frame like the weight and the placement of center of mass.
 %
-%
-\subsubsection{Linearity Test}
+
+\textbf{- Linearity Test}
+
 This test is detailed described in \appref{app:potentiometerLin}. As it can be seen in \figref{linearityOfPotmeterTest}, the result gives an almost straight within the \si{1\ \%} linearity of the potentiometer, but at a certain angle the potentiometer has an area where the measurement is deviating. The reason for this deviation lies in the fact that it is a continuous rotating potentiometer and at that point it changes its turn. A way to correct this problem is to turn the potentiometer and recalibrate its limits. However, in this project it is not necessary since precise measurements are only needed around the control region.
 
 \begin{figure}[H] 
 	\centering 
 	\includegraphics[scale=0.5]{figures/linearityOfPotmeterTest2-1}
-	\caption{Raw test data plot}
+	\caption{Result of the linearity test}
 	\label{linearityOfPotmeterTest}
 \end{figure}
 
-\subsubsection{Range Test}
-It is also needed a test to find the conversion from voltage to angle along with potential offset (see \appref{app:potentiometerRes}).
+\textbf{- Range Test}
+
+It is also needed to find the conversion from voltage to angle along with potential offset, so a test is carried out as can be seen in \appref{app:potentiometerRes}.
 
 \begin{minipage}{\linewidth}
   	\begin{minipage}{0.45\linewidth}

@@ -54,7 +54,7 @@ The Potentiometer is connected to the BeagleBone’s A/D and only a small area i
 
 The Potentiometer is only using a small area of rotation on the Cubli, about ¼ of the full rotation. The gain is calculated from the max. rotation voltage and the result is a gain of 3 V. 
 
-To verify the gain the potentiometer voltage is a measured and ADC value is readout from the BeagleBone Black.
+To verify the gain, the potentiometer voltage is measured and the ADC value is read from the BeagleBone Black.
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -66,11 +66,11 @@ To verify the gain the potentiometer voltage is a measured and ADC value is read
 		\hline%------------------------------------------------------------------------------------------------------------
 		Measured after the gain							  & 1,417 V              \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		ADC value in voltaged 							  & 1,419 V              \\
+		ADC value  							  & 1,419              \\
 		\hline%------------------------------------------------------------------------------------------------------------
 	\end{tabular}
 \end{table}
-After the signal has been gained a low-pass filter with a frequency of 194 Hz is added to damp noise on the signal. 
+After the signal has been gained, a low-pass filter with a frequency of 194 Hz is added to damp noise on the signal. 
 %Since the sampling frequency is 100 Hz it is almost upholding New Quest by double or faster
 
 \subsection{Motor Control Board Connections}

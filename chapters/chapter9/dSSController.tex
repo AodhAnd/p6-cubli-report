@@ -1,7 +1,7 @@
 \section{Design of the Controller in State Space}\label{sec:SSController}
 The aim of the controller is to maintain the system in equilibrium position, which means that the reference for each state is always zero. 
 
-With this assumption a new state matrix can be created such that its poles are placed in the LHP and then the system becomes stable.This is done by adding a state feedback and a \si{3x1} gain matrix to the whole system, as seen in \figref{SSBlocksFeedback}.
+With this assumption a new state matrix can be created such that its poles are placed in the LHP and then the system becomes stable. This is done by adding a state feedback and a \si{3x1} gain matrix to the whole system, as seen in \figref{SSBlocksFeedback}.
 %
 \begin{figure}[H]
 	\input{figures/SSBlockDiagramFeedback.tikz}
@@ -18,7 +18,7 @@ This new configuration gives a new equation for \si{\vec{\dot{x}}}:
 %
 The objective is to find K such that the eigenvalues of \si{\vec{A}-\vec{B}\vec{K}} are placed at the LHP. This gain matrix can be found using the Matlab command \lstinline{place(A,B,P)}, where P is a vector containing the desired position of the new poles.
 
-To choose the position of these poles two simulations are made for different values. In the first one the Cubli starts from equilibrium and a disturbance torque is applied while in the second one it starts from an initial angle different from \si{0\ rad} and with an initial acceleration.
+To choose the position of these poles two simulations are made for different values. In the first one the Cubli starts from equilibrium and a disturbance torque is applied, while in the second one it starts from an initial angle different from \si{0\ rad} and with an initial velocity of the frame.  It can be observed that the velocity of the frame is in all the cases \si{0\ rad \cdot s^{-1}}.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -64,7 +64,7 @@ To choose the position of these poles two simulations are made for different val
 	\end{minipage}
 \end{minipage}
 
-The final combination of poles is \si{-6}, \si{-7} and \si{-15}, which gives the yellow responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. It can also be observed that the velocity of the frame is in all the cases \si{0\ rad \cdot s^{-1}} The gain matrix for this combination results in the following:
+The final combination of poles is \si{-6}, \si{-7} and \si{-15}, which gives the yellow responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. The gain matrix for this combination results in the following:
 %
 \begin{equation}  \label{controllerSS}
 	\vec{K} = 
