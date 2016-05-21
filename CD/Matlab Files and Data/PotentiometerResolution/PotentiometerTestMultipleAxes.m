@@ -1,4 +1,5 @@
 %------------------- SETUP FOR FIGURE HOLD & CLEANUP ----------------------
+folding=false;
 for folding = true
     if exist('a','var') == 1
         if ishandle(a)

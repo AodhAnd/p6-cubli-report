@@ -22,8 +22,6 @@ The wheel is being held in a fixed position with a strip tied to it and the fram
 		\hline%------------------------------------------------------------------------------------
 		\textbf{Instrument}                        &  \textbf{AAU-no.}  &  \textbf{Type}       \\
 		\hline%------------------------------------------------------------------------------------
-		Cubli setup                              &               &  		  					\\
-		\hline%------------------------------------------------------------------------------------
 		Oscilloscope                              &  61604             &  Agilent 54621A		  \\
 		\hline%------------------------------------------------------------------------------------
 		Dedicated Power Supply of Cubli \small{(24 V - 3 A)} &               &  XP Power, AEB70US24 \\
@@ -38,15 +36,14 @@ The wheel is being held in a fixed position with a strip tied to it and the fram
 \subsubsection{Procedure}
 \begin{enumerate}
 	%\item Turn on the power supply
-	\item Place the setup upside-down and place the frame touching the base %, \si{135^0} with respect to the vertical position
-	\item Let the Cubli fall and swing until it has come to rest
-	\item Use the oscilloscope to measure the changes in the potentiometer
-	\item Collect all the data and plot it in Matlab
-	%\item Compare with the simulation 	
+	\item Place the setup upside-down and place the frame touching the base.
+	\item Let the Cubli fall and swing until it stops.
+	\item Use the oscilloscope to measure the changes in the potentiometer.
+	\item Collect all the data and plot it in Matlab.	
 \end{enumerate}
 
 \subsubsection{Results}
-The results of the experiment can be seen in \figref{PendVolt} and \figref{PendRad}. The second graph is obtained using the conclusions from Appendix \ref{potentiometerRes} explained in Section \ref{sec:Sensors}.
+The results of the experiment can be seen in \figref{PendVolt} and \figref{PendRad}. The second graph is obtained using the conclusions from \appref{app:potentiometerRes} explained in Section \ref{sec:Sensors}.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -61,7 +58,7 @@ The results of the experiment can be seen in \figref{PendVolt} and \figref{PendR
 	\end{minipage}
 	\hspace{0.03\linewidth}
 	\begin{minipage}{0.45\linewidth}
-		\begin{figure}[H]
+		\begin{figure}[H]\vspace{-4mm}
 			\includegraphics[scale=.53]{figures/PendRad}
 			\centering
 			\vspace{-.4cm}
@@ -70,9 +67,7 @@ The results of the experiment can be seen in \figref{PendVolt} and \figref{PendR
 			\label{PendRad}
 		\end{figure}%\vspace{-5mm}
 	\end{minipage}
-\end{minipage} \fxnote{Look at the layout of picture of data placement}
-
-The data is available as a .csv file on the CD.
+\end{minipage}
 
 \subsubsection{Note}
 During this experiment it was observed that if the frame was released from the left position (the right upper side on \figref{impulseResponseTestPicture} since the Cubli is upside down), the frame would hit the rubber pad on the other side. This behavior was not observed when releasing the Cubli from the right position (left upper corner).

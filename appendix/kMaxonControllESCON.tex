@@ -8,15 +8,15 @@ Get the configuration parameters through the ESCON software, which is used to co
 \subsubsection{Procedure}
 \begin{enumerate}
   \item ESCON software is installed on the computer.
-  \item The control is connected by a USB cable to the computer and the ESCON software is started.
-  \item Software automatically detects the controller and the configuration are uploaded from the controller to the software.
-  \item If there are changes to be made it can be done now on the controller.
+  \item The control board is connected by a USB cable to the computer and the ESCON software is started.
+  \item The software automatically detects the controller and the configuration is uploaded to the software.
+  \item The configuration is then collected.
 \end{enumerate}
 
 \subsubsection{Results/Data}
-In the following text you can find the data for the different items on the Maxon Control Board used in this project. The following data has been found on the data sheet of the ESCON module 50/5 and the Maxon Motor data sheet:
+In the following text there are the most relevant configurations of the Maxon Control Board used in this project. Some of the data has been found on the data sheet of the ESCON module 50/5 and the Maxon Motor data sheet.
 
-PWM controller:\\
+\textbf{PWM controller}\\
 The control PWM runs at a frequency of 53,6 kHz and the Maxon motor is customized for this frequency.
 The PWM controller has been configured to use a Maxon motor EC 45 flat 50 Watt (part no. 251601). The parameters in the controller are:
 \begin{table}[H]
@@ -33,10 +33,8 @@ The PWM controller has been configured to use a Maxon motor EC 45 flat 50 Watt (
 	\end{tabular}
 \end{table}
 
-Controller:\\
-The controller has a maximum current drag in continuous operation of 5 A.
-The motor has a no load speed of 6710 rpm and a stall current of 23,3 A.
-The motor has been limited in the configuration software to the following:
+\textbf{Controller}\\
+The controller has a maximum current drag in continuous operation of 5 A. It has a no load nominal speed of 6710 rpm and a stall current of 23,3 A. The motor has been limited in the configuration software as following
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -51,8 +49,8 @@ The motor has been limited in the configuration software to the following:
 	\end{tabular}
 \end{table}
 
-Hall Sensor:\\
-There is a built-in hall sensor on the control board, it is used for detecting the direction and rotation of the Cubli so the speed can be determined. The Hall sensor on the controller has been configured to the following:
+\textbf{Hall Sensor}\\
+There are built-in hall sensors on the motor, used for detecting its position and velocity. 
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -65,8 +63,8 @@ There is a built-in hall sensor on the control board, it is used for detecting t
 	\end{tabular}
 \end{table}
 
-Loop Control:\\
-The control can operate in open loop, close loop and current mode. The close loop and the current mode runs at a frequency of 5,36 kHz. The controller has been configured to the following:
+\textbf{Loop Control}\\
+The control can operate in open loop, close loop or current mode. The close loop and the current mode runs at a frequency of 5,36 kHz. The controller has been configured to the following:
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -79,8 +77,8 @@ The control can operate in open loop, close loop and current mode. The close loo
 	\end{tabular}
 \end{table}
 
-Digital Input:\\
-The digital input can be configured, so the motor can be activated or change direction by a signal. The speed or current can be set by a PWM signal. The controller has been configured to the following:
+\textbf{Digital Input}\\
+The digital input can be configured, so the motor can be activated or change direction by a signal. The speed or current can be set by a PWM signal. Its configuration can be seen in the following table:
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -101,9 +99,8 @@ The digital input can be configured, so the motor can be activated or change dir
 	\end{tabular}
 \end{table}
 
-Analog Output:\\
-The analog output can be configured to different voltage ranges on the output, and which information you want out of the control.
-The analog output resolution is 12-bit and the voltage ranges from -4 V to 4 V. The controller has been configured to the following:
+\textbf{Analog Output}\\
+The analog output can be configured to give actual values of the motor, such speed or current. The analog output resolution is 12-bit and the voltage ranges from -4 V to 4 V. The actual configuration of the analog output is the following:
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
