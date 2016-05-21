@@ -1,0 +1,52 @@
+\section{Implementation of the Controller}\label{impController}
+To implement a discrete controller in a code environment, the preferred form of equation is the difference equation. This is why \eqref{eq:discControllerTf} is transformed into:
+\begin{flalign}
+  \eqOne{\tau_{m}[n]}{\num{-8,314} \cdot e_{\theta}[n]+ \num{7,422} \cdot e_{\theta}[n-1] + \num{8,3023} \cdot e_{\theta}[n-2] - \num{7,434} \cdot e_{\theta}[n-3] }
+  \eqTwo{+ \num{1,382} \cdot \tau_{m}[n-1] - \num{0,3415} \cdot \tau_{m}[n-2] - \num{0,001638} \cdot \tau_{m}[n-3]}\unit{N \cdot m} 
+  \label{eq:discControllerDiffEq}
+\end{flalign}
+%
+\hspace{6mm} Where:\\
+\begin{tabular}{ p{1cm} l l l}
+& \si{\tau_{m}}         & is the wanted motor torque                                      &\unitWh{N \cdot m} \\
+& \si{e_{\theta}}         & is the error between wanted and measured frame angle          &\unitWh{rad}\\
+& \si{x[n-m]}             & is the m-th previous state of a signal x, m = 0,1,2,3         &\unitWh{\cdot}\\
+\end{tabular}
+
+To match the code convention defined in \secref{sec:codeBase}, this equation is put into a function named \lstinline{AAU3_DiscSISOTool()}, as seen in \ref{lst:codeSISOTController}. The coefficients a and b are initialized in the \lstinline{AAU3_DiscSISOTool_initialize()} function.
+
+\begin{lstlisting}[caption={Code for the implementation of the controller designed from root locus in C\texttt{++}}, label=lst:codeSISOTController]
+SISOT_P_Out_Sig_struct_T AAU3_DiscSISOTool(const real_T x_hat[3])
+{
+  /** Declaration of a temporary variable */
+  SISOT_P_Out_Sig_struct_T SISOT_P_U;
+  
+  /** Signal shifting */
+  SISOT_PComp.e_del[3] = SISOT_PComp.e_del[2];
+  SISOT_PComp.e_del[2] = SISOT_PComp.e_del[1];
+  SISOT_PComp.e_del[1] = SISOT_PComp.e_del[0];
+
+  SISOT_PComp.taum_del[3] = SISOT_PComp.taum_del[2];
+  SISOT_PComp.taum_del[2] = SISOT_PComp.taum_del[1];
+  SISOT_PComp.taum_del[1] = SISOT_PComp.taum_del[0];
+  
+  /** New calculations */
+  // On-the-instant error
+  SISOT_PComp.e_del[0] = SISOT_PComp.theta_ref - x_hat[0]; 
+
+  // Controller job
+  SISOT_PComp.taum_del[0] = SISOT_PComp.K * (SISOT_PComp.a[0] * SISOT_PComp.e_del[0] + SISOT_PComp.a[1] * SISOT_PComp.e_del[1] + SISOT_PComp.a[2] * SISOT_PComp.e_del[2] + SISOT_PComp.a[3] * SISOT_PComp.e_del[3] + SISOT_PComp.b[1] * SISOT_PComp.taum_del[1] + SISOT_PComp.b[2] * SISOT_PComp.taum_del[2] + SISOT_PComp.b[3] * SISOT_PComp.taum_del[3]);
+  
+  // Current saturation as a preventive protection
+  if(TORQUE_2_CURRENT * SISOT_PComp.taum_del[0] > 4)
+    SISOT_PComp.taum_del[0] = K_T * 4;//SISOT_PComp.taum_del[1];
+  else if(TORQUE_2_CURRENT * SISOT_PComp.taum_del[0] < -4)
+    SISOT_PComp.taum_del[0] = K_T * -4;//SISOT_PComp.taum_del[1];
+  
+  SISOT_P_U.I_m = TORQUE_2_CURRENT * SISOT_PComp.taum_del[0];
+  
+  return SISOT_P_U;
+}
+\end{lstlisting}
+
+\Appref{app:sisoToolDControllerTest} shows a test of this controller. Although in \secref{designController} the closed-loop system seems to be stable, the test result shows that the controller is not able to balance the Cubli. Thus, a further investigation is made in the next section.
