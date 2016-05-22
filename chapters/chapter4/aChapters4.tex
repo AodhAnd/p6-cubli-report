@@ -5,70 +5,46 @@ The control action is done with a brushless DC-Motor which actuates both on the 
 A board with a microcontroller and a motor control board are mounted on the frame through a connecting and breakout board.\\ 
 The frame is fixed to a base-plate, connected with a potentiometer that can be used for direct angle measurements.\\ 
 Two additional sensor breakout boards, including an integrated circuit with gyro and accelerometer, are located at the top of the frame. These are to be used for angle and velocity measurements independently of the angle of the baseplate.\\ 
-A servomotor that controls the brake system is also attached, which has an arm capable of blocking the wheel by hitting one of the two break-blocks mounted on the edge of the reaction wheel.
-
-The different components of the existing system can be seen in \figref{Cubli-12}.
-%
-%  \begin{minipage}{\linewidth}
-%  	\begin{minipage}{0.45\linewidth}
-%  		\begin{figure}[H]
-%  			\includegraphics[scale=0.21]{figures/Cubli-5}
-%  			\centering
-%  			\vspace{-.4cm}
-%  			\captionsetup{justification=centering}
-%  			\captionof{figure}{Cubli System viewed from the front.}
-%  			\label{Cubli-5}
-%  		\end{figure}\vspace{-5mm}
-%  	\end{minipage}
-%  	\hspace{0.11\linewidth}
-%  	\begin{minipage}{0.45\linewidth}
-%  		\begin{figure}[H]
-%  			\includegraphics[scale=.18]{figures/Cubli-6}
-%  			\centering
-%  			\vspace{.8cm}
-%  			\captionsetup{justification=centering}
-%  			\captionof{figure}{Cubli System viewed from the Back.}
-%  			\label{Cubli-6}
-%  		\end{figure}\vspace{-6mm}
-%  	\end{minipage}
-%  \end{minipage}
-%
+A servomotor that controls the brake system is also attached, which has an arm capable of blocking the wheel by hitting one of the two break-blocks mounted on the edge of the reaction wheel.\\
+The different components of the existing system can be seen in \figref{CubliParts}, where the labels correspond to table \ref{tab:TableAAUCubliComponent}.
+\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.27]{figures/Cubli12}
-	\caption{Cubli System viewed from the front and back}
-	\label{Cubli-12}
+	\caption{Existing setup viewed from the front and the back}
+	\label{CubliParts}
 \end{figure}
 %
 \begin{table}[H]
-	\begin{tabular}{|l|p{6.7cm}|}
+	\centering
+	\begin{tabular}{|l|p{6.4cm}|}
 		\hline %-----------------------------------------------------------------------------------
 		\textbf{No.} &\textbf{Part} 			\\
 		\hline %-----------------------------------------------------------------------------------
 		1            & Frame           			\\
 		\hline %-----------------------------------------------------------------------------------
-		2            & Reaction wheel      		\\
+		2            & Reaction Wheel      		\\
 		\hline %-----------------------------------------------------------------------------------
 		3            & Microcontroller (BeagleBone Black)  \\
 		\hline %-----------------------------------------------------------------------------------
-		4            & Connecting and breakout board 			\\
+		4            & Connecting and Breakout Board 			\\
 		\hline %-----------------------------------------------------------------------------------
 		5            & Brushless DC-Motor       			\\
 		\hline %-----------------------------------------------------------------------------------
-		6            & Motor control board   	\\
+		6            & Motor Control Board   	\\
 		\hline %-----------------------------------------------------------------------------------
-		7            & Servo brake system     	\\
+		7            & Servo Brake System     	\\
 		\hline %-----------------------------------------------------------------------------------
 		8            & Potentiometer 		    	\\
 		\hline %-----------------------------------------------------------------------------------
-		9            & (Inertia Measurement Units (IMU)) 		    	\\
+		9            & Inertia Measurement Units (IMU) 		    	\\
 		\hline %-----------------------------------------------------------------------------------
 	\end{tabular}
 	\caption{Main parts of the Cubli setup}
-	\label{TableAAUCubliComponent}
+	\label{tab:TableAAUCubliComponent}
 \end{table}
-
-A detailed description of all the components, which is needed for the model and control of the system, is presented in this chapter.
+%
+A detailed description of all the components, which is needed to be able to model and control the system, is presented in this chapter.
 
 %The BeagleBone Black, the break servomotor, the Maxon motor control board and the motor itself are mounted directly on the frame. On the motor shaft a freewheel is mounted. 
 

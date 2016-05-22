@@ -1,10 +1,10 @@
 \chapter{Angle Measurement with Built-in Sensors}\label{chap:CompFilter}
 It is a goal to get the Cubli setup to balance the frame in an upright position independently of the baseplate orientation within the possible angle of rotation.
 
-As described in \secref{sec:Sensors} there are two IMUs mounted on the frame of the Cubli (shown on \figref{Cubli-12}). They can be used to achieve this goal since they only depend on the absolute angle and they can also be used in the full Cubli.
+As described in \secref{sec:Sensors} there are two IMUs mounted on the frame of the Cubli (shown on \figref{CubliParts}). They can be used to achieve this goal since they only depend on the absolute angle and they can also be used in the full Cubli. In this case it has been decided to use IMU number one for the calculations, but number two would be valid too.
 
 \section{Angle Calculations from the IMUs}
-The angular position of the Cubli can be calculated using the accelerometer, the gyroscope or combining both. In this section each of the options is describe and analyzed.
+The angular position of the Cubli can be calculated using the accelerometer, the gyroscope or combining both. In this section each of the options is described and analyzed.
 
 \subsection{Angle from the Accelerometer}
 The accelerometer measures linear acceleration, and if the accelerometer is attached to a object that does not accelerate with respect to the Earth, the accelerometer will measure the gravitational acceleration. This can be used to determine the orientation of the accelerometer sensor with respect to the Earth \cite{JWarren}.\\
@@ -12,7 +12,7 @@ The accelerometers used with the Cubli setup have 3-axis detection as described 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.58]{figures/accelerometer}
-	\caption{Position of the IMU on the setup. The orientation of the accelerometer in relation to the Cubli frame is shown. The sensor is rotated by \si{\frac{\pi}{4}} in relation to the angle \si{\theta_F}. On the IMU the components of the acceleration vector are shown. In case of no movement by the frame these are the components of the gravitational acceleration vector.}
+	\caption{Position of the IMU on the setup. The orientation of the accelerometer in relation to the Cubli frame is shown. The sensor is rotated by \si{\frac{\pi}{4}} in relation to the angle \si{\theta_F}. On the IMU the components of the acceleration vector are shown. In case of no movement of the frame these are the components of the gravitational acceleration vector.}
 	\label{accelerometer}
 \end{figure}\vspace{-5mm}
 %
@@ -30,23 +30,26 @@ Based on the markings on the IMU, those are the x- and y-axis components of the 
 \end{tabular} \\
 \\
 The offset (\si{\frac{\pi}{4}}) is added because the IMU is mounted with a \si{\frac{\pi}{4}} rotation compared to the orientation of the frame.\\
-A test to measure the angle of the frame with the accelerometer is performed, and with the purpose to compare it to data from the potentiometer taken at the same time. The data from both sensors is read at the same time, to make it possible to compare the accelerometer to the potentiometer to determine if the accelerometer can be used instead of the potentiometer.\\
+
+A test to measure the angle of the frame with the accelerometer is performed, with the purpose to compare it to data from the potentiometer taken at the same time. The data from both sensors is read at the same time, to make it possible to compare the accelerometer to the potentiometer to determine if the accelerometer can be used instead of the potentiometer.\\
 A comparison of the two measurements is shown in \figref{angleAcc}. The accelerometer angle (\si{accel\_\theta_{F}}) is found by taking the x- and y-axis components and calculating the angle with \eqref{accelAngle}.
 The data from the test can be found in  \appref{app:IMUMeasurementsAppendix}. 
 %
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.65]{figures/angleAcc}
-	\caption{The graph shows a comparison of the angle of the frame measured by the potentiometer(orange) and the same angle found with the accelerometer(blue). The accelerometer angle is calculated based on the measurement data from the x- and y-axis component (\appref{app:IMUMeasurementsAppendix})}
+	\caption{The graph shows a comparison of the angle of the frame measured by the potentiometer (orange) and the same angle found with the accelerometer (blue). The accelerometer angle is calculated based on the data from the x- and y-axis components (\appref{app:IMUMeasurementsAppendix})}
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
 %
-The measurements of the potentiometer and accelerometer are both showing the Cubli frame in the same position. The measurement from the accelerometer has a lot more noise than the potentiometer.\\
-While the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame and the spikes seen on the calculated angle data from the accelerometer data in \figref{angleAcc} are because the IMU is moving and the acceleration from this creates a disturbance on the measurement of the gravitational acceleration \cite{JWarren}.\\
-A way to minimize this disturbance would be to move the IMU as close as possible to the point of rotation. This way the accelerometer is still able to see the angle of the frame, but the distance it is moved is shorter and the acceleration will be smaller. \fxnote{we didnt do this because we would have to remount the sensor and create a new mount. how to best word that?, B}
+The measurements of the potentiometer and accelerometer are both showing the Cubli frame in the same position. It can be seen that the calculations from the accelerometer has a lot more noise than the potentiometer.\\
+
+While the Cubli setup tries to balance the frame, the IMU mounted on the top of it will move along with the frame. The spikes are present on the calculated angle from the accelerometer data in \figref{angleAcc} due to the acceleration of the frame that creates a disturbance on the measurement of the gravitational acceleration \cite{JWarren}.\\
+A way to minimize this disturbance would be to move the IMU as close as possible to the point of rotation. This way the accelerometer is still able to measure the gravitational acceleration, but the distance to the pivoting point is  shorter and the linear acceleration will be smaller. However, since the design should be exportable to the full Cubli, where the pivoting point is always changing, this solution does not seem to be adequate.
 
 \subsection{Angle from the Gyroscope}
-The angle of the frame (\si{gyro\_\theta_{F}}) can be found with the gyroscope by integrating the angular velocity measured by the gyroscope on the axis aligned with the direction of motion of the frame as shown in \figref{cubliMechanical}.
+The angle of the frame could also be found with the gyroscope (\si{gyro\_\theta_{F}}), by integrating the measured angular velocity on the axis aligned with the direction of motion of the frame as shown in \figref{cubliMechanical}.
+
 \begin{flalign}
 	\eq{gyro\_\theta_{F}[n]} {\int_{0}^{n\cdot \Delta T} \omega_{F} \, \mathrm{d}t}
 	\label{accelGyro}
@@ -70,16 +73,16 @@ Assuming that the drift is proportional to time (the slope is always constant), 
 It can also be calculated online, while the controller is running. In this case the accelerometer can provide information to compensate this drift. One solution to fuse these two sets of data is to use a complementary filter, explained in detailed in next section.
 
 \subsection{Data Fusing with Complementary Filter}
-In order to filter the drift of the gyroscope and the disturbance errors of the accelerometer a complementary filter can be used to combine both measurements from the IMU mounted on the Cubli frame. This is done with the goal to get a more reliable angle measurement for both when the frame is moving and when its standing still in the equilibrium point.\\
-The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli's frame. When the frame is moving fast it is better to rely on the gyroscope data, and when the frame is moving slowly or not at all it is better to rely on the accelerometer data \cite{PGui}.
+In order to filter the drift of the gyroscope and the disturbance errors of the accelerometer, a complementary filter can be used to combine both measurements. This is done with to get a more reliable angle measurement for both when the frame is moving and when its standing still in the equilibrium point.\\
+The two angle measurements of the IMU are sent through a filter and then summed in order to get an angle of the Cubli's frame. This will result in relying more in the accelerometer data when there is a slow movement and more in the gyroscope when the movement is fast.\cite{PGui}
 
 \begin{figure}[H]
 	\input{figures/complementaryFilterBlockDiagram.tikz}
 	\centering
-	\caption{Block diagram of the complementary filter setup used with the IMU on the Cubli. The calculated accelerometer angle gets passed through a low pas filter. The angular velocity measurement from the gyro is integrated and then passed through a high pas filter. Both measurements are then summed to get the angle of the frame.}
+	\caption{Block diagram of the complementary filter setup used with the IMU on the Cubli. The calculated accelerometer angle passes through a low pas filter. The angular velocity measurement from the gyro is integrated and then passed through a high pass filter. Both measurements are then summed to get the angle of the frame.}
 	\label{blockDrawingComplementaryFilter}
 \end{figure}
-
+%
 The filter for the IMU is designed as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope \cite{OlliW}. \cite{PGui}
 \begin{flalign}
 	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
@@ -91,16 +94,16 @@ Combining the two equations yields \eqref{complementaryCombinedFilter}
 	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F} + \frac{\tau \cdot s}{ 1 + \tau \cdot s} \cdot \frac{1}{s} \cdot gyro\_\dot{\theta}_{F} = \frac{accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F}}{1 + \tau \cdot s}} &
 	\label{complementaryCombinedFilter}
 \end{flalign}
-The \si{\tau} is the cut-off frequency of the two filters. Changing this constant decides how much the two different sensor measurements weight in on the combined angle.
+Where \si{\tau} is the cut-off frequency of the filters. %Changing this constant decides how much the two different sensor measurements weight in on the combined angle.
  
 \section{Discretization of the Complementary Filter} 
-In oder to use the complementary filter on the Cubli it needs to be discretized. This is done with the bilinear transformation method where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}, with a sample time of \SI{10}{ms}.
+In oder to use the complementary filter on the Cubli it needs to be discretized. This is done with the bilinear transformation method, where \si{s = \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}}, with a sample time of \SI{10}{ms}.
 Rewriting \eqref{complementaryCombinedFilter} yields
 \begin{flalign}
  	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot s} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
  	\label{discreteComplementaryFilter1}
 \end{flalign}
-If s is replaced by its discrete expression, the difference equation can be derived.
+If s is replaced by its discrete expression the equation can be written in z-domain.
 \begin{flalign}
   	\eq{\theta_{F}} {\frac{1}{1 + \tau \cdot \frac{2}{\Delta T}\cdot \frac{1 - z^{-1}}{1 + z^{-1}}} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
   	\label{discreteComplementaryFilter2}
@@ -119,7 +122,7 @@ If s is replaced by its discrete expression, the difference equation can be deri
 %	\eq{\Updownarrow \theta_{F} \cdot ((2\cdot \tau + \Delta T) - (2\tau - \Delta T)\cdot z^{-1})} {\Delta T + \Delta T \cdot z^{-1} \cdot (accel\_\theta_{F} + \tau \cdot gyro\_\dot{\theta}_{F})} &
 %\end{flalign}\label{discreteComplementaryFilter5}
 %%
-Now \eqref{discreteComplementaryFilter4} is transformed from z-domain to discrete time domain. Which gives us \eqref{discreteComplementaryFilter7}.
+Now \eqref{discreteComplementaryFilter4} is transformed from z-domain to discrete time domain, resulting in the difference equation.
 % OLD 9.9
 %\begin{flalign}
 %	\eqOne{\theta_{F}[n] \cdot (2\cdot \tau + \Delta T) - \theta_{F}[n-1] \cdot (2\tau - \Delta T)} {\Delta T \cdot (accel\_\theta_{F}[n] + accel\_\theta_{F}[n-1]} 
@@ -133,38 +136,6 @@ Now \eqref{discreteComplementaryFilter4} is transformed from z-domain to discret
 	\label{discreteComplementaryFilter7}
 \end{flalign}
 %
-
-Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. \fxnote{USE the current form in the controller code file}
-
-\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}. The comp\_angle[0] is the newest found angle of the frame.},
-label    = codeCompFilter ]
-//---------------------- IMU --------------------------//
-
-const double acc_off = 0.84;  	// accel meass offset
-const double tau = 0.5399;	// cut-off for the complementary filter
-
-static double acc_angle[2]={atan(accY1/accX1) + acc_off,0},
-gyro_angle[2]={gyroRads1,gyroRads1},
-comp_angle[2]={acc_angle[0],0};
-
-// Set old measurement data
-acc_angle[1] = acc_angle[0];
-gyro_angle[1] = gyro_angle[0];
-gyro_angle[0] = gyroRads1;
-comp_angle[1] = comp_angle[0];
-
-// Get angle from accel axis measurements
-acc_angle[0] = atan(accY1/accX1) + acc_off;
-
-//Complementary equation using Tustin
-const double K1 = (2*tau-Ts)/(2*tau+Ts);
-const double K2 = Ts/(2*tau + Ts);
-comp_angle[0] = K1*comp_angle[1] + K2*(acc_angle[0] + acc_angle[1] + tau*gyro_angle[0] + tau*gyro_angle[1]);
-\end{lstlisting}
-The offset for the accelerometer measurement and the cut-off frequency of the filter are defined as constants. When the controller start up it initializes the accel array and the gyro array with data pulled from the sensor. The initial complementary angle is set to be what the accelerometer measures.\\
-The old values from accel\_angle, gyro\_angle and comp\_angle are moved up in their arrays and new data is saved in gyro\_angle and accel\_angle on index 0. The accel\_angle value is calculated from the x and y components.
-The constants K1 and K2 are calculated from the sampling time and the set cut-off frequency. They are used in the complimentary filter.\\
-The complimentary filter takes the new measurements from accelerometer and gyroscope and sums it with the previous measurements. The new calculated angle is then again summed with the old calculated angle.
 
 \section{Calculation of the Cut-off Frequency}
 Based on the setup of the complementary filter in \figref{blockDrawingComplementaryFilter}, the same cut-off frequency is chosen for both low and high pass filter, since it is desired to find the angle of the frame with a gain of 1 (see \figref{bodeFilters}). As it can be seen in \figref{bodeFilters2}, if both filters have different cut-off frequencies the gain is less than one at some frequencies, which could be a problem in the calculation of the angular position of the frame. 
@@ -206,3 +177,46 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 \end{figure}\vspace{-5mm}
 %
 %Using the same cut-off frequency for both filters has been successfully implemented and hence it there was not done any investigation into different cut-off frequencies for the low and high pass filter.\\
+
+\section{Implementation of the Complementary Filter}
+Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. 
+
+\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
+				label    = codeCompFilter ]
+//---------------------- IMU --------------------------//
+double Imu::getPosition(double accAngleNow, double gyroVelocityNow, double Ts, int imuNb)
+{
+	const double acc_off_1 = 0.84;  	// accel meass offset
+	const double tau = 0.5399;			// cut-off for the complementary filter
+
+	// Coefficients for the complementary equation
+	const double K1 = (2 * tau - Ts) / (2 * tau + Ts);
+	const double K2 = Ts / (2 * tau + Ts);
+
+	if(imuNb == 1) 
+	{
+		static double acc_angle_1[2] = {accAngleNow + acc_off_1, 0},
+		gyro_angle_1[2] = {gyroVelocityNow, gyroVelocityNow},
+		comp_angle_1[2] = {acc_angle_1[0], 0};
+
+		// Set old measurement data
+		acc_angle_1[1] = acc_angle_1[0];
+		gyro_angle_1[1] = gyro_angle_1[0];
+		gyro_angle_1[0] = gyroVelocityNow;
+		comp_angle_1[1] = comp_angle_1[0];
+
+		acc_angle_1[0] = accAngleNow + acc_off_1;
+
+		//Complementary equation using Tustin
+		comp_angle_1[0] = K1 * comp_angle_1[1] + K2 * (acc_angle_1[0] + acc_angle_1[1] + tau * gyro_angle_1[0] + tau * gyro_angle_1[1]);
+		return comp_angle_1[0];
+	}
+}
+
+\end{lstlisting}
+
+The position is calculated through the function \lstinline{getPosition()}. \\
+First, the values for the offset of the accelerometer angle and the cut-off frequency are initialized, as well as the two constants for the filter, K1 and K2.\\
+When this function is called the first time, accelerometer, gyroscope and angle arrays are initialized.\\
+The old values from \lstinline{accel_angle}, \lstinline{gyro_angle} and \lstinline{comp_angle} are moved up in their arrays and new data is saved in \lstinline{gyro_angle} and \lstinline{accel_angle} on index 0. \\
+Finally, the equation of the complementary filter in implemented to get the angular position of the frame.

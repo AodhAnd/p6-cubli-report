@@ -1,6 +1,6 @@
 \section{Acquisition of Parameters}\label{sec:Param}
 
-A method to obtain the parameters from the wheel (mass, distance from its center to the pivoting point of the frame, inertia with respect to its center of rotation and friction) is provided in \appref{app:wheelParameters}. However, these parameters should remain constant and they have been obtained by previous project runners, it is chosen to use these known parameters\cite{SVJohansen}.
+A method to obtain the parameters from the wheel (mass, distance from its center to the pivoting point of the frame, inertia with respect to its center of rotation and friction) is provided in \appref{app:wheelParameters}. However, as these parameters should remain constant and they have been obtained by previous project runners, it is chosen to use these known parameters\cite{SVJohansen}.
 
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{3cm}|}
@@ -22,7 +22,7 @@ A method to obtain the parameters from the wheel (mass, distance from its center
 	\label{ParametersWheel}
 \end{table}
 
-However, the rest of the parameters (\si{m_F, l_F, J_F\ and\ B_F}) must be found out. This is due to the addition of the electronics to the frame, which were not there when the previous groups tests were made.
+On the other hand, the rest of the parameters (\si{m_F, l_F, J_F\ and\ B_F}) which are related to the frame must be found out. This is due to the addition of the electronics to the frame, which were not there when the tests were made in previous projects.
 
 \subsection{Mass of the Frame}
 The first one to find is the mass of the frame, which can be measured by weighing the setup without the base and substracting the known mass of the wheel. This gives a mass of \si{0,548\ kg}.
@@ -46,9 +46,9 @@ In the previous sections parameters have been found, however, some critical para
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.7\textwidth]{figures/InitialModelParameterCompare}
+	\includegraphics[width=.6\textwidth]{figures/InitialModelParameterCompare}
 	\caption{A comparison of the model simulation and the initially given parameters (\si{J_F=6,08 \cdot 10^{-3}\ kg \cdot m^2\ and\ B_F=5,32 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}})}
 	\label{InitialModelParameterCompare}
 \end{figure}
-
+%
 This problem can be solved using optimization, which is the subject of the proceeding section.\fxnote{Include Senstools manual and reference it here}

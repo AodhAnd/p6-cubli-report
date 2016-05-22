@@ -3,25 +3,15 @@
 \textbf{Date: 15/03 - 2016}
 
 \subsubsection{Purpose}
-Measuring Mass of the frame and center of mass of the frame.
-The weight of the frame can be measured by taking the frame off the base frame, and measure the weight of wheel. 
-From measuring equilibrium points of the frame on sides that are orthogonal, the deviation angle from the vertical position in the two directions gives the position of center of mass.
+Measure the mass and center of mass of the frame.
 
-\subsubsection{Setup}
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=1]{figures/LabSetupLinearityTest.pdf}
-	\caption{Setup diagram}
-	\label{LabSetupRangeTest}
-\end{figure}\vspace{-5mm}
-\fxnote{new picture of the frame and weight}
 \subsubsection{List of Equipment}
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Instrument}                                  &  \textbf{AAU-no.}  &  \textbf{Type}                       \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		weight                                           &  TBD           &  TBD		                   \\
+		Scale                                           & 86759            &  		                   \\
 		\hline%------------------------------------------------------------------------------------------------------------
 		Dedicated Power Supply of Cubli \small{(24 V - 3 A)} &  AAU3                   &  XP Power, AEB70US24                 \\
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -29,18 +19,16 @@ From measuring equilibrium points of the frame on sides that are orthogonal, the
 		\hline%------------------------------------------------------------------------------------------------------------
 	\end{tabular}
 \end{table}
-\fxnote{weight from aau number}
 \subsubsection{Procedure}
 \begin{enumerate}
 	\item The Cubli base frame is leveled and the angle of equilibrium point is measured.
-	\item The frame is dismounted from the baseframe and weight.
-	\item The frame is mounted back on the baseframe after beeing rotated 90 degrees and the angle of equilibrium point is measured.
+	\item The frame is dismounted from the base and weight.
+	\item The frame is mounted back on the base after being rotated 90 degrees and the angle of equilibrium point is measured.
 	\item The Cubli frame is returned to the original placement on the base frame.
 \end{enumerate}
 
 
 \subsubsection{Results of the frame weight}
-The weight of the frame is used to determine the parameter values of the Cubli.
 \begin{table}[H]
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -55,15 +43,15 @@ The weight of the frame is used to determine the parameter values of the Cubli.
 By subtracting the known mass of the wheel form the fully mounted frame, it gives a frame mass of \si{0,548\ kg}.
 
 \subsubsection{Results of center of mass}
-Center of mass can be found from the two equilibrium points angle, where the line are crossing each other \figref{centerOfMassDiagram}.
+To measure the center of mass the equilibrium positions of the frame on sides that are orthogonal must be determined. They can be seen in \figref{centerOfMassDiagram2}, and the total center correspond to the crossing of the two lines.
 \begin{table}[H]
-	\begin{tabular}{|l|l|p{4.3cm}|}
+	\begin{tabular}{|l|l|p{5cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
-		\textbf{Frame rotation angle in degrees}       &  \textbf{Angle form equilibrium point in degrees}         \\
+		\textbf{Frame rotation angle}       &  \textbf{Angle from equilibrium point}       &  \textbf{Converted angle} \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		0                                & 2,50           \\
+		\si{0^{\circ}}       & \si{2,5^{\circ}}      & \SI{0,043}{rad}     \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		90							  & 4,50              \\
+		\si{90^{\circ}} 	 & \si{4,5^{\circ}}   & \SI{0,078}{rad}   \\
 		\hline%------------------------------------------------------------------------------------------------------------
 	\end{tabular}
 \end{table}
@@ -72,7 +60,5 @@ Center of mass can be found from the two equilibrium points angle, where the lin
 	\centering
 	\includegraphics[scale=0.5]{figures/centerOfMassDiagram}
 	\caption{Location of the center of mass, where \si{\theta_1=0,043\ rad\ and\ \theta_2=0,078\ rad}}
-	\label{centerOfMassDiagram}
+	\label{centerOfMassDiagram2}
 \end{figure}
-
-The center og mass of the frame is used to determine the parameter values of the Cubli.

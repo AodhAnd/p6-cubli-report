@@ -76,7 +76,7 @@
 	\input{chapters/chapter6/b4OptimizationUsingTheGradient.tex} %-------- Optimization Using the Gradient
 	\input{chapters/chapter6/b5SteepestDescend.tex}              %-------- Steepest Descend
 	\input{chapters/chapter6/b6aDichotomousLineSearch.tex}       %-------- Dichotomous Line Search
-	\input{chapters/chapter6/b6bFibonacciLineSearch.tex}         %-------- Fibonacci Line Search
+	\input{chapters/chapter6/b6FibonacciLineSearch.tex}         %-------- Fibonacci Line Search
 	\input{chapters/chapter6/b7ForwardBackwardMethod.tex}        %-------- Forward Backward Method
 	\input{chapters/chapter6/b8NewtonsMethod.tex}                %-------- Newton's Method
 	\input{chapters/chapter6/b9ImplementationOfNewton.tex}       %-------- Implementation of Newtion's
@@ -94,8 +94,8 @@
 	\input{chapters/chapter8/cRootLocusBasics.tex}			         %-------- Root Locus Theory
 	\input{chapters/chapter8/bClosedLoop.tex}			               %-------- Closed Loop response
 	\input{chapters/chapter8/dDesignController.tex}			         %-------- Design of the Controller
-	\input{chapters/chapter8/fImplementationController.tex}	     %-------- Implementation
-	\input{chapters/chapter8/gDiscretizationController.tex}      %-------- Discretization
+	\input{chapters/chapter8/fDiscretizationController.tex}      %-------- Discretization
+	\input{chapters/chapter8/gImplementationController.tex}	     %-------- Implementation
 	\input{chapters/chapter8/hVerificationController.tex}        %-------- Verification
 	
 	%---------- Chapter 9 ---------------------------------------- State Space Controller
@@ -135,10 +135,11 @@
 		%	\setcounter{equation}{0}
 		%	\setcounter{figure}{0}
 
-	
-	\part*{Appendix} %\addcontentsline{toc}{chapter}{Appendix}
-	\cleardoublepage\makeatletter\@openrightfalse\makeatother
+
 	\appendix
+	\part*{Appendix} \addcontentsline{toc}{chapter}{Appendix}
+	\cleardoublepage\makeatletter\@openrightfalse\makeatother
+	
 	
 	%---------- Appendix A ----------------------------------------
 	\input{appendix/dPotmeterLinearity.tex}
@@ -156,24 +157,27 @@
 	\input{appendix/eFrameTest.tex}
 	
 	%---------- Appendix F ----------------------------------------
+	\input{appendix/hSISOToolDesignedController.tex}
+	
+	%---------- Appendix G ----------------------------------------
 	\input{appendix/fIMUConfig.tex}
 	
-	%---------- Appendix G ---------------------------------------- 
+	%---------- Appendix H ---------------------------------------- 
 	\input{appendix/kMaxonControllESCON.tex}
 	
-	%----------Appendix H ---------------------------------------- 
+	%---------- Appendix I ---------------------------------------- 
 	\input{appendix/gIMUmeasurements.tex}
 	
-	%---------- Appendix I ---------------------------------------- 
-	\input{appendix/jMotorCurrentTest.tex}
-
 	%---------- Appendix J ---------------------------------------- 
+	\input{appendix/jMotorCurrentTest.tex}
+	
+	%---------- Appendix K ---------------------------------------- 
 	\input{appendix/lProgramCharacteristics.tex}
 
-	%---------- Appendix K ---------------------------------------- 
+	%---------- Appendix L ---------------------------------------- 
 	\input{appendix/nParametersOfTheWheel.tex}
 			
-	%---------- Appendix L ---------------------------------------- 
+	%---------- Appendix M ---------------------------------------- 
 	\input{appendix/lConnectingBreakoutBoard.tex}
 
 	
@@ -183,4 +187,5 @@
 	\printbibliography
 	
 	%%% To Do List %%%
+	\listoffixmes
 	\end{document}

@@ -1,16 +1,34 @@
 \chapter{Discussion}
+Some decisions made throughout the course of the project are discussed in this chapter. 
+%The performance of the one sided system can be by just looking at it as reaction wheel inverted pendulum.
 
-{\Large notes} \fxnote{delete this part its just to brainstorm what to write in this section}\\
-- Placement of IMU\\
-- Choice of Statspace variables for controller - minimize overshoot vs faster braking for wheel\\
-- cut-off frequency of the complementary filter?\\
-- code accessibility?\\
-- classical controller?\\
-- 
-- 
+For the state space controller a set of poles were selected looking at the response they showed in the two simulations, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using different pole combinations results in different overshoots and settling time, so another pole combination could be selected if a different behavior of the Cubli was desired. 
+The choice is whether a small overshoot is desired or if the frame is to reach \SI{0}{rad} faster. 
+Having less overshoot would increase the maximum catching angle with the current system, since the second overshoot with the current used controller is larger than the angle inflicted by a disturbance. 
+Braking the wheel faster gives the controller more acceleration to use in order to counteract a disturbance. \fxnote{rephrase the "more accel" thing}
 
+As already mentioned briefly in the complementary filter section, the measurement from the accelerometer in the IMU could be improved by moving the sensor to a position where it would be influenced less by the acceleration of the frame but still be able to measure the angle of the frame. In case of the single frame, that would be as close as possible to the point of rotation fixed to the baseplate.
 
-As already mentioned briefly in the complementary section the measurement from the accelerometer in the IMU could be improved by moving the sensor to a position where it would be influenced less by the acceleration of the frame but still be able to measure the angle of the frame. 
+The combining of accelerometer and gyroscope measurement can be done using a different type of filter than the used complementary filter. The decision to use the complementary filter was based on the usage of it in similar applications \cite{OlliW}. Since it shows a good behavior for the problem at hand and no further investigation was needed.
 
-For the state space controller a set of poles where selected that gave a good response for the system as seen on the two graphs, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using the different pole combinations shown on the graphs results in different overshoots and brake times for the wheel. Another pole combination could be selected if a different behavior of the Cubli was desired. The choice is whether a small overshoot is desired or if the wheel is to reach \SI{0}{rad\cdot s^{-1}} faster.
+%{\Large notes} \fxnote{delete this part its just to brainstorm what to write in this section}\\
+%- Placement of IMU\\
+%- Choice of Statspace variables for controller - minimize overshoot vs faster braking for wheel\\
+%- cut-off frequency of the complementary filter?\\
+%- code accessibility?\\
+%- classical controller?\\
+%
 
+%As already mentioned briefly in the complementary filter section, the measurement from the accelerometer in the IMU could be improved by moving the sensor to a position where it would be influenced less by the acceleration of the frame but still be able to measure the angle of the frame. 
+
+%For the state space controller a set of poles were selected looking at the response they showed in the two simulations, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using different pole combinations results in different overshoots and settling time, so another pole combination could be selected if a different behavior of the Cubli was desired. 
+%The choice is whether a small overshoot is desired or if the frame is to reach \SI{0}{rad} faster. 
+%Having less overshoot would increase the maximum catching angle with the current system, since the second overshoot with the current used controller is larger than the angle inflicted by a disturbance. 
+%Braking the wheel faster gives the controller more acceleration to use in order to counteract a disturbance. \fxnote{rephrase the "more accel" thing}
+%\\-\\
+%The classical controller designed and implemented was a single-input single-output system controller (SISO). A frequency design could maybe be done with multiple inputs and multiple controllers. It cannot be a cascaded design as that has been said to be impossible. \fxnote{if this is kept, reference that paper on this topic again}
+%\\-\\
+%The controller designed in this project can only keep the frame upright at the equilibrium position. It will not be possible to keep the frame at an angle different than \si{0^\circ} because the wheel cannot accelerate unlimited. Changing the restrictions that are on system might mean replacing a few components like the motor control board. Giving the motor a higher speed ceiling allows ths system to accelerate longer or accelerate faster to generate more torque. The longer the wheel can keep accelerating the longer will be able to keep the frame a position different from \si{0^\circ}.
+%\\-\\
+%The Inertia of the reaction wheel could be changed. this could be done by changing its size and/or its mass. Assuming the same torque is wanted a larger inertia means a slower acceleration is needed to generate the torque. The larger inertia also means slower response time. A wheel with smaller inertia would have to accelerate faster to generate the same torque, but it would also have a faster response time. \fxnote{somebody double check my assumption about physics} The inertia of the wheel could be something that could be optimized, depending on what is needed for the rest of the system. More torque or faster response time.
+%\\-\\

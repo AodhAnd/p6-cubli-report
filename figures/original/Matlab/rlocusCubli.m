@@ -16,7 +16,7 @@ l_f=0.08498;%0.076;
 % Transfer function of the system
 s=tf('s');
 G=(-J_w*s^2)/((J_w*s^2+B_w*s)*((J_f+m_w*l_w^2)*s^2+B_f*s-(m_w*l_w+m_f*l_f)*g+((B_w*J_w*s^3)/(J_w*s^2+B_w*s))));
-G_reduced=minreal(G);   % Equal poles and zeros cancelled each other
+G_reduced=minreal(G)   % Equal poles and zeros cancelled each other
 
 % Analysis in the s-domain
 rlocus(G_reduced);
@@ -27,3 +27,7 @@ set(findall(gcf,'Type','line','color','r'), 'LineWidth', 1.4)
 axis([-15 15 -2.5 2.5]);
 set(gca,'XGrid', 'on', 'XMinorGrid', 'on', 'YGrid', 'on', 'YMinorGrid', 'on')
 set(gca, 'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+
+B_f=7.8e-3;
+G=(-J_w*s^2)/((J_w*s^2+B_w*s)*((J_f+m_w*l_w^2)*s^2+B_f*s-(m_w*l_w+m_f*l_f)*g+((B_w*J_w*s^3)/(J_w*s^2+B_w*s))));
+G_reduced=minreal(G)   % Equal poles and zeros cancelled each other

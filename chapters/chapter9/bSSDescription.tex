@@ -1,5 +1,5 @@
 \section{State Space Representation of the System}\label{sec:SSDescription}
-The first step to give a representation of the system in state space is to choose the input, output and state variables. In this case the state variables are chosen to be the position of the frame and the velocities of frame and wheel (\si{\theta_F,\ \dot{\theta}_F,\ \dot{\theta}_w}). The input is the torque from the motor (\si{\tau_m}) and the chosen outputs are  the ones to control, (\si{\theta_F,\ \dot{\theta}_w}).
+The first step to give a representation of the system in state space is to choose the input, output and state variables. In this case the state variables are chosen to be the position of the frame and the velocities of frame and wheel (\si{\theta_F,\ \dot{\theta}_F,\ \dot{\theta}_w}). The input is the torque from the motor (\si{\tau_m}) and the chosen outputs are the ones to control, (\si{\theta_F,\ \dot{\theta}_w}).
 %
 \begin{minipage}{0.32\linewidth}
 	\begin{flalign}
@@ -44,7 +44,7 @@ The relationship between them is  given in the form of first-order differential 
 	\label{yDiffEq} 
 \end{flalign}
 %
-In this case f and g can be derived from \eqref{finalWheel} and \eqref{finalFrame} and they are non-linear functions since there exist a sinusoidal term in both.
+In this case f and g can be derived from \eqref{finalWheel} and \eqref{finalFrame}. They are non-linear functions since there exist a sinusoidal term in both.
 
 However, it has been shown in \secref{sec:linearization} that a linear approximation near the equilibrium point is possible. Then, the system can be described in the form of linear state space equations as seen in \eqref{xDotLinear} and \eqref{yLinear}.
 %
