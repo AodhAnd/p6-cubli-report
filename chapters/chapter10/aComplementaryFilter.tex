@@ -181,7 +181,8 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 \section{Implementation of the Complementary Filter}
 Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. 
 
-\begin{lstlisting}[caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
+\begin{lstlisting}[style = customcpp,
+				caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
 				label    = codeCompFilter ]
 //---------------------- IMU --------------------------//
 double Imu::getPosition(double accAngleNow, double gyroVelocityNow, double Ts, int imuNb)
@@ -215,8 +216,8 @@ double Imu::getPosition(double accAngleNow, double gyroVelocityNow, double Ts, i
 
 \end{lstlisting}
 
-The position is calculated through the function \texttt{getPosition()}. \\
+The position is calculated through the function \lstinline[style=customcppinline]{getPosition()}. \\
 First, the values for the offset of the accelerometer angle and the cut-off frequency are initialized, as well as the two constants for the filter, K1 and K2.\\
 When this function is called the first time, accelerometer, gyroscope and angle arrays are initialized.\\
-The old values from \texttt{accel\_angle}, \texttt{gyro\_angle} and \texttt{comp\_angle} are moved up in their arrays and new data is saved in \texttt{gyro\_angle} and \texttt{accel\_angle} on index 0. \\
+The old values from \lstinline[style=customcppinline]{accel_angle}, \lstinline[style=customcppinline]{gyro_angle} and \lstinline[style=customcppinline]{comp_angle} are moved up in their arrays and new data is saved in \lstinline[style=customcppinline]{gyro_angle} and \lstinline[style=customcppinline]{accel_angle} on index 0. \\
 Finally, the equation of the complementary filter in implemented to get the angular position of the frame.
