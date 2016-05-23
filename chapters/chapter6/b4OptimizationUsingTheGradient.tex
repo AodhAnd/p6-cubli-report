@@ -34,7 +34,9 @@ In gradient based methods, only the first order Taylor approximation is used, th
 \label{1stOrderTaylorApproximationParThetaEqZero}
 \end{flalign}
 
+
 That is, if the gradient of the function to be minimized is 0, a minimum or maximum exists as a candidate for a solution in this point. It follows that if standing in some point and computing the gradient in this point, then the gradient, \si{\vec{g}}, is the steepest ascent direction and the negative gradient, \si{-\vec{g}}, is the steepest descent direction. This only takes into account the immediate surroundings of the initially chosen point. A visualization of how the gradient points opposite to the minimum of an arbitrary function is seen on \figref{visualizationOfGradient}, which means that the negative gradient points to the minimum.
+
 
 \begin{figure}[H] 
 	\centering
@@ -66,6 +68,7 @@ One way of implementation is to set a step-size which decides how far in the \si
 		\end{figure}
 	\end{minipage}
 \end{minipage}
+
 
 The method does find a minimum. However, it converges to it rather slowly. An implementation where it is possible to directly retrieve the gradient of the function which is to be minimized, \si{f(\vec{x})}, is shown in \figref{steepestDescendEx}.
 

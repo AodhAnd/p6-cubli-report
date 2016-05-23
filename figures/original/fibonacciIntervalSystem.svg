@@ -24,16 +24,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="116.11216"
-     inkscape:cy="229.66524"
+     inkscape:zoom="2.8"
+     inkscape:cx="128.095"
+     inkscape:cy="108.17918"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="847"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -119,7 +119,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -272,13 +272,24 @@
        id="path6632"
        d="m 338.23207,515.90435 0,37.60411"
        style="fill:none;fill-rule:evenodd;stroke:#000078;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.50000006, 1.50000006;stroke-dashoffset:0;stroke-opacity:1" />
-    <circle
-       transform="scale(-1,1)"
-       style="fill:#dc0000;fill-opacity:1;stroke:#dc0000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle6634"
-       cx="-356.11725"
-       cy="504.78391"
-       r="2.4107144" />
+    <g
+       id="g4511"
+       transform="translate(-44.936866,57.321428)">
+      <circle
+         r="3.1683285"
+         cy="447.45773"
+         cx="-401.069"
+         id="circle10417"
+         style="fill:#ffffff;fill-opacity:1;stroke:#dc0000;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         transform="scale(-1,1)" />
+      <circle
+         transform="scale(-1,1)"
+         style="fill:#dc0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle7838"
+         cx="-401.06903"
+         cy="447.45776"
+         r="1.9164703" />
+    </g>
     <circle
        transform="scale(-1,1)"
        r="2.4107144"
@@ -558,11 +569,11 @@
        inkscape:connector-curvature="0" />
     <circle
        transform="scale(-1,1)"
-       style="fill:#ffffff;fill-opacity:1;stroke:#dc0000;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="circle10417"
-       cx="-401.069"
-       cy="447.45773"
-       r="3.1683285" />
+       style="fill:#dc0000;fill-opacity:1;stroke:#dc0000;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="circle6634"
+       cx="-401.00589"
+       cy="447.09473"
+       r="2.4107144" />
     <g
        style="stroke:#004eb4;stroke-width:0.89388353;stroke-opacity:1"
        transform="matrix(1,0,0,0.87734166,-51.494924,14.363722)"
@@ -603,13 +614,6 @@
          d="m 355.92079,386.87835 96.98641,0"
          style="fill:none;fill-rule:evenodd;stroke:#004eb4;stroke-width:2.23470879;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
-    <circle
-       r="1.9164703"
-       cy="447.45776"
-       cx="-401.06903"
-       id="circle7838"
-       style="fill:#dc0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       transform="scale(-1,1)" />
     <g
        transform="matrix(0.31579069,0,0,0.31579064,254.10639,464.1789)"
        id="g9405">
