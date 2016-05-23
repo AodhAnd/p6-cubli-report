@@ -16,7 +16,7 @@ This new configuration gives a new equation for \si{\vec{\dot{x}}}:
 	\label{xDotK} 
 \end{flalign}
 %
-The objective is to find K such that the eigenvalues of \si{\vec{A}-\vec{B}\vec{K}} are placed at the LHP. This gain matrix can be found using the Matlab command \lstinline{place(A,B,P)}, where P is a vector containing the desired position of the new poles.
+The objective is to find K such that the eigenvalues of \si{\vec{A}-\vec{B}\vec{K}} are placed at the LHP. This gain matrix can be found using the Matlab command \lstinline[style=customcppinline]{place(A,B,P)}, where P is a vector containing the desired position of the new poles.
 
 To choose the position of these poles two simulations are made for different values. In the first one the Cubli starts from equilibrium and a disturbance torque is applied, while in the second one it starts from an initial angle different from \si{0\ rad} and with an initial velocity of the frame.  It can be observed that the velocity of the frame is in all the cases \si{0\ rad \cdot s^{-1}}.
 
@@ -26,7 +26,7 @@ To choose the position of these poles two simulations are made for different val
 			\includegraphics[scale=.55]{figures/disturbanceStateSpace}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{Response of the system to a disturbance with different locations of poles}
+			\captionof{figure}{Response of the system to a disturbance with different locations of poles.}
 			\label{disturbanceStateSpace}
 		\end{figure}
 	\end{minipage}
@@ -36,7 +36,7 @@ To choose the position of these poles two simulations are made for different val
 			\includegraphics[scale=.55]{figures/disturbanceStateSpaceWheel}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{Velocity of the wheel with the same disturbance}
+			\captionof{figure}{Velocity of the wheel with the same disturbance.}
 			\label{disturbanceStateSpaceWheel}
 		\end{figure}
 	\end{minipage}
@@ -48,7 +48,7 @@ To choose the position of these poles two simulations are made for different val
 			\includegraphics[scale=.55]{figures/catchingStateSpace}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{Response starting from \si{0,2\ rad} and an initial velocity of the wheel with different locations of poles}
+			\captionof{figure}{Response starting from \si{0,2\ rad} and an initial velocity of the wheel with different locations of poles.}
 			\label{catchingStateSpace}
 		\end{figure}
 	\end{minipage}
@@ -58,7 +58,7 @@ To choose the position of these poles two simulations are made for different val
 			\includegraphics[scale=.55]{figures/catchingStateSpaceWheel}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{Velocity of the wheel in the same starting conditions}
+			\captionof{figure}{Velocity of the wheel in the same starting conditions.}
 			\label{catchingStateSpaceWheel}
 		\end{figure}
 	\end{minipage}

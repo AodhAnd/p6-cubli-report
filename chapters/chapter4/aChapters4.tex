@@ -1,50 +1,52 @@
 \chapter{System Description}\label{systemDescription}
 %One-frame Cubli is a non-linear unstable system which is capable of standing on one of its corners as long as it is properly controlled, using the inertia created in the reaction wheel present in the setup.
 The system is composed of a frame and reaction wheel as the main objects to be controlled.\\
-The control action is done with a brushless DC-Motor which actuates both on the frame and the wheel.\\ 
+The control action is done with a brushless DC motor which actuates both on the frame and the wheel.\\ 
 A board with a microcontroller and a motor control board are mounted on the frame through a connecting and breakout board.\\ 
-The frame is fixed to a base-plate, connected with a potentiometer that can be used for direct angle measurements.\\ 
+The frame is fixed to a baseplate, connected with a potentiometer that can be used for direct angle measurements of the frame's angular position.\\ 
 Two additional sensor breakout boards, including an integrated circuit with gyro and accelerometer, are located at the top of the frame. These are to be used for angle and velocity measurements independently of the angle of the baseplate.\\ 
 A servomotor that controls the brake system is also attached, which has an arm capable of blocking the wheel by hitting one of the two break-blocks mounted on the edge of the reaction wheel.\\
-The different components of the existing system can be seen in \figref{CubliParts}, where the labels correspond to table \ref{tab:TableAAUCubliComponent}.
+The different components of the existing system can be seen in \figref{CubliParts}.
 \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.27]{figures/Cubli12}
-	\caption{Existing setup viewed from the front and the back}
+	\caption{Existing setup viewed from the front and the back. There is a color coding to distinguish the different parts: frame(1), wheel(2), microcontroller(3), connecting and breakout board(4), brushless DC motor(5), motor control board(6), servomotor(7), potentiometer(8), Inertial Measurement Units(9).}
 	\label{CubliParts}
 \end{figure}
 %
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|p{6.4cm}|}
-		\hline %-----------------------------------------------------------------------------------
-		\textbf{No.} &\textbf{Part} 			\\
-		\hline %-----------------------------------------------------------------------------------
-		1            & Frame           			\\
-		\hline %-----------------------------------------------------------------------------------
-		2            & Reaction Wheel      		\\
-		\hline %-----------------------------------------------------------------------------------
-		3            & Microcontroller (BeagleBone Black)  \\
-		\hline %-----------------------------------------------------------------------------------
-		4            & Connecting and Breakout Board 			\\
-		\hline %-----------------------------------------------------------------------------------
-		5            & Brushless DC-Motor       			\\
-		\hline %-----------------------------------------------------------------------------------
-		6            & Motor Control Board   	\\
-		\hline %-----------------------------------------------------------------------------------
-		7            & Servo Brake System     	\\
-		\hline %-----------------------------------------------------------------------------------
-		8            & Potentiometer 		    	\\
-		\hline %-----------------------------------------------------------------------------------
-		9            & Inertia Measurement Units (IMU) 		    	\\
-		\hline %-----------------------------------------------------------------------------------
-	\end{tabular}
-	\caption{Main parts of the Cubli setup}
-	\label{tab:TableAAUCubliComponent}
-\end{table}
+A detailed description of all the components is presented in the following sections for a better overview of the system.
+
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|l|p{6.4cm}|}
+%		\hline %-----------------------------------------------------------------------------------
+%		\textbf{No.} &\textbf{Part} 			\\
+%		\hline %-----------------------------------------------------------------------------------
+%		1            & Frame           			\\
+%		\hline %-----------------------------------------------------------------------------------
+%		2            & Reaction Wheel      		\\
+%		\hline %-----------------------------------------------------------------------------------
+%		3            & Microcontroller (BeagleBone Black)  \\
+%		\hline %-----------------------------------------------------------------------------------
+%		4            & Connecting and Breakout Board 			\\
+%		\hline %-----------------------------------------------------------------------------------
+%		5            & Brushless DC-Motor       			\\
+%		\hline %-----------------------------------------------------------------------------------
+%		6            & Motor Control Board   	\\
+%		\hline %-----------------------------------------------------------------------------------
+%		7            & Servo Brake System     	\\
+%		\hline %-----------------------------------------------------------------------------------
+%		8            & Potentiometer 		    	\\
+%		\hline %-----------------------------------------------------------------------------------
+%		9            & Inertia Measurement Units (IMU) 		    	\\
+%		\hline %-----------------------------------------------------------------------------------
+%	\end{tabular}
+%	\caption{Main parts of the Cubli setup}
+%	\label{tab:TableAAUCubliComponent}
+%\end{table}
 %
-A detailed description of all the components, which is needed to be able to model and control the system, is presented in this chapter.
+
 
 %The BeagleBone Black, the break servomotor, the Maxon motor control board and the motor itself are mounted directly on the frame. On the motor shaft a freewheel is mounted. 
 

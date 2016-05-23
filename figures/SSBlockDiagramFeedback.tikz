@@ -28,7 +28,7 @@
 	\draw[->](B) -- node {}(sum1);
 	\draw[->](sum1) -- node {\si{\dot x}}(int);  	
 	\draw[->](int) -- node {x}(C);
-	\draw[-](C) -- node {y}(output1);
+	\draw[->](C) -- node {y}(output1);
 
 	\draw[->] (FeedbackNode) |- (A);
 	\draw[->] (A)   -| (sum1);

@@ -1,27 +1,27 @@
 \section{Design of the Controller}\label{designController}
-The design of the controller is based on the Root Locus plot, where the final location of the poles in closed loop can be seen. Their position will depend on the different poles, zeros and gain of the controller and that is used to move them to a stable and better location.
+The design of the controller is based on the root locus plot, where the final location of the poles in closed loop can be seen.
 
 The root locus of the system with a proportional controller can be seen in \figref{rlocusCubli2}.
 
 \begin{figure}[H]
 	\centering 
 	\includegraphics[scale=.75]{figures/rlocusCubli}
-	\captionof{figure}{Root Locus of the system}
+	\captionof{figure}{Root Locus of the system. It has  one zero \si{(s=0)}, and three poles \si{(s=-10,5014}, \si{s=-0,0283} and \si{s=9,3531}).}
 	\label{rlocusCubli2}
 \end{figure}
 
 Looking at the root locus it can be derived that the system can not be controlled using only a proportional controller because there is always a pole in the RHP no matter the gain.
 
-However, a first approximation of the system's behavior in closed loop can be done through a proportional controller. Such a system is tested with a gain of 10 as a controller. The final closed loop poles are placed at \si{-40,4198,\ -0,0018\ and\ 39,2448}. In \figref{closedLoopResponse} it is shown the response of the simulation and the one from the real setup with this proportional controller.
+However, a first approximation of the system's behavior in closed loop can be done through a proportional controller. Such a system is tested with a gain of 10 as a controller. The final closed loop poles are placed at \si{-40,4198;\ -0,0018\ and\ 39,2448}. In \figref{closedLoopResponse} it is shown the response of the simulation and the one from the real setup with this proportional controller.
 
 \begin{figure}[H] 
 	\centering 
 	\includegraphics[scale=0.75]{figures/closedLoopResponse}	
-	\caption{Behavior of the closed loop function with a proportional controller, both in simulation and reality}
+	\caption{Behavior of the closed loop function with a proportional controller, both in simulation and reality.}
 	\label{closedLoopResponse}
 \end{figure}
 %
-It is clear that, upon application of a \SI{0}{rad} reference and a minimal initial offset, the closed loop function with only a gain of 10 has an unstable response. Then the branches of the root locus need to be change by means of the addition of poles and zeros in the controller.
+It is clear that, upon application of a \SI{0}{rad} reference and a minimal initial offset, the closed loop function with only a gain of 10 has an unstable response. Then the branches of the root locus need to be changed by means of the addition of poles and zeros in the controller.
 
 As there exists one pole in the Right Half Plane (RHP), the controller must also have one there to create two branches which can be attracted to the Left Half Plane (LHP).
 
@@ -34,7 +34,7 @@ Finally, the gain must be adjusted to make the closed loop poles to be in a stab
 \begin{figure}[H]
 	\centering 
 	\includegraphics[scale=.65]{figures/RLControllerZoom}
-	\captionof{figure}{Root Locus of the final system}
+	\captionof{figure}{Root Locus of the final system.}
 	\label{RLControllerZoom}
 \end{figure}
 %
@@ -43,7 +43,7 @@ The final system looks like \figref{blockDiagramController} and the transfer fun
 \begin{figure}[H]
 	\input{figures/blockDiagramController.tikz}
 	\centering
-	\caption{Block diagram of the system}
+	\caption{Block diagram of the final controlled system.}
 	\label{blockDiagramController}
 \end{figure}
 %
@@ -59,7 +59,7 @@ The stability of the controlled system can be then analyzed using the Nyquist pl
 \begin{figure}[H] 
 	\centering 
 	\includegraphics[scale=0.55]{figures/nyquistController}	
-	\caption{Nyquist plot of the system with the controller}
+	\caption{Nyquist plot of the system with the controller.}
 \end{figure}	\label{nyquistController}
 
 Now there are two poles in the RHP and the number of encirclements around -1 equals -2 (they are counterclockwise). 

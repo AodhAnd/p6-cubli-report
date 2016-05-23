@@ -1,5 +1,8 @@
-\subsubsection{Fibonacci Line Search}
-The Fibonacci line search and the golden section search are both rooted in a basic method of interval selection. As opposed to the dichotomous line search, these methods only require one function evaluation per iteration. This is achieved by reusing one of the function evaluations performed in the previous iteration. An example of this interval system is shown in \figref{fibonacciIntervalSystem} where the first iteration, marked in green, assuming some bracket, \si{[x_{min},\ x_{max}]}, produces two intervals with equal lengths of \si{I_2}. Either the right or the left interval is then chosen as the new bracket. In \figref{fibonacciIntervalSystem}, \si{f(x_a) > f(x_b)}, therefore the right interval must contain the minimizer, so long as there is only one minimum within the bracket. Thus the new bracket is set: \si{[x_{min},\ x_{max}] = \si{[x_{a},\ x_{max}]}}\\
+\subsubsection{Fibonacci Line Search}The Fibonacci line search and the golden section search are both based on a fundamental method of interval selection. As opposed to the dichotomous line search, these methods only require one function evaluation per iteration. This is achieved by reusing one of the function evaluations performed in the previous iteration.
+
+An example of this interval system is shown in \figref{fibonacciIntervalSystem} where the first iteration, marked in green, assuming some bracket, \si{[x_{min},\ x_{max}]}, produces two intervals with equal lengths of \si{I_1}. Either the right or the left interval is then chosen as the new bracket. In \figref{fibonacciIntervalSystem} \si{f(x_a) > f(x_b)}, therefore the right interval must contain the minimizer, so long as there is only one minimum within the bracket. Thus, the new bracket is set: \si{[x_{min},\ x_{max}] = \si{[x_{a},\ x_{max}]}}.\\
+In the case that \si{f(x_a) = f(x_b)}, either \si{x_a} or \si{x_b} can be set as the new boundary.
+
 Within this bracket one function evaluation has already taken place (the circled red dot), this interval can be reused and only one further evaluation of \si{f(x)} is needed to proceed with the next iteration.
 
 \begin{figure}[H] 
@@ -47,7 +50,7 @@ To see the benefits of using the Fibonacci line search rather than the more rudi
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.5\textwidth]{figures/dichotomousLineSearchPerformance}
+	\includegraphics[width=.65\textwidth]{figures/dichotomousLineSearchPerformance}
 	\caption{Example showing iterations and function evaluations used to obtain a given performance of the dichotomous Line Search.}
 	\label{dichotomousLineSearchPerformance}
 \end{figure}
@@ -56,7 +59,7 @@ In the dichotomous line search fewer iterations are used because each iteration 
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.55\textwidth]{figures/fibonacciLineSearchPerformance}
+	\includegraphics[width=.65\textwidth]{figures/fibonacciLineSearchPerformance}
 	\caption{Example showing iterations and function evaluations used to obtain a given performance of the Fibonacci Line Search.}
 	\label{fibonacciLineSearchPerformance}
 \end{figure}

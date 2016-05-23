@@ -1,5 +1,5 @@
 \section{Further Analysis}\label{sec:ControllerVerification}
-Since the real implementation of the controller is not stable, a further analysis is done in this section.
+Since the implementation of the controller on the real Cubli is not stable, a further analysis is done in this section.
 
 The first step is to simulate both the continuous and discrete controller with the model of the system and analyse the behavior of the whole closed loop system.
 
@@ -51,4 +51,4 @@ One way could be using a cascade controller to control both the velocity of the 
 
 The problem of this solution in the case of the Cubli is that both variables to control are coupled together, which means that it is not possible to split the plant in a way that there is no feedback between them.\cite{LRusso}
 
-Another way is to use a state space approach, which can handle this singularity, since now the system will have two outputs to control. This controller solution is further detailed in \chapref{chap:stateSpaceController}.
+Another way is to use a state space approach, since now the system will have two outputs to control. This controller solution is further detailed in \chapref{chap:stateSpaceController}.

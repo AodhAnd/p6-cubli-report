@@ -33,7 +33,7 @@ Finding the linear accuracy of the potentiometer as well as the equilibrium rang
 	\item Make the setup with connections as seen on \figref{LabSetupRangeTest}, placing the + connection in the brown cable of the potentiometer and the + connection in the yellow one.
 	\item Setting the multimeter to measure DC mV.
 	\item Balance the frame in upright equilibrium position measuring the angle and voltage.
-	\item Measure the voltage of the potentiometer around Equilibrium point and also min and max angle voltage for every 10 degree.
+	\item Measure the voltage of the potentiometer around Equilibrium point and also min and max angle voltage for every \si{10^{\circ}}.
 \end{enumerate}
 
 
@@ -72,7 +72,7 @@ Finding the linear accuracy of the potentiometer as well as the equilibrium rang
 
 
 \subsubsection{Results from Linearity Test}
-Result of the test shows that below -39,5 degrees the potentiometer has a dead area. The dead area might come from the continuous rotation of the potentiometer, since the measurement are very near to this point where the potentiometer changes. The area have at dead span from 5 to 10 degrees.
+Result of the test shows that below \si{-39,5^{\circ}} the potentiometer has a dead area. The dead area might come from the continuous rotation of the potentiometer, since the measurement are very near to this point where the potentiometer changes. The area have at dead span from \si{5^{\circ}} to \si{10^{\circ}}.
 
 The graph shows the measured values according to angle.
 
@@ -85,9 +85,11 @@ The graph shows the measured values according to angle.
 Because of the dead area the potentiometer could be rotated so the frame will be turning in this area, but since the Cubli has been built like this and the code has some hardcoded value of the potentiometer and the area are not used then it will be left as it is. Also because the software is distributed on different machines it has to be changed on every system.
 
 
-During the test the equilibrium have varied, and the outer border of equilibrium have been measured 
+\subsubsection{Results of Equilibrium Zone}
+During the test the equilibrium has varied, and area where it can stand balanced have been measured. 
 
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Equilibrium range in degrees}       &  \textbf{mV}         \\
@@ -101,14 +103,14 @@ During the test the equilibrium have varied, and the outer border of equilibrium
 	\end{tabular}
 \end{table}
 
-\subsubsection{Results of Equilibrium Zone}
-The graph shows the measured values according to angle of equilibrium area.
-\begin{figure}[H] 
-	\centering 
-	\includegraphics[scale=0.7]{figures/linearityOfPotmeterTest2-2}
-	\caption{Raw test data plot}
-	\label{linearityOfPotmeterTest2-2}
-\end{figure}
-Since the frame is connected to the baseplate through the potentiometer and this one is kept in place by bearings, the only force keeping the frame standing is the friction between them and potentiometer. This region is about 1 degree.
+%The graph shows the measured values according to angle of equilibrium area.
+%\begin{figure}[H] 
+%	\centering 
+%	\includegraphics[scale=0.7]{figures/linearityOfPotmeterTest2-2}
+%	\caption{Raw test data plot}
+%	\label{linearityOfPotmeterTest2-2}
+%\end{figure}
+
+Since the frame is connected to the baseplate through the potentiometer and this one is kept in place by bearings, the only force keeping the frame standing is the friction between them and potentiometer. This region is about \si{1^{\circ}}.
 
 
