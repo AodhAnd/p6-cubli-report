@@ -1,5 +1,5 @@
 \subsubsection{Dichotomous Line Search}
-The dichotomous line search is one of the more basic methods. The method locates the middle og the bracket (along x) and finds a point on either side of the middle, this gives the following two x-values at which function must be evaluated.
+The dichotomous line search is one of the most basic methods. The method locates the middle of the bracket (along x) and finds a point on either side of the middle, this gives the following two x-values at which the function must be evaluated.
 
 
 \begin{flalign}
@@ -17,8 +17,8 @@ The dichotomous line search is one of the more basic methods. The method locates
 \end{tabular}
 
 When the cost function, \si{f(x)} is evaluated at \si{x_a} and \si{x_b}, the two results are compared and two new possible intervals with possibility of containing the minimum can be determined as a consequence. These two intervals can be combined such that a new smaller bracket containing the minimum is found.\\
-This process of reducing the range of the bracket is illustrated in \figref{dichotomousLargerAorB}. The value of \si{f(x)} is only known at the red dots, which, as shown, leaves the two possible intervals for the minimum \si{x^*}. In the case of \si{f(x_a) < f(x_b)}, in \figref{dichotomousLargerB}, the possible intervals, \si{x_{min} < x^* < x_a} and \si{x_a < x^* < x_b}, can be combined to the new bracket \si{x_{min} < x^* < x_b}, shown in blue, which is sure to contain the minimum, \si{x^*}, within \si{x_{min}} and \si{x_{max}}.\\
-Said in an other way, if \si{f(x_a) < f(x_b)}, \si{x^*} must be contained in \si{[x_{min},\ x_b]}, so \si{x_b = x_{max}} for the next iteration.
+This process of reducing the range of the bracket is illustrated in \figref{dichotomousLargerAorB}. The value of \si{f(x)} is only known at the red dots, which, as shown, leaves the two possible intervals for the minimum \si{x^*}. In the case of \si{f(x_a) < f(x_b)}, in \figref{dichotomousLargerB}, the two possible intervals, \si{x_{min} < x^* < x_a} and \si{x_a < x^* < x_b}, can be combined to the new bracket \si{x_{min} < x^* < x_b}, shown in blue. This new interval is sure to contain the minimum, \si{x^*}, within \si{x_{min}} and \si{x_{max}}.\\
+Said in another way, if \si{f(x_a) < f(x_b)}, \si{x^*} must be contained in \si{[x_{min},\ x_b]}, so \si{x_b = x_{max}} for the next iteration.
 
   \begin{figure}[H]
     \begin{minipage}{\linewidth}
@@ -45,11 +45,11 @@ Said in an other way, if \si{f(x_a) < f(x_b)}, \si{x^*} must be contained in \si
     \end{minipage}
   \end{figure}
 
-In the example implementation provided in \figref{dichotomousLineSearchComprehensive} the method is demonstrated on a rough scale so that the decisions made by the algorithm are clearly seen. Red lines represent \si{x_a}, blue lines \si{x_b} and for each iteration a new \si{x_{min}} or \si{x_{max}} is selected indicated by the dotted markings.
+In the example implementation provided in \figref{dichotomousLineSearchComprehensive} the method is demonstrated on a rough scale so that the decisions made by the algorithm are clearly seen. Red lines represent \si{x_a}, blue lines \si{x_b} and for each iteration a new \si{x_{min}} or \si{x_{max}} is selected and indicated by the dotted markings.
 %
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.6\textwidth]{figures/dichotomousLineSearchComprehension.pdf}
+	\includegraphics[width=.5\textwidth]{figures/dichotomousLineSearchComprehension.pdf}
 	\caption{The bracket is marked as Xmin and Xmax, the remaining reference lines marks \si{x_a} as red and \si{x_b} as lines. The lines which are dotted are the ones selected as new Xmin, \si{x_a}, or new Xmax, \si{x_b} in each iteration.}
 	\label{dichotomousLineSearchComprehensive}
 \end{figure}

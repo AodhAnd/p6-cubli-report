@@ -1,17 +1,17 @@
 \subsubsection{Fibonacci Line Search}
-The Fibonacci line search and the golden section search are both rooted in a basic method of interval selection. As opposed to the dichotomous line search, these methods only require one function evaluation per iteration. This is achieved by reusing one of the function evaluations performed in the previous iteration. An example of this interval system is shown in \figref{fibonacciIntervalSystem} where the first iteration, marked in green, assuming some bracket, \si{[x_{min},\ x_{max}]}, produces two intervals with equal lengths of \si{I_1}. Either the right or the left interval is then chosen as the new bracket. In \figref{fibonacciIntervalSystem} \si{f(x_a) > f(x_b)}, therefore the right interval must contain the minimizer, so long as there is only one minimum within the bracket. Thus the new bracket is set: \si{[x_{min},\ x_{max}] = \si{[x_{a},\ x_{max}]}}\\
+The Fibonacci line search and the golden section search are both rooted in a basic method of interval selection. As opposed to the dichotomous line search, these methods only require one function evaluation per iteration. This is achieved by reusing one of the function evaluations performed in the previous iteration. An example of this interval system is shown in \figref{fibonacciIntervalSystem} where the first iteration, marked in green, assuming some bracket, \si{[x_{min},\ x_{max}]}, produces two intervals with equal lengths of \si{I_2}. Either the right or the left interval is then chosen as the new bracket. In \figref{fibonacciIntervalSystem}, \si{f(x_a) > f(x_b)}, therefore the right interval must contain the minimizer, so long as there is only one minimum within the bracket. Thus the new bracket is set: \si{[x_{min},\ x_{max}] = \si{[x_{a},\ x_{max}]}}\\
 Within this bracket one function evaluation has already taken place (the circled red dot), this interval can be reused and only one further evaluation of \si{f(x)} is needed to proceed with the next iteration.
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.6\textwidth]{figures/fibonacciIntervalSystem}
+	\includegraphics[width=.5\textwidth]{figures/fibonacciIntervalSystem}
 	\caption{The function, \si{f(x)}, is only evaluated at the points indicated by red dots and the function f(x) is obviously unknown in the process. First iteration is marked in green and the second in blue. \si{x^*} denotes the local minimizer and \si{I} is used to relate length of the intervals, showing that the two intervals in each iteration are equal.}
 	\label{fibonacciIntervalSystem}
 \end{figure}
 
-If this procedure is repeated with numerous iterations a series of interval lengths is produced. From \figref{fibonacciIntervalSystem} the relation between successive interval lengths can be described as \si{I_1 = I_2 + I_3}, or in general for any iteration, \si{k}, as \si{I_k = I_{k+1} + I_{k+2}}.\\
+If this procedure is repeated with numerous iterations, a series of interval lengths is produced. From \figref{fibonacciIntervalSystem} the relation between successive interval lengths can be described as \si{I_1 = I_2 + I_3}, or in general for any iteration, \si{k}, as \si{I_k = I_{k+1} + I_{k+2}}.\\
 With this as a basis, different ratios between \si{I_{k+1}} and \si{I_{k+2}} can be chosen, such as the golden section or the Fibonacci numbers.\\
-If the last iteration \si{I_{n+2}} is assumed to be zero, then \si{ I_n  = I_{n+1} + I_{n+2}  = I_{n+1} } and the following sequence of intervals emerges.
+If for the last n-th iteration, \si{I_{n+2}} is assumed to be zero, then \si{ I_n  = I_{n+1} + I_{n+2}  = I_{n+1} } and the following sequence of intervals emerges.
 %
 \begin{flalign}
   \si{I_{n+1}}              &=  \phantom{\si{\ I_{n+1}  + I_{n+2}            =}}  \si{ 1 I_n  = F_0 I_n } &\nonumber\\
@@ -33,12 +33,12 @@ Where:\\
 & \si{\{ \ F_0,\ F_1,\ \dots\ F_n \ \}}  & is the Fibonacci sequence up to \si{F_n}  &%, \si{\{\ 1,\ 1,\ 2,\ 3,\ 5,\ \dots\ F_n  \}}  
 \end{tabular}
 
-In the last expression in \eqref{fibonacciNumnbers} the size of the first bracket, \si{I_1}, is known and the last interval, \si{I_n}, can be chosen as the precision of the search. From this the largest Fibonacci number needed can be found as \si{F_n = \frac{I_1}{I_n}}, and the remaining intervals can be calculated progressively during each iteration by use of the appropriate numbers in the Fibonacci sequence.\\
+For the last expression in \eqref{fibonacciNumnbers}, the size of the first bracket, \si{I_1}, is known and the last interval, \si{I_n}, can be chosen as the precision of the search. From this, the largest Fibonacci number needed can be found as \si{F_n = \frac{I_1}{I_n}}, and the remaining intervals can be calculated progressively during each iteration by use of the appropriate numbers in the Fibonacci sequence.\\
 In \figref{fibonacciLineSearchComprehensive} an example implementation is shown where each iteration contains \si{x_a} and \si{x_b}. In the iterations where \si{x_a} is chosen as the new \si{x_{min}} it is marked with a red circle and for \si{x_b} chosen as new \si{x_{max}} a blue circle is used. It shows clearly shows how each iteration only requires one function evaluation.
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.9\textwidth]{figures/fibonacciLineSearchComprehension}
+	\includegraphics[width=.8\textwidth]{figures/fibonacciLineSearchComprehension}
 	\caption{Fibonacci line search where the first iteration is at the top of the graph and each subsequent iteration is listed one line at a time downward. New \si{x_{min}} is marked with a red circle and new \si{x_{max}} with a blue circle. The chosen minimizer is marked in red at the bottom.}
 	\label{fibonacciLineSearchComprehensive}
 \end{figure}
@@ -47,16 +47,16 @@ To see the benefits of using the Fibonacci line search rather than the more rudi
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.6\textwidth]{figures/dichotomousLineSearchPerformance}
+	\includegraphics[width=.5\textwidth]{figures/dichotomousLineSearchPerformance}
 	\caption{Example showing iterations and function evaluations used to obtain a given performance of the dichotomous Line Search.}
 	\label{dichotomousLineSearchPerformance}
 \end{figure}
 
-In the dichotomous line search fewer iterations are used because each iteration almost cuts the bracket in half for each iteration. However, since each iteration requires two evaluations of \si{f(x)} the final number of function evaluations exceeds that of the Fibonacci line search. This is of course not always true - the location of the minimum in the bracket plays a role. If the minimum lies close to the middle of the bracket the dichotomous line search might get there faster than the Fibonacci line search. However for a broad spectrum of problems the performance of the Fibonacci line search will likely succeed that of the dichotomous line search.
+In the dichotomous line search fewer iterations are used because each iteration almost cuts the bracket in half for each iteration. However, since each iteration requires two evaluations of \si{f(x)}, the final number of function evaluations exceeds that of the Fibonacci line search. This is of course not always true - the location of the minimum in the bracket plays a role. If the minimum lies close to the middle of the bracket the dichotomous line search might get there faster than the Fibonacci line search. However for a broad spectrum of problems the performance of the Fibonacci line search will likely beat that of the dichotomous line search.
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.65\textwidth]{figures/fibonacciLineSearchPerformance}
+	\includegraphics[width=.55\textwidth]{figures/fibonacciLineSearchPerformance}
 	\caption{Example showing iterations and function evaluations used to obtain a given performance of the Fibonacci Line Search.}
 	\label{fibonacciLineSearchPerformance}
 \end{figure}
