@@ -27,14 +27,14 @@ For a function \si{f(\vec{x})} with a change in \si{\vec{x}} of \si{\vec{\delta}
 %& \si{\theta} 					    	   & is the angle between \si{\vec{g}} and \si{\vec{\delta}}     & \\
 %\end{tabular}
 
-In steepest descend method only the first order Taylor approximation is used, that is, the last term, \si{\frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta}} is discarded. If the derivative of the first order approximation is set to zero, the following is obtained.
+In gradient based methods, only the first order Taylor approximation is used, that is, the last term, \si{\frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta}} is discarded. If the derivative of the first order approximation is set to zero, the following is obtained.
 %
 \begin{flalign}
   \nabla\ f(\vec{x}+\vec{\delta}) &\approx \vec{g} = 0 &
 \label{1stOrderTaylorApproximationParThetaEqZero}
 \end{flalign}
 
-That is, if the gradient of the function to be minimized is 0, a minimum or maximum exists as a candidate for a solution in this point. It follows that if standing in some point and computing the gradient in this point, then the gradient, \si{\vec{g}}, is the steepest ascend and the negative gradient, \si{-\vec{g}}, is the steepest descend. This only takes into account the immediate surroundings of the initially chosen point. A visualization of how the negative gradient points to a minimum of an arbitrary function is seen in \figref{visualizationOfGradient}.
+That is, if the gradient of the function to be minimized is 0, a minimum or maximum exists as a candidate for a solution in this point. It follows that if standing in some point and computing the gradient in this point, then the gradient, \si{\vec{g}}, is the steepest ascent direction and the negative gradient, \si{-\vec{g}}, is the steepest descent direction. This only takes into account the immediate surroundings of the initially chosen point. A visualization of how the gradient points opposite to the minimum of an arbitrary function is seen on \figref{visualizationOfGradient}, which means that the negative gradient points to the minimum.
 
 \begin{figure}[H] 
 	\centering
@@ -67,7 +67,7 @@ One way of implementation is to set a step-size which decides how far in the \si
 	\end{minipage}
 \end{minipage}
 
-The steepest descend method does find a minimum. However, it converges to it rather slowly. An implementation where it is possible to directly retrieve the gradient of the function which is to be minimized, \si{f(\vec{x})}, is shown in \figref{steepestDescendEx}.
+The method does find a minimum. However, it converges to it rather slowly. An implementation where it is possible to directly retrieve the gradient of the function which is to be minimized, \si{f(\vec{x})}, is shown in \figref{steepestDescendEx}.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
@@ -75,7 +75,7 @@ The steepest descend method does find a minimum. However, it converges to it rat
 			\includegraphics[scale=.6]{figures/steepestDescendEx}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{An example of a direct implementation of the steepest descend method. It steps over the valley and the step size is reduced in the red iteration.}
+			\captionof{figure}{An example of a direct implementation of a gradient optimization method. It steps over the valley and the step size is reduced in the red iteration.}
 			\label{steepestDescendEx}
 		\end{figure}
 	\end{minipage}

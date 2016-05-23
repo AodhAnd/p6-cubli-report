@@ -2,9 +2,9 @@
 More than the physical setup, a certain amount of code allowing to run controllers on the present hardware is also available. \\
 Written in C\texttt{++}, it comprises all the drivers necessary to interface the BeagleBone board with the motor and all the different sensors described above, in \secref{sec:Motor} and \secref{sec:Sensors}.
 
-The actual controllers which make the Cubli stand up on its corner, are all composed of two or three files in a folder named \textit{controller/controller\_code/}. Each controller has to implement three functions, as shown in \autoref{lst:StandardControllerInterface}.
+The actual controllers which make the Cubli stand up on its corner, are all composed of source and header files in a folder named \textit{controller/controller\_code/}. Each controller has to implement three functions, as shown in \autoref{lst:StandardControllerInterface}.
 %
-\lstset{language=C++, caption={Code snippet of the standard controller interface}, label=lst:StandardControllerInterface}
+\lstset{language=C++, caption={Code snippet of the standard controller interface, written in C.}, label=lst:StandardControllerInterface}
 \begin{lstlisting}
   /**
    *  Runs the actual controller on the given feedback(s) and the pre-defined input(s).

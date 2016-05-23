@@ -1,6 +1,6 @@
 \section{Block Diagram}
 
-To verify the model in simulation \eqref{FrameEq4TaylerApprox} is transformed into the Laplace domain, after which a transfer function of the system is derived. The proceeding equations are valid only around the operating point, and so for better overview, in the following \si{\Delta \theta_F = \theta_F}.
+To verify the model in simulation \eqref{FrameEq4TaylerApprox} is transformed into the Laplace domain, after which a transfer function of the system can be derived. The proceeding equations are valid only around the operating point, and so for better overview, in the following \si{\Delta \theta_F = \theta_F}.
 %
 \begin{flalign}
 	\eq{(J_F+m_w \cdot {l_w}^{2}) \cdot \theta_F \cdot s^2}{-B_F \theta_F\cdot s +  ( m_F \cdot l_F + m_w \cdot l_w ) g \cdot \theta_F - \tau_m + B_w \theta_w\cdot s } & \nonumber\\
@@ -38,7 +38,7 @@ The transfer function from \eqref{2ndCubliTransferFunction} can also be represen
 % \end{figure} 
 \begin{figure}[H]
 	\input{figures/blockDiagram.tikz}
-	\caption{Block diagram of the Cubli system. The reference is the desired torque that the wheel acts on the frame with. Output is the angle of the Cubli frame}
+	\caption{Block diagram of the Cubli as a SISO system. The input is the torque applied to the wheel. The output is the angular position of the frame.}
 	\label{cubliSimulink}
 \end{figure}
 

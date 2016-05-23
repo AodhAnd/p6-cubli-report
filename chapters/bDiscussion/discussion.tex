@@ -4,12 +4,12 @@ Some decisions made throughout the course of the project are discussed in this c
 
 For the state space controller a set of poles were selected looking at the response they showed in the two simulations, \figref{catchingStateSpace} and \figref{catchingStateSpaceWheel}. Using different pole combinations results in different overshoots and settling time, so another pole combination could be selected if a different behavior of the Cubli was desired. 
 The choice is whether a small overshoot is desired or if the frame is to reach \SI{0}{rad} faster. 
-Having less overshoot would increase the maximum catching angle with the current system, since the second overshoot with the current used controller is larger than the angle inflicted by a disturbance. 
-Braking the wheel faster gives the controller more acceleration to use in order to counteract a disturbance. \fxnote{rephrase the "more accel" thing}
+Having less overshoot would increase the maximum catching angle with the current system, since the second overshoot with the current used controller is larger than the angle inflicted by a disturbance. A fast response will result in handling better external disturbances if they are applied continuously.
+%Braking the wheel faster gives the controller more acceleration to use in order to counteract a disturbance. \fxnote{rephrase the "more accel" thing}
 
 As already mentioned briefly in the complementary filter section, the measurement from the accelerometer in the IMU could be improved by moving the sensor to a position where it would be influenced less by the acceleration of the frame but still be able to measure the angle of the frame. In case of the single frame, that would be as close as possible to the point of rotation fixed to the baseplate.
 
-The combining of accelerometer and gyroscope measurement can be done using a different type of filter than the used complementary filter. The decision to use the complementary filter was based on the usage of it in similar applications \cite{OlliW}. Since it shows a good behavior for the problem at hand and no further investigation was needed.
+The combining of accelerometer and gyroscope measurement can be done using a different type of filter than the used complementary filter. The decision of choosing a complementary filter was based on the use of it in similar applications \cite{OlliW}. Since it shows a good behavior for the problem at hand no further investigation was needed.
 
 %{\Large notes} \fxnote{delete this part its just to brainstorm what to write in this section}\\
 %- Placement of IMU\\

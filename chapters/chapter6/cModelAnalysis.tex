@@ -11,7 +11,7 @@ Using \eqref{RealCubliTransferFunction} it is possible to simulate the response 
 \begin{figure}[H] 
 	\centering 
 	\includegraphics[scale=0.65]{figures/stepComparison}
-	\caption{Step response comparison between the transfer function from \eqref{RealCubliTransferFunction} and the block diagram from \figref{cubliSimulink}. The conclusion form this is the blockdiagram of the system was made correctly}
+	\caption{Step response comparison between the transfer function from \eqref{RealCubliTransferFunction} and the block diagram from \figref{cubliSimulink}. The conclusion form this is the blockdiagram of the system was made correctly..}
 	\label{stepComparison}
 \end{figure}
 
@@ -26,7 +26,7 @@ However, in reality the platform blocks the frame's path, and so, it can only ev
     	\includegraphics[scale=.55]{figures/LinearizedVSNonlinear}
     	\centering
   		\captionsetup{justification=centering}
-  		\captionof{figure}{Simulation of the linearized model compared to the nonlinear model}
+  		\captionof{figure}{Simulation of the linearized model compared to the nonlinear model.}
   		\label{LinearizedVSNonlinear}
   	\end{figure}
   \end{minipage}
@@ -36,7 +36,7 @@ However, in reality the platform blocks the frame's path, and so, it can only ev
   		\includegraphics[scale=.55]{figures/LinearizedVSNonlinearZoom}
   		\centering
   		\captionsetup{justification=centering}
-  		\captionof{figure}{Zoom of \figref{LinearizedVSNonlinear} from t=1.3s to t=1.5s}
+  		\captionof{figure}{Zoom of \figref{LinearizedVSNonlinear} to show the deviation of the linearization from the nonlinear model.}
   		\label{LinearizedVSNonlinearZoom}
   	\end{figure}
   \end{minipage}
@@ -44,7 +44,7 @@ However, in reality the platform blocks the frame's path, and so, it can only ev
 
 From \figref{LinearizedVSNonlinear} and \figref{LinearizedVSNonlinearZoom}, the linearized model is considered a good approximation of the system's behavior in the operational region of \si{\pm 0,79\ rad}, since the error committed is no more than \si{0,01\ rad} at this point.
 
-To further investigate the model, an other test is made, see \appref{app:fallResponseAppendix}, to determine weather the fall response of the nonlinear model and the real system matches.
+To further investigate the model, another test is made, see \appref{app:fallResponseAppendix}, to determine weather the fall response of the nonlinear model and the real system matches.
 
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.5\linewidth}
@@ -69,6 +69,6 @@ To further investigate the model, an other test is made, see \appref{app:fallRes
 \end{minipage}
 
 In \figref{FallTestComparison} the Cubli falls from equilibrium position given a very small impulse. When plotting the two data sets the time of the fall is aligned to see if the characteristics of the simulated fall matches reality.\\
-In an attempt to avoid unjustified assumptions the test is repeated from initial condition \si{-0,174\ rad} (\si{-10^\circ}) in both simulation and test, the result is shown in \figref{FallTestComparison10deg}.
+To show that the simulation matches reality regardless the initial condition, the test is repeated starting from \si{-0,174\ rad} (\si{-10^\circ}) in both simulation and test, the result is shown in \figref{FallTestComparison10deg}.
 
 %Hence the linearized model is used both for further analysis of the system and for controller design.

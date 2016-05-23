@@ -4,7 +4,7 @@ The basic scheme for the optimization problem is given in \figref{SensToolSchema
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{figures/SensToolSchema}
-	\caption{Schematic of the optimization problem \cite{Senstools}}
+	\caption{Schematic of the optimization problem\cite{Senstools}.}
 	\label{SensToolSchema}
 \end{figure}
 %
@@ -37,4 +37,4 @@ In order to minimize the difference between the data points measured in test and
 & \si{\vec{y_m}}      & is the model output vector                          & \\
 \end{tabular}
 
-A normal mean square error function is only divided by the degrees of freedom, \si{N}, but in tis case is divided by \si{2N} to cancel out the factor which arises when computing its gradient. This only gives the function a constant offset and does not have any impact when minimizing it.
+A normal mean square error function is only divided by the degrees of freedom, \si{N}, but in tis case is divided by \si{2N} to cancel out the factor which arises when computing its gradient. This does not have any impact since the minimum maintains its original position.

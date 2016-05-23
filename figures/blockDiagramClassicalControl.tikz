@@ -60,9 +60,9 @@ every node/.style={scale=1.0}, %<  |(always change both)
   
   \draw[-](angleFeed) |- node {} (feed2);
   
-  \draw[-](feed1) -| node {} (sum2);
+  \draw[->](feed1) -| node {} (sum2);
    
-  \draw[-](feed2) -| node {} (sum1);
+  \draw[->](feed2) -| node {} (sum1);
   
   \draw[dashed](feed) |- node {} (feed3);
   
