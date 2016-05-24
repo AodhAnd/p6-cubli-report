@@ -2,7 +2,7 @@ clear all
 close all
 clc
 
-optimalityTest = 1;      %<--if set to 0 then
+optimalityTest = 0;      %<--if set to 0 then
                          %   it is made for better comprehension of method.
                          %   if set to 1 then
                          %   it is made for testing of performance.
@@ -69,7 +69,7 @@ text( Xmin+.1, limY(2)-.5*((limY(2)-limY(1))*.12),  ...
 line( [Xmax Xmax], limY, 'linestyle', '-', 'linewidth', 1,...
       'color', '[1 0 0]' );  
 %label for Xmax line
-text( Xmax-1.5, limY(2)-.5*((limY(2)-limY(1))*.12),  ...
+text( Xmax-1, limY(2)-.5*((limY(2)-limY(1))*.12),  ...
       'X_U \rightarrow', 'FontWeight', 'bold',...
       'FontSize', 10 );
                  
