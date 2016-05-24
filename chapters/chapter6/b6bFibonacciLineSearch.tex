@@ -1,6 +1,6 @@
 \subsubsection{Fibonacci Line Search}The Fibonacci line search and the golden section search are both based on a fundamental method of interval selection. As opposed to the dichotomous line search, these methods only require one function evaluation per iteration. This is achieved by reusing one of the function evaluations performed in the previous iteration.
 
-An example of this interval system is shown in \figref{fibonacciIntervalSystem} where the first iteration, marked in green, assuming some bracket, \si{[x_{min},\ x_{max}]}, produces two intervals with equal lengths of \si{I_1}. Either the right or the left interval is then chosen as the new bracket. In \figref{fibonacciIntervalSystem} \si{f(x_a) > f(x_b)}, therefore the right interval must contain the minimizer, so long as there is only one minimum within the bracket. Thus, the new bracket is set: \si{[x_{min},\ x_{max}] = \si{[x_{a},\ x_{max}]}}.\\
+An example of this interval system is shown in \figref{fibonacciIntervalSystem} where the first iteration, marked in green, assuming some bracket, \si{[x_{L},\ x_{U}]}, produces two intervals with equal lengths of \si{I_1}. Either the right or the left interval is then chosen as the new bracket. In \figref{fibonacciIntervalSystem} \si{f(x_a) > f(x_b)}, therefore the right interval must contain the minimizer, so long as there is only one minimum within the bracket. Thus, the new bracket is set: \si{[x_{L},\ x_{U}] = \si{[x_{a},\ x_{U}]}}.\\
 In the case that \si{f(x_a) = f(x_b)}, either \si{x_a} or \si{x_b} can be set as the new boundary.
 
 Within this bracket one function evaluation has already taken place (the circled red dot), this interval can be reused and only one further evaluation of \si{f(x)} is needed to proceed with the next iteration.
@@ -18,15 +18,15 @@ If for the last n-th iteration, \si{I_{n+2}} is assumed to be zero, then \si{ I_
 %
 \begin{flalign}
   \si{I_{n+1}}              &=  \phantom{\si{\ I_{n+1}  + I_{n+2}            =}}  \si{ 1 I_n  = F_0 I_n } &\nonumber\\
-  \si{I_{n}}\phantom{_{+1}} &=  \si{ I_{n+1}  + I_{n+2} }                    =  \si{ 1 I_n  = F_1 I_n } &\nonumber\\
-  \si{I_{n-1}}              &=  \si{ I_{n} }\phantom{_{+1}} + \si{ I_{n+1} } =  \si{ 2 I_n  = F_2 I_n } &\nonumber\\
-  \si{I_{n-2}}              &=  \si{ I_{n-1}  + I_{n} }\phantom{_{-1}}       =  \si{ 3 I_n  = F_3 I_n } &\nonumber\\
-  \si{I_{n-3}}              &=  \si{ I_{n-2}  + I_{n-1} }                    =  \si{ 5 I_n  = F_4 I_n } &\nonumber\\
-  \si{I_{n-4}}              &=  \si{ I_{n-3}  + I_{n-2} }                    =  \si{ 8 I_n  = F_5 I_n } &\nonumber\\
-  \phantom{I_{n-4}}         &\phantom{..}\vdots                                                         &\nonumber\\
-  \si{I_{k}}                &=  \si{ I_{k+1} + I_{k+2} = F_{n-k+1} I_n }                                &\nonumber\\
-  \phantom{I_{n-4}}         &\phantom{..}\vdots                                                         &\nonumber\\
-  \si{I_{1}}                &=  \si{ I_{2} + I_{3} = F_n I_n }                                          &
+  \si{I_{n}}\phantom{_{+1}} &=  \si{ I_{n+1}  + I_{n+2} }                    =  \si{ 1 I_n  = F_1 I_n }   &\nonumber\\
+  \si{I_{n-1}}              &=  \si{ I_{n} }\phantom{_{+1}} + \si{ I_{n+1} } =  \si{ 2 I_n  = F_2 I_n }   &\nonumber\\
+  \si{I_{n-2}}              &=  \si{ I_{n-1}  + I_{n} }\phantom{_{-1}}       =  \si{ 3 I_n  = F_3 I_n }   &\nonumber\\
+  \si{I_{n-3}}              &=  \si{ I_{n-2}  + I_{n-1} }                    =  \si{ 5 I_n  = F_4 I_n }   &\nonumber\\
+  \si{I_{n-4}}              &=  \si{ I_{n-3}  + I_{n-2} }                    =  \si{ 8 I_n  = F_5 I_n }   &\nonumber\\
+  \phantom{I_{n-4}}         &\phantom{..}\vdots                                                           &\nonumber\\
+  \si{I_{k}}                &=  \si{ I_{k+1} + I_{k+2} = F_{n-k+1} I_n }                                  &\nonumber\\
+  \phantom{I_{n-4}}         &\phantom{..}\vdots                                                           &\nonumber\\
+  \si{I_{1}}                &=  \si{ I_{2} + I_{3} = F_n I_n }                                            &
   \label{fibonacciNumbers}
 \end{flalign}
 %
@@ -37,12 +37,12 @@ Where:\\
 \end{tabular}
 
 For the last expression in \eqref{fibonacciNumnbers}, the size of the first bracket, \si{I_1}, is known and the last interval, \si{I_n}, can be chosen as the precision of the search. From this, the largest Fibonacci number needed can be found as \si{F_n = \frac{I_1}{I_n}}, and the remaining intervals can be calculated progressively during each iteration by use of the appropriate numbers in the Fibonacci sequence.\\
-In \figref{fibonacciLineSearchComprehensive} an example implementation is shown where each iteration contains \si{x_a} and \si{x_b}. In the iterations where \si{x_a} is chosen as the new \si{x_{min}} it is marked with a red circle and for \si{x_b} chosen as new \si{x_{max}} a blue circle is used. It shows clearly shows how each iteration only requires one function evaluation.
+In \figref{fibonacciLineSearchComprehensive} an example implementation is shown where each iteration contains \si{x_a} and \si{x_b}. In the iterations where \si{x_a} is chosen as the new \si{x_{L}} it is marked with a red circle and for \si{x_b} chosen as new \si{x_{U}} a blue circle is used. It shows clearly shows how each iteration only requires one function evaluation.
 
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.8\textwidth]{figures/fibonacciLineSearchComprehension}
-	\caption{Fibonacci line search where the first iteration is at the top of the graph and each subsequent iteration is listed one line at a time downward. New \si{x_{min}} is marked with a red circle and new \si{x_{max}} with a blue circle. The chosen minimizer is marked in red at the bottom.}
+	\caption{Fibonacci line search where the first iteration is at the top of the graph and each subsequent iteration is listed one line at a time downward. New \si{x_{L}} is marked with a red circle and new \si{x_{U}} with a blue circle. The chosen minimizer is marked in red at the bottom.}
 	\label{fibonacciLineSearchComprehensive}
 \end{figure}
 
