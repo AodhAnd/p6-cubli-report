@@ -1,10 +1,10 @@
 \subsubsection{Implementation of Steepest Descent}
-To better understand the problem at hand the cost function to be minimized is shown in \figref{costFunction}. It might seem strange to do optimization when one could just directly find the minimum by graphical inspection of the cost function. However, this graph took over 5 hours to render and contains the results of 90.000 simulations, which makes it a very inefficient and unpractical to work with in general. It is therefore desirable to obtain an optimization algorithm which can give a result in a relatively short time in case of any changes, be it new test data or changes to the system model. In this case the cost function is saved in a data-file, such that it can be plotted during implementation as a graphical reassurance that the optimization algorithm is behaving normally.
+To better understand the problem at hand the cost function to be minimized is shown in \figref{costFunction}. It might seem strange to do optimization when one could just directly find the minimum by graphical inspection of the cost function. However, this graph took over 5 hours to render and contains the results of \si{90.000} simulations, which makes it a very inefficient and unpractical to work with in general. It is therefore desirable to obtain an optimization algorithm which can give a result in a relatively short time in case of any changes, be it new test data or changes to the system model. In this case the cost function is saved in a data-file, such that it can be plotted during implementation as a graphical reassurance that the optimization algorithm is behaving normally.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.55\textwidth]{figures/costFunction2}
-	\caption{The cost function to be minimized. The parameters are shown in the xy-plane and the deviation between simulation and test data, cost, for each two parameters is shown on the z axis. To generate the graph 90.000 simulations were run, one for each point on the surface, and the rendering time exceeded 5 hours. This is not practical to work with in general, but valuable in the implementation process of the optimization algorithm.}
+	\caption{The cost function to be minimized. The parameters are shown in the xy-plane and the deviation between simulation and test data, cost, for each two parameters is shown on the z axis. To generate the graph \si{90.000} simulations were run, one for each point on the surface, and the rendering time exceeded 5 hours on a regular PC. This is not practical to work with in general, but valuable in the implementation process of the optimization algorithm.}
 	\label{costFunction}
 \end{figure}
 
@@ -46,8 +46,8 @@ deltaYmJf = simCubli( deltaJ_f, B_f, J_f, B_f );
 deltaYmBf = simCubli( J_f, deltaB_f, J_f, B_f );
 
 % Finally calculating the partial derivatives of the model in (J_f, B_f)
-YmDiffBf = ( deltaYmBf - Ym )/ p;
-YmDiffJf = ( deltaYmJf - Ym )/ p;
+YmDiffBf = ( deltaYmBf - Ym )/ delta;
+YmDiffJf = ( deltaYmJf - Ym )/ delta;
 
 % This however is just for the model.. and we need
 % the gradient of the cost function, as stated earlier:
@@ -76,7 +76,7 @@ With the gradient calculated the search direction is known, and implementation o
     }\quad
     \subcaptionbox
     {
-      A contour plot of the cost function with the optimization iterations. Here the black dotted lines shows the search 
+      A contour plot of the cost function with the optimization iterations. Here the black dotted lines shows the search. 
       \label{CostFunctionMinimizedContour}
     }
     {
@@ -86,9 +86,9 @@ With the gradient calculated the search direction is known, and implementation o
     \label{CostFunctionMinimized}
   \end{minipage}
 \end{figure}
-
+%
 The final result achieved in by the algorithm is shown in \figref{resultOfGradientWithFibonacciAndForwardBackward}, where the normed RMS error between test results and simulation with final parameters, \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2} and \si{B_F=7,8 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}, is also shown.
-
+%
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.65\textwidth]{figures/resultOfGradientWithFibonacciAndForwardBackward}

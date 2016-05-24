@@ -55,7 +55,7 @@ The data of the test can be found in  \appref{app:IMUMeasurementsAppendix}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.65]{figures/angleAcc}
-	\caption{The graph shows a comparison of the angle of the frame measured by the potentiometer (orange) and the same angle found with the accelerometer (blue). The accelerometer angle is calculated based on the data from the x- and y-axis components (\appref{app:IMUMeasurementsAppendix})}
+	\caption{The graph shows a comparison of the angle of the frame measured by the potentiometer (orange) and the same angle found with the accelerometer (blue). The accelerometer angle is calculated based on the data from the x- and y-axis components (\appref{app:IMUMeasurementsAppendix}).}
 	\label{angleAcc}
 \end{figure}\vspace{-5mm}
 %
@@ -80,7 +80,7 @@ The problem with the data from the gyro is an accumulating error which is caused
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.65]{figures/angleGyro}
-	\caption{Angular position calculation with the data of the gyroscope}
+	\caption{Angular position calculation with the data of the gyroscope.}
 	\label{angleGyro}
 \end{figure}\vspace{-5mm}
 %The problem with the data from the gyro is it will exhibit a drifting error when experiencing no movement \cite{JWarren} and since the angular velocity has to be integrated to get the angel there will be an accumulation error. 
@@ -163,7 +163,7 @@ Based on the setup of the complementary filter in \figref{blockDrawingComplement
 			\includegraphics[scale=.55]{figures/bodeFilters}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{Magnitude bode diagrams of the high pass and low pass filters with the same cut-off frequency as well as the summation of both}
+			\captionof{figure}{Magnitude bode diagrams of the high pass and low pass filters with the same cut-off frequency as well as the summation of both.}
 			\label{bodeFilters}
 		\end{figure}
 	\end{minipage}
@@ -173,7 +173,7 @@ Based on the setup of the complementary filter in \figref{blockDrawingComplement
 			\includegraphics[scale=.55]{figures/bodeFilters2}
 			\centering
 			\captionsetup{justification=centering}
-			\captionof{figure}{Magnitude bode diagrams of the high pass and low pass filters with different cut-off frequencies as well as the summation of both}
+			\captionof{figure}{Magnitude bode diagrams of the high pass and low pass filters with different cut-off frequencies as well as the summation of both.}
 			\label{bodeFilters2}
 		\end{figure}
 	\end{minipage}
@@ -189,7 +189,7 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.65]{figures/filterSensTool}
-	\caption{Final result of the complementary filter compared with the data from the potentiometer. It can be observed that the two measurements match closely}
+	\caption{Final result of the complementary filter compared with the data from the potentiometer. It can be observed that the two measurements match closely.}
 	\label{filterSensTool}
 \end{figure}\vspace{-5mm}
 %
@@ -199,7 +199,7 @@ The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si
 Implementing \eqref{discreteComplementaryFilter7} yields to following piece of code. 
 
 \begin{lstlisting}[style = customcpp,
-				caption  = {Code for the implementation of the complementary filter in C\texttt{++}},
+				caption  = {Code for the implementation of the complementary filter in C\texttt{++}.},
 				label    = codeCompFilter ]
 //---------------------- IMU --------------------------//
 double Imu::getPosition(double accAngleNow, double gyroVelocityNow, double Ts, int imuNb)

@@ -5,9 +5,9 @@ On the prototype, a microcontroller provides the main computing power and contro
 The microcontroller used on this system is a BeagleBone Black \cite{BeagleBone}, which is in charge of managing the data from the motor and the sensors and calculating the required control action.\\
 It uses an ARM processor at a clock frequency of \SI{1}{GHz} and has a large amount of general purpose inputs and outputs, of which some of them support the \si{I^2C} protocol or include an Analogue to Digital Converter (ADC).\\
 %In order to use the data from the sensors it has to be sampled by the ADC in  the BeagleBone. 
-The ADCs of the BeagleBone have a 12-bit resolution that is limited to a range of \si{0 - 1,8\ V}. The fastest sampling time it can provide is \si{125} \si{ns}\cite{Cameon}.
+The ADCs of the BeagleBone have a 12-bit resolution that is limited to a range of \si{0 - 1,8\ V}. The fastest sampling time it can provide is \si{125} \si{ns} \cite{Cameon}.
 
 \subsection{Connecting and Breakout Board}
-This board is used for power distribution with different voltages sent to each unit. There is also a built-in gain for the potentiometer, configured for the range of the BeagleBone ADC's and the possible positions that the frame can have. The schematics can be found in \appref{app:ConnectingBreakoutBoard}.
+This board is used for power distribution with different voltages sent to each unit. There is also a built-in gain for the potentiometer, configured for the range of the BeagleBone ADCs and the possible positions that the frame can have. The schematics can be found in \appref{app:ConnectingBreakoutBoard}.
 
 %From the schematic of the connecting and breakout board the gain has been built to have a gain of 3.\fxnote{It would be nice if the mention of the gain value were put with the initial statement that there is one instead of having a `cutting' paragraph in between. J.}

@@ -25,7 +25,7 @@ To confirm the linearity of the potentiometer a test is done, which is described
 
 
 \subsubsection{Range Test}
-An additional test is done to find the conversion from voltage to angle of the potentiometer. It is also tested if there is an offset that has to be taken into account. The detailed description of this test is found in \appref{app:potentiometerRes}
+An additional test is done to find the conversion from voltage to angle of the potentiometer. It is also tested if there is an offset that has to be taken into account. The detailed description of this test is found in \appref{app:potentiometerRes}.
 %It is also needed a test to find the conversion from voltage to angle along with potential offset (see ).
 
 \begin{minipage}{\linewidth}
@@ -53,7 +53,7 @@ An additional test is done to find the conversion from voltage to angle of the p
 The results of this test is shown above in \figref{PotentiometerResolution}, where the reference lines reveals an offset between the middle of the range and the equilibrium point of the Cubli frame.\\
 This offset, also seen on \figref{PotentiometerResolutionRadDeg}, exists in the physical position of the frame. When the frame is standing in its equilibrium position it is displaced by approximately \SI{0,068}{rad} due to uneven distribution of mass around its center.\\
 This results in a \SI{0,853}{rad} range to one side of the optimal position and \SI{0,717}{rad} on the other.\\
-It is chosen that the angle-offset must be accounted for such that the equilibrium position of the frame is at angle 0.
+It is chosen that the angle-offset must be accounted for such that the equilibrium position of the frame is at angle \SI{0}{rad}.
 
 %Equilibrium point has been tested to have a range of 1 degree and the angle between the base and the frame is 42,5 degree. To avoid complications it is chosen that the angle-offset must be accounted for such that the equilibrium position of the frame is at 0 degree angle. This results in a 48,9 degree range to one side of the optimal position and 41,1 degree on the other.
 
@@ -62,7 +62,7 @@ The Motion Processing Unit (MPU) contains a triple axis accelerometer and gyro i
 
 The gyro has a  full-scale range of ±250, ±500, ±1000, and ±2000 \si{deg \cdot s^{-1}}, while the accelerometer has a programmable full scale range of ±2, ±4, ±8 and ±16 g.
 
-The input voltage can be between 2,3 and 3,4V, and it includes embedded algorithms for run-time bias and compass calibration.
+The input voltage can be between 2,3 and 3,4 V, and it includes embedded algorithms for run-time bias and compass calibration.
 
 The unit collects gyroscope and accelerometer data while synchronizing data sampling at a user defined rate, and it uses Inter Integrated Circuit (\si{I^2C}) protocol for communication, whose speed can be up to 400 kHz. 
 

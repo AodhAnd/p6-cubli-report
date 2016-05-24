@@ -17,6 +17,7 @@ The power supply that supplies the entire system is 24 V. There has been built v
 
 Many of the sensors are operating on different voltage. Below is a list of the different voltage usage:
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Unit}       &  \textbf{Voltage (V)}         \\
@@ -56,6 +57,7 @@ The Potentiometer is only using a small area of rotation on the Cubli, about ¼ 
 
 To verify the gain, the potentiometer voltage is measured and the ADC value is read from the BeagleBone Black.
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Unit}       &  \textbf{Voltage (V)}         \\
@@ -83,10 +85,10 @@ The Maxon Motor Driver Board connections diagram \figref{labMotorDriver}:\\
 	\label{labMotorDriver}
 \end{figure}\vspace{-5mm}
 
-Since the BeagleBone Black ADC only operates up to 1.8 V and the Maxon control board operates at -4 V to 4 V, a voltage divider has been put in from the Maxon motor control to the Beagle Bone so the BeagleBone’s A/D limit is not exceeded so the voltage is multiplied by 0,44382. Then if the Maxon controller operates at a maximum of 4 V it becomes 1,77528 V below the BeagleBone A/D limit of 1,8 V.
+Since the BeagleBone Black ADC only operates up to \SI{1,8}{V} and the Maxon control board operates at \SI{-4}{V} to \SI{4}{V}, a voltage divider has been put in from the Maxon motor control to the Beagle Bone so the BeagleBone’s A/D limit is not exceeded so the voltage is multiplied by 0,44382. Then if the Maxon controller operates at a maximum of \SI{4}{V} it becomes \SI{1,77528}{V} below the BeagleBone A/D limit of \SI{1,8}{V}.
 
 \subsection{Extra Connections}
-MPU6050's I2C and 3,3 V connections to the BeagleBone Black.
+MPU6050's I2C and \SI{3,3}{V} connections to the BeagleBone Black.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/PMU9150.pdf}
@@ -94,7 +96,7 @@ MPU6050's I2C and 3,3 V connections to the BeagleBone Black.
 	\label{labPMU9150}
 \end{figure}\vspace{-5mm}
 
-5 V power supply for the ServoMotor on Connecting and Breakout Board, and 3,3 V to 5 V level converter is needed to get the BeagleBone Black PWM signals to the ServoMotors logic circuit. 
+\SI{5}{V} power supply for the ServoMotor on Connecting and Breakout Board, and \SI{3,3}{V} to \SI{5}{V} level converter is needed to get the BeagleBone Black PWM signals to the ServoMotors logic circuit. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/ServoMotor.pdf}
@@ -102,15 +104,15 @@ MPU6050's I2C and 3,3 V connections to the BeagleBone Black.
 	\label{labServoMotor}
 \end{figure}\vspace{-5mm}
 
-5 V power supply for the BeagleBone Black and the LED’s on Connecting and Breakout Board.
+\SI{5}V power supply for the BeagleBone Black and the LED’s on Connecting and Breakout Board.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/BeagleBone.pdf}
-	\caption{Power converter from 25 V to 5 V for the BeagleBone Black.}
+	\caption{Power converter from \SI{25}{V} to \SI{5}{V} for the BeagleBone Black.}
 	\label{labBeagleBone}
 \end{figure}\vspace{-5mm}
 
-25 V power and grounding connections and 5 v and 3,3 V LED's connections.
+\SI{25}{V} power and grounding connections and \SI{5}{V} and \SI{3,3}{V} LED's connections.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/Power.pdf}
@@ -118,7 +120,7 @@ MPU6050's I2C and 3,3 V connections to the BeagleBone Black.
 	\label{labPower}
 \end{figure}\vspace{-5mm}
 
-5 V LED's connections to the BeagleBone Black.
+\SI{5}{V} LED's connections to the BeagleBone Black.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.92]{figures/Led.pdf}

@@ -33,5 +33,5 @@ This is a default model based on the way MATLAB auto-generates controller code i
 
 The file \textit{controller/controller\_test.cpp} contains the core part of the controllers operation. One of its functions, \lstinline[style=customcppinline]{void ControllerTest::runController(ControllerArgs* args)}, is called at some regular pre-defined intervals which is the desired sampling time. This initializes the available controllers, retrieves and processes the data from the sensors, and finally uses the controller code to compute the output current to send to the motor. This updated output current is actually sent at the beginning of the next call.
 
-It is important to note that the whole code is intended to run on the Beaglebone Black. Indeed, the latter uses an ARMv7 processor architecture, which requires the program to be compiled either directly on a computer with similar architecture which might be slow, or on another standard PC with a cross-compilation toolchain\cite{ELinux}.
+It is important to note that the whole code is intended to run on the Beaglebone Black. Indeed, the latter uses an ARMv7 processor architecture, which requires the program to be compiled either directly on a computer with similar architecture which might be slow, or on another standard PC with a cross-compilation toolchain \cite{ELinux}.
 \\\\

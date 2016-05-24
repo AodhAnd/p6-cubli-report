@@ -7,6 +7,7 @@ Get the configuration parameters through the ESCON software, which is used to co
 
 \subsubsection{List of Equipment}
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|p{10cm}|p{4cm}|}
 		\hline%------------------------------------------------------------------------------------
 		\textbf{Instrument}                &  \textbf{Type} \\
@@ -28,16 +29,17 @@ Get the configuration parameters through the ESCON software, which is used to co
 In the following text there are the most relevant configurations of the Maxon Control Board used in this project. Some of the data has been found on the data sheet of the ESCON module 50/5 and the Maxon Motor data sheet.
 
 \textbf{PWM controller}\\
-The control PWM runs at a frequency of 53,6 kHz and the Maxon motor is customized for this frequency.
-The PWM controller has been configured to use a Maxon motor EC 45 flat 50 Watt (part no. 251601). The parameters in the controller are:
+The control PWM runs at a frequency of \SI{53,6}{kHz} and the Maxon motor is customized for this frequency.
+The PWM controller has been configured to use a Maxon motor EC 45 flat \SI{50}{W} (part no. 251601). The parameters in the controller are:
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Motor characteristics}       &  \textbf{Value}         \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Speed constant                                & 285,0 rpm/V           \\
+		Speed constant                                & \SI{285,0}{rpm\cdot V^{-1}}           \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Terminal time constant winding							  & 17,6 sec              \\
+		Terminal time constant winding							  & \SI{17,6}{s}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
 		Number of pole pairs							  & 8              \\
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -45,17 +47,18 @@ The PWM controller has been configured to use a Maxon motor EC 45 flat 50 Watt (
 \end{table}
 
 \textbf{Controller}\\
-The controller has a maximum current drag in continuous operation of 5 A. It has a no load nominal speed of 6710 rpm and a stall current of 23,3 A. The motor has been limited in the configuration software as following
+The controller has a maximum current drag in continuous operation of \SI{5}{A}. It has a no load nominal speed of \SI{6710}{rpm} and a stall current of \SI{23,3}{A}. The motor has been limited in the configuration software as following
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{System data}       &  \textbf{Value}         \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Max. permitted speed                                & 1000 rpm           \\
+		Max. permitted speed                                & \SI{1000}{rpm}           \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Nominal current							  & 2,33 A              \\
+		Nominal current							  & \SI{2,33}{A}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Max. output current limit							  & 9,00 A              \\
+		Max. output current limit							  & \SI{9,00}{A}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
 	\end{tabular}
 \end{table}
@@ -63,6 +66,7 @@ The controller has a maximum current drag in continuous operation of 5 A. It has
 \textbf{Hall Sensors}\\
 There are built-in hall sensors on the motor, used for detecting its position and velocity. 
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Detection of rotation and speed}       &  \textbf{Value}         \\
@@ -75,8 +79,9 @@ There are built-in hall sensors on the motor, used for detecting its position an
 \end{table}
 
 \textbf{Control Loop}\\
-The control can operate in open loop, close loop or current mode. The close loop and the current mode runs at a frequency of 5,36 kHz. The controller has been configured to the following:
+The control can operate in open loop, close loop or current mode. The close loop and the current mode runs at a frequency of \SI{5,36}{kHz}. The controller has been configured to the following:
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Mode of operation}       &  \textbf{Value}         \\
@@ -91,17 +96,18 @@ The control can operate in open loop, close loop or current mode. The close loop
 \textbf{Digital Input}\\
 The digital input can be configured, so the motor can be activated or change direction by a signal. The speed or current can be set by a PWM signal. Its configuration can be seen in the following table:
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Digital input}       &  \textbf{Value}         \\
 		\hline%------------------------------------------------------------------------------------------------------------
 		Digital input 1                                & PWM           \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Current at 10\%							  & -4.00 A              \\
+		Current at 10\%							  & \SI{-4,00}{A}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Current at 90\%							  & 4.00 A              \\
+		Current at 90\%							  & \SI{4,00}{A}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Fixed offset							  & 0.00 A              \\
+		Fixed offset							  & \SI{0,00}{A}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
 		Digital input 2                                & Enable motor           \\
 		\hline%------------------------------------------------------------------------------------------------------------
@@ -111,23 +117,24 @@ The digital input can be configured, so the motor can be activated or change dir
 \end{table}
 
 \textbf{Analog Output}\\
-The analog output can be configured to give actual values of the motor, such speed or current. The analog output resolution is 12-bit and the voltage ranges from -4 V to 4 V. The actual configuration of the analog output is the following:
+The analog output can be configured to give actual values of the motor, such speed or current. The analog output resolution is 12-bit and the voltage ranges from \SI{-4}{V} to \SI{4}{V}. The actual configuration of the analog output is the following:
 \begin{table}[H]
+	\centering
 	\begin{tabular}{|l|l|p{4.3cm}|}
 		\hline%------------------------------------------------------------------------------------------------------------
 		\textbf{Analog outputs}       &  \textbf{Value}         \\
 		\hline%------------------------------------------------------------------------------------------------------------
 		Analog output 1                                & Actual current           \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Current at: 0 V							  & -4 A              \\
+		Current at: \SI{0}{V}							  & \SI{-4}{A}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Current at: 4 V							  & 4 A              \\
+		Current at: \SI{4}{V}							  & \SI{4}{A}              \\
 		\hline%------------------------------------------------------------------------------------------------------------
 		Analog output 2							  & Actual speed              \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Speed at: 1 V							  & -1000 rpm               \\
+		Speed at: \SI{1}{V}							  & \SI{-1000}{rpm}               \\
 		\hline%------------------------------------------------------------------------------------------------------------
-		Speed at: 3 V							  & 1000 rpm               \\
+		Speed at: \SI{3}{V}							  & \SI{1000}{rpm}               \\
 		\hline%------------------------------------------------------------------------------------------------------------
 	\end{tabular}
 \end{table}

@@ -1,10 +1,10 @@
 \chapter{Perspective}
-The next approach is to build a full cube version. To achieve this goal some changes and extra features need to be added to the current design.
+After designing the one-side prototype, the next step is to build a full cube version. To achieve this goal some changes and extra features must be added to the current design.
 
-The placement of the IMU on the full Cubli is something that has to be determined. One way to do it if possible is to place just one IMU in the very center of the Cubli.\\
-Alternatively one sensor could be placed in each corner of the Cubli. That would mean using 8 IMU's. This way, there is always at least one sensor very close to the point of rotation, and thus, it should be possible to get measurements with minimal disturbance from linear acceleration. A system that keeps track of the orientation of the Cubli could be implemented, so that the controller receives information from the most reliable sensor.
+The placement of the IMUs on the full Cubli is something that has to be determined. One way to do it if possible is to place just one IMU in the very center of the Cubli.\\
+Alternatively one sensor could be placed in each corner of the Cubli. That would mean using 8 IMUs. This way, there is always at least one sensor very close to the point of rotation, and thus, it should be possible to get measurements with minimal disturbance from linear acceleration. A system that keeps track of the orientation of the Cubli could be implemented, so that the controller receives information from the most reliable sensor.
 
-Each of the three reaction wheels needs to have its own controller. In this case it is not the goal to achieve a balance position, but to do another kind of maneuvers. This will require a redesigned controller since the chosen one is not able to get a changing reference for the internal states.
+Each of the three reaction wheels needs to have its own controller. In this case it is not the goal to achieve an upright position, but to perform other maneuvers. This will require a redesigned controller since the chosen one is not able to get a changing reference for the internal states.
 
 The Cubli will have to be able to jump up from a resting position. To do that the reaction wheel has to spin up. Once at the desired speed the wheel will be braked and the resulting torque will raise the Cubli. Now the system has to catch itself. In order to do that a separate controller might have to be designed that handles the jump up part, and then switches to the balancing controller for the balancing functionality.\\
 For the full Cubli, since there are three wheels and three braking systems, all the controllers will need to be coordinated.
