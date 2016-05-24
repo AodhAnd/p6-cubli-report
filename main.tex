@@ -3,70 +3,70 @@
 \input{setup/macros.tex}% my new macros
 
 \begin{document}
-	%%% Prereport %%%
-	\setlength\cftaftertoctitleskip{2pt}
-	\setlength\cftafterloftitleskip{6pt}
-	\setlength\cftafterlottitleskip{6pt}
-	\selectlanguage{english}
-	\title{Cubli}
-	
-	%%% Frontmatter Settings %%%
-	\pagestyle{empty} %disable headers and footers
-	\pagenumbering{roman} %use roman page numbering in the frontmatter I II...
-	\fancyfoot[RE,LO]{16gr630} %page number on all pages
-	\fancyfoot[LE,RO]{\thepage}
-	\fancyhead[LE,LO,RE,RO]{}
-	
-	%%% Introductory Formalities %%%
-	%\includepdf[pages={1}]{formalities/frontpage.pdf}
-	\input{chapters/frontpage}
-	\pagestyle{fancy}
-	\input{formalities/kolofon}
-	\input{formalities/titleSheet}
-	%%% Preface %%%
-	%\cleardoublepage
-	\input{formalities/preface.tex}
-	
-	\pdfbookmark[0]{Table of Contents}{label: tableOfContents}
-	\tableofcontents
-	\cleardoublepage
-	
-	
-	%%% Mainmatter Settings %%%
-	\pagenumbering{arabic} %use arabic page numbering in the mainmatter
-	\fancyfoot[RO,LE]{\thepage \text{ of} \pageref{LastPage}}
-	\fancyfoot[RE,LO]{16gr630}
-	\fancyhead[RE,LO]{}
-	\fancyhead[RE,LO]{\color{aaublue}\small\nouppercase\leftmark} %even page - chapter title
-	\pagestyle{fancy}
-	
-	%%% Part 1 %%%
-	\part{Pre-analysis}
-	
-	%---------- Chapter 1 ---------------------------------------- Introduction
-	\input{chapters/chapter1/aChapters1.tex}
-	%\input{chapters/chapter1/bSectionAndSubsections.tex}
-	%\input{chapters/chapter1/cSectionAndSubsections.tex}        %-------- For Overview, sometimes short headlines here works well
-	
-	%---------- Chapter 2 ---------------------------------------- Design Considerations
-	\input{chapters/chapter2/aChapters2.tex}
-	\input{chapters/chapter2/bmainFunctionalities.tex}           %-------- Main Functionalities
-	\input{chapters/chapter2/cPrototypeRestrictions.tex}         %-------- Prototype Restrictions
-
-	%---------- Chapter 3 ---------------------------------------- System Description
-	\input{chapters/chapter4/aChapters4.tex}
-	\input{chapters/chapter4/bMechanicalComponents.tex}	         %-------- Mechanical Components
-	\input{chapters/chapter4/cController.tex}				             %-------- Controller
-	\input{chapters/chapter4/dMotor.tex}					               %-------- Motor and Control Board
-	\input{chapters/chapter4/eSensors.tex}                       %-------- Sensors
-	\input{chapters/chapter4/fCodeBase.tex}					             %-------- Code Base
-	\input{chapters/chapter4/gTail.tex}                          %-------- Chapter's tail
-	
-	%---------- Chapter 5 ---------------------------------------- System Modelling
-	\input{chapters/chapter5/aChapters5.tex}
-	\input{chapters/chapter5/bDerivationOfModel.tex}             %-------- Derivation
-	\input{chapters/chapter5/cLinearizationOfModel.tex}          %-------- Linearization
-	\input{chapters/chapter5/dBlockDiagram.tex}    		           %-------- Block Diagram
+%	%%% Prereport %%%
+%	\setlength\cftaftertoctitleskip{2pt}
+%	\setlength\cftafterloftitleskip{6pt}
+%	\setlength\cftafterlottitleskip{6pt}
+%	\selectlanguage{english}
+%	\title{Cubli}
+%	
+%	%%% Frontmatter Settings %%%
+%	\pagestyle{empty} %disable headers and footers
+%	\pagenumbering{roman} %use roman page numbering in the frontmatter I II...
+%	\fancyfoot[RE,LO]{16gr630} %page number on all pages
+%	\fancyfoot[LE,RO]{\thepage}
+%	\fancyhead[LE,LO,RE,RO]{}
+%	
+%	%%% Introductory Formalities %%%
+%	%\includepdf[pages={1}]{formalities/frontpage.pdf}
+%	\input{chapters/frontpage}
+%	\pagestyle{fancy}
+%	\input{formalities/kolofon}
+%	\input{formalities/titleSheet}
+%	%%% Preface %%%
+%	%\cleardoublepage
+%	\input{formalities/preface.tex}
+%	
+%	\pdfbookmark[0]{Table of Contents}{label: tableOfContents}
+%	\tableofcontents
+%	\cleardoublepage
+%	
+%	
+%	%%% Mainmatter Settings %%%
+%	\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+%	\fancyfoot[RO,LE]{\thepage \text{ of} \pageref{LastPage}}
+%	\fancyfoot[RE,LO]{16gr630}
+%	\fancyhead[RE,LO]{}
+%	\fancyhead[RE,LO]{\color{aaublue}\small\nouppercase\leftmark} %even page - chapter title
+%	\pagestyle{fancy}
+%	
+%	%%% Part 1 %%%
+%	\part{Pre-analysis}
+%	
+%	%---------- Chapter 1 ---------------------------------------- Introduction
+%	\input{chapters/chapter1/aChapters1.tex}
+%	%\input{chapters/chapter1/bSectionAndSubsections.tex}
+%	%\input{chapters/chapter1/cSectionAndSubsections.tex}        %-------- For Overview, sometimes short headlines here works well
+%	
+%	%---------- Chapter 2 ---------------------------------------- Design Considerations
+%	\input{chapters/chapter2/aChapters2.tex}
+%	\input{chapters/chapter2/bmainFunctionalities.tex}           %-------- Main Functionalities
+%	\input{chapters/chapter2/cPrototypeRestrictions.tex}         %-------- Prototype Restrictions
+%
+%	%---------- Chapter 3 ---------------------------------------- System Description
+%	\input{chapters/chapter4/aChapters4.tex}
+%	\input{chapters/chapter4/bMechanicalComponents.tex}	         %-------- Mechanical Components
+%	\input{chapters/chapter4/cController.tex}				             %-------- Controller
+%	\input{chapters/chapter4/dMotor.tex}					               %-------- Motor and Control Board
+%	\input{chapters/chapter4/eSensors.tex}                       %-------- Sensors
+%	\input{chapters/chapter4/fCodeBase.tex}					             %-------- Code Base
+%	\input{chapters/chapter4/gTail.tex}                          %-------- Chapter's tail
+%	
+%	%---------- Chapter 5 ---------------------------------------- System Modelling
+%	\input{chapters/chapter5/aChapters5.tex}
+%	\input{chapters/chapter5/bDerivationOfModel.tex}             %-------- Derivation
+%	\input{chapters/chapter5/cLinearizationOfModel.tex}          %-------- Linearization
+%	\input{chapters/chapter5/dBlockDiagram.tex}    		           %-------- Block Diagram
 	
 	%---------- Chapter 6 ---------------------------------------- Plant Analysis
 	\input{chapters/chapter6/aChapters6.tex}
@@ -81,40 +81,40 @@
 	\input{chapters/chapter6/b8ImplementationOfSteepestDescent.tex}%------- Implementation of Steepest Descent
 	%\input{chapters/chapter6/b8NewtonsMethod.tex}                %-------- Newton's Method
 	%\input{chapters/chapter6/b9ImplementationOfNewton.tex}       %-------- Implementation of Newtion's
-	\input{chapters/chapter6/b10SensToolsAndFinalParameters.tex} %-------- Senstools and Final Parameters
-	\input{chapters/chapter6/cModelAnalysis.tex}		             %-------- Model Analysis
-	\input{chapters/chapter6/dStability.tex}			               %-------- Stability Analysis
-	
-	%---------- Chapter 7 ---------------------------------------- Requirements
-	\input{chapters/chapter7/aRequirements.tex}
-	
-	%%% Part 2 %%%
-	\part{Design \& Implementation}
-	%---------- Chapter 8 ---------------------------------------- Classical Control Design
-	\input{chapters/chapter8/aChapters8.tex}
-	\input{chapters/chapter8/cRootLocusBasics.tex}			         %-------- Root Locus Theory
-	\input{chapters/chapter8/bClosedLoop.tex}			               %-------- Closed Loop response
-	\input{chapters/chapter8/dDesignController.tex}			         %-------- Design of the Controller
-	\input{chapters/chapter8/fDiscretizationController.tex}      %-------- Discretization
-	\input{chapters/chapter8/gImplementationController.tex}	     %-------- Implementation
-	\input{chapters/chapter8/hVerificationController.tex}        %-------- Verification
-	
-	%---------- Chapter 9 ---------------------------------------- State Space Controller
-	\input{chapters/chapter9/aChapters9.tex}
-	\input{chapters/chapter9/bSSDescription.tex}           	     %-------- Description in State Space
-	\input{chapters/chapter9/cSSAnalysis.tex}	                   %-------- Analysis in State Space
-	\input{chapters/chapter9/dSSController.tex}	                 %-------- Controller in State Space
-	\input{chapters/chapter9/dSSImplementation.tex}	             %-------- Implementation of the Controller 
-		
-	%---------- Chapter 10 ----------------------------------------- Complementary Filter
-	\input{chapters/chapter10/aComplementaryFilter.tex}		
+%	\input{chapters/chapter6/b10SensToolsAndFinalParameters.tex} %-------- Senstools and Final Parameters
+%	\input{chapters/chapter6/cModelAnalysis.tex}		             %-------- Model Analysis
+%	\input{chapters/chapter6/dStability.tex}			               %-------- Stability Analysis
 %	
-	%%% Part 3 %%%
-	\part{Test \& Conclusion}
-	\input{chapters/aAcceptanceTest/acceptanceTest}
-	\input{chapters/bDiscussion/discussion}
-	\input{chapters/cConclusion/conclusion}
-	\input{chapters/dPerspective/perspective}
+%	%---------- Chapter 7 ---------------------------------------- Requirements
+%	\input{chapters/chapter7/aRequirements.tex}
+%	
+%	%%% Part 2 %%%
+%	\part{Design \& Implementation}
+%	%---------- Chapter 8 ---------------------------------------- Classical Control Design
+%	\input{chapters/chapter8/aChapters8.tex}
+%	\input{chapters/chapter8/cRootLocusBasics.tex}			         %-------- Root Locus Theory
+%	\input{chapters/chapter8/bClosedLoop.tex}			               %-------- Closed Loop response
+%	\input{chapters/chapter8/dDesignController.tex}			         %-------- Design of the Controller
+%	\input{chapters/chapter8/fDiscretizationController.tex}      %-------- Discretization
+%	\input{chapters/chapter8/gImplementationController.tex}	     %-------- Implementation
+%	\input{chapters/chapter8/hVerificationController.tex}        %-------- Verification
+%	
+%	%---------- Chapter 9 ---------------------------------------- State Space Controller
+%	\input{chapters/chapter9/aChapters9.tex}
+%	\input{chapters/chapter9/bSSDescription.tex}           	     %-------- Description in State Space
+%	\input{chapters/chapter9/cSSAnalysis.tex}	                   %-------- Analysis in State Space
+%	\input{chapters/chapter9/dSSController.tex}	                 %-------- Controller in State Space
+%	\input{chapters/chapter9/dSSImplementation.tex}	             %-------- Implementation of the Controller 
+%		
+%	%---------- Chapter 10 ----------------------------------------- Complementary Filter
+%	\input{chapters/chapter10/aComplementaryFilter.tex}		
+%%	
+%	%%% Part 3 %%%
+%	\part{Test \& Conclusion}
+%	\input{chapters/aAcceptanceTest/acceptanceTest}
+%	\input{chapters/bDiscussion/discussion}
+%	\input{chapters/cConclusion/conclusion}
+%	\input{chapters/dPerspective/perspective}
 	
 	%%% Setup for Appendix and Bibliography %%%
 
@@ -138,51 +138,51 @@
 
 
 	\appendix
-	\part*{Appendix} \addcontentsline{toc}{chapter}{Appendix}
-	\cleardoublepage\makeatletter\@openrightfalse\makeatother
-	
-	
-	%---------- Appendix A ----------------------------------------
-	\input{appendix/dPotmeterLinearity.tex}
-		
-	%---------- Appendix B ---------------------------------------- 
-	\input{appendix/aPotmeterOffset.tex}
-	
-	%---------- Appendix C ---------------------------------------- 
-	\input{appendix/bFallTest.tex}
-	
-	%----------Appendix D ---------------------------------------- 
-	\input{appendix/cImpTest.tex}
-		
-	%---------- Appendix E ----------------------------------------
-	\input{appendix/eFrameTest.tex}
-	
-	%%---------- Appendix F ----------------------------------------
-	%\input{appendix/hSISOToolDesignedController.tex}
-	
-	%---------- Appendix G ----------------------------------------
-	\input{appendix/fIMUConfig.tex}
-	
-	%---------- Appendix H ---------------------------------------- 
-	\input{appendix/kMaxonControllESCON.tex}
-	
-	%---------- Appendix I ---------------------------------------- 
-	\input{appendix/gIMUmeasurements.tex}
-	
-	%---------- Appendix J ---------------------------------------- 
-	\input{appendix/jMotorCurrentTest.tex}
-	
-	%---------- Appendix K ---------------------------------------- 
-	\input{appendix/lProgramCharacteristics.tex}
-	
-	%---------- Appendix L ---------------------------------------- 
-	\input{appendix/hSISOControllerFinalTest.tex}
-
-	%---------- Appendix M ---------------------------------------- 
-	\input{appendix/nParametersOfTheWheel.tex}
-			
-	%---------- Appendix N ---------------------------------------- 
-	\input{appendix/lConnectingBreakoutBoard.tex}
+%	\part*{Appendix} \addcontentsline{toc}{chapter}{Appendix}
+%	\cleardoublepage\makeatletter\@openrightfalse\makeatother
+%	
+%	
+%	%---------- Appendix A ----------------------------------------
+%	\input{appendix/dPotmeterLinearity.tex}
+%		
+%	%---------- Appendix B ---------------------------------------- 
+%	\input{appendix/aPotmeterOffset.tex}
+%	
+%	%---------- Appendix C ---------------------------------------- 
+%	\input{appendix/bFallTest.tex}
+%	
+%	%----------Appendix D ---------------------------------------- 
+%	\input{appendix/cImpTest.tex}
+%		
+%	%---------- Appendix E ----------------------------------------
+%	\input{appendix/eFrameTest.tex}
+%	
+%	%%---------- Appendix F ----------------------------------------
+%	%\input{appendix/hSISOToolDesignedController.tex}
+%	
+%	%---------- Appendix G ----------------------------------------
+%	\input{appendix/fIMUConfig.tex}
+%	
+%	%---------- Appendix H ---------------------------------------- 
+%	\input{appendix/kMaxonControllESCON.tex}
+%	
+%	%---------- Appendix I ---------------------------------------- 
+%	\input{appendix/gIMUmeasurements.tex}
+%	
+%	%---------- Appendix J ---------------------------------------- 
+%	\input{appendix/jMotorCurrentTest.tex}
+%	
+%	%---------- Appendix K ---------------------------------------- 
+%	\input{appendix/lProgramCharacteristics.tex}
+%	
+%	%---------- Appendix L ---------------------------------------- 
+%	\input{appendix/hSISOControllerFinalTest.tex}
+%
+%	%---------- Appendix M ---------------------------------------- 
+%	\input{appendix/nParametersOfTheWheel.tex}
+%			
+%	%---------- Appendix N ---------------------------------------- 
+%	\input{appendix/lConnectingBreakoutBoard.tex}
 
 	
 %	\end{appendices}

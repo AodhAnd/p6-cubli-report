@@ -11,7 +11,7 @@ The basic scheme for the optimization problem is given in \figref{SensToolSchema
 \end{figure}
 %
 The provided data is taken from an initial value test of the Cubli hanging down like a pendulum, see \appref{app:impulseResponseAppendix}.
-As the operating angle goes from \si{-0,15\ to\ 0,15\ rad}, the behavior at this range will be better if the fit is done between this operating points. 
+If the fit is done in the operating region from \si{-0,15\ to\ 0,15\ rad}, the simulated behavior in this range will be closer to reality.
 
 Furthermore, the nonlinear model is used to accurately describe the oscillatory behavior of the pendulum. The model is modified such that it describes the system as a regular pendulum without the dynamics of the reaction wheel, in order to match the test conditions under which the data was extracted, as seen in \figref{blockDiagramSenseTool}.
 %
@@ -25,18 +25,18 @@ Furthermore, the nonlinear model is used to accurately describe the oscillatory 
 In order to minimize the difference between the data points measured in test and the output of the model, a function to describe such a relationship is needed. The cost function used to describe goodness of the fit, is a mean square error function.
 %
 \begin{flalign}
-	\eq{P(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 } &
+	\eq{P(\vec{\theta})} {\frac{1}{2N}\sum_{k = 1}^{N} \left(y_{k} - y_{m_k}(\vec{\theta})\right)^2 } &
 \label{costFunctionEquation}
 \end{flalign}
 %
 \hspace{6mm} Where:\\
-\begin{tabular}{ p{1cm} l l l}
-& \si{\vec{\theta}}   & is the parameter(s) to be adjusted                  & \\
-& \si{N}              & is the degrees of freedom for each parameter        & \\
-& \si{k}              & is the sample indexes, \si{k=1,\ 2,} ...\si{,\ N}   & \\
-& \si{T}              & is the sampling time                                & \\
-& \si{\vec{y}}        & is the test measurement output vector               & \\
-& \si{\vec{y_m}}      & is the model output vector                          & \\
+\begin{tabular}{ p{1cm} l p{10cm} l}
+& \si{\vec{\theta}}   & is the parameter(s) to be adjusted                                                                      & \\
+& \si{N}              & is the degrees of freedom for each parameter                                                            & \\
+& \si{k}              & is each sample in time, \si{t=1T,\ 2T,\ } ...\si{,\ kT, } ...\si{,\ NT}\newline
+                        where \si{T} is sampling time                                                                           & \\
+& \si{{y}_{k}}        & is the \si{k^{th}} sample of the test measurement output vector                                         & \\
+& \si{{y_{m_k}}}      & is the \si{k^{th}} sample of the model output vector                                                    & \\
 \end{tabular}
 
-A normal mean square error function is only divided by the degrees of freedom, \si{N}, but in tis case is divided by \si{2N} to cancel out the factor which arises when computing its gradient. This does not have any impact since the minimum maintains its original position.
+A normal mean square error function is only divided by the degrees of freedom, \si{N}, but in this case it is divided by \si{2N} to cancel out the factor two which arises when computing its gradient. This does not have any impact on the solution since the minimum maintains its original position.

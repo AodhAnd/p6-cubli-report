@@ -1,6 +1,6 @@
 \subsubsection{Dichotomous Line Search}
-The dichotomous line search is one of the more basic methods. The method locates the middle of the bracket (along x) and finds a point on either side of the middle, this gives the following two x-values at which function must be evaluated.
-
+The dichotomous line search is one of the more basic methods. The method locates the middle of the bracket (along x) and finds a point on either side of the middle, this gives the following two x-values at which the cost function must be evaluated.\cite{AAntoniou}
+%
 \begin{flalign}
   \si{x_a} &= \si{\frac{x_{U} - x_{L}}{2}-\epsilon \ \ \ \  \ \ \ \ x_b = \frac{x_{U} - x_{L}}{2}+\epsilon} &
   \label{dichotomousXaXb}
@@ -15,11 +15,9 @@ The dichotomous line search is one of the more basic methods. The method locates
 & \si{\epsilon}   & is the small change in positive and negative direction from the middle  & \\
 \end{tabular}
 
-When the cost function, \si{f(x)} is evaluated at \si{x_a} and \si{x_b}, the two results are compared and two new possible intervals with possibility of containing the minimum can be determined as a consequence. These two intervals can be combined such that a new smaller bracket containing the minimum is found.\\
+When the cost function, \si{f(x)} is evaluated at \si{x_a} and \si{x_b}, the two results are compared and two new possible intervals with possibility of containing the minimum can be determined as a consequence. These two intervals can be combined such that a new smaller bracket containing the minimum is found.\cite{AAntoniou}\\
 
-This process of reducing the range of the bracket is illustrated in \figref{dichotomousLargerAorB}, where the green and red functions are examples of how f(x) could behave given the red known points. This leaves the two possible intervals for the minimum \si{x^*}. In the case of \si{f(x_a) < f(x_b)}, in \figref{dichotomousLargerB}, the possible intervals, \si{x_{L} < x^* < x_a} and \si{x_a < x^* < x_b}, can be combined to the new bracket \si{x_{L} < x^* < x_b}, shown in blue, which is sure to contain the minimum, \si{x^*}, within \si{x_{L}} and \si{x_{U}}.\\
-Said in an other way, if \si{f(x_a) < f(x_b)}, \si{x^*} must be contained in \si{[x_{L},\ x_b]}, so \si{x_b = x_{U}} for the next iteration. \\
-In the unlikely case that \si{f(x_a) = f(x_b)}, either \si{x_a} or \si{x_b} can be set as the new boundary.
+This process of reducing the range of the bracket is illustrated in \figref{dichotomousLargerAorB}, where the green and red functions are examples of how f(x) could behave given the red known points. This leaves the two possible intervals for the minimum \si{x^*}. In the case of \si{f(x_a) < f(x_b)}, in \figref{dichotomousLargerB}, the possible intervals, \si{x_{L} < x^* < x_a} and \si{x_a < x^* < x_b}, can be combined to the new bracket \si{x_{L} < x^* < x_b}, shown in blue, which is sure to contain the minimum, \si{x^*}, within \si{x_{L}} and \si{x_{U}}. Said in an other way, if \si{f(x_a) < f(x_b)}, \si{x^*} must be contained in \si{[x_{L},\ x_b]}, so \si{x_b = x_{U}} for the next iteration. In the unlikely case that \si{f(x_a) = f(x_b)}, either \si{x_a} or \si{x_b} can be set as the new boundary.\cite{AAntoniou}
 
 \begin{figure}[H]
   \begin{minipage}{\linewidth}
