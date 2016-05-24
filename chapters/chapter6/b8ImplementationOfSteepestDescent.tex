@@ -3,24 +3,24 @@ To better understand the problem at hand the cost function to be minimized is sh
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.65\textwidth]{figures/costFunction}
+	\includegraphics[width=.55\textwidth]{figures/costFunction2}
 	\caption{The cost function to be minimized. The parameters are shown in the xy-plane and the deviation between simulation and test data, cost, for each two parameters is shown on the z axis. To generate the graph 90.000 simulations were run, one for each point on the surface, and the rendering time exceeded 5 hours. This is not practical to work with in general, but valuable in the implementation process of the optimization algorithm.}
 	\label{costFunction}
 \end{figure}
 
 When implementing the steepest descent method the gradient of the cost function in needed, which includes a numerical differentiation of the model.
-
+%
 \begin{flalign}
-	\nabla\ P(\vec{\theta}) &= \vec{G}(\vec{\theta}) = \nabla \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})\right)^2 \right) &
+	\nabla\ P(\vec{\theta}) &= \vec{G}(\vec{\theta}) = \nabla \left( \frac{1}{2N}\sum_{k = 1}^{N} \left(\vec{y}_k - \vec{y}_{m_k}(\vec{\theta})\right)^2 \right) &
 \end{flalign}
 \begin{flalign}
-	\eq{\vec{G}(\vec{\theta})} {- \frac{1}{N}\sum_{k = 1}^{N} \left((\vec{y}(kT) - \vec{y_m}(kT, \vec{\theta})) \ \nabla \ \vec{y_m}(kT, \vec{\theta}) \right) } &
+	\eq{\vec{G}(\vec{\theta})} {- \frac{1}{N} \left(\nabla\ \vec{y}_{m_k}(\vec{\theta})^T(\vec{y}_k - \vec{y}_{m_k}(\vec{\theta})) \right) } &
 	\label{gradientOfCostFunction}
 \end{flalign}
-
+%
 The implementation is seen in \autoref{AlgorithmForModelGradient}.
 \begin{lstlisting}[ style=custommatlab,
-caption  = {Algorithm for the approximation of the gradient of the cost function},
+caption  = {Algorithm for the approximation of the gradient of the cost function.},
 label    = AlgorithmForModelGradient ]
 %---- CALCULATING THE GRADIENT OF THE COST FUNCTION ------------------------
 
@@ -72,7 +72,7 @@ With the gradient calculated the search direction is known, and implementation o
       \label{CostFunctionMinimized3D}
     }
     {
-      \includegraphics[scale=.5]{costFunctionMinimized}
+      \includegraphics[scale=.5]{costFunctionMinimized2}
     }\quad
     \subcaptionbox
     {
@@ -91,7 +91,7 @@ The final result achieved in by the algorithm is shown in \figref{resultOfGradie
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=.8\textwidth]{figures/resultOfGradientWithFibonacciAndForwardBackward}
+	\includegraphics[width=.65\textwidth]{figures/resultOfGradientWithFibonacciAndForwardBackward}
 	\caption{The final result of the minimization using steepest descent with Fibonacci line search and forward backward method.}
 	\label{resultOfGradientWithFibonacciAndForwardBackward}
 \end{figure}
