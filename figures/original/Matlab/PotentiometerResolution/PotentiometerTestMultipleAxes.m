@@ -117,7 +117,7 @@ set(AAX(2),...
 title('Potentiometer Range')
 xlabel('Time (s)')
 ylabel(AAX(1), 'Voltage (V)')
-ylabel(AAX(2), 'ADC Value')
+ylabel(AAX(2), 'ADC Value (mV)')
 
 legend('Angular movement',...
        'Lower limmit',...
@@ -239,7 +239,7 @@ set(AX(2),...
 title('Angle Range of Cubli')
 xlabel('Time (s)')
 ylabel(AX(1), 'Angular Position (rad)')
-ylabel(AX(2), 'Angular Position (^\circ)')
+ylabel(AX(2), 'Angular Position (deg)')
 
 %adding legend
 legend('Angular movement',...
