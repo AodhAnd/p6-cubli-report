@@ -1,7 +1,7 @@
 \subsubsection{Forward Backward Method}
-The gradient shows the search direction and Fibonacci line search finds a minimizer to the one-dimensional problem contained within some bracket in this direction. It follows that some method for finding the bracket to contain the line search must be selected. For this purpose the forward backward method is chosen. The method attempts to find values of the cost function which goes from high to low to high.
+The gradient shows the search direction and Fibonacci line search finds a minimizer to the one-dimensional problem contained within some bracket in this direction. It follows that some method for finding the bracket to contain the line search must be selected. For this purpose the forward backward method is chosen. The method attempts to find values of the cost function which goes from high to low to high.\cite{WSun}
 
-The idea is simple: it takes a step forward from the initial point, evaluates the cost function, and if the value is higher than the original one it takes a step backward, otherwise it takes a step forward. If it finds high low low, the step-length is increased. Since it is searching in the gradient direction a low high high geometry indicates that the minimum lies in the found interval so long as the set searched is convex; that is, the initial step did not step over a peak of the cost function.\\
+The idea is simple: It takes a step forward from the initial point, evaluates the cost function, and if the value is higher than the original one it takes a step backward, otherwise it takes a step forward. If it finds high low low, the step-length is increased. Since it is searching in the gradient direction a low high high geometry indicates that the minimum lies in the found interval so long as the set searched is monotonic; that is, the initial step did not step over a peak of the cost function.\cite{WSun}\\
 In \figref{gradientForwardBackwardAndFibonacci} an implementation of the gradient descend method is illustrated. \Figref{gradientForwardBackwardAndFibonacciZoom} shows how the gradient method generates a pattern with almost orthogonal lines converging to the minimum of the function.
 
 \begin{minipage}{\linewidth}
@@ -25,14 +25,3 @@ In \figref{gradientForwardBackwardAndFibonacci} an implementation of the gradien
 		\end{figure}
 	\end{minipage}
 \end{minipage}
-
-With this background an implementation to solve the optimization problem presented in the beginning of this section described by \eqref{costFunctionEquation} has been done.
-
-The result can be seen in \figref{paramEstFibonacci}, which gives \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2} and \si{B_F=7,8 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.65]{figures/paramEstFibonacci}
-	\caption{Data from the test (red) and final fit with the estimation of the parameters (blue).}
-	\label{paramEstFibonacci}
-\end{figure}

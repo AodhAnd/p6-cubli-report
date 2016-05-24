@@ -1,3 +1,4 @@
+\subsubsection{Implementation of Steepest Descent}
 To better understand the problem at hand the cost function to be minimized is shown in \figref{costFunction}. It might seem strange to do optimization when one could just directly find the minimum by graphical inspection of the cost function. However, this graph took over 5 hours to render and contains the results of 90.000 simulations, which makes it a very inefficient and unpractical to work with in general. It is therefore desirable to obtain an optimization algorithm which can give a result in a relatively short time in case of any changes, be it new test data or changes to the system model. In this case the cost function is saved in a data-file, such that it can be plotted during implementation as a graphical reassurance that the optimization algorithm is behaving normally.
 
 \begin{figure}[H]
@@ -86,11 +87,11 @@ With the gradient calculated the search direction is known, and implementation o
   \end{minipage}
 \end{figure}
 
-The final result achieved in by the algorithm is shown in \figref{resultOfGradientWithFibonacciAndForwardBackward}, where the normed RMS error between test results and simulation with final parameters,\si{J_F = 0.0048} and \si{B_F = 0.0078},is also shown.
+The final result achieved in by the algorithm is shown in \figref{resultOfGradientWithFibonacciAndForwardBackward}, where the normed RMS error between test results and simulation with final parameters, \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2} and \si{B_F=7,8 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}, is also shown.
 
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.8\textwidth]{figures/resultOfGradientWithFibonacciAndForwardBackward}
-	\caption{CAPTION}
+	\caption{The final result of the minimization using steepest descent with Fibonacci line search and forward backward method.}
 	\label{resultOfGradientWithFibonacciAndForwardBackward}
 \end{figure}

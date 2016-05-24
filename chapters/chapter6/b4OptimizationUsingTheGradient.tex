@@ -1,7 +1,7 @@
 \subsection{Optimization using the Gradient}
 One way of solving the optimization problem is through the use of the gradient. It indicates in which direction the steepest descent (or ascent) is found in an infinitesimal surrounding of a given starting point.
 
-For a function \si{f(\vec{x})} with a change in \si{\vec{x}} of \si{\vec{\delta}}, the following can be obtained from the Taylor series.
+For a function \si{f(\vec{x})} with a change in \si{\vec{x}} of \si{\vec{\delta}}, the following can be obtained from the Taylor series.\cite{AAntoniou}
 %
 \begin{flalign}
   f(\vec{x}+\vec{\delta}) &\approx f(\vec{x}) + \vec{g}^T \vec{\delta} + \frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta} &
@@ -27,7 +27,7 @@ For a function \si{f(\vec{x})} with a change in \si{\vec{x}} of \si{\vec{\delta}
 %& \si{\theta} 					    	   & is the angle between \si{\vec{g}} and \si{\vec{\delta}}     & \\
 %\end{tabular}
 
-In gradient based methods, only the first order Taylor approximation is used, that is, the last term, \si{\frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta}} is discarded. If the derivative of the first order approximation is set to zero, the following is obtained.
+In gradient based methods, only the first order Taylor approximation is used, that is, the last term, \si{\frac{1}{2} \vec{\delta}^T \vec{H}\vec{\delta}} is discarded. If the derivative of the first order approximation is set to zero, the following is obtained.\cite{AAntoniou}
 %
 \begin{flalign}
   \nabla\ f(\vec{x}+\vec{\delta}) &\approx \vec{g} = 0 &
@@ -45,7 +45,7 @@ That is, if the gradient of the function to be minimized is 0, a minimum or maxi
 	\label{visualizationOfGradient}
 \end{figure}
 
-One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each iteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \ref{SteepestDescendSmallStep}, where \si{x^*} is the value of \si{x} which minimizes \si{f(x)}, \si{x_0} is the starting point at which \si{-g} is computed and \si{x} is the point reached after the step.
+One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each iteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \ref{SteepestDescendSmallStep}, where \si{x^*} is the value of \si{x} which minimizes \si{f(x)}, \si{x_0} is the starting point at which \si{-g} is computed and \si{x} is the point reached after the step.\cite{Senstools}
 %
 \begin{minipage}{\linewidth}
 	\begin{minipage}{0.45\linewidth}
