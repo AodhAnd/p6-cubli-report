@@ -33,7 +33,7 @@ grid on, grid minor;
 xlim([ min(x) max(x)]);
 
 %setting title and axis labels
-title('Dichotomus Line Search');
+title('Dichotomous Line Search');
 xlabel('X');
 
 if optimalityTest == 1

@@ -27,6 +27,8 @@
       % FEEDBACKS %
       node(veloFeedback) at (7,-1) [block] {\large \si{B_F}}
       node(angleFeedback) at (8,-2) [block] {\large \si{(m_F \cdot l_F + m_w \cdot l_w)g}}
+      node(sinFeedback) at (12,-2) [block] {\large \si{\sin}}
+	  
     ;
     %-- Block linking --%
     % INPUT %
@@ -40,12 +42,13 @@
     % DIRECT TERM %
     \draw[->] (sum1)            -- (sum2);
     \draw[->] (sum2)            -- (torque2rotacc1);
-    \draw[->] (torque2rotacc1)  -- node{\large \si{\alpha_F(s)}}(integration1);
-    \draw[->] (integration1)    -- node{\large \si{\omega_F(s)}}(integration2);
+    \draw[->] (torque2rotacc1)  -- node{\large \si{\ddot \theta_{F}(s)}}(integration1);
+    \draw[->] (integration1)    -- node{\large \si{\dot \theta_{F}(s)}}(integration2);
 
     % FEEDBACKS
 
-    \draw[->] (output)           |- (angleFeedback);
+    \draw[->] (output)           |- (sinFeedback);
+    \draw[->] (sinFeedback)      -- (angleFeedback);
     \draw[->] (angleFeedback)    -| (sum1);
 
     \draw[->] (veloFeedbackNode) |- (veloFeedback);
