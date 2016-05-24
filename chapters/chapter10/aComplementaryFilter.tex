@@ -23,16 +23,16 @@ The accelerometers used with the Cubli setup have 3-axis detection as described 
 	\hspace{0.03\linewidth}
 	\begin{minipage}{0.45\linewidth}
 		\begin{figure}[H]
-			\includegraphics[scale=.45]{figures/tangentCircle}
+			\includegraphics[scale=.425]{figures/tangentCircle}
 			\centering
 			\captionsetup[subfigure]{font = footnotesize}
-			\captionof{figure}{Tangens is only valid as long as x is positive (a), where the angle (\si{\beta}) is found through the inverse tangens \si{\beta = \arctan\left(\frac{y}{x}\right)} . If the frame moves more than \si{45^\circ} from equilibrium, then the IMU will have x or y move outside the two areas indicated with a. Angle calculation for area b is \si{\beta = \pi - \arctan\left(\frac{y}{x}\right)} and for c it is \si{\beta = \arctan\left(\frac{y}{x}\right) - \pi} } 
+			\captionof{figure}{atan() is only valid as long as x is positive (a), where the angle (\si{\beta}) is found through the inverse tangent \si{\beta = \arctan\left(\frac{y}{x}\right)} . If the frame moves more than \si{45^\circ} from equilibrium, then the IMU will have x or y move outside the two areas indicated with a. Angle calculation for area b is \si{\beta = \pi - \arctan\left(\frac{y}{x}\right)} and for c it is \si{\beta = \arctan\left(\frac{y}{x}\right) - \pi}. } 
 			\label{accelImplementation}
 		\end{figure}
 	\end{minipage}
 \end{minipage}
 
-Based on the markings on the IMU, those are the x- and y-axis components of the linear acceleration. Taking the two axis measurements shown in \figref{accelerometer} and accounting for the positioning of the IMU when the frame moves (see \figref{accelImplementation}), the angle can be found using \eqref{accelAngle} \cite{CFisher}. 
+Based on the markings on the IMU, those are the x- and y-axis components of the linear acceleration. Taking the two axis measurements shown in \figref{accelerometer} and the different calculations of \si{\beta} depending on x and y (see \figref{accelImplementation}), the angle can be found using \eqref{accelAngle} \cite{CFisher}. 
 %
 \begin{flalign}
 	\eq{accel\_\theta_{F}} {\beta + \frac{\pi}{4}} \unit{rad} 
@@ -41,7 +41,7 @@ Based on the markings on the IMU, those are the x- and y-axis components of the 
 %
 \hspace{6mm} Where:\\
 \begin{tabular}{ p{1cm} l l l}
-	& \si{\beta}& is the angle calculated between the x component and the gravity vector							& \unitWh{rad}	\\
+	& \si{\beta}& is the angle between the x component and the gravity vector		& \unitWh{rad}	\\
 %	& x			& is the x component of the measured linear acceleration   & \unitWh{m \cdot s^{-2}} \\  
 %	& y			& is the y component of the measured linear acceleration   & \unitWh{m \cdot s^{-2}} \\                   
 \end{tabular} \\
