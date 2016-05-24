@@ -19,51 +19,97 @@ This new configuration gives a new equation for \si{\vec{\dot{x}}}:
 The objective is to find K such that the eigenvalues of \si{\vec{A}-\vec{B}\vec{K}} are placed at the LHP. This gain matrix can be found using the Matlab command \lstinline[style=customcppinline]{place(A,B,P)}, where P is a vector containing the desired position of the new poles.
 
 To choose the position of these poles two simulations are made for different values. In the first one the Cubli starts from equilibrium and a disturbance torque is applied, while in the second one it starts from an initial angle different from \si{0\ rad} and with an initial velocity of the frame.  It can be observed that the velocity of the frame is in all the cases \si{0\ rad \cdot s^{-1}}.
-
-\begin{minipage}{\linewidth}
-	\begin{minipage}{0.45\linewidth}
-		\begin{figure}[H]
-			\includegraphics[scale=.55]{figures/disturbanceStateSpace}
-			\centering
-			\captionsetup{justification=centering}
-			\captionof{figure}{Response of the system to a disturbance with different locations of poles.}
+\begin{figure}[H]
+	\begin{minipage}{\linewidth}
+		\captionsetup[subfigure]{font = footnotesize}
+		\centering
+		\subcaptionbox
+		{
+			Response of the system to a disturbance with different locations of poles.
 			\label{disturbanceStateSpace}
-		\end{figure}
-	\end{minipage}
-	\hspace{0.03\linewidth}
-	\begin{minipage}{0.45\linewidth}
-		\begin{figure}[H]\vspace{0mm}
-			\includegraphics[scale=.55]{figures/disturbanceStateSpaceWheel}
-			\centering
-			\captionsetup{justification=centering}
-			\captionof{figure}{Velocity of the wheel with the same disturbance.}
+		}
+		{
+			\includegraphics[scale=.55]{figures/disturbanceStateSpace}
+		}\quad
+		\subcaptionbox
+		{
+			Velocity of the wheel with the same disturbance.
 			\label{disturbanceStateSpaceWheel}
-		\end{figure}
+		}
+		{
+			\includegraphics[scale=.55]{figures/disturbanceStateSpaceWheel}
+		}
+		\caption{Insert caption}
+		\label{disturbanceStateSpaceFrameAndWheel}
 	\end{minipage}
-\end{minipage}
+\end{figure}
+%\begin{minipage}{\linewidth}
+%	\begin{minipage}{0.45\linewidth}
+%		\begin{figure}[H]
+%			\includegraphics[scale=.55]{figures/disturbanceStateSpace}
+%			\centering
+%			\captionsetup{justification=centering}
+%			\captionof{figure}{Response of the system to a disturbance with different locations of poles.}
+%			\label{disturbanceStateSpace}
+%		\end{figure}
+%	\end{minipage}
+%	\hspace{0.03\linewidth}
+%	\begin{minipage}{0.45\linewidth}
+%		\begin{figure}[H]\vspace{0mm}
+%			\includegraphics[scale=.55]{figures/disturbanceStateSpaceWheel}
+%			\centering
+%			\captionsetup{justification=centering}
+%			\captionof{figure}{Velocity of the wheel with the same disturbance.}
+%			\label{disturbanceStateSpaceWheel}
+%		\end{figure}
+%	\end{minipage}
+%\end{minipage}
 %
-\begin{minipage}{\linewidth}
-	\begin{minipage}{0.45\linewidth}
-		\begin{figure}[H]
-			\includegraphics[scale=.55]{figures/catchingStateSpace}
-			\centering
-			\captionsetup{justification=centering}
-			\captionof{figure}{Response starting from \si{0,2\ rad} and an initial velocity of the wheel with different locations of poles.}
+\begin{figure}[H]
+	\begin{minipage}{\linewidth}
+		\captionsetup[subfigure]{font = footnotesize}
+		\centering
+		\subcaptionbox
+		{
+			Response starting from \si{0,2\ rad} and an initial velocity of the wheel with different locations of poles.
 			\label{catchingStateSpace}
-		\end{figure}
-	\end{minipage}
-	\hspace{0.03\linewidth}
-	\begin{minipage}{0.45\linewidth}
-		\begin{figure}[H]\vspace{-3mm}
-			\includegraphics[scale=.55]{figures/catchingStateSpaceWheel}
-			\centering
-			\captionsetup{justification=centering}
-			\captionof{figure}{Velocity of the wheel in the same starting conditions.}
+		}
+		{
+			\includegraphics[scale=.55]{figures/catchingStateSpace}
+		}\quad
+		\subcaptionbox
+		{
+			Velocity of the wheel in the same starting conditions.
 			\label{catchingStateSpaceWheel}
-		\end{figure}
+		}
+		{
+			\includegraphics[scale=.55]{figures/catchingStateSpaceWheel}
+		}
+		\caption{Insert caption}
+		\label{catchingStateSpaceFrameAndWheel}
 	\end{minipage}
-\end{minipage}
-
+\end{figure}
+%\begin{minipage}{\linewidth}
+%	\begin{minipage}{0.45\linewidth}
+%		\begin{figure}[H]
+%			\includegraphics[scale=.55]{figures/catchingStateSpace}
+%			\centering
+%			\captionsetup{justification=centering}
+%			\captionof{figure}{Response starting from \si{0,2\ rad} and an initial velocity of the wheel with different locations of poles.}
+%			\label{catchingStateSpace}
+%		\end{figure}
+%	\end{minipage}
+%	\hspace{0.03\linewidth}
+%	\begin{minipage}{0.45\linewidth}
+%		\begin{figure}[H]\vspace{-3mm}
+%			\includegraphics[scale=.55]{figures/catchingStateSpaceWheel}
+%			\centering
+%			\captionsetup{justification=centering}
+%			\captionof{figure}{Velocity of the wheel in the same starting conditions.}
+%			\label{catchingStateSpaceWheel}
+%		\end{figure}
+%	\end{minipage}
+%\end{minipage}
 The final combination of poles is \si{-6}, \si{-7} and \si{-15}, which gives the yellow responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. The gain matrix for this combination results in the following:
 %
 \begin{equation}  \label{controllerSS}
