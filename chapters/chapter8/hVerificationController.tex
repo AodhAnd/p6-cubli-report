@@ -1,5 +1,5 @@
-\section{Further Analysis}\label{sec:ControllerVerification}
-Since the implementation of the controller on the real Cubli is not stable, a further analysis is done in this section.
+\section{Analysis of the Controller}\label{sec:ControllerVerification}
+%Since the implementation of the controller on the real Cubli is not stable, a further analysis is done in this section.
 
 The first step is to simulate both the continuous and discrete controller with the model of the system and analyse the behavior of the whole closed loop system.
 
@@ -9,7 +9,7 @@ With a constant reference of 0 rad and a disturbance in the form of a torque app
 %
 \begin{minipage}{0.45\linewidth}
 	\begin{figure}[H]
-      \includegraphics[scale=.53]{figures/torqueComp}
+      \includegraphics[scale=.5]{figures/torqueComp}
       \captionsetup{justification=centering}
       \captionof{figure}{Controller's output (torque) response in the control loop with the continuous (blue) and discrete (red) controllers}
       \label{discreteVsContinuousOutputController}
@@ -18,27 +18,30 @@ With a constant reference of 0 rad and a disturbance in the form of a torque app
 \hspace{0.03\linewidth}
 \begin{minipage}{0.45\linewidth}
     \begin{figure}[H]\vspace{-4mm}
-      \includegraphics[scale=.53]{figures/positionComp}
+      \includegraphics[scale=.5]{figures/positionComp}
       \captionsetup{justification=centering}
       \captionof{figure}{Closed loop response of the continuous (blue) and discrete (red) controllers}
       \label{discreteVsContinuousSimulation}
     \end{figure}\vspace{-5mm}
 \end{minipage}
 
-Both controllers seem to have a good behavior and both reach the desired final position in simulation when a disturbance is applied. On the contrary, the previously implemented controller is not even able to keep the Cubli in an equilibrium position with no disturbance. \\
+Both controllers seem to have a good behavior and both reach the desired final position in simulation when a disturbance is applied. 
+
+The implementation of the controller in the real model gives the results in \appref{app:hSISOControllerFinalTest}, where it can be seen that the controller is able to balance the Cubli. However, the behavior is marginally stable and the reason seem to be that there is no control on the velocity of the reaction wheel. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior
+%On the contrary, the previously implemented controller is not even able to keep the Cubli in an equilibrium position with no disturbance. \\
+%%
+%\begin{figure}[H]\vspace{-4mm}
+%	\centering
+%	\includegraphics[scale=.53]{figures/wheelComp}
+%	\captionof{figure}{Angular velocity of the wheel from the simulation when a disturbance torque is applied. When angular position reaches steady state (\figref{discreteVsContinuousSimulation}) the value of the velocity is not \SI{0}{rad \cdot s^{-1}}.}
+%   \label{fig:discreteVsContinuousWheel}
+%\end{figure}\vspace{-5mm}
 %
-\begin{figure}[H]\vspace{-4mm}
-	\centering
-	\includegraphics[scale=.53]{figures/wheelComp}
-	\captionof{figure}{Angular velocity of the wheel from the simulation when a disturbance torque is applied. When angular position reaches steady state (\figref{discreteVsContinuousSimulation}) the value of the velocity is not \SI{0}{rad \cdot s^{-1}}.}
-   \label{fig:discreteVsContinuousWheel}
-\end{figure}\vspace{-5mm}
+%Anyhow, even in the simulation, the velocity of the wheel is different than 0 when the angle reaches a steady state as shown on \figref{fig:discreteVsContinuousWheel}.\\
+%It should not be any problem since a constant velocity does not produce any torque 
+%to the system. However there is friction in the wheel, which will make it to slow down, producing an acceleration on the system. This will make the Cubli to slightly move from equilibrium position and the controller will try to apply some torque to the system to balance it. The problem arises if the motor was already very closed to its maximum speed and it will not be able to accelerate more and produce the torque needed, making the frame fall over.
 
-Anyhow, even in the simulation, the velocity of the wheel is different than 0 when the angle reaches a steady state as shown on \figref{fig:discreteVsContinuousWheel}.\\
-It should not be any problem since a constant velocity does not produce any torque 
-to the system. However there is friction in the wheel, which will make it to slow down, producing an acceleration on the system. This will make the Cubli to slightly move from equilibrium position and the controller will try to apply some torque to the system to balance it. The problem arises if the motor was already very closed to its maximum speed and it will not be able to accelerate more and produce the torque needed, making the frame fall over.
-
-The conclusion is that a Single-Input Single-Output controller is not able to ensure zero velocity in equilibrium with only a feedback in the position of the frame. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
+%The conclusion is that a Single-Input Single-Output controller is not able to ensure zero velocity in equilibrium with only a feedback in the position of the frame. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
 
 One way could be using a cascade controller to control both the velocity of the wheel and the position of the frame. In \figref{cascadeControl} it can be seen the block diagram for a cascade control, with the particularity of a feedback from the position of frame to the velocity of the wheel.
 
