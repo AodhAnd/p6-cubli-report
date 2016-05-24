@@ -233,8 +233,12 @@ double Imu::getPosition(double accAngleNow, double gyroVelocityNow, double Ts, i
 
 \end{lstlisting}
 
-The position is calculated through the function \lstinline[style=customcppinline]{getPosition()}. \\
-First, the values for the offset of the accelerometer angle and the cut-off frequency are initialized, as well as the two constants for the filter, K1 and K2.\\
-When this function is called the first time, accelerometer, gyroscope and angle arrays are initialized.\\
-The old values from \lstinline[style=customcppinline]{accel_angle}, \lstinline[style=customcppinline]{gyro_angle} and \lstinline[style=customcppinline]{comp_angle} are moved up in their arrays and new data is saved in \lstinline[style=customcppinline]{gyro_angle} and \lstinline[style=customcppinline]{accel_angle} on index 0. \\
+The position is calculated through the function \lstinline[style=customcppinline]{getPosition()}.
+
+First, the values for the offset of the accelerometer angle and the cut-off frequency are initialized, as well as the two constants for the filter, K1 and K2.
+
+When this function is called the first time, accelerometer, gyroscope and angle arrays are initialized.
+
+The old values from \lstinline[style=customcppinline]{accel_angle}, \lstinline[style=customcppinline]{gyro_angle} and \lstinline[style=customcppinline]{comp_angle} are moved up in their arrays and new data is saved in \lstinline[style=customcppinline]{gyro_angle} and \lstinline[style=customcppinline]{accel_angle} on index 0. 
+
 Finally, the equation of the complementary filter in implemented to get the angular position of the frame.
