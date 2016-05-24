@@ -4,7 +4,7 @@ To better understand the problem at hand the cost function to be minimized is sh
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.55\textwidth]{figures/costFunction2}
-	\caption{The cost function to be minimized. The parameters are shown in the xy-plane and the deviation between simulation and test data, cost, for each two parameters is shown on the z axis. To generate the graph 90.000 simulations were run, one for each point on the surface, and the rendering time exceeded 5 hours. This is not practical to work with in general, but valuable in the implementation process of the optimization algorithm.}
+	\caption{The cost function to be minimized. The parameters are shown in the xy-plane and the deviation between simulation and test data, cost, for each two parameters is shown on the z axis. To generate the graph \si{90.000} simulations were run, one for each point on the surface, and the rendering time exceeded 5 hours on a regular PC. This is not practical to work with in general, but valuable in the implementation process of the optimization algorithm.}
 	\label{costFunction}
 \end{figure}
 
@@ -76,7 +76,7 @@ With the gradient calculated the search direction is known, and implementation o
     }\quad
     \subcaptionbox
     {
-      A contour plot of the cost function with the optimization iterations. Here the black dotted lines shows the search 
+      A contour plot of the cost function with the optimization iterations. Here the black dotted lines shows the search. 
       \label{CostFunctionMinimizedContour}
     }
     {

@@ -4,9 +4,9 @@ The aim of this project was to work with an unstable nonlinear system and be abl
 
 First, a pre-analysis of the system has been made, starting from a description of all the components present in the given setup. It also included the derivation of the equations that describe the dynamics and the description of the system in s-domain. Then the parameters of the setup have been found, both with measurements and with an estimation using optimization, to be able to analyze the behavior of the system and compare it with the real model.
 
-Afterwards, a controller to balance the Cubli has been designed using root locus. It has been shown that it was able to keep it in upright position. However, the system had a marginally stable behavior and the reason seemed to be that there was no control on the velocity of the reaction wheel. Thus, it was decided to do a state space approach, to control both position of the frame and velocity of the wheel.
+Afterwards, a controller to balance the Cubli has been designed using root locus. It has been shown that it was able to keep it in upright position. However, the system had a marginally stable behavior and the reason seemed to be that there was no control on the velocity of the reaction wheel. Thus, it was decided to use a state space design approach, to control both position of the frame and velocity of the wheel.
 
-It was also a requirement to be able to change the angle of the baseplate, which means that the calculation of the angle had to be independent of the inclination. A very convenient option was to use built-in sensors for this purpose, so the final chosen solution was to use an IMU present on the setup and calculate the angle through a complementary filter.
+It was also a requirement to be able to change the angle of the baseplate, which means that the calculation of the angle had to be independent of the inclination. A very convenient option was to use internally mounted sensors for this purpose, so the final chosen solution was to use an IMU present on the setup and calculate the angle through a complementary filter.
 
 Finally, some acceptance tests have been performed to ensure that the final controlled system was able to accomplish the requirements and, similarly, a further analysis has been carried out to check other capabilities of the Cubli.
 

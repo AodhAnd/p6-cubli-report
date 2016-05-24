@@ -5,7 +5,7 @@ The first step is to simulate both the continuous and discrete controller with t
 
 This is done not only to see the behavior of the designed controller but also to verify that the discretized controller matches the original continuous one. 
 
-With a constant reference of 0 rad and a disturbance in the form of a torque applied to the frame of \si{0,55 Nm}, the responses are the ones shown in \figref{discreteVsContinuousOutputController} and \figref{discreteVsContinuousSimulation}.
+With a constant reference of 0 rad and a disturbance in the form of a torque applied to the frame of \SI{0,55}{Nm}, the responses are the ones shown in \figref{discreteVsContinuousOutputController} and \figref{discreteVsContinuousSimulation}.
 %
 \begin{minipage}{0.45\linewidth}
 	\begin{figure}[H]
@@ -27,7 +27,7 @@ With a constant reference of 0 rad and a disturbance in the form of a torque app
 
 Both controllers seem to have a good behavior and both reach the desired final position in simulation when a disturbance is applied. 
 
-The implementation of the controller in the real model gives the results in \appref{app:hSISOControllerFinalTest}, where it can be seen that the controller is able to balance the Cubli. However, the behavior is marginally stable and the reason seem to be that there is no control on the velocity of the reaction wheel. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior
+The implementation of the controller in the real model gives the results in \appref{app:hSISOControllerFinalTest}, where it can be seen that the controller is able to balance the Cubli. However, the behavior is marginally stable and the reason seem to be that there is no control on the velocity of the reaction wheel. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
 %On the contrary, the previously implemented controller is not even able to keep the Cubli in an equilibrium position with no disturbance. \\
 %%
 %\begin{figure}[H]\vspace{-4mm}
@@ -48,7 +48,7 @@ One way could be using a cascade controller to control both the velocity of the 
 \begin{figure}[H]
 	\input{figures/blockDiagramClassicalControl.tikz}
 	\centering
-	\caption{Block diagram for a cascade control (the dotted line corresponds to a feedback in the Cubli system that is not present in the normal cascade control)}
+	\caption{Block diagram for a cascade control (the dotted line corresponds to a feedback in the Cubli system that is not present in the normal cascade control).}
 	\label{cascadeControl}
 \end{figure}
 
