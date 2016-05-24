@@ -27,7 +27,8 @@
 	%\cleardoublepage
 	\input{formalities/preface.tex}
 	
-	\cleardoublepage	
+	\cleardoublepage
+	
 	\pdfbookmark[0]{Table of Contents}{label: tableOfContents}
 	\tableofcontents
 	\cleardoublepage
@@ -69,7 +70,7 @@
 	\input{chapters/chapter5/cLinearizationOfModel.tex}          %-------- Linearization
 	\input{chapters/chapter5/dBlockDiagram.tex}    		           %-------- Block Diagram
 	
-	%---------- Chapter 6 ---------------------------------------- Plant Analysis
+%---------- Chapter 6 ---------------------------------------- Plant Analysis
 	\input{chapters/chapter6/aChapters6.tex}
 	\input{chapters/chapter6/bParamEstimation.tex}  	           %-------- Parameter Estimation
 	\input{chapters/chapter6/b2ParameterEstimationUsingOptimization.tex}%-Parameter Estimation using Optimization
@@ -80,8 +81,8 @@
 	\input{chapters/chapter6/b6bFibonacciLineSearch.tex}         %-------- Fibonacci Line Search
 	\input{chapters/chapter6/b7ForwardBackwardMethod.tex}        %-------- Forward Backward Method
 	\input{chapters/chapter6/b8ImplementationOfSteepestDescent.tex}%------- Implementation of Steepest Descent
-	%\input{chapters/chapter6/b8NewtonsMethod.tex}                %-------- Newton's Method
-	%\input{chapters/chapter6/b9ImplementationOfNewton.tex}       %-------- Implementation of Newtion's
+	\input{chapters/chapter6/b8NewtonsMethod.tex}                %-------- Newton's Method
+	\input{chapters/chapter6/b9ImplementationOfNewton.tex}       %-------- Implementation of Newtion's
 	\input{chapters/chapter6/b10SensToolsAndFinalParameters.tex} %-------- Senstools and Final Parameters
 	\input{chapters/chapter6/cModelAnalysis.tex}		             %-------- Model Analysis
 	\input{chapters/chapter6/dStability.tex}			               %-------- Stability Analysis
@@ -136,7 +137,8 @@
 		%	\setcounter{table}{0}
 		%	\setcounter{equation}{0}
 		%	\setcounter{figure}{0}
-	
+
+
 	\appendix
 	\part*{Appendix} \addcontentsline{toc}{chapter}{Appendix}
 	\cleardoublepage\makeatletter\@openrightfalse\makeatother
@@ -179,19 +181,21 @@
 	\input{appendix/hSISOControllerFinalTest.tex}
 
 	%---------- Appendix M ---------------------------------------- 
-	\input{appendix/hErrorEstimationNoEnd.tex}
-	
-	%---------- Appendix N ---------------------------------------- 
 	\input{appendix/nParametersOfTheWheel.tex}
 			
-	%---------- Appendix O ---------------------------------------- 
+	%---------- Appendix N ---------------------------------------- 
 	\input{appendix/lConnectingBreakoutBoard.tex}
 
-	%---------- Appendix P ---------------------------------------- 
-	\input{appendix/CDcontent.tex}
+	%---------- Appendix N ---------------------------------------- 
+	\input{appendix/CDcontent.tex}	
 	
+
+	
+%	\end{appendices}
+		
 	%%% Bibliography %%%
 	\printbibliography
-			
-			
+	
+	%%% To Do List %%%
+
 	\end{document}
