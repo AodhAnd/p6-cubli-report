@@ -27,6 +27,7 @@
 	%\cleardoublepage
 	\input{formalities/preface.tex}
 	
+	\cleardoublepage	
 	\pdfbookmark[0]{Table of Contents}{label: tableOfContents}
 	\tableofcontents
 	\cleardoublepage
@@ -134,8 +135,7 @@
 		%	\setcounter{table}{0}
 		%	\setcounter{equation}{0}
 		%	\setcounter{figure}{0}
-
-
+	
 	\appendix
 	\part*{Appendix} \addcontentsline{toc}{chapter}{Appendix}
 	\cleardoublepage\makeatletter\@openrightfalse\makeatother
@@ -178,17 +178,19 @@
 	\input{appendix/hSISOControllerFinalTest.tex}
 
 	%---------- Appendix M ---------------------------------------- 
+	\input{appendix/hErrorEstimationNoEnd.tex}
+	
+	%---------- Appendix N ---------------------------------------- 
 	\input{appendix/nParametersOfTheWheel.tex}
 			
-	%---------- Appendix N ---------------------------------------- 
+	%---------- Appendix O ---------------------------------------- 
 	\input{appendix/lConnectingBreakoutBoard.tex}
 
+	%---------- Appendix P ---------------------------------------- 
+	\input{appendix/CDcontent.tex}
 	
-%	\end{appendices}
-		
 	%%% Bibliography %%%
 	\printbibliography
-	
-	%%% To Do List %%%
-
+			
+			
 	\end{document}
