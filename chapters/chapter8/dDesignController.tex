@@ -50,7 +50,7 @@ The final system looks like \figref{blockDiagramController} and the transfer fun
 Where
 %
 \begin{flalign}
-	\eqOne{D(s)} {0,62737 \cdot \frac{(0,1054\ s + 1)\cdot (0,6254\ s + 1)}{(0,1805\ s - 1) \cdot (0,01\ s + 1) \cdot (0,005\ s + 1)} =} \eqTwo{= -4582,2 \cdot \frac{(s + 9,488)\cdot (s + 1,599)}{(s - 5,54) \cdot (s + 100) \cdot (s + 200)}} &\nonumber
+	\eqOne{D(s)} {0,62737 \cdot \frac{(0,1054\ s + 1)\cdot (0,6254\ s + 1)}{(0,1805\ s - 1) \cdot (0,01\ s + 1) \cdot (0,005\ s + 1)} =} \eqTwo{= -4582,2 \cdot \frac{(s + 9,488)\cdot (s + 1,599)}{(s - 5,54) \cdot (s + 100) \cdot (s + 200)}} 
 	\label{ControllerLaplace}
 \end{flalign}
 %
@@ -63,4 +63,4 @@ The stability of the controlled system can be then analyzed using the Nyquist pl
 \end{figure}	\label{nyquistController}
 
 Now there are two poles in the RHP and the number of encirclements around -1 equals -2 (they are counterclockwise). 
-This means that the system should be stable, as the number of zeros in the RHP becomes 0, (see \secref{sec:stabilityAnalysis}).
+This means that the system should be stable (see \secref{sec:stabilityAnalysis}), as the number of zeros in the RHP becomes 0.
