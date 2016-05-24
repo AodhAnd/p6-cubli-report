@@ -16,7 +16,7 @@ When implementing Newton's Method both the gradient and the Hessian of the perfo
 
 Since the Matlab implementation uses a Simulink model the problematic part of \eqref{gradientOfPerformanceFunction} is the derivative of the model with respect to the model parameters, \si{\frac{\partial  }{\partial \vec{\theta}}\ \vec{y_m}(kT, \vec{\theta})}. To solve this problem a numerical differentiation of the model is applied as shown in \autoref{AlgorithmForNummericalDiff}.
 
-\begin{lstlisting}[ language = Matlab,
+\begin{lstlisting}[ style    = custommatlab,
                     caption  = {Algorithm for numerical differentiation of the simulated model},
                     label    = AlgorithmForNummericalDiff ]
 

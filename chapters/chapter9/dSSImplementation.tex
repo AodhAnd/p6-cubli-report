@@ -1,8 +1,9 @@
 \section{State Space Controller Implementation}\label{sec:SSImplementation}
 The controller in state space results to be three gains that do not need to be discretized to implement them in the real system. Listing \ref{codeStateSpaceControl} contains the code for the function that calculates the action of control.
-\texttt{x\_hat} contains the states of the system, being the angle of the frame (\texttt{x\_hat[0]}), the velocity of the frame (\texttt{x\_hat[1]}) and the velocity of the wheel (\texttt{x\_hat[2]}). \texttt{x\_hat} is the equivalent of vector \si{\vec{x}}. The inner product between \si{\vec{K}} and \si{\vec{x}} is calculated on line 11 in code listing \ref{codeStateSpaceControl}. On line 14 the found output torque is converted to a current, since the motor control board takes a current as reference. The \texttt{TORQUE\_2\_CURRENT} constant is found by taking the inverse of the motor torque constant.
-\begin{lstlisting}[caption  = {Code for the implementation of the State Space Controller. The feedback from the Cubli is contained in the array x\_hat.},
-label    = codeStateSpaceControl ]
+\lstinline[style=customcppinline]{x_hat} contains the states of the system, being the angle of the frame (\lstinline[style=customcppinline]{x_hat[0]}), the velocity of the frame (\lstinline[style=customcppinline]{x_hat[1]}) and the velocity of the wheel (\lstinline[style=customcppinline]{x_hat[2]}). \lstinline[style=customcppinline]{x_hat} is the equivalent of vector \si{\vec{x}}. The inner product between \si{\vec{K}} and \si{\vec{x}} is calculated on line 11 in code listing \ref{codeStateSpaceControl}. On line 14 the found output torque is converted to a current, since the motor control board takes a current as reference. The \lstinline[style=customcppinline]{TORQUE_2_CURRENT} constant is found by taking the inverse of the motor torque constant.
+\begin{lstlisting}[style = customcpp,
+                  caption  = {Code for the implementation of the State Space Controller. The feedback from the Cubli is contained in the array x\_hat.},
+                  label    = codeStateSpaceControl ]
 /** Runs the controller based on the feedback signal in x_hat */
 LSF_COutput_struct_T AAU3_DiscLinFeedback2(const real_T x_hat[3])
 {

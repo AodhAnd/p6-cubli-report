@@ -4,8 +4,9 @@ Written in C\texttt{++}, it comprises all the drivers necessary to interface the
 
 The actual controllers which make the Cubli stand up on its corner, are all composed of source and header files in a folder named \textit{controller/controller\_code/}. Each controller has to implement three functions, as shown in \autoref{lst:StandardControllerInterface}.
 %
-\lstset{language=C++, caption={Code snippet of the standard controller interface, written in C.}, label=lst:StandardControllerInterface}
-\begin{lstlisting}
+\begin{lstlisting} [style   = customcpp,
+                    caption = {Code snippet of the standard controller interface, written in C.}, 
+                    label   = lst:StandardControllerInterface]
   /**
    *  Runs the actual controller on the given feedback(s) and the pre-defined input(s).
    *  Takes the sampling time and a 3x1 vector x_hat containing the feedbacks 
@@ -30,7 +31,7 @@ The actual controllers which make the Cubli stand up on its corner, are all comp
 \end{lstlisting}
 This is a default model based on the way MATLAB auto-generates controller code into C\texttt{++} files. This model shall be used in this project as a general reference, to keep some common structure between the different controllers to be implemented. However, it is possible to adapt the arguments and the returned variables depending on the needs. Moreover, MATLAB auto-generation of code is not used in this project.
 
-The file \textit{controller/controller\_test.cpp} contains the core part of the controllers operation. One of its functions, \lstinline{void ControllerTest::runController(ControllerArgs* args)}, is called at some regular pre-defined intervals which is the desired sampling time. This initializes the available controllers, retrieves and processes the data from the sensors, and finally uses the controller code to compute the output current to send to the motor. This updated output current is actually sent at the beginning of the next call.
+The file \textit{controller/controller\_test.cpp} contains the core part of the controllers operation. One of its functions, \lstinline[style=customcppinline]{void ControllerTest::runController(ControllerArgs* args)}, is called at some regular pre-defined intervals which is the desired sampling time. This initializes the available controllers, retrieves and processes the data from the sensors, and finally uses the controller code to compute the output current to send to the motor. This updated output current is actually sent at the beginning of the next call.
 
-It is important to note that the whole code is intended to run on the Beaglebone Black. Indeed, the latter uses an ARMv7 processor architecture, which requires the program to be compiled either directly on a computer with similar architecture which might be slow, or on another standard PC with a cross-compilation toolchain.
+It is important to note that the whole code is intended to run on the Beaglebone Black. Indeed, the latter uses an ARMv7 processor architecture, which requires the program to be compiled either directly on a computer with similar architecture which might be slow, or on another standard PC with a cross-compilation toolchain\cite{ELinux}.
 \\\\

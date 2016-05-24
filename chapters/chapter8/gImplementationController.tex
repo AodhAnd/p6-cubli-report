@@ -13,9 +13,11 @@ To implement a discrete controller in a code environment, the preferred form of 
 & \si{x[n-m]}             & is the m-th previous state of a signal x, m = 0,1,2,3         &\unitWh{\cdot}\\
 \end{tabular}
 
-To match the code convention defined in \secref{sec:codeBase}, this equation is put into a function named \lstinline{AAU3_DiscSISOTool()}, as seen in \ref{lst:codeSISOTController}. The coefficients a and b are initialized in the \lstinline{AAU3_DiscSISOTool_initialize()} function.
+To match the code convention defined in \secref{sec:codeBase}, this equation is put into a function named \lstinline[style=customcppinline]{AAU3_DiscSISOTool()}, as seen in listing \ref{lst:codeSISOTController}. The coefficients a and b are initialized in the \lstinline[style=customcppinline]{AAU3_DiscSISOTool_initialize()} function.
 
-\begin{lstlisting}[caption={Code for the implementation of the controller designed from root locus in C\texttt{++}}, label=lst:codeSISOTController]
+\begin{lstlisting}[style=customcpp,
+                  caption={Code for the implementation of the controller designed from root locus in C\texttt{++}}, 
+                  label=lst:codeSISOTController]
 SISOT_P_Out_Sig_struct_T AAU3_DiscSISOTool(const real_T x_hat[3])
 {
   /** Declaration of a temporary variable */
