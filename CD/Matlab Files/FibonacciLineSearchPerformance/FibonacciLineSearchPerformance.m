@@ -3,7 +3,7 @@ close all
 clc
 
 %----- PLOT OPTIONS -------------------------------------------------------
-optimalityTest = 0;      %<--if set to 0 then
+optimalityTest = 1;      %<--if set to 0 then
                          %   it is made for better comprehension of method.
                          %   if set to 1 then
                          %   it is made for testing of performance.
@@ -47,6 +47,7 @@ XaBckgOffset   =  0   ; %-XaXbOff;
 XaLabelOffset  = -0.15; %-XaXbOff;
 XbBckgOffset   =  0   ; %+XaXbOff;
 XbLabelOffset  = -0.15; %+XaXbOff;
+
 %--------------------------------------------------------------------------
 
 %----- PICK THE FUNCTION YOU WISH TO MINIMIZE -----------------------------
@@ -94,15 +95,15 @@ line( [Xmin Xmin], limY, 'linestyle', '-', 'linewidth', 1,...
       'color', '[1 0 0]' );  
 %label for Xmin line
 text( Xmin+.1, limY(2)-.5*((limY(2)-limY(1))*verticalSpacing),  ...
-      '\leftarrow X_L', 'FontWeight', MinMaxFontWeight,...
+      '\leftarrow Xmin', 'FontWeight', MinMaxFontWeight,...
       'FontSize', MinMaxFontSize);
 
 %plotting Xmax
 line( [Xmax Xmax], limY, 'linestyle', '-', 'linewidth', 1,...
       'color', '[1 0 0]' );  
-%label for Xmin line
+%label for Xmax line
 text( Xmax-1.2, limY(2)-.5*((limY(2)-limY(1))*verticalSpacing),  ...
-      'X_U \rightarrow', 'FontWeight', MinMaxFontWeight,...
+      'Xmax \rightarrow', 'FontWeight', MinMaxFontWeight,...
       'FontSize', MinMaxFontSize );
 
 I1 = Xmax-Xmin;
@@ -110,7 +111,7 @@ I1 = Xmax-Xmin;
 %---- Recursive implementation of fibonacci (very inefficient (12 s)) -----
 % i = 27;
 % while i >= 1
-%     fibonacciGenFunction(i)
+%     fibonacciFunction(i)
 %     i= i-1;
 % end
 %--12578 ms----------------------------------------------------------------

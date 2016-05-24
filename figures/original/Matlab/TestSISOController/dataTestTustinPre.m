@@ -51,3 +51,29 @@ ylabel('Angular velocity of the wheel (rad/s)');
 grid on, grid minor;
 set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
 xlim([0 1.9]);
+
+%% Data from the real model (Beaglebone)
+data=csvread('sisotool1.csv');
+time=(data(:,1))*0.01;
+potRad=data(:,2);
+wheel=data(:,7);
+
+% Plots
+figure(4);
+plot(time,potRad,'linewidth',1.2);
+title('Closed Loop Response of the Real Cubli')
+xlabel('Time (s)');
+ylabel('Angular position (rad)');
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
+xlim([0 111]);
+
+figure(5);
+plot(time,wheel,'linewidth',1.2);
+title('Closed Loop Response of the Real Cubli')
+xlabel('Time (s)');
+ylabel('Angular velocity (rad/s)');
+grid on, grid minor;
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
+xlim([0 111]);
+

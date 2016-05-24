@@ -3,7 +3,6 @@ close all
 clc
 
 %% Cubli model parameters
-
 T_m=0.005;
 K=0.5;
 J_w=0.601e-3;
@@ -11,10 +10,10 @@ J_f=2.8e-3;
 B_w=17.03e-6;
 B_f=6.08e-3;
 m_w=0.222;
-m_f=0.77-m_w;%0.354;
+m_f=0.77-m_w;
 g=9.82;
 l_w=0.093;
-l_f=0.08498;%0.076;
+l_f=0.08498;
 
 %%
 
@@ -66,18 +65,21 @@ run mainest.m
 
 %% PLOTTING IT PRETTILY :)
 
-a = get(findall(gcf, 'Type', 'line', 'color', '[0.8500 0.3250 0.0980]'));
-Ynew = a.YData;
+Ynew = simCubli(u,t,[B_f J_f]);
 
 figure;
-plot(t', y, 'b')
-hold on
-plot(t', Ynew, 'r', 'LineWidth', 1.4)
+plot(t', y, 'b');
+hold on;
+plot(t', Ynew, 'r', 'LineWidth', 1.4);
 grid on, grid minor;
-set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6)
+set(gca,'GridLineStyle',':', 'GridColor', 'k', 'GridAlpha', .6);
+title('Parameter Estimation using Senstools');
+xlabel('Time (s)');
+ylabel('Angle (rad)');
+errorSTR = ['Normed RMS Error = ', num2str(errn), ' %'];
+tex = text(0.52, 0.13,        ...
+               errorSTR,              ...
+               'Color', '[ 0 .55 0 ]',...
+               'FontSize', 12);
 
-title('Parameter Estimation using Sense Tool')
-xlabel('Time (s)')
-ylabel('Angle (rad)')
-
-hold off
+hold off;
