@@ -98,8 +98,7 @@ The two angle measurements of the IMU are sent through a filter and then summed 
 	\centering
 	\caption{Block diagram of the complementary filter setup used for the IMU on the Cubli. The calculated accelerometer angle passes through a low pas filter. The angular velocity measurement from the gyro is integrated and then passed through a high pass filter. Both measurements are then summed to get the angle of the frame. \si{tau} refers to the time constant of the filters.}
 	\label{blockDrawingComplementaryFilter}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 The filter for the IMU is designed as shown in \figref{blockDrawingComplementaryFilter} with a low pass filter on the measurements from the accelerometer, and an integration followed by a high pass filter on the measurements from the gyroscope \cite{OlliW}.\cite{PGui}
 \begin{flalign}
 	\eq{\theta_{F}} {\frac{1}{ 1 + \tau \cdot s} \cdot accel\_\theta_{F}}   &\\
@@ -184,11 +183,10 @@ The cut-off frequency for the filters can be determined by using Senstools and t
 The toolbox uses the data form the potentiometer as the real output of the system, the data from the IMUs as the input and the modeling of the system is done through \eqref{discreteComplementaryFilter7}. With this data Senstools can find the optimal value for \si{\tau} based on the difference between the angle measured by the potentiometer and an angle calculated from accelerometer and gyroscope measurements done during the same test.
 
 The final fit can be seen in \figref{filterSensTool} and it gives an optimal \si{\tau=\ }\SI{0,5399}{s}. This results in a cut-off frequency for the filter equal to \si{1,85\ rad \cdot s^{-1}}.
-
 %
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.65]{figures/filterSensTool}
+	\includegraphics[scale=0.60]{figures/filterSensTool}
 	\caption{Final result of the complementary filter compared with the data from the potentiometer. It can be observed that the two measurements match closely.}
 	\label{filterSensTool}
 \end{figure}\vspace{-5mm}

@@ -14,7 +14,7 @@ For a function \si{f(\vec{x})} with a change in \si{\vec{x}} of \si{\vec{\delta}
 & \si{\vec{H}} 					    	   & is the Hessian                         & \\
 & \si{\vec{\delta}} 					   & is the change in \si{\vec{x}}          & \\
 \end{tabular}
-
+%
 %Then the change in \si{f(x)} as \si{||\vec{\delta}||_2 \rightarrow 0} can be approximated as follows.
 %%
 %\begin{flalign}
@@ -33,18 +33,16 @@ In gradient based methods, only the first order Taylor approximation is used, th
   \nabla\ f(\vec{x}+\vec{\delta}) &\approx \vec{g} = 0 &
 \label{1stOrderTaylorApproximationParThetaEqZero}
 \end{flalign}
-
-
+%
 That is, if the gradient of the function to be minimized is 0, a minimum or maximum exists as a candidate for a solution in this point. It follows that if standing in some point and computing the gradient in this point, then the gradient, \si{\vec{g}}, is the steepest ascent direction and the negative gradient, \si{-\vec{g}}, is the steepest descent direction. This only takes into account the immediate surroundings of the initially chosen point. A visualization of how the gradient points opposite to the minimum of an arbitrary function is seen on \figref{visualizationOfGradient}, which means that the negative gradient points to the minimum.
-
-
+%
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=.7\textwidth]{figures/visualizationOfGradient}
 	\caption{Visualization of gradient of an arbitrary function.}
 	\label{visualizationOfGradient}
-\end{figure}
-
+\end{figure}\vspace{-18pt}
+%
 One way of implementation is to set a step-size which decides how far in the \si{-\vec{g}} direction to go. The step-size can then be scaled in each iteration to avoid taking too large steps as shown in \figref{SteepestDescendLargeStep} and \ref{SteepestDescendSmallStep}, where \si{x^*} is the value of \si{x} which minimizes \si{f(x)}, \si{x_0} is the starting point at which \si{-g} is computed and \si{x} is the point reached after the step.\cite{Senstools}
 %
 \begin{minipage}{\linewidth}
@@ -68,7 +66,6 @@ One way of implementation is to set a step-size which decides how far in the \si
 		\end{figure}
 	\end{minipage}
 \end{minipage}
-
 
 The method does find a minimum. However, it converges to it rather slowly. An implementation where it is possible to directly retrieve the gradient of the function which is to be minimized, \si{f(\vec{x})}, is shown in \figref{steepestDescendEx}.
 

@@ -44,14 +44,14 @@ The implementation of the controller in the real model gives the results in \app
 %The conclusion is that a Single-Input Single-Output controller is not able to ensure zero velocity in equilibrium with only a feedback in the position of the frame. This means that another kind of controller, which also takes care of the velocity of the wheel, may result in a better behavior.
 
 One way could be using a cascade controller to control both the velocity of the wheel and the position of the frame. In \figref{cascadeControl} it can be seen the block diagram for a cascade control, with the particularity of a feedback from the position of frame to the velocity of the wheel.
-
+%
 \begin{figure}[H]
 	\input{figures/blockDiagramClassicalControl.tikz}
 	\centering
 	\caption{Block diagram for a cascade control (the dotted line corresponds to a feedback in the Cubli system that is not present in the normal cascade control).}
 	\label{cascadeControl}
-\end{figure}
-
+\end{figure}\vspace{-18pt}
+%
 The problem of this solution in the case of the Cubli is that both variables to control are coupled together, which means that it is not possible to split the plant in a way that there is no feedback between them.\cite{LRusso}
 
 Another way is to use a state space approach, since now the system will have two outputs to control. This controller solution is further detailed in \chapref{chap:stateSpaceController}.

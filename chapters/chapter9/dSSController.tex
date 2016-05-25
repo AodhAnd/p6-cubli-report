@@ -7,7 +7,8 @@ With this assumption a new state matrix can be created such that its poles are p
 	\input{figures/SSBlockDiagramFeedback.tikz}
 	\centering
 	\caption{Block diagram with the state feedback.}
-\end{figure} \label{SSBlocksFeedback}
+	\label{SSBlocksFeedback}
+\end{figure}\vspace{-18pt}
 %
 This new configuration gives a new equation for \si{\vec{\dot{x}}}:
 %
@@ -42,7 +43,7 @@ To choose the position of these poles two simulations are made for different val
 		\caption{A small disturbance torque is applied to the frame. The response is simulated with a number of controllers that have different locations of poles. All the controllers slow down the wheel to \si{0\ rad \cdot s^{-1}}.}
 		\label{disturbanceStateSpaceFrameAndWheel}
 	\end{minipage}
-\end{figure}
+\end{figure}\vspace{-18pt}
 %\begin{minipage}{\linewidth}
 %	\begin{minipage}{0.45\linewidth}
 %		\begin{figure}[H]
@@ -51,8 +52,7 @@ To choose the position of these poles two simulations are made for different val
 %			\captionsetup{justification=centering}
 %			\captionof{figure}{Response of the system to a disturbance with different locations of poles.}
 %			\label{disturbanceStateSpace}
-%		\end{figure}
-%	\end{minipage}
+%		\end{figure}\vspace{-18pt}	\end{minipage}
 %	\hspace{0.03\linewidth}
 %	\begin{minipage}{0.45\linewidth}
 %		\begin{figure}[H]\vspace{0mm}
@@ -61,8 +61,7 @@ To choose the position of these poles two simulations are made for different val
 %			\captionsetup{justification=centering}
 %			\captionof{figure}{Velocity of the wheel with the same disturbance.}
 %			\label{disturbanceStateSpaceWheel}
-%		\end{figure}
-%	\end{minipage}
+%		\end{figure}\vspace{-18pt}	\end{minipage}
 %\end{minipage}
 %
 \begin{figure}[H]
@@ -88,7 +87,7 @@ To choose the position of these poles two simulations are made for different val
 		\caption{The response is simulated with a number of controllers that have different locations of poles. All the controllers slow down the wheel to \si{0\ rad \cdot s^{-1}}.}
 		\label{catchingStateSpaceFrameAndWheel}
 	\end{minipage}
-\end{figure}
+\end{figure}\vspace{-18pt}
 %\begin{minipage}{\linewidth}
 %	\begin{minipage}{0.45\linewidth}
 %		\begin{figure}[H]
@@ -97,8 +96,7 @@ To choose the position of these poles two simulations are made for different val
 %			\captionsetup{justification=centering}
 %			\captionof{figure}{Response starting from \si{0,2\ rad} and an initial velocity of the wheel with different locations of poles.}
 %			\label{catchingStateSpace}
-%		\end{figure}
-%	\end{minipage}
+%		\end{figure}\vspace{-18pt}	\end{minipage}
 %	\hspace{0.03\linewidth}
 %	\begin{minipage}{0.45\linewidth}
 %		\begin{figure}[H]\vspace{-3mm}
@@ -107,8 +105,7 @@ To choose the position of these poles two simulations are made for different val
 %			\captionsetup{justification=centering}
 %			\captionof{figure}{Velocity of the wheel in the same starting conditions.}
 %			\label{catchingStateSpaceWheel}
-%		\end{figure}
-%	\end{minipage}
+%		\end{figure}\vspace{-18pt}	\end{minipage}
 %\end{minipage}
 The final combination of poles is \si{-6}, \si{-7} and \si{-15}, which gives the yellow responses in \figref{disturbanceStateSpace} and \figref{catchingStateSpace}. This seems a good option since its response is quite fast but not with too much overshoot. The gain matrix for this combination results in the following:
 %

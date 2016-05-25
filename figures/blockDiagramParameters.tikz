@@ -39,9 +39,9 @@
   
   % - drawing feedback lines
   
-  \draw[-](velFeed) |- node {} (B);
+  \draw[->](velFeed) |- node {} (B);
   
-  \draw[-](B) -| node {} (sum);
+  \draw[->](B) -| node {} (sum);
   
   % - adding + and - at the sum nodes
     \draw 

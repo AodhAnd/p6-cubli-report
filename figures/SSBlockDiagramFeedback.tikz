@@ -39,7 +39,7 @@
 	%Drawing node(s) with \textbullet
 	\draw%--------------------------------------------------------------
 %	node at (input1)  [shift={(-0.08, -0.02 )}] {\large \textbullet}
-	node at (output1) [shift={( 0.008, -0.04 )}] {\textbullet}
+	% node at (output1) [shift={( 0.008, -0.04 )}] {\textbullet}
 	;%------------------------------------------------------------------
 
 \end{tikzpicture}

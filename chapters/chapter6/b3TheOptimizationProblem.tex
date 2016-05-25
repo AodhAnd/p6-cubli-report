@@ -8,8 +8,7 @@ The basic scheme for the optimization problem is given in \figref{SensToolSchema
 %	\centering
 	\caption{Schematic of the optimization problem, where input (u(t)) and output(y(t)) data is logged. The input data is used with the simulation to generate the simulation output (\si{y_{m}(t)}). The real output and the simulated output are then compared and an adjustment is made to the parameters of the simulation. Then a new \si{y_{m}(t)} is generated with the u(t) and compared to the y(t). This process is iterated until a satisfactory match between y(t) and \si{y_{m}(t)} is achieved. Inspired from Senstools documentation.\cite{Senstools}}
 	\label{SensToolSchema}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 The provided data is taken from an initial value test of the Cubli hanging down like a pendulum, see \appref{app:impulseResponseAppendix}.
 If the fit is done in the operating region from \si{-0,15\ to\ 0,15\ rad}, the simulated behavior in this range will be closer to reality.
 
@@ -20,8 +19,7 @@ Furthermore, the nonlinear model is used to accurately describe the oscillatory 
 	\centering
 	\caption{Block diagram of the system as a regular pendulum with the wheel fixed to the frame.}
 	\label{blockDiagramSenseTool}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 In order to minimize the difference between the data points measured in test and the output of the model, a function to describe such a relationship is needed. The cost function used to describe goodness of the fit, is a mean square error function.
 %
 \begin{flalign}

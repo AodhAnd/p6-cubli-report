@@ -6,8 +6,8 @@ To better understand the problem at hand the cost function to be minimized is sh
 	\includegraphics[width=.55\textwidth]{figures/costFunction2}
 	\caption{The cost function to be minimized. The parameters are shown in the xy-plane and the deviation between simulation and test data, cost, for each two parameters is shown on the z axis. To generate the graph \si{90.000} simulations were run, one for each point on the surface, and the rendering time exceeded 5 hours on a regular PC. This is not practical to work with in general, but valuable in the implementation process of the optimization algorithm.}
 	\label{costFunction}
-\end{figure}
-
+\end{figure}\vspace{-18pt}
+%
 When implementing the steepest descent method the gradient of the cost function in needed, which includes a numerical differentiation of the model.
 %
 \begin{flalign}
@@ -39,6 +39,8 @@ delta = 0.01;
 deltaJ_f = J_f+delta*J_f;
 deltaB_f = B_f+delta*B_f;
 
+
+
 % Running the simulation again, now with J_f the deviating parameter
 deltaYmJf = simCubli( deltaJ_f, B_f, J_f, B_f );
 
@@ -61,7 +63,7 @@ g = [ gJf
 \end{lstlisting}
 
 With the gradient calculated the search direction is known, and implementation of the forward backward method as described above determines the search interval. This enables the above described Fibonacci line search to minimize the one-dimentional problem in each iteration. In \figref{CostFunctionMinimized3D} the process of the minimization is shown on the cost function and a contour plot is shown in \figref{CostFunctionMinimizedContour}. In the contour plot the black dotted lines shows the search direction and region determined by the gradient and the forward backward method.
-
+%
 \begin{figure}[H]
   \begin{minipage}{\linewidth}
     \captionsetup[subfigure]{font = footnotesize}
@@ -85,8 +87,9 @@ With the gradient calculated the search direction is known, and implementation o
     \caption{Here each iteration of the steepest descend using Fibonacci and forward backward method is seen directly on the cost function.}
     \label{CostFunctionMinimized}
   \end{minipage}
-\end{figure}
+\end{figure}\vspace{-18pt}
 %
+\newpage
 The final result achieved in by the algorithm is shown in \figref{resultOfGradientWithFibonacciAndForwardBackward}, where the normed RMS error between test results and simulation with final parameters, \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2} and \si{B_F=7,8 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}, is also shown.
 %
 \begin{figure}[H] 
@@ -94,4 +97,4 @@ The final result achieved in by the algorithm is shown in \figref{resultOfGradie
 	\includegraphics[width=.65\textwidth]{figures/resultOfGradientWithFibonacciAndForwardBackward}
 	\caption{The final result of the minimization using steepest descent with Fibonacci line search and forward backward method.}
 	\label{resultOfGradientWithFibonacciAndForwardBackward}
-\end{figure}
+\end{figure}\vspace{-18pt}

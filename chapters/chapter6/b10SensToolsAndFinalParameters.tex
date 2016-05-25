@@ -8,12 +8,12 @@ The same data, Simulink model and initial parameters as the previous case are gi
 	\includegraphics[scale=0.6]{figures/SenseToolParameterEstimation}
 	\caption{Data from the test (red) and final fit with the new parameters (blue) made with Senstools.}
 	\label{SenseToolParameterEstimation}
-\end{figure}
-
+\end{figure}\vspace{-18pt}
+%
 Finally, the parameters that Senstools estimates for the model are \si{J_F=4,8 \cdot 10^{-3}\ kg \cdot m^2} and \si{B_F=7,7 \cdot 10^{-3}\ m \cdot s \cdot rad^{-1}}. The normed RMS error is \si{27,4\ \%} compared to the \si{27,54\ \%} shown in \figref{resultOfGradientWithFibonacciAndForwardBackward}. In \appref{app:ErrorComp} the normed RMS error is calculated only for the first part of the region where the fit of the graphs is best, where Senstools get \si{22,8908\ \%} and the gradient descend implementation is \si{23,0713\ \%}. It can be seen that the previously explained implementation provides a satisfactory result as the error is almost the same, but since Senstools gives a slightly better result its parameters are chosen as the final ones.
 
 \section{Final Parameters}
-The final parameters of the system can be seen in \ref{ParametersSystem}
+The final parameters of the system can be seen in \ref{ParametersSystem}.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|p{3cm}|}

@@ -8,8 +8,7 @@ The root locus of the system with a proportional controller can be seen in \figr
 	\includegraphics[scale=.75]{figures/rlocusCubli}
 	\captionof{figure}{Root Locus of the system. It has  one zero \si{(s=0)}, and three poles \si{(s=-10,5014}; \si{s=-0,0283} and \si{s=9,3531}).}
 	\label{rlocusCubli2}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 Looking at the root locus it can be derived that the system can not be controlled using only a proportional controller because there is always a pole in the RHP no matter the gain.
 
 However, a first approximation of the system's behavior in closed loop can be done through a proportional controller. Such a system is tested with a gain of 10 as a controller. The final closed loop poles are placed at \si{-40,4198;\ -0,0018\ and\ 39,2448}. In \figref{closedLoopResponse} it is shown the response of the simulation and the one from the real setup with this proportional controller.
@@ -19,8 +18,7 @@ However, a first approximation of the system's behavior in closed loop can be do
 	\includegraphics[scale=0.75]{figures/closedLoopResponse}	
 	\caption{Behavior of the closed loop function with a proportional controller, both in simulation and reality.}
 	\label{closedLoopResponse}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 It is clear that, upon application of a \SI{0}{rad} reference and a minimal initial offset, the closed loop function with only a gain of 10 has an unstable response. Then the branches of the root locus need to be changed by means of the addition of poles and zeros in the controller.
 
 As there exists one pole in the Right Half Plane (RHP), the controller must also have one there to create two branches which can be attracted to the Left Half Plane (LHP).
@@ -36,8 +34,7 @@ Finally, the gain must be adjusted to make the closed loop poles to be in a stab
 	\includegraphics[scale=.65]{figures/RLControllerZoom}
 	\captionof{figure}{Root Locus of the final system.}
 	\label{RLControllerZoom}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 The final system looks like \figref{blockDiagramController} and the transfer function of the controller is give by \eqref{ControllerLaplace}.
 %
 \begin{figure}[H]
@@ -45,8 +42,7 @@ The final system looks like \figref{blockDiagramController} and the transfer fun
 	\centering
 	\caption{Block diagram of the final controlled system.}
 	\label{blockDiagramController}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 Where
 %
 \begin{flalign}

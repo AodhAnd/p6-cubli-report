@@ -27,7 +27,7 @@ The inverse transformation of \expr{exp:bilinearTransform} is given by:
   &\si{s \approx \frac{T}{2} \cdot \frac{1 - z^{-1}}{1 + z^{-1}}}\label{exp:inverseBilinearTransform}&
 \end{flalign}
 %
-In general, the \expr{exp:inverseBilinearTransform} is used to replace \si{s} in the continuous-time transfer function of the designed controller. However, due to the non-linear mapping induced by the discretization, a pre-warp of the frequencies can be used before discretizing. This avoids effects of phase lag near the cross-over frequency and thus, also avoids unwanted reduction of gain and phase margins. \cite{GGu,AVOppenheim} 
+In general, the \expr{exp:inverseBilinearTransform} is used to replace \si{s} in the continuous-time transfer function of the designed controller. However, due to the non-linear mapping induced by the discretization, a pre-warp of the frequencies can be used before discretizing. This avoids effects of phase lag near the cross-over frequency and thus, also avoids unwanted reduction of gain and phase margins.\cite{GGu,AVOppenheim} 
 
 Moreover, Matlab has an available function, \lstinline[style=custommatlabinline]{c2d()}, designed to convert a continuous system's transfer function into the discrete domain by specifying the sampling time (here, \si{T = 0,01\ s}) and the desired method (\lstinline[style=custommatlabinline]{'zoh'}, \lstinline[style=custommatlabinline]{'tustin'} or \lstinline[style=custommatlabinline]{'prewarp'}). When using the \lstinline[style=custommatlabinline]{'prewarp'} option, a supplementary argument is needed, corresponding to the critical fequency, \cite{Matlabc2d}.\\
 Here, \si{33,5\ rad \cdot s^{-1}} is chosen as the critical pre-warp frequency, as it corresponds to the point at which the phase lag is at its maximum on the open loop Bode plot of the continuous plant and controller, see \figref{fig:bodeOpenLoopContinuous}.
@@ -37,8 +37,7 @@ Here, \si{33,5\ rad \cdot s^{-1}} is chosen as the critical pre-warp frequency, 
   \includegraphics[scale=0.6]{figures/openLoopBadSISOController}
   \caption{Bode plot of the continuous open loop system.}
   \label{fig:bodeOpenLoopContinuous}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 \Figref{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop} shows Bode plots comparing open loops with the original continuous controller against the discretized controller's with ZOH, normal Tustin's method and pre-warping.
 %
 \begin{figure}[H]
@@ -46,8 +45,7 @@ Here, \si{33,5\ rad \cdot s^{-1}} is chosen as the critical pre-warp frequency, 
   \includegraphics[scale=.6]{figures/zohVsPrewarpVsNoPrewarpVsContinuousBodeOpenLoop}
   \caption{Bode plot of the open loop system with the continuous controller (in blue), ZOH discretized controller (in red), Tustin discretized controller (in orange) and pre-warped Tustin discretized controller (in purple).}
   \label{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop}
-\end{figure}
-%
+\end{figure}\vspace{-18pt}
 From \figref{fig:bodePrewarpVsNoPrewarpVsContinuousOpenLoop}, it is possible to see that the phase of the ZOH discretized controller diverges from the continuous one's, no later than at \si{3\ rad \cdot s^{-1}}. On the other hand, Tustin discretized controllers match closely with the continuous one until approximately \si{10\ rad \cdot s^{-1}}. \\
 The discrete systems here, are only plotted before the vertical line which represents the Nyquist frequency, i.e.~a half of the sampling frequency, chosen earlier in this section. More importantly, the two discrete versions of the controller, the orange one using a simple Tustin method and the purple one using also pre-warping, seem very similar both in frequency and phase.
 
@@ -57,7 +55,6 @@ Thus, the pre-warped discretized controller is chosen for the actual implementat
   \eq{D(z)} {\frac{\tau_{m,w}(z)}{e_{\theta}(z)} = \frac{\num{-8,314} + \num{7,422} \cdot z^{-1} + \num{8,302} \cdot z^{-2} - \num{7,434} \cdot z^{-3}}{1 - \num{1,382} \cdot z^{-1} + \num{0,3415} \cdot z^{-2} + \num{0,001638} \cdot z^{-3}}} &%\unit{N \cdot m} 
   \label{eq:discControllerTf}
 \end{flalign}
-
+%
 In this section, the controller designed from the root locus has been discretized. The next step is to translate this discretization in a form that can be run on the micro-computer running the calculations, i.e. the BeagleBone Black.
-
  % before and after the actual implementation on the real system.
