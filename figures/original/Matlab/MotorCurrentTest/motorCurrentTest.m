@@ -8,8 +8,8 @@ real_current=-data(:,3);    % The measurement has the opposite sign due to the w
 
 figure(1);
 hold on;
-plot(time, asked_current,'k','linewidth',1.2);
-plot(time, real_current,'b','linewidth',1); 
+scatter(time, asked_current, '.r');%,'linewidth',1.2);
+scatter(time, real_current,'.b');%,'linewidth',1); 
 
 title('Motor Current Test');
 grid on, grid minor;
